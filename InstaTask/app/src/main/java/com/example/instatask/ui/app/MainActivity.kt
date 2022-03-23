@@ -1,4 +1,4 @@
-package com.example.instatask
+package com.example.instatask.ui.app
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -22,22 +22,14 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Android")
+            greeting()
+
                 }
             }
         }
     }
 }
-
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    InstaTaskTheme {
-        Greeting("Android")
-    }
+fun greeting(){
+    Text(text = "hello world")
 }
