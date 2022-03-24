@@ -9,10 +9,11 @@ import androidx.navigation.compose.rememberNavController
 import com.example.instatask.ui.app.screens.Screens
 import com.example.instatask.ui.app.screens.greeting1
 import com.example.instatask.ui.app.screens.greeting2
+import com.example.instatask.viewmodel.TheViewModel
 import kotlinx.coroutines.launch
 
 @Composable
-fun DrawerNavGraph() {
+fun DrawerNavGraph(vmodel: TheViewModel) {
 
     val navController = rememberNavController()
 
