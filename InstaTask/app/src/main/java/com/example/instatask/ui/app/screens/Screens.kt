@@ -18,8 +18,21 @@ package com.example.instatask.ui.app.screens
     Database instantiation
  */
 
-sealed interface Screens
+sealed class Screens( val title:String, val route:String)
+{
+    object Test1:Screens("Test 1", "test1")
+    object Test22:Screens("Test 22", "test22")
+/*
+
+    object Account:DrawerScreen("Account","account")
+    object Help:DrawerScreen("Help","help")
+*/
+}
+val drawerScreens= listOf(
+    Screens.Test1,
+    Screens.Test22
 
 
+)
 
 
