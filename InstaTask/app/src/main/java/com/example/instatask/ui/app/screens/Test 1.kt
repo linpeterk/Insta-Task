@@ -1,6 +1,7 @@
 package com.example.instatask.ui.app.screens
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.*
@@ -9,6 +10,7 @@ import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import com.example.instatask.ui.app.Components.MakeGoogleMap
 import com.example.instatask.ui.app.Components.topBar
 
 
@@ -30,8 +32,14 @@ fun greeting1(openDrawer:()->Unit){
             horizontalAlignment = Alignment.CenterHorizontally
 
         ) {
+            Box(){
+                Text(text = "Home Page Content goes here")
+            }
 
-            Text(text = "Home Page Content goes here")
+
+            Box(){
+                MakeGoogleMap()
+            }
         }
 
     }

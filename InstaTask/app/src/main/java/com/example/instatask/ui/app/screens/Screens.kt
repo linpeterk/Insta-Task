@@ -7,7 +7,8 @@ package com.example.instatask.ui.app.screens
       Profile screen / when job is accepted - Chinchu
 
     Functionality
-      Navigation drawer
+      Navigation drawer -DONE
+      Viewmodel - DONE
 
     Later
     Room Database

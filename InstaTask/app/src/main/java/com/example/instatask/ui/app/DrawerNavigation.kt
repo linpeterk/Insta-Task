@@ -12,6 +12,8 @@ import com.example.instatask.ui.app.screens.greeting2
 import com.example.instatask.viewmodel.TheViewModel
 import kotlinx.coroutines.launch
 
+
+
 @Composable
 fun DrawerNavGraph(vmodel: TheViewModel) {
 
@@ -33,6 +35,8 @@ fun DrawerNavGraph(vmodel: TheViewModel) {
                 drawerState.open()
             }
         }
+
+
 
         //Create component to hold the drawer
         ModalDrawer(

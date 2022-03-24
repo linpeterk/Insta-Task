@@ -1,6 +1,7 @@
 package com.example.instatask.viewmodel
 
 import android.app.Application
+import androidx.compose.runtime.Composable
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
@@ -10,11 +11,6 @@ import kotlinx.coroutines.launch
 class TheViewModel(application: Application) : AndroidViewModel(application) {
 
 
-    fun makeGoogleMap(){
-        viewModelScope.launch{
-
-        }
-    }
 }
 
 /*
