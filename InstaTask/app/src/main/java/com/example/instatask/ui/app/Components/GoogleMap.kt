@@ -2,7 +2,9 @@ package com.example.instatask.ui.app.Components
 
 import android.content.ContentValues.TAG
 import android.util.Log
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.Switch
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -10,10 +12,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.MapView
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
-import com.google.maps.android.compose.CameraPositionState
-import com.google.maps.android.compose.GoogleMap
-import com.google.maps.android.compose.MapUiSettings
-import com.google.maps.android.compose.rememberCameraPositionState
+import com.google.maps.android.compose.*
 import java.util.HashMap
 //var cameraPositionState:CameraPositionState?=null
 
@@ -28,25 +27,41 @@ val church = LatLng(34.05693923331048, -118.23957346932366)
 @Composable
   fun MakeGoogleMap(
     makeMarker: Boolean = false,
-){
+) {
     var cameraPositionState = rememberCameraPositionState {
         position = CameraPosition.fromLatLngZoom(caliMuseum, 15f)
     }
 
-    var uiSettings by remember { mutableStateOf(MapUiSettings(compassEnabled = false, myLocationButtonEnabled = true, mapToolbarEnabled = true)) }
+    var uiSettings by remember {
+        mutableStateOf(
+            MapUiSettings(
+                compassEnabled = true,
+                myLocationButtonEnabled = true,
+                mapToolbarEnabled = true
+            )
+        )
+    }
+
+    var properties by remember {
+        mutableStateOf(MapProperties(mapType = MapType.NORMAL))
+    }
+
+l
+
+    Box(Modifier.fillMaxSize())
+    {
+         GoogleMap(
+            modifier = Modifier.matchParentSize(),
+            cameraPositionState = cameraPositionState!!,
+            uiSettings = uiSettings,
+            properties= properties,
 
 
-    val mapView = GoogleMap(
-        modifier = Modifier.fillMaxSize(),
-        cameraPositionState = cameraPositionState!!,
-        uiSettings = uiSettings,
+            onPOIClick = {
+                Log.d(TAG, "POI clicked: ${it.name}")
+            },
 
-
-        onPOIClick = {
-            Log.d(TAG, "POI clicked: ${it.name}")
-        },
-
-        onMapLongClick = {
+            onMapLongClick = {
 //
 //            cameraPositionState!!.position =
 //                CameraPosition.fromLatLngZoom(
@@ -55,11 +70,17 @@ val church = LatLng(34.05693923331048, -118.23957346932366)
 //                )
 
 
-        }
-    )
+            }
+        )
+        Switch(
+            checked = uiSettings.mapToolbarEnabled,
+            onCheckedChange = {
+                uiSettings = uiSettings.copy(mapToolbarEnabled = it)
+            }
+        )
 
 
-    val coroutineScope = rememberCoroutineScope()
+
 
 
 
@@ -69,4 +90,5 @@ val church = LatLng(34.05693923331048, -118.23957346932366)
 //    }
 
 
+    }
 }
