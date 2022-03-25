@@ -163,41 +163,5 @@ fun WhenJobClicked(navController: NavController) {
   */
 }
 
-//  Column(modifier = Modifier.offset(y = 50.dp)) {
-//                    Text(
-//                        text = "This product can lead to biological hazards exposure which is known to the State of California to cause cancer",
-//                        modifier = Modifier
-//                            .padding(5.dp),
-//                        fontSize = 14.sp,
-//                        fontWeight = FontWeight.Normal,
-//                        style = MaterialTheme.typography.subtitle1,
-//                        textAlign = TextAlign.Center
-//
-//                    )
-//                      Spacer(modifier = Modifier.padding(10.dp))
-//                    Row(
-//                        modifier = Modifier
-//                            .fillMaxWidth(),
-//                        horizontalArrangement = Arrangement.Center
-//                       // horizontalArrangement = Arrangement.Center y no work
-//                    ) {
-//
-//                        Button(
-//
-//                            onClick = { navController.navigate(route=Screen.Login.route)},
-//                            colors = ButtonDefaults.buttonColors(backgroundColor = Color.Red),
-//                            modifier = Modifier
-//                        ) {
-//                            Text(text = "Log in", modifier = Modifier.padding(5.dp), color = Color.White)
-//                        }
-//                        Button(
-//                            onClick = {
-//                                      navController.navigate(Screen.Signup.route)
-//                                      },
-//                            colors = ButtonDefaults.buttonColors(backgroundColor = lightBlue)
-//                        ) {
-//                            Text(text = "Sign up", modifier = Modifier.padding(5.dp), color = Color.White)
-//                        }
-//                    }
-//                }
+
 
