@@ -101,7 +101,7 @@ fun WhenJobClicked(navController: NavController) {
                 }
             }
         ){
-            GoogleMap()
+            MakeGoogleMap()
         }
         /*
   Box(modifier = Modifier
