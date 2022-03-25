@@ -2,6 +2,9 @@ package com.example.instatask.viewmodel
 
 import android.app.Application
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
@@ -10,8 +13,11 @@ import kotlinx.coroutines.launch
 
 class TheViewModel(application: Application) : AndroidViewModel(application) {
 
+    var count by mutableStateOf(0)
 
-
+    fun up(value: Int) {
+        count+=value
+    }
 }
 
 /*
