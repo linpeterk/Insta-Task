@@ -2,6 +2,8 @@ package com.example.instatask.ui.app.Components
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
@@ -24,7 +26,8 @@ fun topBar(title: String = "", buttonIcon: ImageVector = Icons.Filled.Menu, onBu
         }
         },
         backgroundColor = Color.Transparent,
-        elevation = 0.dp
+        elevation = 0.dp,
+        modifier = Modifier.height(24.dp)
 
     )
 }
