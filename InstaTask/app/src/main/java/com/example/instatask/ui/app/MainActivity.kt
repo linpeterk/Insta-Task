@@ -18,6 +18,7 @@ import androidx.navigation.NavController
 
 import com.example.instatask.ui.app.screens.LandingScreen
 import com.example.instatask.ui.app.screens.SignUpScreen
+
 import com.example.instatask.ui.app.screens.TaskBoard
 import com.example.instatask.ui.app.screens.WhenJobClicked
 import com.example.instatask.ui.theme.InstaTaskTheme
