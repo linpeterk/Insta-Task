@@ -10,14 +10,13 @@ import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.SnackbarDefaults.backgroundColor
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
-import androidx.compose.ui.graphics.BlendMode.Companion.Screen
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -81,11 +80,13 @@ fun WhenJobClicked(navController: NavController) {
                         .fillMaxWidth()
                     ){
                         Column() {
-                            Box(modifier = Modifier
-                                .weight(0.09f)
+                            Row(modifier = Modifier //
+                                .fillMaxWidth(),
+                                horizontalArrangement = Arrangement.Center
 
                             ){
-//                                MenuTab(navController)
+
+//                              MenuTab(navController)
                                 Button(
 
                                     onClick = { /*navController.navigate(route=Screen.Login.route)*/},
@@ -98,12 +99,11 @@ fun WhenJobClicked(navController: NavController) {
                                     onClick = {/*
                                         navController.navigate(Screen.Signup.route)
                                     */},
-                                    colors = ButtonDefaults.buttonColors(backgroundColor)
+                                    colors = ButtonDefaults.buttonColors(backgroundColor = Black)
                                 ) {
                                     Text(text = "Report", modifier = Modifier.padding(5.dp), color = Color.White)
                                 }
                             }
-
 
                             Box(modifier = Modifier
                                 .weight(0.8f)
@@ -163,5 +163,41 @@ fun WhenJobClicked(navController: NavController) {
   */
 }
 
-
+//  Column(modifier = Modifier.offset(y = 50.dp)) {
+//                    Text(
+//                        text = "This product can lead to biological hazards exposure which is known to the State of California to cause cancer",
+//                        modifier = Modifier
+//                            .padding(5.dp),
+//                        fontSize = 14.sp,
+//                        fontWeight = FontWeight.Normal,
+//                        style = MaterialTheme.typography.subtitle1,
+//                        textAlign = TextAlign.Center
+//
+//                    )
+//                      Spacer(modifier = Modifier.padding(10.dp))
+//                    Row(
+//                        modifier = Modifier
+//                            .fillMaxWidth(),
+//                        horizontalArrangement = Arrangement.Center
+//                       // horizontalArrangement = Arrangement.Center y no work
+//                    ) {
+//
+//                        Button(
+//
+//                            onClick = { navController.navigate(route=Screen.Login.route)},
+//                            colors = ButtonDefaults.buttonColors(backgroundColor = Color.Red),
+//                            modifier = Modifier
+//                        ) {
+//                            Text(text = "Log in", modifier = Modifier.padding(5.dp), color = Color.White)
+//                        }
+//                        Button(
+//                            onClick = {
+//                                      navController.navigate(Screen.Signup.route)
+//                                      },
+//                            colors = ButtonDefaults.buttonColors(backgroundColor = lightBlue)
+//                        ) {
+//                            Text(text = "Sign up", modifier = Modifier.padding(5.dp), color = Color.White)
+//                        }
+//                    }
+//                }
 
