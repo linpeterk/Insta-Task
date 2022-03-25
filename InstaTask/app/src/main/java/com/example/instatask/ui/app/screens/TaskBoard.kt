@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.instatask.ui.app.Components.MakeGoogleMap
-import com.example.instatask.ui.app.Components.topBar
+import com.example.instatask.ui.app.Components.TopBar
 import com.google.android.gms.tasks.Task
 import de.charlex.compose.BottomDrawerScaffold
 import de.charlex.compose.BottomDrawerScaffoldState
@@ -116,7 +116,7 @@ fun TaskBoard(){
     ){
         Box() {
             MakeGoogleMap()
-            topBar()
+            TopBar()
         }
     }
 

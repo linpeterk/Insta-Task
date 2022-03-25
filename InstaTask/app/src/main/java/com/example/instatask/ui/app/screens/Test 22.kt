@@ -7,13 +7,13 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.example.instatask.ui.app.Components.topBar
+import com.example.instatask.ui.app.Components.TopBar
 
 @Composable
 fun greeting2(openDrawer:(Boolean)->Unit){
     Column(modifier = Modifier.fillMaxSize()){
 
-        topBar(title = "Test22",   buttonIcon = Icons.Filled.Menu,onButtonClicked = {openDrawer(true)})
+        TopBar(title = "Test22",   buttonIcon = Icons.Filled.Menu,onButtonClicked = {openDrawer(true)})
     Text(text = "hello Test22")
     }
 }
