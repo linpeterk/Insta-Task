@@ -1,5 +1,6 @@
 package com.example.instatask.ui.app.screens
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -15,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -186,6 +188,7 @@ fun SignInScreen(){
 @Preview(showBackground = true)
 @Composable
 fun SignUpScreen(){
+    val context = LocalContext.current
     val fullName = rememberSaveable{ mutableStateOf("") }
     val email = rememberSaveable{ mutableStateOf("") }
     val password = rememberSaveable{ mutableStateOf("") }
@@ -200,12 +203,12 @@ fun SignUpScreen(){
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(colorResource(id = R.color.purple_200))
+            .background(colorResource(id = R.color.white))
             .wrapContentSize(Alignment.Center)
     ) {
         Text(
             text="Sign Up", fontWeight = FontWeight.Bold,
-            color = Color.White,
+            color = Color.Black,
             modifier = Modifier.align(Alignment.CenterHorizontally),
             textAlign = TextAlign.Center,
             fontSize = 25.sp
@@ -214,25 +217,25 @@ fun SignUpScreen(){
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             //FullName Addres textfield field
             OutlinedTextField(value = fullName.value, onValueChange = {fullName.value=it},
-                label = {Text(text="Full Name", color = Color.White, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                label = {Text(text="Full Name", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)},
-                placeholder = {Text(text="Full Name", color = Color.White, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                placeholder = {Text(text="Full Name", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified )},
                 singleLine = true,
                 modifier = Modifier.fillMaxWidth(0.8f))
             //Email Addres textfield field
             OutlinedTextField(value = email.value, onValueChange = {email.value=it},
-                label = {Text(text="Email Address", color = Color.White, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                label = {Text(text="Email Address", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)},
-                placeholder = {Text(text="Email Address", color = Color.White, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                placeholder = {Text(text="Email Address", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)},
                 singleLine = true,
                 modifier = Modifier.fillMaxWidth(0.8f))
             //Password Addres textfield field
             OutlinedTextField(value = password.value, onValueChange = {password.value=it},
-                label = {Text(text="Password", color = Color.White, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                label = {Text(text="Password", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)},
-                placeholder = {Text(text="Password", color = Color.White, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                placeholder = {Text(text="Password", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)},
                 singleLine = true,
                 modifier = Modifier.fillMaxWidth(0.8f),
@@ -250,18 +253,18 @@ fun SignUpScreen(){
             )
             //Address Addres textfield field
             OutlinedTextField(value = address.value, onValueChange = {address.value=it},
-                label = {Text(text="address", color = Color.White, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                label = {Text(text="address", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)},
-                placeholder = {Text(text="address", color = Color.White, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                placeholder = {Text(text="address", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)},
                 singleLine = true,
                 modifier = Modifier.fillMaxWidth(0.8f)
             )
             //ZipCode  textfield field
             OutlinedTextField(value = zipCode.value, onValueChange = {zipCode.value=it},
-                label = {Text(text="zipCode", color = Color.White, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                label = {Text(text="zipCode", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)},
-                placeholder = {Text(text="zipCode", color = Color.White, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                placeholder = {Text(text="zipCode", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)},
                 singleLine = true,
                 modifier = Modifier.fillMaxWidth(0.8f)
@@ -269,15 +272,16 @@ fun SignUpScreen(){
 
             Spacer(modifier = Modifier.padding(10.dp))
            // var regStatus by rememberSaveable{ mutableStateOf("") }
-            Button(onClick = {},
+            Button(onClick = { Toast.makeText(context,"You re Signed Up....", Toast.LENGTH_LONG).show()},
                 colors = ButtonDefaults.buttonColors(
-                    contentColor = Color.White),
+                    contentColor = Color.Red),
                 modifier = Modifier
                     .fillMaxWidth(0.8f)
                     .height(50.dp)
                     .background(colorResource(id = R.color.purple_200))
+
             ){
-                Text(text="Sign Up", color = Color.White, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                Text(text="Submit", color = Color.White, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)
             }
         }
