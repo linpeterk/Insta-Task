@@ -178,7 +178,7 @@ fun SignInScreen(){
         )
         var emailAddress by rememberSaveable{mutableStateOf("")}
         var Password by rememberSaveable{mutableStateOf("")}
-        Spacer(modifier = Modifier.padding(10.dp))
+        Spacer(modifier = Modifier.padding(15.dp))
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             OutlinedTextField(value = emailAddress, onValueChange = {emailAddress=it},
                 label = {Text(text="Email Address", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
@@ -219,7 +219,7 @@ fun SignInScreen(){
                     .height(50.dp)
                     .background(colorResource(id = R.color.white))
             ){  //Text(text = "$status")
-                Text(text="Login", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                Text(text="Login", color = Color.White, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)
             }
         }
@@ -320,7 +320,7 @@ fun SignUpScreen(){
                 modifier = Modifier
                     .fillMaxWidth(0.8f)
                     .height(50.dp)
-                    .background(colorResource(id = R.color.purple_200))
+                    .background(colorResource(id = R.color.white))
 
             ){
                 Text(text="Submit", color = Color.White, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
