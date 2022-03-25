@@ -1,5 +1,7 @@
 package com.example.instatask.ui.app.screens
 
+import com.example.instatask.R
+
 /* SCREENS
       LandingPage / Signup / Login / Entrance- Adama
       Job Board /  Skill board    -  Peter
@@ -32,8 +34,13 @@ sealed class Screens( val title:String, val route:String)
 val drawerScreens= listOf(
     Screens.Test1,
     Screens.Test22
-
-
 )
 
+sealed class NavigationItem(var route:String, var icon:Int, var title:String){
+    object Home: NavigationItem("home", R.drawable.home,"Home")
+    object Profile: NavigationItem("profile", R.drawable.profile,"Profile")
+    object Settings: NavigationItem("settings", R.drawable.settings,"Settings")
+    object Logout: NavigationItem("logout", R.drawable.logout,"Logout")
+
+}
 
