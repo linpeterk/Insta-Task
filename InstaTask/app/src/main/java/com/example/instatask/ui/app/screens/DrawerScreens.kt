@@ -1,11 +1,8 @@
 package com.example.instatask.ui.app.screens
 
 import android.widget.Toast
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -13,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
@@ -89,6 +87,131 @@ fun ProfileScreen(){
 
     }
 }
+
+@Preview(showBackground = true)
+@Composable
+fun LandingScreen(){
+
+    val context = LocalContext.current
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .fillMaxWidth()
+            .fillMaxHeight()
+            .background(colorResource(id = R.color.white)),
+
+
+        //.wrapContentSize(Alignment.Center)
+    ){Text(text="QUICK CASH", fontWeight = FontWeight.Bold,
+        color = Color.White,
+        fontSize = 25.sp)
+
+        Box(){
+            Image(
+                painter = painterResource(id = R.drawable.samplebackground),
+                contentDescription = null
+            )
+            Text(
+                text = "",
+                style = MaterialTheme.typography.h4,
+                color = Color.Black,
+                modifier = Modifier
+                    .align(Alignment.BottomStart)
+            )
+        }
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier.fillMaxWidth().padding(start= 10.dp, top = 80.dp, end = 10.dp)
+
+        ) {
+            Button(
+                onClick = {Toast.makeText(context,"All you need for your garage....", Toast.LENGTH_LONG).show()},
+            ) {
+                Image(
+                    painterResource(R.drawable.garage),
+                    contentDescription = null,
+                    modifier = Modifier.size(13.dp)
+                        .background(colorResource(id = R.color.white))
+                )
+
+                Text(text = "Garage", Modifier.padding(start = 10.dp))
+            }
+            Button(
+                onClick = {Toast.makeText(context,"All you need for cleaning....", Toast.LENGTH_LONG).show()},
+
+                ) {
+                Image(
+                    painterResource(R.drawable.cleaner),
+                    contentDescription = null,
+                    modifier = Modifier.size(13.dp)
+                        .background(colorResource(id = R.color.white))
+                )
+
+                Text(text = "Cleaner", Modifier.padding(start = 10.dp))
+            }
+            Button(
+                onClick = {Toast.makeText(context,"All you need for your house....", Toast.LENGTH_LONG).show()},
+
+                ) {
+                Image(
+                    painterResource(R.drawable.housemaintenance),
+                    contentDescription = null,
+                    modifier = Modifier.size(13.dp)
+                        .background(colorResource(id = R.color.white))
+                )
+
+                Text(text = "House", Modifier.padding(start = 10.dp))
+            }
+        }
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier.fillMaxWidth().padding(start= 10.dp, top = 80.dp, end = 10.dp)
+
+        ) {
+            Button(
+                onClick = {Toast.makeText(context,"All you need for your Pets....", Toast.LENGTH_LONG).show()},
+            ) {
+                Image(
+                    painterResource(R.drawable.pet),
+                    contentDescription = null,
+                    modifier = Modifier.size(13.dp)
+                        .background(colorResource(id = R.color.white))
+                )
+
+                Text(text = "Garage", Modifier.padding(start = 10.dp))
+            }
+            Button(
+                onClick = {Toast.makeText(context,"All you need for Trash....", Toast.LENGTH_LONG).show()},
+
+                ) {
+                Image(
+                    painterResource(R.drawable.trash),
+                    contentDescription = null,
+                    modifier = Modifier.size(13.dp)
+                        .background(colorResource(id = R.color.white))
+                )
+
+                Text(text = "Cleaner", Modifier.padding(start = 10.dp))
+            }
+            Button(
+                onClick = {Toast.makeText(context,"All you need for your kitchen....", Toast.LENGTH_LONG).show()},
+
+                ) {
+                Image(
+                    painterResource(R.drawable.kitchen),
+                    contentDescription = null,
+                    modifier = Modifier.size(13.dp)
+                        .background(colorResource(id = R.color.white))
+                )
+
+                Text(text = "House", Modifier.padding(start = 10.dp))
+            }
+        }
+
+    }
+}
+
 
 @Preview(showBackground = true)
 @Composable

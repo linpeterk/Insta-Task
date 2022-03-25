@@ -72,12 +72,12 @@ val church = LatLng(34.05693923331048, -118.23957346932366)
 
             }
         )
-        Switch(
-            checked = uiSettings.mapToolbarEnabled,
-            onCheckedChange = {
-                uiSettings = uiSettings.copy(mapToolbarEnabled = it)
-            }
-        )
+//        Switch(
+//            checked = uiSettings.mapToolbarEnabled,
+//            onCheckedChange = {
+//                uiSettings = uiSettings.copy(mapToolbarEnabled = it)
+//            }
+//        )
 
 
 

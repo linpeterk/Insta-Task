@@ -40,7 +40,9 @@ sealed class NavigationItem(var route:String, var icon:Int, var title:String){
     object Home: NavigationItem("home", R.drawable.home,"Home")
     object Profile: NavigationItem("profile", R.drawable.profile,"Profile")
     object Settings: NavigationItem("settings", R.drawable.settings,"Settings")
+    object SignIn: NavigationItem("signIn", R.drawable.logout,"SignIn")
+    object SignUp: NavigationItem("signUp", R.drawable.logout,"SignUp")
     object Logout: NavigationItem("logout", R.drawable.logout,"Logout")
-
+    object LandingScreen: NavigationItem("landingScreen", R.drawable.logout,"LandingScreen")
 }
 

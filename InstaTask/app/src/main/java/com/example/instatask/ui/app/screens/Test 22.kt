@@ -10,10 +10,10 @@ import androidx.compose.ui.Modifier
 import com.example.instatask.ui.app.Components.topBar
 
 @Composable
-fun greeting2(openDrawer:()->Unit){
+fun greeting2(openDrawer:(Boolean)->Unit){
     Column(modifier = Modifier.fillMaxSize()){
 
-        topBar(title = "Test22",   buttonIcon = Icons.Filled.Menu,onButtonClicked = {openDrawer()})
+        topBar(title = "Test22",   buttonIcon = Icons.Filled.Menu,onButtonClicked = {openDrawer(true)})
     Text(text = "hello Test22")
     }
 }

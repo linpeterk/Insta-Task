@@ -13,7 +13,28 @@ import com.example.instatask.viewmodel.TheViewModel
 import kotlinx.coroutines.launch
 
 
+lateinit var DrawersStatus:(Boolean)->Unit
+lateinit var drawerState: DrawerState
+@Composable
+fun init(){
 
+     drawerState = rememberDrawerState(DrawerValue.Closed)
+
+    // REPLACE THIS WITH VIEWMODEL   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    var scope = rememberCoroutineScope()
+
+    DrawersStatus = { DrawState ->
+        scope.launch {
+
+            if(DrawState){
+            drawerState.open()
+            }
+            else {
+                drawerState.close()
+            }
+        }
+    }
+}
 @Composable
 fun DrawerNavGraph(vmodel: TheViewModel) {
 
@@ -24,17 +45,7 @@ fun DrawerNavGraph(vmodel: TheViewModel) {
 
     ) {
         //create drawer state open or close
-        var drawerState = rememberDrawerState(DrawerValue.Closed)
 
-        // REPLACE THIS WITH VIEWMODEL   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        var scope = rememberCoroutineScope()
-
-        var openDrawer = {
-            scope.launch {
-
-                drawerState.open()
-            }
-        }
 
 
 
@@ -47,9 +58,7 @@ fun DrawerNavGraph(vmodel: TheViewModel) {
                 //draw the stuff inside drawer
                 //close drawer when destination is clicked, then go destination
                 LeftDrawer(onDestinationClicked = { route ->
-                    scope.launch {
-                        drawerState.close()
-                    }
+                    DrawersStatus(false)
                     /*
                     navController.navigate(route=Screen.Profile.route){
                         popUpTo(Screen.Profile.route){
@@ -77,9 +86,7 @@ fun DrawerNavGraph(vmodel: TheViewModel) {
                 {
 
 
-                    greeting1(openDrawer = {
-                        openDrawer()
-                    })
+                    greeting1()
                 }
 
                 //2nd
@@ -87,9 +94,9 @@ fun DrawerNavGraph(vmodel: TheViewModel) {
                 composable(Screens.Test22.route)
                 {
 
-                    greeting2(openDrawer = {
-                        openDrawer()
-                    })
+                    greeting2(openDrawer =
+                        DrawersStatus
+                    )
                 }
 
                 //3rd
