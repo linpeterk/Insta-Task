@@ -46,9 +46,6 @@ fun DrawerNavGraph(vmodel: TheViewModel) {
     ) {
         //create drawer state open or close
 
-
-
-
         //Create component to hold the drawer
         ModalDrawer(
             drawerState = drawerState,
