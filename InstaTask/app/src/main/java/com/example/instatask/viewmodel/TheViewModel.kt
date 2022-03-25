@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 
 
 class TheViewModel(application: Application) : AndroidViewModel(application) {
- val login
+
 
 
 }
