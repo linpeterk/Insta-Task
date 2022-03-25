@@ -13,12 +13,11 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.ViewModelProvider
-<<<<<<< Updated upstream
+
 import androidx.navigation.NavController
-=======
+
 import com.example.instatask.ui.app.screens.LandingScreen
 import com.example.instatask.ui.app.screens.SignUpScreen
->>>>>>> Stashed changes
 import com.example.instatask.ui.app.screens.TaskBoard
 import com.example.instatask.ui.app.screens.WhenJobClicked
 import com.example.instatask.ui.theme.InstaTaskTheme
