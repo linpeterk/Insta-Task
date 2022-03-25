@@ -11,7 +11,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
 import com.example.instatask.ui.app.screens.TaskBoard
+import com.example.instatask.ui.app.screens.WhenJobClicked
 import com.example.instatask.ui.theme.InstaTaskTheme
 import com.example.instatask.viewmodel.TheViewModel
 
@@ -29,7 +31,9 @@ class MainActivity : ComponentActivity() {
                 ) {
 
                     //DrawerNavGraph(theViewModel)
-                    TaskBoard()
+//                    TaskBoard()
+
+                    WhenJobClicked(navController = NavController(this))
                 }
             }
         }
