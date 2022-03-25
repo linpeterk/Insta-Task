@@ -179,7 +179,7 @@ fun LandingScreen(){
                         .background(colorResource(id = R.color.white))
                 )
 
-                Text(text = "Garage", Modifier.padding(start = 10.dp))
+                Text(text = "Pets", Modifier.padding(start = 10.dp))
             }
             Button(
                 onClick = {Toast.makeText(context,"All you need for Trash....", Toast.LENGTH_LONG).show()},
@@ -192,7 +192,7 @@ fun LandingScreen(){
                         .background(colorResource(id = R.color.white))
                 )
 
-                Text(text = "Cleaner", Modifier.padding(start = 10.dp))
+                Text(text = "Trash", Modifier.padding(start = 10.dp))
             }
             Button(
                 onClick = {Toast.makeText(context,"All you need for your kitchen....", Toast.LENGTH_LONG).show()},
@@ -205,7 +205,7 @@ fun LandingScreen(){
                         .background(colorResource(id = R.color.white))
                 )
 
-                Text(text = "House", Modifier.padding(start = 10.dp))
+                Text(text = "Kitchen", Modifier.padding(start = 10.dp))
             }
         }
 
