@@ -10,11 +10,13 @@ import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.SnackbarDefaults.backgroundColor
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.scale
+import androidx.compose.ui.graphics.BlendMode.Companion.Screen
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -84,6 +86,22 @@ fun WhenJobClicked(navController: NavController) {
 
                             ){
 //                                MenuTab(navController)
+                                Button(
+
+                                    onClick = { /*navController.navigate(route=Screen.Login.route)*/},
+                                    colors = ButtonDefaults.buttonColors(backgroundColor = Color.Red),
+                                    modifier = Modifier
+                                ) {
+                                    Text(text = "Accept", modifier = Modifier.padding(5.dp), color = Color.White)
+                                }
+                                Button(
+                                    onClick = {/*
+                                        navController.navigate(Screen.Signup.route)
+                                    */},
+                                    colors = ButtonDefaults.buttonColors(backgroundColor)
+                                ) {
+                                    Text(text = "Report", modifier = Modifier.padding(5.dp), color = Color.White)
+                                }
                             }
 
 
