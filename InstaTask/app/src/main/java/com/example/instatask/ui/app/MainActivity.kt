@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.ViewModelProvider
+import com.example.instatask.ui.app.screens.TaskBoard
 import com.example.instatask.ui.theme.InstaTaskTheme
 import com.example.instatask.viewmodel.TheViewModel
 
@@ -19,6 +20,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         val theViewModel= ViewModelProvider(this).get(TheViewModel::class.java)
         setContent {
+            init()
             InstaTaskTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
@@ -26,8 +28,8 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
 
-                    DrawerNavGraph(theViewModel)
-
+                    //DrawerNavGraph(theViewModel)
+                    TaskBoard()
                 }
             }
         }
