@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.instatask.ui.app.Components.MakeGoogleMap
+import com.example.instatask.ui.app.Components.TopBar
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
@@ -120,6 +121,7 @@ fun WhenJobClicked(navController: NavController) {
         }
     ){
         MakeGoogleMap()
+        TopBar()
     }
     /*
 Box(modifier = Modifier
