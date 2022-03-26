@@ -127,29 +127,6 @@ fun LandingScreen(){
             modifier = Modifier.fillMaxWidth().padding(start= 10.dp, top = 80.dp, end = 10.dp)
 
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.cleaner),
-                contentDescription = null,
-                modifier = Modifier.clip(RoundedCornerShape(10.dp)),
-            )
-            Image(
-                painter = painterResource(id = R.drawable.housemaintenance),
-                contentDescription = null,
-                modifier = Modifier.clip(RoundedCornerShape(10.dp)),
-            )
-            Image(
-                painter = painterResource(id = R.drawable.trash),
-                contentDescription = null,
-                modifier = Modifier.clip(RoundedCornerShape(10.dp)),
-            )
-
-
-        }
-        Row(
-            horizontalArrangement = Arrangement.SpaceBetween,
-            modifier = Modifier.fillMaxWidth().padding(start= 10.dp, top = 80.dp, end = 10.dp)
-
-        ) {
             Button(
                 onClick = {Toast.makeText(context,"All you need for your Pets....", Toast.LENGTH_LONG).show()},
             ) {
@@ -437,6 +414,22 @@ fun SignUpScreen(){
             ){
                 Text(text="Submit", color = Color.White, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)
+            }
+            Spacer(modifier=Modifier.padding(10.dp))
+            Row(
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier.fillMaxWidth().padding(start= 40.dp, top = 20.dp, end = 40.dp)
+
+            ) {
+                Text(text="Already have an account?", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                    fontSize = TextUnit.Unspecified,
+                    modifier=Modifier.padding(start = 40.dp, top = 10.dp))
+                Button(
+                    onClick = {Toast.makeText(context,"SignIn..", Toast.LENGTH_LONG).show()},
+                ) {
+                    Text(text="SignIn", color = Color.White, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                        fontSize = TextUnit.Unspecified)
+                }
             }
         }
     }
