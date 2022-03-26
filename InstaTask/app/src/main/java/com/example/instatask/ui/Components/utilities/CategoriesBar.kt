@@ -1,12 +1,10 @@
 package com.example.instatask.ui.Components.utilities
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.border
-import androidx.compose.foundation.horizontalScroll
+import android.util.Log
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -17,18 +15,20 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.instatask.model.Categories
 import com.example.instatask.viewmodel.TheViewModel
+import java.util.*
 
 @Composable
-fun CategoriesBar(vmodel: TheViewModel, modifier : Modifier){
+fun CategoriesBar(vmodel: TheViewModel, list:List<Categories>){
 
 
         LazyRow(
-            modifier = modifier
+            modifier = Modifier
             //.border(3.dp, Color.Red)
 
         ) {
-            items(vmodel.getCategory()) { item ->
+            items(list) { item ->
 
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
@@ -38,6 +38,10 @@ fun CategoriesBar(vmodel: TheViewModel, modifier : Modifier){
 
                     Box(
                         modifier = Modifier
+                            .clickable(onClick = {
+                            vmodel.loadTasks(item.list)
+                          //      Log.d("Bar", "list is ${vmodel.taskList[0].description}")
+                            })
                         //.border(3.dp, Color.Blue)
                     ) {
                         Image(
@@ -48,6 +52,10 @@ fun CategoriesBar(vmodel: TheViewModel, modifier : Modifier){
                     Box(
                         contentAlignment = Alignment.Center,
                         modifier = Modifier.wrapContentSize()
+                            .clickable(onClick = {
+                            vmodel.loadTasks(item.list)
+                            //      Log.d("Bar", "list is ${vmodel.taskList[0].description}")
+                        })
                         //  .border(2.dp, Color.Yellow)
                     ) {
                         Text(

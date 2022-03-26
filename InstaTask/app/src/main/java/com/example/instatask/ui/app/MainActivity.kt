@@ -33,14 +33,14 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
+
                     //test(theViewModel)
-                    //DrawerNavGraph(theViewModel)
+                    DrawerNavGraph(theViewModel)
 
+                //LandingScreen()
 
-
-                 //   TaskBoard(theViewModel)
-                    SkillBoard(theViewModel)
-
+                    //TaskBoard(theViewModel)
+                  // SkillBoard(theViewModel, NavController(this))
 
 //                    WhenJobClicked(navController = NavController(this))
 
@@ -59,8 +59,12 @@ fun greeting(){
 }
 
 @Composable
-fun test(theViewModel:TheViewModel) {
+fun test(theViewModel:TheViewModel, index:Int) {
   //  var a = theViewModel.count
+
+    var list= theViewModel.taskList[index]
+    var listName = list.name
+    var listHr= theViewModel.taskList[index].hourlyRate
     var a = theViewModel.count
     Column() {
         Button(onClick = { a++ }) {
@@ -71,5 +75,11 @@ fun test(theViewModel:TheViewModel) {
         }
 
         Text(text = "int count $a")
+
+        Text(text = "Name is $listName and hourly rate is $listHr")
+
     }
+
+
+
 }

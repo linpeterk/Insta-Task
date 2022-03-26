@@ -5,48 +5,78 @@ import androidx.compose.runtime.*
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.instatask.R
-import com.example.instatask.model.Categories
-import com.example.instatask.model.JobCreator
-import com.example.instatask.model.jobCreators
+import com.example.instatask.model.*
 import kotlinx.coroutines.launch
 
 
 class TheViewModel(application: Application) : AndroidViewModel(application) {
 
+
     var count by mutableStateOf(0)
 
-    var categories: List<Categories> = mutableStateListOf()
+    var categoriesTask: List<Categories> = mutableStateListOf()
 
-    var taskList: List<JobCreator> = mutableStateListOf()
+   var categoriesSkill: List<Categories> = mutableStateListOf()
 
+   // var taskList: MutableList<JobCreator> = mutableStateListOf() // DOES NOT WORK
+
+    var taskList by mutableStateOf(jobCreators) // WORKS
+
+    /* mutable
+    mutableStateOf parameters is prefered used for immutable lists, primitives, simple datatypes
+     when list change it will recompose
+
+    mutableStateListOf() is used for mutable lists or arrays, where adding will cause recomposition
+    Does not count when entire list is replaced
+     */
     init{
-         categories = listOf(
-             Categories("Post job", R.drawable.more),
-            Categories("Pets", R.drawable.petcategory),
-            Categories("Garden", R.drawable.farming),
-            Categories("Home", R.drawable.renovation),
-            Categories("Delivery", R.drawable.deliveryman),
-            Categories("Trade", R.drawable.trading),
-            Categories("Labor", R.drawable.workinprogress),
+        categoriesTask = listOf(
+             Categories("Post Task", R.drawable.more),
+            Categories("Pets", R.drawable.petcategory, jobCreators1),
+            Categories("Garden", R.drawable.farming, jobCreators2),
+            Categories("Home", R.drawable.renovation, jobCreators3),
+            Categories("Delivery", R.drawable.deliveryman, jobCreators4),
+            Categories("Trade", R.drawable.trading, jobCreators5),
+            Categories("Labor", R.drawable.workinprogress, jobCreators),
         )
-        loadTasks()
+
+        categoriesSkill = listOf(
+            Categories("Post Skill", R.drawable.more),
+            Categories("Pets", R.drawable.petcategory, jobCreators1),
+            Categories("Repair", R.drawable.housemaintenance, jobCreators2),
+            Categories("Cleaning", R.drawable.cleaner, jobCreators3),
+            Categories("Auto", R.drawable.technician, jobCreators4),
+            Categories("Plumbing", R.drawable.workinprogress, jobCreators5),
+            Categories("Gardener", R.drawable.farming, jobCreators),
+        )
+
+      //  loadTasks(jobCreators)
     }
 
     fun up(value: Int) {
         count+=value
     }
 
-    fun getCategory(): List<Categories>{
-        return  categories
+    fun getCategoryTask(): List<Categories>{
+        return  categoriesTask
     }
 
-    fun getFakeTasklist(): List<JobCreator>{
+    fun getCategorySkill(): List<Categories>{
+        return  categoriesSkill
+    }
+
+    fun getTasklist(): List<JobCreator>{
         return  taskList
     }
 
-     fun loadTasks(){
+//    fun addTest(): List<JobCreator>{
+//        taskList.add(JobCreator(0, "", "abc", R.drawable.ic_sea_icon))
+//    }
+
+
+    fun loadTasks(list:List<JobCreator>){
         viewModelScope.launch {
-            taskList = jobCreators
+            taskList = list
         }
     }
 
