@@ -28,7 +28,7 @@ fun LeftDrawer(
 
     ) {
 
-        Image(painter = painterResource(R.drawable.toilet) , contentDescription ="App Icon" )
+        Image(painter = painterResource(R.drawable.cleaner) , contentDescription ="App Icon" )
 
         Spacer(Modifier.height(24.dp))
 

@@ -40,10 +40,10 @@ class MainActivity : ComponentActivity() {
                     //DrawerNavGraph(theViewModel)
 
 
-                    TaskBoard(theViewModel)
+//                    TaskBoard(theViewModel)
 
 
-                  //  WhenJobClicked(navController = NavController(this))
+                    WhenJobClicked(navController = NavController(this))
 
                    // SignUpScreen()
                   //  TaskBoard()
