@@ -277,6 +277,9 @@ fun LandingScreen(){
         ) {
             Button(
                 onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()},
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Color.White,
+                    contentColor = Color.Red)
 
                 ) {
 
@@ -284,6 +287,9 @@ fun LandingScreen(){
             }
             Button(
                 onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()},
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Color.White,
+                    contentColor = Color.Red)
 
                 ) {
 
