@@ -159,46 +159,7 @@ fun WhenJobClicked(navController: NavController, viewModel:TheViewModel, index: 
         MakeGoogleMap()
         TopBar()
     }
-    /*
-Box(modifier = Modifier
-  .fillMaxSize()
-  .fillMaxHeight()
-  .fillMaxWidth()
-){
-  Column() {
-      Box(modifier = Modifier
-          .weight(1f)
 
-      ) {
-
-
-          MakeGoogleMap(true, modifier = Modifier.fillMaxSize())
-
-
-
-      }
-
-      Box(modifier = Modifier
-          .weight(0.14f)
-
-      ){
-          MenuTab(navController)
-      }
-
-
-      Box(modifier = Modifier
-          .weight(0.8f)
-          .background(MaterialTheme.colors.primaryVariant)
-      ){
-          MakeScrollComponents(navController)
-      }
-  }
-
-
-
-}
-makeAddressButton(navController)
-*/
 }
 
 
