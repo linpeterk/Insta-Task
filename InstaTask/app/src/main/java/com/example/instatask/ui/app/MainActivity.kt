@@ -37,12 +37,18 @@ class MainActivity : ComponentActivity() {
                     //test(theViewModel)
                     DrawerNavGraph(theViewModel)
 
+
                 //LandingScreen()
+
+                 //   TaskBoard(theViewModel)
+//                    SkillBoard(theViewModel)
+
 
                     //TaskBoard(theViewModel)
                   // SkillBoard(theViewModel, NavController(this))
 
 //                    WhenJobClicked(navController = NavController(this))
+//                    WhenSkillClicked(navcontroller = NavController(this))
 
                    // SignUpScreen()
                   //  TaskBoard()
