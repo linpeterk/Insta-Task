@@ -10,12 +10,10 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
@@ -92,32 +90,41 @@ fun EntranceScreen(){
                 .fillMaxWidth()
                 .padding(start=2.dp, top=40.dp, end = 2.dp, bottom = 20.dp)
         ) {
-            Image(
-                painterResource(R.drawable.employee),
-                contentDescription = "Test 1",
-                modifier = Modifier.fillMaxWidth()
-                    .size(350.dp)
-                    .background(colorResource(id = R.color.white))
-                    .clip(RoundedCornerShape(10.dp))
-                    .shadow(
-                        elevation = 10.dp,
-                        shape = CircleShape,
-                        clip = true
-                    )
-                    .clip(RoundedCornerShape(10.dp))
-                    .clickable(
-                        enabled = true,
-                        onClickLabel = "Clickable image",
-                        onClick = {Toast.makeText(context,"Employee Button clicked",Toast.LENGTH_SHORT).show()
-                        }
-                    )
-            )
+
+                Image(
+                    painterResource(R.drawable.employee),
+                    contentDescription = "Test 1",
+                    modifier = Modifier.fillMaxWidth()
+                        .size(350.dp)
+                        .background(colorResource(id = R.color.white))
+                        .clip(RoundedCornerShape(10.dp))
+                        .shadow(
+                            elevation = 10.dp,
+                            shape = CircleShape,
+                            clip = true
+                        )
+                        .clip(RoundedCornerShape(10.dp))
+                        .clickable(
+                            enabled = true,
+                            onClickLabel = "Clickable image",
+                            onClick = {
+                                Toast.makeText(
+                                    context,
+                                    "Employee Button clicked",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        )
+                )
+
+
         }
         Row(
             horizontalArrangement = Arrangement.Center,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start=2.dp, top=20.dp, end = 2.dp, bottom=20.dp)
+                .padding(start=2.dp, top=10.dp, end = 2.dp, bottom=20.dp),
+
         ) {
             Image(
                 painterResource(R.drawable.employer),
@@ -140,7 +147,9 @@ fun EntranceScreen(){
                     )
 
             )
-        }
+
+            }
+
     }
 }
 
