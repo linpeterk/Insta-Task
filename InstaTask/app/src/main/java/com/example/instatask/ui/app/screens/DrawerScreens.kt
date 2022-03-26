@@ -275,7 +275,12 @@ fun LandingScreen(){
                 .fillMaxWidth()
                 .padding(start=40.dp, top=20.dp, end = 40.dp)
         ) {
-            Button(
+            Button( modifier=Modifier
+                .shadow(
+                    elevation = 10.dp,
+                    shape = CircleShape,
+                    clip = true
+                ),
                 onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()},
                 colors = ButtonDefaults.buttonColors(
                     backgroundColor = Color.White,
@@ -286,6 +291,12 @@ fun LandingScreen(){
                 Text(text = "Sign Up")
             }
             Button(
+                modifier=Modifier
+                    .shadow(
+                        elevation = 10.dp,
+                        shape = CircleShape,
+                        clip = true
+                    ),
                 onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()},
                 colors = ButtonDefaults.buttonColors(
                     backgroundColor = Color.White,
