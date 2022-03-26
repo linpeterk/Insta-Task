@@ -19,12 +19,12 @@ fun AllReviews(creatorList:List<JobCreator>) //add parameters here
 
     Scaffold(
 
-        topBar = {          //Reviews title
-
-            TopAppBar(backgroundColor = MaterialTheme.colors.primary,
-                title = { Text(text = "Reviews") })
-
-        }
+//        topBar = {          //Reviews title
+//
+//            TopAppBar(backgroundColor = MaterialTheme.colors.primary,
+//                title = { Text(text = "Reviews") })
+//
+//        }
     )
     {
 
@@ -48,7 +48,7 @@ fun AllReviews(creatorList:List<JobCreator>) //add parameters here
 
                 ) {
 
-                    Text(text = "Job Creators",
+                    Text(text = "Reviews",
                         style= MaterialTheme.typography.h5 )
                 }
 

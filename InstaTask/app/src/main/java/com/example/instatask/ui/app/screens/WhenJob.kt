@@ -106,7 +106,7 @@ fun WhenJobClicked(navController: NavController) {
                             }
                         }
                         Box(modifier = Modifier
-                            .weight(0.8f)
+                            .weight(0.4f)
                             .background(MaterialTheme.colors.primaryVariant)
                         ){
 //                                MakeScrollComponents(navController)
