@@ -111,7 +111,7 @@ fun LandingScreen(){
 
         Box(){
             Image(
-                painter = painterResource(id = R.drawable.samplebackground),
+                painter = painterResource(id = R.drawable.kitchen),
                 contentDescription = null, alpha=0.2f,
             )
             Text(
@@ -128,17 +128,17 @@ fun LandingScreen(){
 
         ) {
             Image(
-                painter = painterResource(id = R.drawable.house_cleaner_normal),
+                painter = painterResource(id = R.drawable.cleaner),
                 contentDescription = null,
                 modifier = Modifier.clip(RoundedCornerShape(10.dp)),
             )
             Image(
-                painter = painterResource(id = R.drawable.garage_normal),
+                painter = painterResource(id = R.drawable.housemaintenance),
                 contentDescription = null,
                 modifier = Modifier.clip(RoundedCornerShape(10.dp)),
             )
             Image(
-                painter = painterResource(id = R.drawable.cuisine_normal),
+                painter = painterResource(id = R.drawable.trash),
                 contentDescription = null,
                 modifier = Modifier.clip(RoundedCornerShape(10.dp)),
             )
@@ -331,7 +331,7 @@ fun SignInScreen(){
             ) {
                 Text(text="Don't have an account?", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified,
-                modifier=Modifier.padding(start = 20.dp, top = 10.dp))
+                modifier=Modifier.padding(start = 40.dp, top = 10.dp))
                 Button(
                     onClick = {Toast.makeText(context,"Signing Up..", Toast.LENGTH_LONG).show()},
                 ) {
