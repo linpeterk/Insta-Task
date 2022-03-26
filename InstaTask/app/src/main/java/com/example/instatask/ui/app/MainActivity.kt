@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
                 ) {
 
                     //test(theViewModel)
-                    DrawerNavGraph(theViewModel)
+//                    DrawerNavGraph(theViewModel)
 
 
                 //LandingScreen()
@@ -47,7 +47,7 @@ class MainActivity : ComponentActivity() {
                     //TaskBoard(theViewModel)
                   // SkillBoard(theViewModel, NavController(this))
 
-//                    WhenJobClicked(navController = NavController(this))
+                    WhenJobClicked(navController = NavController(this), theViewModel, 0)
 //                    WhenSkillClicked(navcontroller = NavController(this))
 
                    // SignUpScreen()
