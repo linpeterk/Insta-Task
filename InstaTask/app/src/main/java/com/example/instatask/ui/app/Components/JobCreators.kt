@@ -14,31 +14,31 @@ val jobCreators=listOf(
     JobCreator(
         2,
         "Onyxia",
-        "Rose is a valuable natural cosmetic ingredient. It contains antibacterial and antioxidants. It's toning and relaxing.",
+        "Onyxia is the only boss of Onyxia's Lair. Daughter of Deathwing and sister of Nefarian, Onyxia is the broodmother of the Black Dragonflight in Azeroth. Although her father prefers brute force and her brother favors creating twisted abominations to carry out their wills, Onyxia is a master of subtle manipulation, managing to control Stormwind for a time under the guise of Lady Katrana Prestor. After being unmasked by Marshal Reginald Windsor, she fled to her lair, protected by many members of the Black Dragonflight.",
         R.drawable.ic_launcher_background,
     ),
     JobCreator(
         3,
         "Ragnaros",
-        "Calendula helps reducing redness and healing up the skin and it is considered a medicinal plant.",
+        "Ragnaros, the Firelord, is the tenth and final boss of Molten Core. Enslaved by the Old Golds millennia ago, banished by the Titan Watchers Tyr and Odin, and reawakened by Sorcerer-Thane Thaurissan during the War of the Three Hammers, Ragnaros' resurfacing in Azeroth erupted a massive volcano in Redridge Mountains, this volcano now known as Blackrock Mountain. Residing at the very bottom of the mountain, Ragnaros gathers strength to try and burn away Azeroth.",
         R.drawable.ic_launcher_background,
     ),
     JobCreator(
         4,
         "Ursius",
-        "The lavender blossoms contain nurturing essential oils for the skin which have a balancing and soothing fragrance.",
+        "It's a bear",
         R.drawable.ic_launcher_background,
     ),
     JobCreator(
         5,
         "Nefarian",
-        "Jojoba improves skin elasticity and prevents skin dehydration, making it perfect for sensitive or very dry skin.",
+        "Nefarian is the eighth and final boss of Blackwing Lair. Under the guise of Lord Victor Nefarius, Nefarian fights over the control of Blackrock Mountain with the elemental lord Ragnaros, and uses the fortress as a place to follow through with his mad experiments, which includes creating an entirely new dragonflight with the powers of all dragonflights, combined.",
         R.drawable.ic_launcher_background,
     ),
     JobCreator(
         6,
         "Lethon",
-        "Tea tree is aimed to fight against acne and to treat acne prone skin. It’s considered one of the best natural alternatives to chemical substances.",
+        "Lethon is a Dragon of Nightmare, one of four of Ysera's lieutenants of the green dragon flight who fell prey to the corruption of the Emerald Nightmare, along with Emeriss, Taerar and Ysondre. Driven by their madness, they have entered Azeroth through portals, intent on spreading their madness and terror to the mortal realm.",
         R.drawable.ic_launcher_background,
     ),
     JobCreator(
