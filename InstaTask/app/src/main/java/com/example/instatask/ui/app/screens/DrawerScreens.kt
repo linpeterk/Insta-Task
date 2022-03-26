@@ -3,11 +3,13 @@ package com.example.instatask.ui.app.screens
 import android.widget.Toast
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
@@ -110,7 +112,7 @@ fun LandingScreen(){
         Box(){
             Image(
                 painter = painterResource(id = R.drawable.samplebackground),
-                contentDescription = null
+                contentDescription = null, alpha=0.2f,
             )
             Text(
                 text = "",
@@ -125,44 +127,23 @@ fun LandingScreen(){
             modifier = Modifier.fillMaxWidth().padding(start= 10.dp, top = 80.dp, end = 10.dp)
 
         ) {
-            Button(
-                onClick = {Toast.makeText(context,"All you need for your garage....", Toast.LENGTH_LONG).show()},
-            ) {
-                Image(
-                    painterResource(R.drawable.garage),
-                    contentDescription = null,
-                    modifier = Modifier.size(13.dp)
-                        .background(colorResource(id = R.color.white))
-                )
+            Image(
+                painter = painterResource(id = R.drawable.house_cleaner_normal),
+                contentDescription = null,
+                modifier = Modifier.clip(RoundedCornerShape(10.dp)),
+            )
+            Image(
+                painter = painterResource(id = R.drawable.garage_normal),
+                contentDescription = null,
+                modifier = Modifier.clip(RoundedCornerShape(10.dp)),
+            )
+            Image(
+                painter = painterResource(id = R.drawable.cuisine_normal),
+                contentDescription = null,
+                modifier = Modifier.clip(RoundedCornerShape(10.dp)),
+            )
 
-                Text(text = "Garage", Modifier.padding(start = 10.dp))
-            }
-            Button(
-                onClick = {Toast.makeText(context,"All you need for cleaning....", Toast.LENGTH_LONG).show()},
 
-                ) {
-                Image(
-                    painterResource(R.drawable.cleaner),
-                    contentDescription = null,
-                    modifier = Modifier.size(13.dp)
-                        .background(colorResource(id = R.color.white))
-                )
-
-                Text(text = "Cleaner", Modifier.padding(start = 10.dp))
-            }
-            Button(
-                onClick = {Toast.makeText(context,"All you need for your house....", Toast.LENGTH_LONG).show()},
-
-                ) {
-                Image(
-                    painterResource(R.drawable.housemaintenance),
-                    contentDescription = null,
-                    modifier = Modifier.size(13.dp)
-                        .background(colorResource(id = R.color.white))
-                )
-
-                Text(text = "House", Modifier.padding(start = 10.dp))
-            }
         }
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
@@ -306,8 +287,6 @@ fun SignInScreen(){
             OutlinedTextField(value = emailAddress, onValueChange = {emailAddress=it},
                 label = {Text(text="Email Address", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)},
-                placeholder = {Text(text="Email Address", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
-                    fontSize = TextUnit.Unspecified)},
                 singleLine = true,
                 modifier = Modifier.fillMaxWidth(0.8f))
             OutlinedTextField(value = Password, onValueChange = {Password=it},
@@ -322,8 +301,7 @@ fun SignInScreen(){
                 },
                 label = {Text(text="Password", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)},
-                placeholder = {Text(text="Password", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
-                    fontSize = TextUnit.Unspecified)},
+
                 singleLine = true,
                 visualTransformation = if(passwordVisibilty.value) VisualTransformation.None
                 else PasswordVisualTransformation(),
@@ -341,9 +319,25 @@ fun SignInScreen(){
                     .fillMaxWidth(0.8f)
                     .height(50.dp)
                     .background(colorResource(id = R.color.white))
-            ){  //Text(text = "$status")
+            ){
                 Text(text="Login", color = Color.White, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)
+            }
+            Spacer(modifier=Modifier.padding(10.dp))
+            Row(
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier.fillMaxWidth().padding(start= 40.dp, top = 20.dp, end = 40.dp)
+
+            ) {
+                Text(text="Don't have an account?", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                    fontSize = TextUnit.Unspecified,
+                modifier=Modifier.padding(start = 20.dp, top = 10.dp))
+                Button(
+                    onClick = {Toast.makeText(context,"Signing Up..", Toast.LENGTH_LONG).show()},
+                ) {
+                    Text(text="Sign Up", color = Color.White, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                        fontSize = TextUnit.Unspecified)
+                }
             }
         }
     }
@@ -384,24 +378,21 @@ fun SignUpScreen(){
             OutlinedTextField(value = fullName.value, onValueChange = {fullName.value=it},
                 label = {Text(text="Full Name", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)},
-                placeholder = {Text(text="Full Name", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
-                    fontSize = TextUnit.Unspecified )},
+
                 singleLine = true,
                 modifier = Modifier.fillMaxWidth(0.8f))
             //Email Addres textfield field
             OutlinedTextField(value = email.value, onValueChange = {email.value=it},
                 label = {Text(text="Email Address", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)},
-                placeholder = {Text(text="Email Address", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
-                    fontSize = TextUnit.Unspecified)},
+
                 singleLine = true,
                 modifier = Modifier.fillMaxWidth(0.8f))
             //Password Addres textfield field
             OutlinedTextField(value = password.value, onValueChange = {password.value=it},
                 label = {Text(text="Password", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)},
-                placeholder = {Text(text="Password", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
-                    fontSize = TextUnit.Unspecified)},
+
                 singleLine = true,
                 modifier = Modifier.fillMaxWidth(0.8f),
                 trailingIcon = {
@@ -420,8 +411,7 @@ fun SignUpScreen(){
             OutlinedTextField(value = address.value, onValueChange = {address.value=it},
                 label = {Text(text="address", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)},
-                placeholder = {Text(text="address", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
-                    fontSize = TextUnit.Unspecified)},
+
                 singleLine = true,
                 modifier = Modifier.fillMaxWidth(0.8f)
             )
@@ -429,8 +419,7 @@ fun SignUpScreen(){
             OutlinedTextField(value = zipCode.value, onValueChange = {zipCode.value=it},
                 label = {Text(text="zipCode", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)},
-                placeholder = {Text(text="zipCode", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
-                    fontSize = TextUnit.Unspecified)},
+
                 singleLine = true,
                 modifier = Modifier.fillMaxWidth(0.8f)
             )
