@@ -42,7 +42,7 @@ class MainActivity : ComponentActivity() {
                     SkillBoard(theViewModel)
 
 
-                    WhenJobClicked(navController = NavController(this))
+//                    WhenJobClicked(navController = NavController(this))
 
                    // SignUpScreen()
                   //  TaskBoard()
