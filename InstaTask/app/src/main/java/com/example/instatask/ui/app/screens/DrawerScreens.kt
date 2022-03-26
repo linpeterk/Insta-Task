@@ -3,6 +3,7 @@ package com.example.instatask.ui.app.screens
 import android.widget.Toast
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -11,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
@@ -127,6 +129,11 @@ fun LandingScreen(){
                 modifier = Modifier.fillMaxWidth()
                     .size(400.dp)
                     .background(colorResource(id = R.color.white))
+                    .shadow(
+                        elevation = 10.dp,
+                        shape = CircleShape,
+                        clip = true
+                    )
                     .clip(RoundedCornerShape(10.dp))
                     .clickable(
                         enabled = true,
