@@ -3,12 +3,14 @@ package com.example.instatask.ui.app.screens
 import android.content.ContentValues
 import android.util.Log
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.instatask.ui.Components.MakeGoogleMap
 import com.example.instatask.ui.Components.TopBar
 import com.example.instatask.ui.Components.utilities.CategoriesBar
@@ -21,7 +23,11 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun SkillBoard(vmodel:TheViewModel){
+fun SkillBoard(
+    vmodel:TheViewModel,
+    navcontroller: NavController
+
+){
 
     var peekHeight = remember { mutableStateOf(200.dp) }
     val scope = rememberCoroutineScope()
@@ -115,7 +121,7 @@ fun SkillBoard(vmodel:TheViewModel){
                                 .background(Color.White)
 
                         ) {
-                            CategoriesBar(vmodel = vmodel, modifier = Modifier)
+                            CategoriesBar(vmodel = vmodel, vmodel.categoriesSkill)
 
                         }
 
@@ -127,7 +133,10 @@ fun SkillBoard(vmodel:TheViewModel){
         }
 
     ) {
-        Box() {
+        Box(modifier=Modifier
+            .padding(bottom = 200.dp)
+           // .border(3.dp, Color.Red)
+        ) {
             MakeGoogleMap()
             TopBar()
         }

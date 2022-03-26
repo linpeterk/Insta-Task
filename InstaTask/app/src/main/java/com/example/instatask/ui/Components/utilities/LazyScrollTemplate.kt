@@ -32,7 +32,7 @@ fun LazyScrollTemplate(viewModel: TheViewModel){
 
     ){
 
-        items(viewModel.getFakeTasklist()){ item->
+        items(viewModel.taskList){ item->
             Spacer(modifier = Modifier.padding(3.dp))
             Card(
                 shape = RoundedCornerShape(8.dp),
@@ -56,7 +56,9 @@ fun LazyScrollTemplate(viewModel: TheViewModel){
 
                     )
                     Column(modifier = Modifier.padding(8.dp)
-                        .verticalScroll(rememberScrollState())){
+                        .verticalScroll(rememberScrollState())
+
+                    ){
 
                         Text(text = "${item.name}: ")
                         Spacer(modifier = Modifier.padding(5.dp))

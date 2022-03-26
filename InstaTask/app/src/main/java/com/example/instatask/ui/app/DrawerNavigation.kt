@@ -7,12 +7,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.instatask.model.Categories
-import com.example.instatask.ui.app.screens.Screens
-import com.example.instatask.ui.app.screens.greeting1
-import com.example.instatask.ui.app.screens.greeting2
 import com.example.instatask.viewmodel.TheViewModel
 import kotlinx.coroutines.launch
 import com.example.instatask.R
+import com.example.instatask.ui.app.screens.*
 
 
 lateinit var DrawersStatus:(Boolean)->Unit
@@ -81,28 +79,30 @@ fun DrawerNavGraph(vmodel: TheViewModel) {
 
         ) {
 
-            NavHost(navController = navController, startDestination = Screens.Test1.route)
+            NavHost(navController = navController, startDestination = Screens.TaskBoard.route)
             {
 
-                composable(Screens.Test1.route)
+                composable(Screens.TaskBoard.route)
                 {
 
 
-                    greeting1()
+                    TaskBoard(vmodel = vmodel, navController)
                 }
 
                 //2nd
 
-                composable(Screens.Test22.route)
+                composable(Screens.SkillBoard.route)
                 {
 
-                    greeting2(openDrawer =
-                        DrawersStatus
-                    )
+                    SkillBoard(vmodel = vmodel, navController)
                 }
 
                 //3rd
+                composable(Screens.WhenJob.route)
+                {
 
+                 //   WhenJobClicked(vmodel = vmodel, navController)
+                }
 
             }
         }

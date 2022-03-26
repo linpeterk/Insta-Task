@@ -16,6 +16,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.instatask.R
 import com.example.instatask.ui.Components.MakeGoogleMap
 import com.example.instatask.ui.Components.TopBar
@@ -30,7 +31,9 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun TaskBoard(vmodel: TheViewModel){
+fun TaskBoard(vmodel: TheViewModel,
+              navcontroller: NavController
+              ){
 
     var peekHeight = remember { mutableStateOf(200.dp) }
     val scope = rememberCoroutineScope()
@@ -124,7 +127,7 @@ fun TaskBoard(vmodel: TheViewModel){
                                 .background(Color.White)
 
                         ) {
-                            CategoriesBar(vmodel = vmodel, modifier = Modifier)
+                            CategoriesBar(vmodel = vmodel, vmodel.categoriesTask)
 
                         }
 
