@@ -33,12 +33,9 @@ fun reverseGeocoder(context: Context, lat:Double, lng:Double):String{
         // use your lat, long value here
         if (addressList != null && addressList.isNotEmpty()) {
             val address = addressList[0]
-            var sb:String =""
-
 
             return address.getAddressLine(0)
 
-            //  addressString = sb.toString()
 
         }
     } catch (e: IOException) {
