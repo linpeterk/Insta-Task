@@ -44,7 +44,7 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
             Categories("Post Skill", R.drawable.more),
             Categories("Pets", R.drawable.petcategory, jobCreators1),
             Categories("Repair", R.drawable.housemaintenance, jobCreators2),
-            Categories("Cleaning", R.drawable.cleaner, jobCreators3),
+            Categories("Cleaning", R.drawable.cleaning, jobCreators3),
             Categories("Auto", R.drawable.technician, jobCreators4),
             Categories("Plumbing", R.drawable.workinprogress, jobCreators5),
             Categories("Gardener", R.drawable.farming, jobCreators),
