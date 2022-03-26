@@ -27,8 +27,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.instatask.ui.app.Components.AllReviews
 import com.example.instatask.ui.app.Components.MakeGoogleMap
 import com.example.instatask.ui.app.Components.TopBar
+import com.example.instatask.ui.app.Components.jobCreators
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
@@ -111,6 +113,7 @@ fun WhenJobClicked(navController: NavController) {
                             .background(MaterialTheme.colors.primaryVariant)
                         ){
 //                                MakeScrollComponents(navController)
+                            AllReviews(jobCreators)
                         }
                     }
 
