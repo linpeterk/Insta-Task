@@ -48,7 +48,7 @@ fun AllReviews(creatorList:List<JobCreator>) //add parameters here
 
                 ) {
 
-                    Text(text = "Plants used fo Cancer Treatment",
+                    Text(text = "Job Creators",
                         style= MaterialTheme.typography.h5 )
                 }
 
