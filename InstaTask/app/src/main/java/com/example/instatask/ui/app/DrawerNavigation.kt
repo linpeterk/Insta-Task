@@ -6,17 +6,19 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.instatask.model.Categories
 import com.example.instatask.ui.app.screens.Screens
 import com.example.instatask.ui.app.screens.greeting1
 import com.example.instatask.ui.app.screens.greeting2
 import com.example.instatask.viewmodel.TheViewModel
 import kotlinx.coroutines.launch
+import com.example.instatask.R
 
 
 lateinit var DrawersStatus:(Boolean)->Unit
 lateinit var drawerState: DrawerState
 @Composable
-fun init(){
+fun init(vmodel: TheViewModel){
 
      drawerState = rememberDrawerState(DrawerValue.Closed)
 
@@ -34,6 +36,9 @@ fun init(){
             }
         }
     }
+
+
+
 }
 @Composable
 fun DrawerNavGraph(vmodel: TheViewModel) {

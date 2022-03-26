@@ -23,13 +23,13 @@ import com.example.instatask.ui.app.screens.TaskBoard
 import com.example.instatask.ui.app.screens.WhenJobClicked
 import com.example.instatask.ui.theme.InstaTaskTheme
 import com.example.instatask.viewmodel.TheViewModel
-
+import com.example.instatask.R
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val theViewModel= ViewModelProvider(this).get(TheViewModel::class.java)
         setContent {
-            init()
+            init(theViewModel)
             InstaTaskTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
@@ -39,7 +39,9 @@ class MainActivity : ComponentActivity() {
                   //  test(theViewModel)
                     //DrawerNavGraph(theViewModel)
 
-//                    TaskBoard()
+
+                    TaskBoard(theViewModel)
+
 
                     WhenJobClicked(navController = NavController(this))
 
