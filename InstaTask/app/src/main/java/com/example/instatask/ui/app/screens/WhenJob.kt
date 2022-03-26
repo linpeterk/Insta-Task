@@ -72,7 +72,7 @@ fun WhenJobClicked(navController: NavController) {
                         ){
 
 //                              MenuTab(navController)
-                            Button(
+                            Button(                                     // ACCEPT OR REPORT BUTTON
 
                                 onClick = { /*navController.navigate(route=Screen.Login.route)*/},
                                 colors = ButtonDefaults.buttonColors(backgroundColor = Color.Red),
@@ -112,7 +112,7 @@ fun WhenJobClicked(navController: NavController) {
 
                                 ){
 
-                                    Image(painter = painterResource(R.drawable.ic_launcher_background),
+                                    Image(painter = painterResource(R.drawable.workinprogress), //WORKER CARD
                                         contentDescription =null,
                                         modifier= Modifier
                                             .size(130.dp)
@@ -140,7 +140,7 @@ fun WhenJobClicked(navController: NavController) {
                         }
 
 
-                        Box(modifier = Modifier
+                        Box(modifier = Modifier                                     // REVIEWS OF WORKER
                             .weight(0.8f)
                             .background(MaterialTheme.colors.primaryVariant)
                         ){

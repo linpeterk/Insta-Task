@@ -28,11 +28,9 @@ fun LeftDrawer(
 
     ) {
 
-        Image(painter = painterResource(R.drawable.profile) , contentDescription ="App Icon" )
+        Image(painter = painterResource(R.drawable.toilet) , contentDescription ="App Icon" )
 
-        Spacer(Modifier
-            .height(24.dp)
-        )
+        Spacer(Modifier.height(24.dp))
 
         drawerScreens.forEach{ screen->
             Spacer(Modifier.height(24.dp))

@@ -16,14 +16,11 @@ import androidx.lifecycle.ViewModelProvider
 
 import androidx.navigation.NavController
 
-import com.example.instatask.ui.app.screens.LandingScreen
-import com.example.instatask.ui.app.screens.SignUpScreen
-
-import com.example.instatask.ui.app.screens.TaskBoard
-import com.example.instatask.ui.app.screens.WhenJobClicked
 import com.example.instatask.ui.theme.InstaTaskTheme
 import com.example.instatask.viewmodel.TheViewModel
 import com.example.instatask.R
+import com.example.instatask.ui.app.screens.*
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,10 +37,12 @@ class MainActivity : ComponentActivity() {
                     //DrawerNavGraph(theViewModel)
 
 
-                    TaskBoard(theViewModel)
+
+                 //   TaskBoard(theViewModel)
+                    SkillBoard(theViewModel)
 
 
-                  //  WhenJobClicked(navController = NavController(this))
+//                    WhenJobClicked(navController = NavController(this))
 
                    // SignUpScreen()
                   //  TaskBoard()
