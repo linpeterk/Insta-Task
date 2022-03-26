@@ -156,7 +156,7 @@ fun LandingScreen(){
                 painterResource(R.drawable.house),
                 contentDescription = "Test 1",
                 modifier = Modifier
-                    .size(110.dp)
+                    .size(120.dp)
                     .background(colorResource(id = R.color.white))
                     .clip(RoundedCornerShape(10.dp))
                     .shadow(
@@ -176,7 +176,7 @@ fun LandingScreen(){
                 painterResource(R.drawable.cleaning),
                 contentDescription = "Test 2",
                 modifier = Modifier
-                    .size(110.dp)
+                    .size(120.dp)
                     .background(colorResource(id = R.color.white))
                     .clip(RoundedCornerShape(10.dp))
                     .shadow(
@@ -195,7 +195,7 @@ fun LandingScreen(){
                 painterResource(R.drawable.kitchen),
                 contentDescription = "Test 3",
                 modifier = Modifier
-                    .size(110.dp)
+                    .size(120.dp)
                     .background(colorResource(id = R.color.white))
                     .clip(RoundedCornerShape(10.dp))
                     .shadow(
@@ -221,7 +221,7 @@ fun LandingScreen(){
                 painterResource(R.drawable.pets),
                 contentDescription = "Test 1",
                 modifier = Modifier
-                    .size(110.dp)
+                    .size(120.dp)
                     .background(colorResource(id = R.color.white))
                     .clip(RoundedCornerShape(10.dp))
                     .shadow(
@@ -260,7 +260,7 @@ fun LandingScreen(){
                 painterResource(R.drawable.garage),
                 contentDescription = "Test 3",
                 modifier = Modifier
-                    .size(110.dp)
+                    .size(120.dp)
                     .background(colorResource(id = R.color.white))
                     .clip(RoundedCornerShape(10.dp))
                     .shadow(
