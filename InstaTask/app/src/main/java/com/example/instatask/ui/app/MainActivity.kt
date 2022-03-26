@@ -36,14 +36,14 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                  //  test(theViewModel)
+                    //test(theViewModel)
                     //DrawerNavGraph(theViewModel)
 
 
                     TaskBoard(theViewModel)
 
 
-                    WhenJobClicked(navController = NavController(this))
+                  //  WhenJobClicked(navController = NavController(this))
 
                    // SignUpScreen()
                   //  TaskBoard()
