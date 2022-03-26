@@ -5,6 +5,8 @@ import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -14,6 +16,8 @@ import androidx.compose.ui.unit.dp
 import com.example.instatask.ui.app.Components.MakeGoogleMap
 import com.example.instatask.ui.app.Components.TopBar
 import com.example.instatask.ui.app.Components.utilities.CategoriesBar
+import com.example.instatask.ui.theme.Teal200
+import com.example.instatask.ui.theme.graySurface
 import com.example.instatask.viewmodel.TheViewModel
 import com.google.android.gms.tasks.Task
 import de.charlex.compose.BottomDrawerScaffold
@@ -46,8 +50,12 @@ fun TaskBoard(vmodel: TheViewModel){
         drawerGesturesEnabled = true,
         floatingActionButton = {
             ExtendedFloatingActionButton(
-                text = { Text(buttonText) },
-                modifier = Modifier.offset(y=-650.dp),
+                text = { Text(buttonText,
+                            color= Color.White
+
+                ) },
+                backgroundColor= Color.Red,
+                modifier = Modifier.wrapContentSize(),
                 onClick = {
 
 
@@ -68,7 +76,7 @@ fun TaskBoard(vmodel: TheViewModel){
 
                         }
 
-                        buttonText = "Expand Map"
+                        buttonText = "Expand"
 
                     }
 
@@ -98,29 +106,60 @@ fun TaskBoard(vmodel: TheViewModel){
                     .fillMaxHeight()
                     .fillMaxWidth()
                 ,
-                shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp),
+                shape = RoundedCornerShape(topStart = 10.dp, topEnd = 10.dp),
+
                 //   elevation = 4.dp
             ) {
+                Surface( shape = RoundedCornerShape(topStart = 10.dp, topEnd = 10.dp),
+                        color = Color.White
+                    ) {
+                    Column(modifier = Modifier) {
+                        Box(
+                            modifier = Modifier
+                                //  .weight(1f)
+                                .fillMaxWidth()
+                                //     .border(3.dp, Color.Red)
+                                .background(Color.White)
 
-                    Column() {
-                        Box(modifier = Modifier
-                            .weight(1f)
-
-                        ){
-                            CategoriesBar(vmodel = vmodel)
+                        ) {
+                            CategoriesBar(vmodel = vmodel, modifier = Modifier)
                         }
 
 
-                        Box(modifier = Modifier
-                            .weight(0.8f)
-                            .background(MaterialTheme.colors.primaryVariant)
+                        LazyColumn(
+                            modifier = Modifier
+                                .background(graySurface)
+                                .padding(5.dp)
+                                .fillMaxSize()
+
                         ){
+                           var a=  vmodel.getFakeTasklist()
+                            items(vmodel.getFakeTasklist()){
+                                Spacer(modifier = Modifier.padding(3.dp))
+                                Card(
+                                    shape = RoundedCornerShape(8.dp),
+                                    modifier = Modifier
+                                    .fillMaxWidth()
+                                    .height(140.dp)
+
+
+                                    //.border(2.dp, Color.Red)
+                                             ,
+
+                                    elevation = 7.dp
+
+                                ){
+                                Text(text="Test")
+
+                                }
+
+                            }
 
                         }
                     }
 
 
-
+                }
                 
 
             }

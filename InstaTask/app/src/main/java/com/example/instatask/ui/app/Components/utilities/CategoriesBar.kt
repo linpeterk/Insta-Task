@@ -13,42 +13,58 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.instatask.viewmodel.TheViewModel
 
 @Composable
-fun CategoriesBar(vmodel: TheViewModel){
-
-    LazyRow(
+fun CategoriesBar(vmodel: TheViewModel, modifier : Modifier){
 
 
-    ){
-        items(vmodel.categories){ item ->  
-            
-            Column(horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier.padding(20.dp)
-                    ){
-                
-                Box(modifier = Modifier.border(3.dp, Color.Blue)
-                    ){
-                    Image(painter = painterResource(id = item.imageID), contentDescription = null,
-                        modifier = Modifier.size(80.dp)
-                    )
+        LazyRow(
+            modifier = modifier
+            //.border(3.dp, Color.Red)
+
+        ) {
+            items(vmodel.getCategory()) { item ->
+
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier.padding(15.dp)
+                    //.border(3.dp, Color.Black)
+                ) {
+
+                    Box(
+                        modifier = Modifier
+                        //.border(3.dp, Color.Blue)
+                    ) {
+                        Image(
+                            painter = painterResource(id = item.imageID), contentDescription = null,
+                            modifier = Modifier.size(40.dp)
+                        )
+                    }
+                    Box(
+                        contentAlignment = Alignment.Center,
+                        modifier = Modifier.wrapContentSize()
+                        //  .border(2.dp, Color.Yellow)
+                    ) {
+                        Text(
+                            text = item.name,
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Normal,
+                            modifier = Modifier
+                        )
+
+                    }
+
                 }
-                Box(contentAlignment = Alignment.Center,
-                modifier = Modifier.fillMaxWidth()
-                    ){
-                    Text(text = item.name, fontSize = 16.sp, modifier = Modifier.fillMaxWidth())
 
-                }
-                
+
             }
-            
-            
+
         }
-        
-    }
 
 
 
