@@ -157,7 +157,11 @@ fun LandingScreen(){
                 modifier = Modifier
                     .size(110.dp)
                     .background(colorResource(id = R.color.white))
-                    .clip(RoundedCornerShape(10.dp))
+                    .shadow(
+                        elevation = 10.dp,
+                        shape = CircleShape,
+                        clip = true
+                    )
                     .clickable(
                         enabled = true,
                         onClickLabel = "Clickable image",
@@ -172,7 +176,11 @@ fun LandingScreen(){
                 modifier = Modifier
                     .size(110.dp)
                     .background(colorResource(id = R.color.white))
-                    .clip(RoundedCornerShape(10.dp))
+                    .shadow(
+                        elevation = 10.dp,
+                        shape = CircleShape,
+                        clip = true
+                    )
                     .clickable(
                         enabled = true,
                         onClickLabel = "Clickable image",
@@ -186,7 +194,11 @@ fun LandingScreen(){
                 modifier = Modifier
                     .size(110.dp)
                     .background(colorResource(id = R.color.white))
-                    .clip(RoundedCornerShape(10.dp))
+                    .shadow(
+                        elevation = 10.dp,
+                        shape = CircleShape,
+                        clip = true
+                    )
                     .clickable(
                         enabled = true,
                         onClickLabel = "Clickable image",
@@ -207,7 +219,11 @@ fun LandingScreen(){
                 modifier = Modifier
                     .size(110.dp)
                     .background(colorResource(id = R.color.white))
-                    .clip(RoundedCornerShape(10.dp))
+                    .shadow(
+                        elevation = 10.dp,
+                        shape = CircleShape,
+                        clip = true
+                    )
                     .clickable(
                         enabled = true,
                         onClickLabel = "Clickable image",
@@ -222,7 +238,11 @@ fun LandingScreen(){
                 modifier = Modifier
                     .size(110.dp)
                     .background(colorResource(id = R.color.white))
-                    .clip(RoundedCornerShape(10.dp))
+                    .shadow(
+                        elevation = 10.dp,
+                        shape = CircleShape,
+                        clip = true
+                    )
                     .clickable(
                         enabled = true,
                         onClickLabel = "Clickable image",
@@ -236,7 +256,11 @@ fun LandingScreen(){
                 modifier = Modifier
                     .size(110.dp)
                     .background(colorResource(id = R.color.white))
-                    .clip(RoundedCornerShape(10.dp))
+                    .shadow(
+                        elevation = 10.dp,
+                        shape = CircleShape,
+                        clip = true
+                    )
                     .clickable(
                         enabled = true,
                         onClickLabel = "Clickable image",
