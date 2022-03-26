@@ -114,7 +114,7 @@ fun LandingScreen(){
             .fillMaxSize()
             .fillMaxWidth()
             .fillMaxHeight()
-            .background(colorResource(id = R.color.white)),
+            .background(colorResource(id = R.color.transparent)),
         //.wrapContentSize(Alignment.Center)
     ){
         Row(
@@ -127,8 +127,9 @@ fun LandingScreen(){
                 painterResource(R.drawable.background),
                 contentDescription = "Test 1",
                 modifier = Modifier.fillMaxWidth()
-                    .size(400.dp)
+                    .size(350.dp)
                     .background(colorResource(id = R.color.white))
+                    .clip(RoundedCornerShape(10.dp))
                     .shadow(
                         elevation = 10.dp,
                         shape = CircleShape,
@@ -149,14 +150,15 @@ fun LandingScreen(){
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start=10.dp, top=10.dp, end = 10.dp)
+                .padding(start=2.dp, top=20.dp, end = 2.dp)
         ) {
             Image(
-                painterResource(R.drawable.background),
+                painterResource(R.drawable.house),
                 contentDescription = "Test 1",
                 modifier = Modifier
                     .size(110.dp)
                     .background(colorResource(id = R.color.white))
+                    .clip(RoundedCornerShape(10.dp))
                     .shadow(
                         elevation = 10.dp,
                         shape = CircleShape,
@@ -171,11 +173,12 @@ fun LandingScreen(){
 
             )
             Image(
-                painterResource(R.drawable.background),
+                painterResource(R.drawable.cleaning),
                 contentDescription = "Test 2",
                 modifier = Modifier
                     .size(110.dp)
                     .background(colorResource(id = R.color.white))
+                    .clip(RoundedCornerShape(10.dp))
                     .shadow(
                         elevation = 10.dp,
                         shape = CircleShape,
@@ -189,11 +192,12 @@ fun LandingScreen(){
                     )
             )
             Image(
-                painterResource(R.drawable.background),
+                painterResource(R.drawable.kitchen),
                 contentDescription = "Test 3",
                 modifier = Modifier
                     .size(110.dp)
                     .background(colorResource(id = R.color.white))
+                    .clip(RoundedCornerShape(10.dp))
                     .shadow(
                         elevation = 10.dp,
                         shape = CircleShape,
@@ -211,14 +215,15 @@ fun LandingScreen(){
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(10.dp)
+                .padding(start=2.dp, top=10.dp, end = 2.dp)
         ) {
             Image(
-                painterResource(R.drawable.background),
+                painterResource(R.drawable.pets),
                 contentDescription = "Test 1",
                 modifier = Modifier
                     .size(110.dp)
                     .background(colorResource(id = R.color.white))
+                    .clip(RoundedCornerShape(10.dp))
                     .shadow(
                         elevation = 10.dp,
                         shape = CircleShape,
@@ -233,11 +238,12 @@ fun LandingScreen(){
 
             )
             Image(
-                painterResource(R.drawable.background),
+                painterResource(R.drawable.trash),
                 contentDescription = "Test 2",
                 modifier = Modifier
                     .size(110.dp)
                     .background(colorResource(id = R.color.white))
+                    .clip(RoundedCornerShape(10.dp))
                     .shadow(
                         elevation = 10.dp,
                         shape = CircleShape,
@@ -251,11 +257,12 @@ fun LandingScreen(){
                     )
             )
             Image(
-                painterResource(R.drawable.background),
+                painterResource(R.drawable.garage),
                 contentDescription = "Test 3",
                 modifier = Modifier
                     .size(110.dp)
                     .background(colorResource(id = R.color.white))
+                    .clip(RoundedCornerShape(10.dp))
                     .shadow(
                         elevation = 10.dp,
                         shape = CircleShape,
@@ -317,7 +324,7 @@ fun SettingsScreen(){
     Column( horizontalAlignment= Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
-            .padding(bottom = 20.dp)
+            .padding(bottom = 10.dp)
             .background(colorResource(id = R.color.white))
         //.wrapContentSize(Alignment.Center)
     ) {
@@ -410,7 +417,13 @@ fun SignInScreen(){
                 modifier = Modifier.fillMaxWidth(0.8f))
             OutlinedTextField(value = Password, onValueChange = {Password=it},
                 trailingIcon = {
-                    IconButton(onClick = { /*TODO*/
+                    IconButton(modifier=Modifier
+                        .shadow(
+                            elevation = 10.dp,
+                            shape = CircleShape,
+                            clip = true),
+
+                        onClick = { /*TODO*/
                         passwordVisibilty.value= !passwordVisibilty.value
                     }) {
 
@@ -431,13 +444,18 @@ fun SignInScreen(){
             //Email and Password Check Button
             var status by rememberSaveable{mutableStateOf("")}
             val context= LocalContext.current
-            Button(onClick = {},
+            Button(
+                modifier=Modifier
+                    .shadow(
+                        elevation = 10.dp,
+                        shape = CircleShape,
+                        clip = true
+                    ),
                 colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Color.White,
                     contentColor = Color.Red),
-                modifier = Modifier
-                    .fillMaxWidth(0.8f)
-                    .height(50.dp)
-                    .background(colorResource(id = R.color.white))
+
+                onClick = {},
             ){
                 Text(text="Login", color = Color.White, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)
@@ -454,6 +472,15 @@ fun SignInScreen(){
                     fontSize = TextUnit.Unspecified,
                 modifier=Modifier.padding(start = 40.dp, top = 10.dp))
                 Button(
+                    modifier=Modifier
+                        .shadow(
+                            elevation = 10.dp,
+                            shape = CircleShape,
+                            clip = true
+                        ),
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = Color.White,
+                        contentColor = Color.Red),
                     onClick = {Toast.makeText(context,"Signing Up..", Toast.LENGTH_LONG).show()},
                 ) {
                     Text(text="Sign Up", color = Color.White, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
@@ -517,7 +544,14 @@ fun SignUpScreen(){
                 singleLine = true,
                 modifier = Modifier.fillMaxWidth(0.8f),
                 trailingIcon = {
-                    IconButton(onClick = { /*TODO*/
+                    IconButton(
+                        modifier=Modifier
+                            .shadow(
+                                elevation = 10.dp,
+                                shape = CircleShape,
+                                clip = true
+                            ),
+                        onClick = { /*TODO*/
                         passwordVisibilty.value= !passwordVisibilty.value
                     }) {
 
@@ -547,13 +581,17 @@ fun SignUpScreen(){
 
             Spacer(modifier = Modifier.padding(10.dp))
            // var regStatus by rememberSaveable{ mutableStateOf("") }
-            Button(onClick = { Toast.makeText(context,"You re Signed Up....", Toast.LENGTH_LONG).show()},
+            Button(modifier=Modifier
+                .shadow(
+                    elevation = 10.dp,
+                    shape = CircleShape,
+                    clip = true
+                ),
                 colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Color.White,
                     contentColor = Color.Red),
-                modifier = Modifier
-                    .fillMaxWidth(0.8f)
-                    .height(50.dp)
-                    .background(colorResource(id = R.color.white))
+
+                onClick = { Toast.makeText(context,"You re Signed Up....", Toast.LENGTH_LONG).show()}
 
             ){
                 Text(text="Submit", color = Color.White, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
@@ -571,6 +609,15 @@ fun SignUpScreen(){
                     fontSize = TextUnit.Unspecified,
                     modifier=Modifier.padding(start = 40.dp, top = 10.dp))
                 Button(
+                    modifier=Modifier
+                        .shadow(
+                            elevation = 10.dp,
+                            shape = CircleShape,
+                            clip = true
+                        ),
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = Color.White,
+                        contentColor = Color.Red),
                     onClick = {Toast.makeText(context,"SignIn..", Toast.LENGTH_LONG).show()},
                 ) {
                     Text(text="SignIn", color = Color.White, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
