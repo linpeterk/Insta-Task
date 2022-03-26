@@ -17,7 +17,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 
 fun cardViewCallBack(context: Context, name: String) {
-    Toast.makeText(context,"Hello ${name}", Toast.LENGTH_LONG).show()
+    Toast.makeText(context,"Hello, ${name}", Toast.LENGTH_LONG).show()
 }
 
 @Composable
