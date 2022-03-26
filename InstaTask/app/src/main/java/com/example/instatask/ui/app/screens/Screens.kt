@@ -44,5 +44,6 @@ sealed class NavigationItem(var route:String, var icon:Int, var title:String){
     object SignUp: NavigationItem("signUp", R.drawable.logout,"SignUp")
     object Logout: NavigationItem("logout", R.drawable.logout,"Logout")
     object LandingScreen: NavigationItem("landingScreen", R.drawable.logout,"LandingScreen")
+    object EntranceScreen: NavigationItem("entranceScreen", R.drawable.logout,"EntranceScreen")
 }
 

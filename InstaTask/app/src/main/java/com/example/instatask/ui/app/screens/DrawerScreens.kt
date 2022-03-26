@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.instatask.R
 
+//Home Screen
 @Preview(showBackground = true)
 @Composable
 fun HomeScreen(){
@@ -71,37 +72,78 @@ fun HomeScreen(){
         }
 }
 
+//Entrance Screen
 @Preview(showBackground = true)
 @Composable
-fun ProfileScreen(){
-    Column( horizontalAlignment= Alignment.CenterHorizontally,
+fun EntranceScreen(){
+    val context = LocalContext.current
+
+    Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(bottom = 20.dp)
-            .background(colorResource(id = R.color.white))
+            .fillMaxWidth()
+            .fillMaxHeight()
+            .background(colorResource(id = R.color.transparent)),
         //.wrapContentSize(Alignment.Center)
     ) {
-        Card(
-            elevation = 5.dp
-        ){
-            Image(painter= painterResource(id = R.drawable.ic_launcher_foreground), contentDescription = null, contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxSize())
-            Column(modifier= Modifier
-                .fillMaxSize()
-                .padding(0.dp)){
-                Text(
-                    text = "Profile",
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White,
-                    modifier = Modifier.align(Alignment.CenterHorizontally),
-                    textAlign = TextAlign.Center,
-                    fontSize = 25.sp
-                )
-            }
+        Row(
+            horizontalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start=2.dp, top=40.dp, end = 2.dp, bottom = 20.dp)
+        ) {
+            Image(
+                painterResource(R.drawable.employee),
+                contentDescription = "Test 1",
+                modifier = Modifier.fillMaxWidth()
+                    .size(350.dp)
+                    .background(colorResource(id = R.color.white))
+                    .clip(RoundedCornerShape(10.dp))
+                    .shadow(
+                        elevation = 10.dp,
+                        shape = CircleShape,
+                        clip = true
+                    )
+                    .clip(RoundedCornerShape(10.dp))
+                    .clickable(
+                        enabled = true,
+                        onClickLabel = "Clickable image",
+                        onClick = {Toast.makeText(context,"Employee Button clicked",Toast.LENGTH_SHORT).show()
+                        }
+                    )
+            )
         }
+        Row(
+            horizontalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start=2.dp, top=20.dp, end = 2.dp, bottom=20.dp)
+        ) {
+            Image(
+                painterResource(R.drawable.employer),
+                contentDescription = "Test 1",
+                modifier = Modifier.fillMaxWidth()
+                    .size(350.dp)
+                    .background(colorResource(id = R.color.white))
+                    .clip(RoundedCornerShape(10.dp))
+                    .shadow(
+                        elevation = 10.dp,
+                        shape = CircleShape,
+                        clip = true
+                    )
+                    .clip(RoundedCornerShape(10.dp))
+                    .clickable(
+                        enabled = true,
+                        onClickLabel = "Clickable image",
+                        onClick = {Toast.makeText(context,"Employer Button clicked",Toast.LENGTH_SHORT).show()
+                        }
+                    )
 
+            )
+        }
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable
@@ -317,181 +359,7 @@ fun LandingScreen(){
     }
 }
 
-
-@Preview(showBackground = true)
-@Composable
-fun SettingsScreen(){
-    Column( horizontalAlignment= Alignment.CenterHorizontally,
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(bottom = 10.dp)
-            .background(colorResource(id = R.color.white))
-        //.wrapContentSize(Alignment.Center)
-    ) {
-        Card(
-            elevation = 5.dp
-        ){
-            Image(painter= painterResource(id = R.drawable.ic_launcher_background), contentDescription = null, contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxSize())
-            Column(modifier= Modifier
-                .fillMaxSize()
-                .padding(0.dp)){
-                Text(
-                    text = "Settings",
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White,
-                    modifier = Modifier.align(Alignment.CenterHorizontally),
-                    textAlign = TextAlign.Center,
-                    fontSize = 25.sp
-                )
-            }
-        }
-
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun LogOutScreen(){
-    Column( horizontalAlignment= Alignment.CenterHorizontally,
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(bottom = 20.dp)
-            .background(colorResource(id = R.color.white))
-        //.wrapContentSize(Alignment.Center)
-    ) {
-        Card(
-            elevation = 5.dp
-        ){
-            Image(painter= painterResource(id = R.drawable.ic_launcher_background), contentDescription = null, contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxSize())
-            Column(modifier= Modifier
-                .fillMaxSize()
-                .padding(0.dp)){
-                Text(
-                    text = "LogOut",
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White,
-                    modifier = Modifier.align(Alignment.CenterHorizontally),
-                    textAlign = TextAlign.Center,
-                    fontSize = 25.sp
-                )
-            }
-        }
-
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun SignInScreen(){
-    val context = LocalContext.current
-    //val image = Image(painter = painterResource(id = R.drawable.project1backgroung), contentDescription = null)
-    val emailAddress = remember{ mutableStateOf("")}
-    val password = remember{ mutableStateOf("")}
-    val passwordVisibilty = remember{ mutableStateOf(false)}
-    val focusRequester: FocusRequester = remember { FocusRequester() }
-    val scrollState= rememberScrollState()
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(colorResource(id = R.color.white))
-            .wrapContentSize(Alignment.Center)
-    ){
-        Text(
-            text="Sign In",
-            fontWeight = FontWeight.Bold,
-            color= Color.Black,
-            modifier = Modifier.align(Alignment.CenterHorizontally),
-            textAlign = TextAlign.Center,
-            fontSize = 25.sp
-        )
-        var emailAddress by rememberSaveable{mutableStateOf("")}
-        var Password by rememberSaveable{mutableStateOf("")}
-        Spacer(modifier = Modifier.padding(15.dp))
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            OutlinedTextField(value = emailAddress, onValueChange = {emailAddress=it},
-                label = {Text(text="Email Address", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
-                    fontSize = TextUnit.Unspecified)},
-                singleLine = true,
-                modifier = Modifier.fillMaxWidth(0.8f))
-            OutlinedTextField(value = Password, onValueChange = {Password=it},
-                trailingIcon = {
-                    IconButton(modifier=Modifier
-                        .shadow(
-                            elevation = 10.dp,
-                            shape = CircleShape,
-                            clip = true),
-
-                        onClick = { /*TODO*/
-                        passwordVisibilty.value= !passwordVisibilty.value
-                    }) {
-
-                        Image(painterResource(id = R.drawable.eye_password), contentDescription = null)
-                        if(passwordVisibilty.value) Color.Red else Color.Gray
-                    }
-                },
-                label = {Text(text="Password", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
-                    fontSize = TextUnit.Unspecified)},
-
-                singleLine = true,
-                visualTransformation = if(passwordVisibilty.value) VisualTransformation.None
-                else PasswordVisualTransformation(),
-                modifier = Modifier.fillMaxWidth(0.8f)
-            )
-            Spacer(modifier = Modifier.padding(10.dp))
-
-            //Email and Password Check Button
-            var status by rememberSaveable{mutableStateOf("")}
-            val context= LocalContext.current
-            Button(
-                modifier=Modifier
-                    .shadow(
-                        elevation = 10.dp,
-                        shape = CircleShape,
-                        clip = true
-                    ),
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Color.White,
-                    contentColor = Color.Red),
-
-                onClick = {},
-            ){
-                Text(text="Login", color = Color.White, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
-                    fontSize = TextUnit.Unspecified)
-            }
-            Spacer(modifier=Modifier.padding(10.dp))
-            Row(
-                horizontalArrangement = Arrangement.SpaceBetween,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 40.dp, top = 20.dp, end = 40.dp)
-
-            ) {
-                Text(text="Don't have an account?", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
-                    fontSize = TextUnit.Unspecified,
-                modifier=Modifier.padding(start = 40.dp, top = 10.dp))
-                Button(
-                    modifier=Modifier
-                        .shadow(
-                            elevation = 10.dp,
-                            shape = CircleShape,
-                            clip = true
-                        ),
-                    colors = ButtonDefaults.buttonColors(
-                        backgroundColor = Color.White,
-                        contentColor = Color.Red),
-                    onClick = {Toast.makeText(context,"Signing Up..", Toast.LENGTH_LONG).show()},
-                ) {
-                    Text(text="Sign Up", color = Color.White, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
-                        fontSize = TextUnit.Unspecified)
-                }
-            }
-        }
-    }
-
-}
-
+//SignUp Screen
 @Preview(showBackground = true)
 @Composable
 fun SignUpScreen(){
@@ -512,6 +380,7 @@ fun SignUpScreen(){
             .fillMaxSize()
             .background(colorResource(id = R.color.white))
             .wrapContentSize(Alignment.Center)
+            .padding(top = 40.dp)
     ) {
         Text(
             text="Sign Up", fontWeight = FontWeight.Bold,
@@ -552,8 +421,8 @@ fun SignUpScreen(){
                                 clip = true
                             ),
                         onClick = { /*TODO*/
-                        passwordVisibilty.value= !passwordVisibilty.value
-                    }) {
+                            passwordVisibilty.value= !passwordVisibilty.value
+                        }) {
 
                         Image(painterResource(id = R.drawable.eye_password), contentDescription = null)
                         if(passwordVisibilty.value) Color.Red else Color.Gray
@@ -580,7 +449,7 @@ fun SignUpScreen(){
             )
 
             Spacer(modifier = Modifier.padding(10.dp))
-           // var regStatus by rememberSaveable{ mutableStateOf("") }
+            // var regStatus by rememberSaveable{ mutableStateOf("") }
             Button(modifier=Modifier
                 .shadow(
                     elevation = 10.dp,
@@ -594,7 +463,7 @@ fun SignUpScreen(){
                 onClick = { Toast.makeText(context,"You re Signed Up....", Toast.LENGTH_LONG).show()}
 
             ){
-                Text(text="Submit", color = Color.White, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                Text(text="Submit", color = Color.Red, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)
             }
             Spacer(modifier=Modifier.padding(10.dp))
@@ -620,13 +489,227 @@ fun SignUpScreen(){
                         contentColor = Color.Red),
                     onClick = {Toast.makeText(context,"SignIn..", Toast.LENGTH_LONG).show()},
                 ) {
-                    Text(text="SignIn", color = Color.White, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                    Text(text="SignIn", color = Color.Red, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
                         fontSize = TextUnit.Unspecified)
                 }
             }
         }
     }
 }
+
+//SignIn Screen
+@Preview(showBackground = true)
+@Composable
+fun SignInScreen(){
+    val context = LocalContext.current
+    //val image = Image(painter = painterResource(id = R.drawable.project1backgroung), contentDescription = null)
+    val emailAddress = remember{ mutableStateOf("")}
+    val password = remember{ mutableStateOf("")}
+    val passwordVisibilty = remember{ mutableStateOf(false)}
+    val focusRequester: FocusRequester = remember { FocusRequester() }
+    val scrollState= rememberScrollState()
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(colorResource(id = R.color.white))
+            .wrapContentSize(Alignment.Center)
+            .padding(top = 40.dp)
+    ){
+        Text(
+            text="Sign In",
+            fontWeight = FontWeight.Bold,
+            color= Color.Black,
+            modifier = Modifier.align(Alignment.CenterHorizontally),
+            textAlign = TextAlign.Center,
+            fontSize = 25.sp
+        )
+        var emailAddress by rememberSaveable{mutableStateOf("")}
+        var Password by rememberSaveable{mutableStateOf("")}
+        Spacer(modifier = Modifier.padding(15.dp))
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            OutlinedTextField(value = emailAddress, onValueChange = {emailAddress=it},
+                label = {Text(text="Email Address", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                    fontSize = TextUnit.Unspecified)},
+                singleLine = true,
+                modifier = Modifier.fillMaxWidth(0.8f))
+            OutlinedTextField(value = Password, onValueChange = {Password=it},
+                trailingIcon = {
+                    IconButton(modifier=Modifier
+                        .shadow(
+                            elevation = 10.dp,
+                            shape = CircleShape,
+                            clip = true),
+
+                        onClick = { /*TODO*/
+                            passwordVisibilty.value= !passwordVisibilty.value
+                        }) {
+
+                        Image(painterResource(id = R.drawable.eye_password), contentDescription = null)
+                        if(passwordVisibilty.value) Color.Red else Color.Gray
+                    }
+                },
+                label = {Text(text="Password", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                    fontSize = TextUnit.Unspecified)},
+
+                singleLine = true,
+                visualTransformation = if(passwordVisibilty.value) VisualTransformation.None
+                else PasswordVisualTransformation(),
+                modifier = Modifier.fillMaxWidth(0.8f)
+            )
+            Spacer(modifier = Modifier.padding(10.dp))
+
+            //Email and Password Check Button
+            var status by rememberSaveable{mutableStateOf("")}
+            val context= LocalContext.current
+            Button(
+                modifier=Modifier
+                    .shadow(
+                        elevation = 10.dp,
+                        shape = CircleShape,
+                        clip = true
+                    ),
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Color.White,
+                    contentColor = Color.Red),
+
+                onClick = {},
+            ){
+                Text(text="Login", color = Color.Red, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                    fontSize = TextUnit.Unspecified)
+            }
+            Spacer(modifier=Modifier.padding(10.dp))
+            Row(
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 40.dp, top = 20.dp, end = 40.dp)
+
+            ) {
+                Text(text="Don't have an account?", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                    fontSize = TextUnit.Unspecified,
+                    modifier=Modifier.padding(start = 40.dp, top = 10.dp))
+                Button(
+                    modifier=Modifier
+                        .shadow(
+                            elevation = 10.dp,
+                            shape = CircleShape,
+                            clip = true
+                        ),
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = Color.White,
+                        contentColor = Color.Red),
+                    onClick = {Toast.makeText(context,"Signing Up..", Toast.LENGTH_LONG).show()},
+                ) {
+                    Text(text="Sign Up", color = Color.Red, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                        fontSize = TextUnit.Unspecified)
+                }
+            }
+        }
+    }
+
+}
+
+//Profile Screen
+@Preview(showBackground = true)
+@Composable
+fun ProfileScreen(){
+    Column( horizontalAlignment= Alignment.CenterHorizontally,
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(bottom = 20.dp)
+            .background(colorResource(id = R.color.white))
+        //.wrapContentSize(Alignment.Center)
+    ) {
+        Card(
+            elevation = 5.dp
+        ){
+            Image(painter= painterResource(id = R.drawable.ic_launcher_foreground), contentDescription = null, contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize())
+            Column(modifier= Modifier
+                .fillMaxSize()
+                .padding(0.dp)){
+                Text(
+                    text = "Profile",
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White,
+                    modifier = Modifier.align(Alignment.CenterHorizontally),
+                    textAlign = TextAlign.Center,
+                    fontSize = 25.sp
+                )
+            }
+        }
+
+    }
+}
+
+//LogOut Screen
+@Preview(showBackground = true)
+@Composable
+fun LogOutScreen(){
+    Column( horizontalAlignment= Alignment.CenterHorizontally,
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(bottom = 20.dp)
+            .background(colorResource(id = R.color.white))
+        //.wrapContentSize(Alignment.Center)
+    ) {
+        Card(
+            elevation = 5.dp
+        ){
+            Image(painter= painterResource(id = R.drawable.ic_launcher_background), contentDescription = null, contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize())
+            Column(modifier= Modifier
+                .fillMaxSize()
+                .padding(0.dp)){
+                Text(
+                    text = "LogOut",
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White,
+                    modifier = Modifier.align(Alignment.CenterHorizontally),
+                    textAlign = TextAlign.Center,
+                    fontSize = 25.sp
+                )
+            }
+        }
+
+    }
+}
+
+//Settings Screen
+@Preview(showBackground = true)
+@Composable
+fun SettingsScreen(){
+    Column( horizontalAlignment= Alignment.CenterHorizontally,
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(bottom = 10.dp)
+            .background(colorResource(id = R.color.white))
+        //.wrapContentSize(Alignment.Center)
+    ) {
+        Card(
+            elevation = 5.dp
+        ){
+            Image(painter= painterResource(id = R.drawable.ic_launcher_background), contentDescription = null, contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize())
+            Column(modifier= Modifier
+                .fillMaxSize()
+                .padding(0.dp)){
+                Text(
+                    text = "Settings",
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White,
+                    modifier = Modifier.align(Alignment.CenterHorizontally),
+                    textAlign = TextAlign.Center,
+                    fontSize = 25.sp
+                )
+            }
+        }
+
+    }
+}
+
+
+
 
 
 
