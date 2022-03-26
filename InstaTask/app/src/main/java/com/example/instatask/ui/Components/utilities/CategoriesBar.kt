@@ -1,4 +1,4 @@
-package com.example.instatask.ui.app.Components.utilities
+package com.example.instatask.ui.Components.utilities
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border

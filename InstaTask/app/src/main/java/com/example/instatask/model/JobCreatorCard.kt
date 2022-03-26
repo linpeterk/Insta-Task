@@ -1,4 +1,4 @@
-package com.example.instatask.ui.app.Components
+package com.example.instatask.model
 
 import android.content.Context
 import android.widget.Toast

@@ -3,12 +3,11 @@ package com.example.instatask.viewmodel
 import android.app.Application
 import androidx.compose.runtime.*
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.instatask.R
 import com.example.instatask.model.Categories
-import com.example.instatask.ui.app.Components.JobCreator
-import com.example.instatask.ui.app.Components.jobCreators
+import com.example.instatask.model.JobCreator
+import com.example.instatask.model.jobCreators
 import kotlinx.coroutines.launch
 
 

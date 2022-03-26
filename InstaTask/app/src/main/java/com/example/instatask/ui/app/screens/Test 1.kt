@@ -10,8 +10,8 @@ import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import com.example.instatask.ui.app.Components.MakeGoogleMap
-import com.example.instatask.ui.app.Components.TopBar
+import com.example.instatask.ui.Components.MakeGoogleMap
+import com.example.instatask.ui.Components.TopBar
 import com.example.instatask.ui.app.DrawersStatus
 
 

@@ -1,4 +1,4 @@
-package com.example.instatask.ui.app.Components
+package com.example.instatask.ui.Components
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.fillMaxWidth

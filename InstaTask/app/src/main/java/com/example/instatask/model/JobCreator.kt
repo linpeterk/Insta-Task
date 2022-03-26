@@ -1,4 +1,4 @@
-package com.example.instatask.ui.app.Components
+package com.example.instatask.model
 
 data class JobCreator (
 

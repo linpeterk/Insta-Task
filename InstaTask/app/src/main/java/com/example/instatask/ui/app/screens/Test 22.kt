@@ -7,7 +7,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.example.instatask.ui.app.Components.TopBar
+import com.example.instatask.ui.Components.TopBar
 
 @Composable
 fun greeting2(openDrawer:(Boolean)->Unit){
