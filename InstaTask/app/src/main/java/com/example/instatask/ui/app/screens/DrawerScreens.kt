@@ -9,6 +9,7 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.graphics.Color
@@ -38,25 +39,34 @@ fun HomeScreen(){
             .background(colorResource(id = R.color.white))
         //.wrapContentSize(Alignment.Center)
     ) {
-        Card(
-            elevation = 5.dp
-        ){
-            Image(painter= painterResource(id = R.drawable.ic_launcher_background), contentDescription = null, contentScale = ContentScale.Crop,
-                modifier = Modifier.fillMaxSize())
-            Column(modifier= Modifier.fillMaxSize()
-                .padding(0.dp)){
-                Text(
-                    text = "Home!",
-                    fontWeight = FontWeight.Bold,
-                    color = Color.White,
-                    modifier = Modifier.align(Alignment.CenterHorizontally),
-                    textAlign = TextAlign.Center,
-                    fontSize = 25.sp
-                )
-            }
-        }
 
-    }
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start=10.dp, top=200.dp, end = 10.dp)
+        ) {
+            Card(
+                elevation = 5.dp
+            ){
+                Image(painter= painterResource(id = R.drawable.ic_launcher_background), contentDescription = null, contentScale = ContentScale.Crop,
+                    modifier = Modifier.fillMaxSize())
+                Column(modifier= Modifier
+                    .fillMaxSize()
+                    .padding(0.dp)){
+                    Text(
+                        text = "Home!",
+                        fontWeight = FontWeight.Bold,
+                        color = Color.White,
+                        modifier = Modifier.align(Alignment.CenterHorizontally),
+                        textAlign = TextAlign.Center,
+                        fontSize = 25.sp
+                    )
+                }
+            }
+
+        }
+        }
 }
 
 @Preview(showBackground = true)
@@ -74,7 +84,8 @@ fun ProfileScreen(){
         ){
             Image(painter= painterResource(id = R.drawable.ic_launcher_foreground), contentDescription = null, contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize())
-            Column(modifier= Modifier.fillMaxSize()
+            Column(modifier= Modifier
+                .fillMaxSize()
                 .padding(0.dp)){
                 Text(
                     text = "Profile",
@@ -102,71 +113,152 @@ fun LandingScreen(){
             .fillMaxWidth()
             .fillMaxHeight()
             .background(colorResource(id = R.color.white)),
-
-
         //.wrapContentSize(Alignment.Center)
-    ){Text(text="QUICK CASH", fontWeight = FontWeight.Bold,
-        color = Color.White,
-        fontSize = 25.sp)
-
-        Box(){
+    ){
+        Row(
+            horizontalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start=2.dp, top=0.dp, end = 2.dp)
+        ) {
             Image(
-                painter = painterResource(id = R.drawable.kitchen),
-                contentDescription = null, alpha=0.2f,
+                painterResource(R.drawable.background),
+                contentDescription = "Test 1",
+                modifier = Modifier.fillMaxWidth()
+                    .size(400.dp)
+                    .background(colorResource(id = R.color.white))
+                    .clip(RoundedCornerShape(10.dp))
+                    .clickable(
+                        enabled = true,
+                        onClickLabel = "Clickable image",
+                        onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()
+                        }
+                    )
+
             )
-            Text(
-                text = "",
-                style = MaterialTheme.typography.h4,
-                color = Color.Black,
+        }
+
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start=10.dp, top=10.dp, end = 10.dp)
+        ) {
+            Image(
+                painterResource(R.drawable.background),
+                contentDescription = "Test 1",
                 modifier = Modifier
-                    .align(Alignment.BottomStart)
+                    .size(110.dp)
+                    .background(colorResource(id = R.color.white))
+                    .clip(RoundedCornerShape(10.dp))
+                    .clickable(
+                        enabled = true,
+                        onClickLabel = "Clickable image",
+                        onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()
+                        }
+                    )
+
+            )
+            Image(
+                painterResource(R.drawable.background),
+                contentDescription = "Test 2",
+                modifier = Modifier
+                    .size(110.dp)
+                    .background(colorResource(id = R.color.white))
+                    .clip(RoundedCornerShape(10.dp))
+                    .clickable(
+                        enabled = true,
+                        onClickLabel = "Clickable image",
+                        onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()
+                        }
+                    )
+            )
+            Image(
+                painterResource(R.drawable.background),
+                contentDescription = "Test 3",
+                modifier = Modifier
+                    .size(110.dp)
+                    .background(colorResource(id = R.color.white))
+                    .clip(RoundedCornerShape(10.dp))
+                    .clickable(
+                        enabled = true,
+                        onClickLabel = "Clickable image",
+                        onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()
+                        }
+                    )
             )
         }
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
-            modifier = Modifier.fillMaxWidth().padding(start= 10.dp, top = 80.dp, end = 10.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(10.dp)
+        ) {
+            Image(
+                painterResource(R.drawable.background),
+                contentDescription = "Test 1",
+                modifier = Modifier
+                    .size(110.dp)
+                    .background(colorResource(id = R.color.white))
+                    .clip(RoundedCornerShape(10.dp))
+                    .clickable(
+                        enabled = true,
+                        onClickLabel = "Clickable image",
+                        onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()
+                        }
+                    )
 
+            )
+            Image(
+                painterResource(R.drawable.background),
+                contentDescription = "Test 2",
+                modifier = Modifier
+                    .size(110.dp)
+                    .background(colorResource(id = R.color.white))
+                    .clip(RoundedCornerShape(10.dp))
+                    .clickable(
+                        enabled = true,
+                        onClickLabel = "Clickable image",
+                        onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()
+                        }
+                    )
+            )
+            Image(
+                painterResource(R.drawable.background),
+                contentDescription = "Test 3",
+                modifier = Modifier
+                    .size(110.dp)
+                    .background(colorResource(id = R.color.white))
+                    .clip(RoundedCornerShape(10.dp))
+                    .clickable(
+                        enabled = true,
+                        onClickLabel = "Clickable image",
+                        onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()
+                        }
+                    )
+            )
+        }
+        Row(
+            horizontalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start=40.dp, top=20.dp, end = 40.dp)
         ) {
             Button(
-                onClick = {Toast.makeText(context,"All you need for your Pets....", Toast.LENGTH_LONG).show()},
-            ) {
-                Image(
-                    painterResource(R.drawable.pet),
-                    contentDescription = null,
-                    modifier = Modifier.size(13.dp)
-                        .background(colorResource(id = R.color.white))
-                )
-
-                Text(text = "Pets", Modifier.padding(start = 10.dp))
-            }
-            Button(
-                onClick = {Toast.makeText(context,"All you need for Trash....", Toast.LENGTH_LONG).show()},
+                onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()},
 
                 ) {
-                Image(
-                    painterResource(R.drawable.trash),
-                    contentDescription = null,
-                    modifier = Modifier.size(13.dp)
-                        .background(colorResource(id = R.color.white))
-                )
 
-                Text(text = "Trash", Modifier.padding(start = 10.dp))
+                Text(text = "Sign Up")
             }
             Button(
-                onClick = {Toast.makeText(context,"All you need for your kitchen....", Toast.LENGTH_LONG).show()},
+                onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()},
 
                 ) {
-                Image(
-                    painterResource(R.drawable.kitchen),
-                    contentDescription = null,
-                    modifier = Modifier.size(13.dp)
-                        .background(colorResource(id = R.color.white))
-                )
 
-                Text(text = "Kitchen", Modifier.padding(start = 10.dp))
+                Text(text = "Sign In")
             }
         }
-
     }
 }
 
@@ -186,7 +278,8 @@ fun SettingsScreen(){
         ){
             Image(painter= painterResource(id = R.drawable.ic_launcher_background), contentDescription = null, contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize())
-            Column(modifier= Modifier.fillMaxSize()
+            Column(modifier= Modifier
+                .fillMaxSize()
                 .padding(0.dp)){
                 Text(
                     text = "Settings",
@@ -217,7 +310,8 @@ fun LogOutScreen(){
         ){
             Image(painter= painterResource(id = R.drawable.ic_launcher_background), contentDescription = null, contentScale = ContentScale.Crop,
                 modifier = Modifier.fillMaxSize())
-            Column(modifier= Modifier.fillMaxSize()
+            Column(modifier= Modifier
+                .fillMaxSize()
                 .padding(0.dp)){
                 Text(
                     text = "LogOut",
@@ -303,7 +397,9 @@ fun SignInScreen(){
             Spacer(modifier=Modifier.padding(10.dp))
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
-                modifier = Modifier.fillMaxWidth().padding(start= 40.dp, top = 20.dp, end = 40.dp)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 40.dp, top = 20.dp, end = 40.dp)
 
             ) {
                 Text(text="Don't have an account?", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
@@ -418,7 +514,9 @@ fun SignUpScreen(){
             Spacer(modifier=Modifier.padding(10.dp))
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
-                modifier = Modifier.fillMaxWidth().padding(start= 40.dp, top = 20.dp, end = 40.dp)
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 40.dp, top = 20.dp, end = 40.dp)
 
             ) {
                 Text(text="Already have an account?", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
