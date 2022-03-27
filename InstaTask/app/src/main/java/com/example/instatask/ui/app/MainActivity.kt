@@ -38,7 +38,7 @@ class MainActivity : ComponentActivity() {
                  //  DrawerNavGraph(theViewModel)
             test(theViewModel, 1)
 
-             LandingScreen()
+                    SignUpScreen()
 
 
                   //  TaskBoard(theViewModel, NavController(this))

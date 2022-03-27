@@ -234,6 +234,7 @@ fun LandingScreen(){
                     )
 
             )
+
             Image(
                 painterResource(R.drawable.cleaning),
                 contentDescription = "Test 2",
@@ -381,44 +382,53 @@ fun SignUpScreen(){
             .wrapContentSize(Alignment.Center)
             .padding(top = 40.dp)
     ) {
-        Text(
-            text="Sign Up", fontWeight = FontWeight.Bold,
-            color = Color.Black,
-            modifier = Modifier.align(Alignment.CenterHorizontally),
-            textAlign = TextAlign.Center,
-            fontSize = 25.sp
-        )
+        Row(
+            horizontalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start=2.dp, top=0.dp, end = 2.dp)
+        ) {
+            Image(
+                painterResource(R.drawable.ic_sea_icon_round),
+                contentDescription = "Test 1",
+                modifier = Modifier.fillMaxWidth()
+                    .size(80.dp)
+                    .background(colorResource(id = R.color.white))
+                    .clickable(
+                        enabled = true,
+                        onClickLabel = "Clickable image",
+                        onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()
+                        }
+                    )
+
+            )
+        }
         Spacer(modifier = Modifier.padding(10.dp))
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             //FullName Addres textfield field
             OutlinedTextField(value = fullName.value, onValueChange = {fullName.value=it},
-                label = {Text(text="Full Name", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                label = {Text(text="Full Name", color = Color.Black, style = TextStyle(letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)},
 
                 singleLine = true,
                 modifier = Modifier.fillMaxWidth(0.8f))
             //Email Addres textfield field
             OutlinedTextField(value = email.value, onValueChange = {email.value=it},
-                label = {Text(text="Email Address", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                label = {Text(text="Email Address", color = Color.Black, style = TextStyle(letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)},
 
                 singleLine = true,
                 modifier = Modifier.fillMaxWidth(0.8f))
             //Password Addres textfield field
             OutlinedTextField(value = password.value, onValueChange = {password.value=it},
-                label = {Text(text="Password", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                label = {Text(text="Password", color = Color.Black, style = TextStyle(letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)},
 
                 singleLine = true,
                 modifier = Modifier.fillMaxWidth(0.8f),
                 trailingIcon = {
                     IconButton(
-                        modifier=Modifier
-                            .shadow(
-                                elevation = 10.dp,
-                                shape = CircleShape,
-                                clip = true
-                            ),
+                        modifier=Modifier,
                         onClick = { /*TODO*/
                             passwordVisibilty.value= !passwordVisibilty.value
                         }) {
@@ -432,7 +442,7 @@ fun SignUpScreen(){
             )
             //Address Addres textfield field
             OutlinedTextField(value = address.value, onValueChange = {address.value=it},
-                label = {Text(text="address", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                label = {Text(text="address", color = Color.Black, style = TextStyle(letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)},
 
                 singleLine = true,
@@ -440,7 +450,7 @@ fun SignUpScreen(){
             )
             //ZipCode  textfield field
             OutlinedTextField(value = zipCode.value, onValueChange = {zipCode.value=it},
-                label = {Text(text="zipCode", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                label = {Text(text="zipCode", color = Color.Black, style = TextStyle(letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)},
 
                 singleLine = true,
@@ -450,19 +460,21 @@ fun SignUpScreen(){
             Spacer(modifier = Modifier.padding(10.dp))
             // var regStatus by rememberSaveable{ mutableStateOf("") }
             Button(modifier=Modifier
+                .fillMaxWidth()
+                .padding(start=40.dp, end=40.dp)
                 .shadow(
                     elevation = 10.dp,
                     shape = CircleShape,
                     clip = true
                 ),
                 colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Color.White,
+                    backgroundColor = Color.Red,
                     contentColor = Color.Red),
 
                 onClick = { Toast.makeText(context,"You re Signed Up....", Toast.LENGTH_LONG).show()}
 
             ){
-                Text(text="Submit", color = Color.Red, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                Text(text="Submit", color = Color.White, style = TextStyle(letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)
             }
             Spacer(modifier=Modifier.padding(10.dp))
@@ -473,9 +485,9 @@ fun SignUpScreen(){
                     .padding(start = 40.dp, top = 20.dp, end = 40.dp)
 
             ) {
-                Text(text="Already have an account?", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                Text(text="Already have an account?", color = Color.Black, style = TextStyle(letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified,
-                    modifier=Modifier.padding(start = 40.dp, top = 10.dp))
+                    modifier=Modifier.padding(start = 80.dp, top = 10.dp))
                 Button(
                     modifier=Modifier
                         .shadow(
@@ -484,11 +496,11 @@ fun SignUpScreen(){
                             clip = true
                         ),
                     colors = ButtonDefaults.buttonColors(
-                        backgroundColor = Color.White,
-                        contentColor = Color.Red),
-                    onClick = {Toast.makeText(context,"SignIn..", Toast.LENGTH_LONG).show()},
+                        backgroundColor = Color.Blue,
+                        contentColor = Color.Blue),
+                    onClick = {Toast.makeText(context,"Login..", Toast.LENGTH_LONG).show()},
                 ) {
-                    Text(text="SignIn", color = Color.Red, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                    Text(text="Login", color = Color.White, style = TextStyle(letterSpacing = TextUnit.Unspecified),
                         fontSize = TextUnit.Unspecified)
                 }
             }
@@ -533,12 +545,7 @@ fun SignInScreen(){
                 modifier = Modifier.fillMaxWidth(0.8f))
             OutlinedTextField(value = Password, onValueChange = {Password=it},
                 trailingIcon = {
-                    IconButton(modifier=Modifier
-                        .shadow(
-                            elevation = 10.dp,
-                            shape = CircleShape,
-                            clip = true),
-
+                    IconButton(modifier=Modifier,
                         onClick = { /*TODO*/
                             passwordVisibilty.value= !passwordVisibilty.value
                         }) {
@@ -547,7 +554,7 @@ fun SignInScreen(){
                         if(passwordVisibilty.value) Color.Red else Color.Gray
                     }
                 },
-                label = {Text(text="Password", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                label = {Text(text="Password", color = Color.Black, style = TextStyle(letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)},
 
                 singleLine = true,
@@ -573,7 +580,7 @@ fun SignInScreen(){
 
                 onClick = {},
             ){
-                Text(text="Login", color = Color.Red, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                Text(text="Login", color = Color.Red, style = TextStyle(letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)
             }
             Spacer(modifier=Modifier.padding(10.dp))
@@ -584,7 +591,7 @@ fun SignInScreen(){
                     .padding(start = 40.dp, top = 20.dp, end = 40.dp)
 
             ) {
-                Text(text="Don't have an account?", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                Text(text="Don't have an account?", color = Color.Black, style = TextStyle(letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified,
                     modifier=Modifier.padding(start = 40.dp, top = 10.dp))
                 Button(
@@ -599,7 +606,7 @@ fun SignInScreen(){
                         contentColor = Color.Red),
                     onClick = {Toast.makeText(context,"Signing Up..", Toast.LENGTH_LONG).show()},
                 ) {
-                    Text(text="Sign Up", color = Color.Red, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                    Text(text="Sign Up", color = Color.Red, style = TextStyle(letterSpacing = TextUnit.Unspecified),
                         fontSize = TextUnit.Unspecified)
                 }
             }
