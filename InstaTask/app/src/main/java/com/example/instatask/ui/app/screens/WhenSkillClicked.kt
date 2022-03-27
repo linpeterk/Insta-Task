@@ -22,6 +22,7 @@ import com.example.instatask.model.jobCreators
 import com.example.instatask.ui.Components.AllReviews
 import com.example.instatask.ui.Components.MakeGoogleMap
 import com.example.instatask.ui.Components.TopBar
+import com.example.instatask.ui.theme.graySurface
 import com.example.instatask.viewmodel.TheViewModel
 import de.charlex.compose.BottomDrawerScaffold
 
@@ -51,7 +52,7 @@ fun WhenSkillClicked(navController: NavController, viewModel: TheViewModel, inde
 
                         Box(modifier = Modifier
                             .weight(0.4f)
-                            .background(MaterialTheme.colors.primaryVariant)
+                            .background(graySurface)
                         ){
 //                                MakeScrollComponents(navController)
                             Card(
