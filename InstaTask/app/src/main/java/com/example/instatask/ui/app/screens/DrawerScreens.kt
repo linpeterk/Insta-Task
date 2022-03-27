@@ -148,7 +148,6 @@ fun EntranceScreen(){
                             }
                         )
                 )
-                //Spacer(modifier = Modifier.padding(10.dp))
                 Text(
                     text = "EMPLOYER",
                     style = MaterialTheme.typography.h6,
@@ -233,50 +232,82 @@ fun LandingScreen(){
                 .fillMaxWidth()
                 .padding(start=80.dp, top=20.dp, end = 80.dp)
         ) {
-            Image(
-                painterResource(R.drawable.house),
-                contentDescription = "Test 1",
-                modifier = Modifier
-                    .size(60.dp)
-                    .background(colorResource(id = R.color.white))
-                    .clip(RoundedCornerShape(50.dp))
-                    .clickable(
-                        enabled = true,
-                        onClickLabel = "Clickable image",
-                        onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()
-                        }
-                    )
+            Box() {
+                Image(
+                    painterResource(R.drawable.house),
+                    contentDescription = "Test 1",
+                    modifier = Modifier
+                        .size(60.dp)
+                        .background(colorResource(id = R.color.white))
+                        .clip(RoundedCornerShape(50.dp))
+                        .clickable(
+                            enabled = true,
+                            onClickLabel = "Clickable image",
+                            onClick = {
+                                Toast.makeText(context, "Image clicked", Toast.LENGTH_SHORT).show()
+                            }
+                        )
 
-            )
-
-            Image(
-                painterResource(R.drawable.cleaning),
-                contentDescription = "Test 2",
-                modifier = Modifier
-                    .size(60.dp)
-                    .background(colorResource(id = R.color.white))
-                    .clip(RoundedCornerShape(50.dp))
-                    .clickable(
-                        enabled = true,
-                        onClickLabel = "Clickable image",
-                        onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()
-                        }
-                    )
-            )
-            Image(
-                painterResource(R.drawable.kitchen),
-                contentDescription = "Test 3",
-                modifier = Modifier
-                    .size(60.dp)
-                    .background(colorResource(id = R.color.white))
-                    .clip(RoundedCornerShape(50.dp))
-                    .clickable(
-                        enabled = true,
-                        onClickLabel = "Clickable image",
-                        onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()
-                        }
-                    )
-            )
+                )
+                Text(
+                    text = "Maintenance",
+                    fontSize = 10.sp,
+                    color = Color.Red,
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .padding(top=55.dp)
+                )
+            }
+            Box() {
+                Image(
+                    painterResource(R.drawable.cleaning),
+                    contentDescription = "Test 2",
+                    modifier = Modifier
+                        .size(60.dp)
+                        .background(colorResource(id = R.color.white))
+                        .clip(RoundedCornerShape(50.dp))
+                        .clickable(
+                            enabled = true,
+                            onClickLabel = "Clickable image",
+                            onClick = {
+                                Toast.makeText(context, "Image clicked", Toast.LENGTH_SHORT).show()
+                            }
+                        )
+                )
+                Text(
+                    text = "Cleaner",
+                    fontSize = 10.sp,
+                    color = Color.Red,
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .padding(top=55.dp)
+                )
+            }
+            Box() {
+                Image(
+                    painterResource(R.drawable.kitchen),
+                    contentDescription = "Test 3",
+                    modifier = Modifier
+                        .size(60.dp)
+                        .background(colorResource(id = R.color.white))
+                        .clip(RoundedCornerShape(50.dp))
+                        .clickable(
+                            enabled = true,
+                            onClickLabel = "Clickable image",
+                            onClick = {
+                                Toast.makeText(context, "Image clicked", Toast.LENGTH_SHORT).show()
+                            }
+                        )
+                )
+                Text(
+                    text = "Kitchen",
+                    fontSize = 10.sp,
+                    color = Color.Red,
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .padding(top=55.dp)
+                )
+            }
 
         }
         Row(
@@ -285,52 +316,85 @@ fun LandingScreen(){
                 .fillMaxWidth()
                 .padding(start=80.dp, top=10.dp, end = 80.dp)
         ) {
-            Image(
-                painterResource(R.drawable.pets),
-                contentDescription = "Test 1",
-                modifier = Modifier
-                    .size(60.dp)
-                    .background(colorResource(id = R.color.white))
-                    .clip(RoundedCornerShape(50.dp))
+            Box() {
+                Image(
+                    painterResource(R.drawable.pets),
+                    contentDescription = "Test 1",
+                    modifier = Modifier
+                        .size(60.dp)
+                        .background(colorResource(id = R.color.white))
+                        .clip(RoundedCornerShape(50.dp))
 
-                    .clickable(
-                        enabled = true,
-                        onClickLabel = "Clickable image",
-                        onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()
-                        }
-                    )
+                        .clickable(
+                            enabled = true,
+                            onClickLabel = "Clickable image",
+                            onClick = {
+                                Toast.makeText(context, "Image clicked", Toast.LENGTH_SHORT).show()
+                            }
+                        )
 
-            )
-            Image(
-                painterResource(R.drawable.trash),
-                contentDescription = "Test 2",
-                modifier = Modifier
-                    .size(60.dp)
-                    .background(colorResource(id = R.color.white))
-                    .clip(RoundedCornerShape(50.dp))
+                )
+                Text(
+                    text = "Pets",
+                    fontSize = 10.sp,
+                    color = Color.Red,
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .padding(top=55.dp)
+                )
+            }
+            Box() {
+                Image(
+                    painterResource(R.drawable.trash),
+                    contentDescription = "Test 2",
+                    modifier = Modifier
+                        .size(60.dp)
+                        .background(colorResource(id = R.color.white))
+                        .clip(RoundedCornerShape(50.dp))
 
-                    .clickable(
-                        enabled = true,
-                        onClickLabel = "Clickable image",
-                        onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()
-                        }
-                    )
-            )
-            Image(
-                painterResource(R.drawable.garage),
-                contentDescription = "Test 3",
-                modifier = Modifier
-                    .size(60.dp)
-                    .background(colorResource(id = R.color.white))
-                    .clip(RoundedCornerShape(50.dp))
+                        .clickable(
+                            enabled = true,
+                            onClickLabel = "Clickable image",
+                            onClick = {
+                                Toast.makeText(context, "Image clicked", Toast.LENGTH_SHORT).show()
+                            }
+                        )
+                )
+                Text(
+                    text = "Trash",
+                    fontSize = 10.sp,
+                    color = Color.Red,
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .padding(top=55.dp)
+                )
+            }
+            Box() {
+                Image(
+                    painterResource(R.drawable.garage),
+                    contentDescription = "Test 3",
+                    modifier = Modifier
+                        .size(60.dp)
+                        .background(colorResource(id = R.color.white))
+                        .clip(RoundedCornerShape(50.dp))
 
-                    .clickable(
-                        enabled = true,
-                        onClickLabel = "Clickable image",
-                        onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()
-                        }
-                    )
-            )
+                        .clickable(
+                            enabled = true,
+                            onClickLabel = "Clickable image",
+                            onClick = {
+                                Toast.makeText(context, "Image clicked", Toast.LENGTH_SHORT).show()
+                            }
+                        )
+                )
+                Text(
+                    text = "Garage",
+                    fontSize = 10.sp,
+                    color = Color.Red,
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .padding(top=55.dp)
+                )
+            }
         }
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,

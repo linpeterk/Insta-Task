@@ -38,8 +38,7 @@ class MainActivity : ComponentActivity() {
                  //  DrawerNavGraph(theViewModel)
             test(theViewModel, 1)
 
-                    EntranceScreen()
-
+                    LandingScreen()
 
                   //  TaskBoard(theViewModel, NavController(this))
 //                    SkillBoard(theViewModel)
