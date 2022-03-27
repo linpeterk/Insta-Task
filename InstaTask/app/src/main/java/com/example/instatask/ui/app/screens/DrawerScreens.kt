@@ -112,11 +112,11 @@ fun EntranceScreen(){
                 )
                     Text(
                         text = "JOB SEEKERS",
-                        style = MaterialTheme.typography.h6,
+                        fontSize = 15.sp,
                         color = Color.Black,
                         modifier = Modifier
                             .align(Alignment.BottomCenter)
-                            .padding(top=245.dp)
+                            .padding(top=250.dp)
                     )
                 }
 
@@ -150,11 +150,11 @@ fun EntranceScreen(){
                 )
                 Text(
                     text = "EMPLOYER",
-                    style = MaterialTheme.typography.h6,
+                    fontSize = 15.sp,
                     color = Color.Black,
                     modifier = Modifier
                         .align(Alignment.BottomCenter)
-                        .padding(top=280.dp)
+                        .padding(top=290.dp)
                 )
             }
 
