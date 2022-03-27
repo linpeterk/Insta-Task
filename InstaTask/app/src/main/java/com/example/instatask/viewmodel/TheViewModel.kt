@@ -10,6 +10,7 @@ import com.example.instatask.R
 import com.example.instatask.model.*
 import com.example.instatask.network.GetCatBody
 import com.example.instatask.network.ResponseToken
+import com.example.instatask.network.ResponseTokenSkills
 import com.example.instatask.network.repository.RetrofitHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -94,8 +95,9 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
 
     var responseList  = mutableStateListOf<ResponseToken>()
 
-    var list: List<Objects> by mutableStateOf(listOf())
-   var name:String by mutableStateOf("")
+    var list: List<ResponseTokenSkills> by mutableStateOf(listOf(ResponseTokenSkills()))
+  //  var name:ResponseTokenSkills = ResponseTokenSkills(name="Peter")
+
     fun catlist(category:Int){
         viewModelScope.launch (Dispatchers.IO){
 
@@ -108,7 +110,7 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
                     responseService.body()?.let{
 
                         Log.d("Logging success", "Response token $it")
-                        name = it.list[0].toString()
+                        list  = it.list
 
                     }
 

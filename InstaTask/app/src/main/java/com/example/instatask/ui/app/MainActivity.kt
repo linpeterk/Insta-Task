@@ -90,7 +90,8 @@ fun test(theViewModel:TheViewModel, index:Int) {
 
         Text(text = "int count $a")
 
-        Text(text = "List is ${theViewModel.list2}")
+
+        Text(text = "List is ${theViewModel.list[0]}")
 
     }
 

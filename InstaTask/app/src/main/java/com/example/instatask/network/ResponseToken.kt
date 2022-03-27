@@ -6,7 +6,7 @@ import java.util.*
 data class ResponseToken(
 
     @SerializedName("skills1")
-    val list:List<Objects>,
+    val list:List<ResponseTokenSkills>,
 
 )
 
