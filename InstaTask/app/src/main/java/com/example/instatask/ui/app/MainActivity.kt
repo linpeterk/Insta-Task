@@ -35,20 +35,25 @@ class MainActivity : ComponentActivity() {
                 ) {
 
                     //test(theViewModel)
-//                    DrawerNavGraph(theViewModel)
+                 //  DrawerNavGraph(theViewModel)
 
 
-                //LandingScreen()
+             //  LandingScreen()
 
-                 //   TaskBoard(theViewModel)
+
+                  //  TaskBoard(theViewModel, NavController(this))
 //                    SkillBoard(theViewModel)
 
 
 //                    TaskBoard(theViewModel)
                   // SkillBoard(theViewModel, NavController(this))
 
-//                    WhenJobClicked(navController = NavController(this), theViewModel, 2)
-                    WhenSkillClicked(navController = NavController(this), theViewModel, 2)
+
+    //                WhenSkillClicked(navController = NavController(this), theViewModel, 2)
+
+               //     WhenJobClicked(navController = NavController(this), theViewModel, 2)
+//                    WhenSkillClicked(navcontroller = NavController(this))
+
 
                    // SignUpScreen()
                   //  TaskBoard()

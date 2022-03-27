@@ -131,7 +131,7 @@ fun TaskBoard(vmodel: TheViewModel,
 
                         }
 
-                        LazyScrollTemplate(viewModel = vmodel)
+                        LazyScrollTemplate(viewModel = vmodel, navcontroller = navcontroller, mode=1)
 //                        LazyColumn(
 //                            modifier = Modifier
 //                                .background(graySurface)

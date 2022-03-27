@@ -29,6 +29,7 @@ sealed class Screens( val title:String, val route:String)
     object TaskBoard:Screens("TaskBoard", "Task_Board")
     object SkillBoard:Screens("SkillBoard", "Skill_Board")
     object WhenJob:Screens("WhenJob", "WhenJob")
+    object WhenSkill:Screens("WhenSkill", "WhenSkill")
  //   object SkillBoard:Screens("SkillBoard", "Skill_Board")
 
 /*
@@ -40,7 +41,7 @@ sealed class Screens( val title:String, val route:String)
 val drawerScreens= listOf(
     Screens.TaskBoard,
     Screens.SkillBoard,
-    Screens.WhenJob
+
 )
 
 sealed class NavigationItem(var route:String, var icon:Int, var title:String){

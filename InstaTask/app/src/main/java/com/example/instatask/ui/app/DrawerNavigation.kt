@@ -3,9 +3,11 @@ package com.example.instatask.ui.app
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.instatask.model.Categories
 import com.example.instatask.viewmodel.TheViewModel
 import kotlinx.coroutines.launch
@@ -82,14 +84,33 @@ fun DrawerNavGraph(vmodel: TheViewModel) {
             NavHost(navController = navController, startDestination = Screens.TaskBoard.route)
             {
 
+                composable(
+                    route = Screens.WhenJob.route + "/{taskID}",
+                    arguments = listOf(navArgument("taskID"){type = NavType.IntType})
+                )
+                {
+                    val id: Int? = it.arguments?.getInt("taskID")
+
+                    if(id!= null) {
+                        WhenJobClicked(viewModel = vmodel, navController = navController, index = id )
+                    }
+                }
+
+                composable(
+                    route = Screens.WhenSkill.route,
+              //      arguments = listOf(navArgument("taskId"){type = NavType.IntType})
+                )
+                {
+
+                        WhenSkillClicked(viewModel = vmodel, navController = navController, index = 0 )
+
+                }
+
                 composable(Screens.TaskBoard.route)
                 {
 
-
                     TaskBoard(vmodel = vmodel, navController)
                 }
-
-                //2nd
 
                 composable(Screens.SkillBoard.route)
                 {
@@ -103,6 +124,8 @@ fun DrawerNavGraph(vmodel: TheViewModel) {
 
                  //   WhenJobClicked(vmodel = vmodel, navController)
                 }
+
+
 
             }
         }
