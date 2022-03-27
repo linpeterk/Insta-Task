@@ -10,6 +10,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Blue
+import androidx.compose.ui.graphics.Color.Companion.Red
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -33,13 +35,16 @@ fun CategoriesBar(vmodel: TheViewModel, list:List<Categories>){
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier.padding(15.dp)
+                      //  .border(3.dp, Color.Blue)
                     //.border(3.dp, Color.Black)
                 ) {
 
                     Box(
                         modifier = Modifier
+                      //      .border(3.dp, Color.Red)
                             .clickable(onClick = {
                             vmodel.loadTasks(item.list)
+
                           //      Log.d("Bar", "list is ${vmodel.taskList[0].description}")
                             })
                         //.border(3.dp, Color.Blue)
@@ -52,6 +57,7 @@ fun CategoriesBar(vmodel: TheViewModel, list:List<Categories>){
                     Box(
                         contentAlignment = Alignment.Center,
                         modifier = Modifier.wrapContentSize()
+                           // .border(3.dp, Color.Red)
                             .clickable(onClick = {
                             vmodel.loadTasks(item.list)
                             //      Log.d("Bar", "list is ${vmodel.taskList[0].description}")

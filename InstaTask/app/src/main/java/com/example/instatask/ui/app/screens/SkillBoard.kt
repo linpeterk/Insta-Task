@@ -125,7 +125,7 @@ fun SkillBoard(
 
                         }
 
-                        LazyScrollTemplate(viewModel = vmodel)
+                        LazyScrollTemplate(viewModel = vmodel, navcontroller = navcontroller,mode=2)
 
                     }
                 }
