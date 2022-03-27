@@ -526,20 +526,33 @@ fun SignInScreen(){
             .wrapContentSize(Alignment.Center)
             .padding(top = 40.dp)
     ){
-        Text(
-            text="Sign In",
-            fontWeight = FontWeight.Bold,
-            color= Color.Black,
-            modifier = Modifier.align(Alignment.CenterHorizontally),
-            textAlign = TextAlign.Center,
-            fontSize = 25.sp
-        )
+        Row(
+            horizontalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start=2.dp, top=0.dp, end = 2.dp)
+        ) {
+            Image(
+                painterResource(R.drawable.ic_sea_icon_round),
+                contentDescription = "Test 1",
+                modifier = Modifier.fillMaxWidth()
+                    .size(80.dp)
+                    .background(colorResource(id = R.color.white))
+                    .clickable(
+                        enabled = true,
+                        onClickLabel = "Clickable image",
+                        onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()
+                        }
+                    )
+
+            )
+        }
         var emailAddress by rememberSaveable{mutableStateOf("")}
         var Password by rememberSaveable{mutableStateOf("")}
         Spacer(modifier = Modifier.padding(15.dp))
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             OutlinedTextField(value = emailAddress, onValueChange = {emailAddress=it},
-                label = {Text(text="Email Address", color = Color.Black, style = TextStyle(fontWeight = FontWeight.Bold, letterSpacing = TextUnit.Unspecified),
+                label = {Text(text="Email Address", color = Color.Black, style = TextStyle(letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)},
                 singleLine = true,
                 modifier = Modifier.fillMaxWidth(0.8f))
@@ -569,18 +582,20 @@ fun SignInScreen(){
             val context= LocalContext.current
             Button(
                 modifier=Modifier
+                    .fillMaxWidth()
+                    .padding(start=40.dp, end=40.dp)
                     .shadow(
                         elevation = 10.dp,
                         shape = CircleShape,
                         clip = true
                     ),
                 colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Color.White,
+                    backgroundColor = Color.Red,
                     contentColor = Color.Red),
 
                 onClick = {},
             ){
-                Text(text="Login", color = Color.Red, style = TextStyle(letterSpacing = TextUnit.Unspecified),
+                Text(text="Login", color = Color.White, style = TextStyle(letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)
             }
             Spacer(modifier=Modifier.padding(10.dp))
@@ -593,7 +608,7 @@ fun SignInScreen(){
             ) {
                 Text(text="Don't have an account?", color = Color.Black, style = TextStyle(letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified,
-                    modifier=Modifier.padding(start = 40.dp, top = 10.dp))
+                    modifier=Modifier.padding(start = 80.dp, top = 10.dp))
                 Button(
                     modifier=Modifier
                         .shadow(
@@ -602,11 +617,11 @@ fun SignInScreen(){
                             clip = true
                         ),
                     colors = ButtonDefaults.buttonColors(
-                        backgroundColor = Color.White,
-                        contentColor = Color.Red),
+                        backgroundColor = Color.Blue,
+                        contentColor = Color.Blue),
                     onClick = {Toast.makeText(context,"Signing Up..", Toast.LENGTH_LONG).show()},
                 ) {
-                    Text(text="Sign Up", color = Color.Red, style = TextStyle(letterSpacing = TextUnit.Unspecified),
+                    Text(text="Sign Up", color = Color.White, style = TextStyle(letterSpacing = TextUnit.Unspecified),
                         fontSize = TextUnit.Unspecified)
                 }
             }
