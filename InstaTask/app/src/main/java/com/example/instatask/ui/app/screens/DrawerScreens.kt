@@ -95,15 +95,9 @@ fun EntranceScreen(){
                     painterResource(R.drawable.employee),
                     contentDescription = "Test 1",
                     modifier = Modifier.fillMaxWidth()
-                        .size(350.dp)
+                        .size(250.dp)
                         .background(colorResource(id = R.color.white))
-                        .clip(RoundedCornerShape(10.dp))
-                        .shadow(
-                            elevation = 10.dp,
-                            shape = CircleShape,
-                            clip = true
-                        )
-                        .clip(RoundedCornerShape(10.dp))
+                        .clip(RoundedCornerShape(100.dp))
                         .clickable(
                             enabled = true,
                             onClickLabel = "Clickable image",
@@ -130,15 +124,9 @@ fun EntranceScreen(){
                 painterResource(R.drawable.employer),
                 contentDescription = "Test 1",
                 modifier = Modifier.fillMaxWidth()
-                    .size(350.dp)
+                    .size(300.dp)
                     .background(colorResource(id = R.color.white))
-                    .clip(RoundedCornerShape(10.dp))
-                    .shadow(
-                        elevation = 10.dp,
-                        shape = CircleShape,
-                        clip = true
-                    )
-                    .clip(RoundedCornerShape(10.dp))
+                    .clip(RoundedCornerShape(100.dp))
                     .clickable(
                         enabled = true,
                         onClickLabel = "Clickable image",
