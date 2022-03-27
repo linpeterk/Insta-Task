@@ -20,6 +20,7 @@ import com.example.instatask.ui.Components.AllReviews
 import com.example.instatask.ui.Components.MakeGoogleMap
 import com.example.instatask.ui.Components.TopBar
 import com.example.instatask.model.jobCreators
+import com.example.instatask.ui.theme.graySurface
 import com.example.instatask.viewmodel.TheViewModel
 import com.google.maps.android.compose.*
 //import com.pelp.model.data.Location_Restroom
@@ -92,7 +93,7 @@ fun WhenJobClicked(navController: NavController, viewModel:TheViewModel, index: 
                         }
                         Box(modifier = Modifier
                             .weight(0.4f)
-                            .background(MaterialTheme.colors.primaryVariant)
+                            .background(graySurface)
                         ){
 //                                MakeScrollComponents(navController)
                             Card(
