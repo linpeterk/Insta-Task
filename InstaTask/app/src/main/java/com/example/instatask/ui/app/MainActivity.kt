@@ -44,7 +44,7 @@ class MainActivity : ComponentActivity() {
 //                    SkillBoard(theViewModel)
 
 
-                    //TaskBoard(theViewModel)
+//                    TaskBoard(theViewModel)
                   // SkillBoard(theViewModel, NavController(this))
 
 //                    WhenJobClicked(navController = NavController(this), theViewModel, 2)
