@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
 
                     //test(theViewModel)
                  //  DrawerNavGraph(theViewModel)
-
+            test(theViewModel, 1)
 
              //  LandingScreen()
 
@@ -78,8 +78,11 @@ fun test(theViewModel:TheViewModel, index:Int) {
     var listHr= theViewModel.taskList[index].hourlyRate
     var a = theViewModel.count
     Column() {
-        Button(onClick = { a++ }) {
+        Button(onClick = {
+            theViewModel.catlist(1)
 
+        }) {
+            Text(text = " GET API ")
         }
         Button(onClick = { theViewModel.up(1) }) {
 
@@ -87,7 +90,7 @@ fun test(theViewModel:TheViewModel, index:Int) {
 
         Text(text = "int count $a")
 
-        Text(text = "Name is $listName and hourly rate is $listHr")
+        Text(text = "List is ${theViewModel.list2}")
 
     }
 

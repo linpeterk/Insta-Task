@@ -1,12 +1,19 @@
 package com.example.instatask.viewmodel
 
 import android.app.Application
+import android.util.Log
 import androidx.compose.runtime.*
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.instatask.R
 import com.example.instatask.model.*
+import com.example.instatask.network.GetCatBody
+import com.example.instatask.network.ResponseToken
+import com.example.instatask.network.repository.RetrofitHelper
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.*
 
 
 class TheViewModel(application: Application) : AndroidViewModel(application) {
@@ -20,7 +27,8 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
 
    // var taskList: MutableList<JobCreator> = mutableStateListOf() // DOES NOT WORK
 
-    var taskList by mutableStateOf(jobCreators) // WORKS
+    var taskList by mutableStateOf(jobCreators) // works
+
 
     /* mutable
     mutableStateOf parameters is prefered used for immutable lists, primitives, simple datatypes
@@ -80,11 +88,56 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+    ////////////////API ONLY////////////////////////////////////// API ONLY /////////////////////
 
+    private val loginRequestLiveData = MutableLiveData<Boolean>()
+
+    var responseList  = mutableStateListOf<ResponseToken>()
+
+    var list: List<Objects> by mutableStateOf(listOf())
+   var name:String by mutableStateOf("")
+    fun catlist(category:Int){
+        viewModelScope.launch (Dispatchers.IO){
+
+
+            try{
+                val authService = RetrofitHelper.getAuthService()
+                val responseService = authService.getCatBody(GetCatBody(1))
+
+                if(responseService.isSuccessful){
+                    responseService.body()?.let{
+
+                        Log.d("Logging success", "Response token $it")
+                        name = it.list[0].toString()
+
+                    }
+
+
+                } else{
+                    responseService.errorBody()?.let{
+
+                        Log.d("Logging error", "response token $it")
+                        it.close()
+                    }
+
+                }
+               // loginRequestLiveData.postValue(responseService.isSuccessful)
+
+            }catch (e:Exception){
+                Log.d("Network logging", "Exceptions in networking $e")
+
+            }
+
+        }
+
+    }
 
 }
 
-/*
+
+
+
+/* ROOM DATABASE   ROOM DATABASE    ROOM DATABASE          ROOM DATABASE
     private val customerRepository:CustomerRepository=CustomerRepository(application)
 
     fun fetchAllCustomer():
