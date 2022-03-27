@@ -90,7 +90,7 @@ fun EntranceScreen(){
                 .fillMaxWidth()
                 .padding(start=2.dp, top=40.dp, end = 2.dp, bottom = 20.dp)
         ) {
-
+                Box(){
                 Image(
                     painterResource(R.drawable.employee),
                     contentDescription = "Test 1",
@@ -110,31 +110,57 @@ fun EntranceScreen(){
                             }
                         )
                 )
-
+                    Text(
+                        text = "JOB SEEKERS",
+                        style = MaterialTheme.typography.h6,
+                        color = Color.Black,
+                        modifier = Modifier
+                            .align(Alignment.BottomCenter)
+                            .padding(top=245.dp)
+                    )
+                }
 
         }
         Row(
             horizontalArrangement = Arrangement.Center,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start=2.dp, top=10.dp, end = 2.dp, bottom=20.dp),
+                .padding(start=2.dp, top=0.dp, end = 2.dp, bottom=20.dp),
 
         ) {
-            Image(
-                painterResource(R.drawable.employer),
-                contentDescription = "Test 1",
-                modifier = Modifier.fillMaxWidth()
-                    .size(300.dp)
-                    .background(colorResource(id = R.color.white))
-                    .clip(RoundedCornerShape(100.dp))
-                    .clickable(
-                        enabled = true,
-                        onClickLabel = "Clickable image",
-                        onClick = {Toast.makeText(context,"Employer Button clicked",Toast.LENGTH_SHORT).show()
-                        }
-                    )
+            Box() {
+                Image(
+                    painterResource(R.drawable.employer),
+                    contentDescription = "Test 1",
+                    modifier = Modifier.fillMaxWidth()
+                        .size(300.dp)
+                        .background(colorResource(id = R.color.white))
+                        .clip(RoundedCornerShape(100.dp))
+                        .clickable(
+                            enabled = true,
+                            onClickLabel = "Clickable image",
+                            onClick = {
+                                Toast.makeText(
+                                    context,
+                                    "Employer Button clicked",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        )
+                )
+                //Spacer(modifier = Modifier.padding(10.dp))
+                Text(
+                    text = "EMPLOYER",
+                    style = MaterialTheme.typography.h6,
+                    color = Color.Black,
+                    modifier = Modifier
+                        .align(Alignment.BottomCenter)
+                        .padding(top=280.dp)
+                )
+            }
 
-            )
+
+
 
             }
 
