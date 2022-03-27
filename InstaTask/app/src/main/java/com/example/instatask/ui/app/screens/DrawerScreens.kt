@@ -177,7 +177,7 @@ fun LandingScreen(){
             painterResource(R.drawable.ic_sea_icon_round),
             contentDescription = "Test 1",
             modifier = Modifier.fillMaxWidth()
-                .size(50.dp)
+                .size(80.dp)
                 .background(colorResource(id = R.color.white))
                 .clickable(
                     enabled = true,
