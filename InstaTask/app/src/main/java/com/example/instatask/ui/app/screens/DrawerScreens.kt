@@ -167,26 +167,42 @@ fun LandingScreen(){
             .fillMaxHeight()
             .background(colorResource(id = R.color.transparent)),
         //.wrapContentSize(Alignment.Center)
-    ){
+    ){        Row(
+        horizontalArrangement = Arrangement.Center,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(start=2.dp, top=0.dp, end = 2.dp)
+    ) {
+        Image(
+            painterResource(R.drawable.ic_sea_icon_round),
+            contentDescription = "Test 1",
+            modifier = Modifier.fillMaxWidth()
+                .size(50.dp)
+                .background(colorResource(id = R.color.white))
+                .clickable(
+                    enabled = true,
+                    onClickLabel = "Clickable image",
+                    onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()
+                    }
+                )
+
+        )
+    }
+
+
         Row(
             horizontalArrangement = Arrangement.Center,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start=2.dp, top=0.dp, end = 2.dp)
+                .padding(start=0.dp, top=20.dp, end = 0.dp)
         ) {
             Image(
                 painterResource(R.drawable.background),
                 contentDescription = "Test 1",
                 modifier = Modifier.fillMaxWidth()
-                    .size(350.dp)
+                    .size(300.dp)
                     .background(colorResource(id = R.color.white))
-                    .clip(RoundedCornerShape(10.dp))
-                    .shadow(
-                        elevation = 10.dp,
-                        shape = CircleShape,
-                        clip = true
-                    )
-                    .clip(RoundedCornerShape(10.dp))
+                    .clip(RoundedCornerShape(100.dp))
                     .clickable(
                         enabled = true,
                         onClickLabel = "Clickable image",
@@ -201,20 +217,15 @@ fun LandingScreen(){
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start=2.dp, top=20.dp, end = 2.dp)
+                .padding(start=80.dp, top=20.dp, end = 80.dp)
         ) {
             Image(
                 painterResource(R.drawable.house),
                 contentDescription = "Test 1",
                 modifier = Modifier
-                    .size(120.dp)
+                    .size(60.dp)
                     .background(colorResource(id = R.color.white))
-                    .clip(RoundedCornerShape(10.dp))
-                    .shadow(
-                        elevation = 10.dp,
-                        shape = CircleShape,
-                        clip = true
-                    )
+                    .clip(RoundedCornerShape(50.dp))
                     .clickable(
                         enabled = true,
                         onClickLabel = "Clickable image",
@@ -227,14 +238,9 @@ fun LandingScreen(){
                 painterResource(R.drawable.cleaning),
                 contentDescription = "Test 2",
                 modifier = Modifier
-                    .size(120.dp)
+                    .size(60.dp)
                     .background(colorResource(id = R.color.white))
-                    .clip(RoundedCornerShape(10.dp))
-                    .shadow(
-                        elevation = 10.dp,
-                        shape = CircleShape,
-                        clip = true
-                    )
+                    .clip(RoundedCornerShape(50.dp))
                     .clickable(
                         enabled = true,
                         onClickLabel = "Clickable image",
@@ -246,14 +252,9 @@ fun LandingScreen(){
                 painterResource(R.drawable.kitchen),
                 contentDescription = "Test 3",
                 modifier = Modifier
-                    .size(120.dp)
+                    .size(60.dp)
                     .background(colorResource(id = R.color.white))
-                    .clip(RoundedCornerShape(10.dp))
-                    .shadow(
-                        elevation = 10.dp,
-                        shape = CircleShape,
-                        clip = true
-                    )
+                    .clip(RoundedCornerShape(50.dp))
                     .clickable(
                         enabled = true,
                         onClickLabel = "Clickable image",
@@ -261,25 +262,22 @@ fun LandingScreen(){
                         }
                     )
             )
+
         }
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start=2.dp, top=10.dp, end = 2.dp)
+                .padding(start=80.dp, top=10.dp, end = 80.dp)
         ) {
             Image(
                 painterResource(R.drawable.pets),
                 contentDescription = "Test 1",
                 modifier = Modifier
-                    .size(120.dp)
+                    .size(60.dp)
                     .background(colorResource(id = R.color.white))
-                    .clip(RoundedCornerShape(10.dp))
-                    .shadow(
-                        elevation = 10.dp,
-                        shape = CircleShape,
-                        clip = true
-                    )
+                    .clip(RoundedCornerShape(50.dp))
+
                     .clickable(
                         enabled = true,
                         onClickLabel = "Clickable image",
@@ -292,14 +290,10 @@ fun LandingScreen(){
                 painterResource(R.drawable.trash),
                 contentDescription = "Test 2",
                 modifier = Modifier
-                    .size(110.dp)
+                    .size(60.dp)
                     .background(colorResource(id = R.color.white))
-                    .clip(RoundedCornerShape(10.dp))
-                    .shadow(
-                        elevation = 10.dp,
-                        shape = CircleShape,
-                        clip = true
-                    )
+                    .clip(RoundedCornerShape(50.dp))
+
                     .clickable(
                         enabled = true,
                         onClickLabel = "Clickable image",
@@ -311,14 +305,10 @@ fun LandingScreen(){
                 painterResource(R.drawable.garage),
                 contentDescription = "Test 3",
                 modifier = Modifier
-                    .size(120.dp)
+                    .size(60.dp)
                     .background(colorResource(id = R.color.white))
-                    .clip(RoundedCornerShape(10.dp))
-                    .shadow(
-                        elevation = 10.dp,
-                        shape = CircleShape,
-                        clip = true
-                    )
+                    .clip(RoundedCornerShape(50.dp))
+
                     .clickable(
                         enabled = true,
                         onClickLabel = "Clickable image",
@@ -331,7 +321,7 @@ fun LandingScreen(){
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start=40.dp, top=20.dp, end = 40.dp)
+                .padding(start=80.dp, top=20.dp, end = 80.dp)
         ) {
             Button( modifier=Modifier
                 .shadow(
@@ -341,12 +331,12 @@ fun LandingScreen(){
                 ),
                 onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()},
                 colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Color.White,
+                    backgroundColor = Color.Red,
                     contentColor = Color.Red)
 
                 ) {
 
-                Text(text = "Sign Up")
+                Text(text = "Sign Up", color=Color.White)
             }
             Button(
                 modifier=Modifier
@@ -357,12 +347,12 @@ fun LandingScreen(){
                     ),
                 onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()},
                 colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Color.White,
+                    backgroundColor = Color.Blue,
                     contentColor = Color.Red)
 
                 ) {
 
-                Text(text = "Sign In")
+                Text(text = "Login", color=Color.White)
             }
         }
     }
