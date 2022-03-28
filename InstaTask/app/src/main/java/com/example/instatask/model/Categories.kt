@@ -1,0 +1,14 @@
+package com.example.instatask.model
+
+data class Categories(
+    var name:String,
+    var imageID:Int,
+   var list:List<JobCreator> = jobCreators,
+)
+
+// Pets
+// Garden
+// House
+// Deliver
+// Trade
+// Labor
