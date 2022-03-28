@@ -9,12 +9,12 @@ import androidx.lifecycle.viewModelScope
 import com.example.instatask.R
 import com.example.instatask.model.*
 import com.example.instatask.network.GetCatBody
-import com.example.instatask.network.ResponseToken
-import com.example.instatask.network.ResponseTokenSkills
+import com.example.instatask.network.ResponseTokenSkill1
+import com.example.instatask.network.ResponseSkillType
+import com.example.instatask.network.repository.AuthAPIService
 import com.example.instatask.network.repository.RetrofitHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.util.*
 
 
 class TheViewModel(application: Application) : AndroidViewModel(application) {
@@ -93,18 +93,18 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
 
     private val loginRequestLiveData = MutableLiveData<Boolean>()
 
-    var responseList  = mutableStateListOf<ResponseToken>()
+    var responseList  = mutableStateListOf<ResponseTokenSkill1>()
 
-    var list: List<ResponseTokenSkills> by mutableStateOf(listOf(ResponseTokenSkills()))
+    var list: List<ResponseSkillType> by mutableStateOf(listOf(ResponseSkillType()))
   //  var name:ResponseTokenSkills = ResponseTokenSkills(name="Peter")
 
     fun catlist(category:Int){
         viewModelScope.launch (Dispatchers.IO){
-
-
             try{
                 val authService = RetrofitHelper.getAuthService()
                 val responseService = authService.getCatBody(GetCatBody(1))
+
+
 
                 if(responseService.isSuccessful){
                     responseService.body()?.let{

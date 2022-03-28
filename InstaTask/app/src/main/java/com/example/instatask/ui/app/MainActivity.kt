@@ -34,18 +34,18 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
 
-                    //test(theViewModel)
+
                  //  DrawerNavGraph(theViewModel)
-           // test(theViewModel, 1)
+            test(theViewModel, 1)
 
                   //  LandingScreen()
 
                   //  TaskBoard(theViewModel, NavController(this))
-//                    SkillBoard(theViewModel)
+
 
 
 //                    TaskBoard(theViewModel)
-                   SkillBoard(theViewModel, NavController(this))
+                 //  SkillBoard(theViewModel, NavController(this))
 
 
     //                WhenSkillClicked(navController = NavController(this), theViewModel, 2)

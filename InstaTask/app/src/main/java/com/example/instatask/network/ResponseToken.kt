@@ -1,14 +1,13 @@
 package com.example.instatask.network
 
 import com.google.gson.annotations.SerializedName
-import java.util.*
 
-data class ResponseToken(
+data class ResponseTokenSkill1(
 
     @SerializedName("skills1")
-    val list:List<ResponseTokenSkills>,
+    val list:List<ResponseSkillType>,
 
-)
+    )
 
 
 

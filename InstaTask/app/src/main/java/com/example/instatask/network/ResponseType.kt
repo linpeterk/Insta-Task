@@ -3,7 +3,7 @@ package com.example.instatask.network
 import com.google.gson.annotations.SerializedName
 import java.util.*
 
-data class ResponseTokenSkills(
+data class ResponseSkillType(
 
     @SerializedName("id")
     var id:Int = 0,
