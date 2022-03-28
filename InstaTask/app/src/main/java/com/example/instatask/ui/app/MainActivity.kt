@@ -29,7 +29,10 @@ class MainActivity : ComponentActivity() {
                 ) {
 
                     //DrawerNavGraph(theViewModel)
-                    TaskBoard()
+                   // TaskBoard()
+
+                    //Profile Screen
+                   ProfileScreen()
                 }
             }
         }
@@ -39,3 +42,4 @@ class MainActivity : ComponentActivity() {
 fun greeting(){
     Text(text = "hello world")
 }
+
