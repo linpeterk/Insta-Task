@@ -83,19 +83,39 @@ fun EntranceScreen(){
             .fillMaxHeight()
             .background(colorResource(id = R.color.transparent)),
         //.wrapContentSize(Alignment.Center)
+    ) {    Row(
+        horizontalArrangement = Arrangement.Center,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(start=2.dp, top=0.dp, end = 2.dp)
     ) {
+        Image(
+            painterResource(R.drawable.ic_sea_icon_round),
+            contentDescription = "Test 1",
+            modifier = Modifier.fillMaxWidth()
+                .size(80.dp)
+                .background(colorResource(id = R.color.white))
+                .clickable(
+                    enabled = true,
+                    onClickLabel = "Clickable image",
+                    onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()
+                    }
+                )
+
+        )
+    }
         Row(
             horizontalArrangement = Arrangement.Center,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start=2.dp, top=40.dp, end = 2.dp, bottom = 20.dp)
+                .padding(start=2.dp, top=0.dp, end = 2.dp, bottom = 20.dp)
         ) {
                 Box(){
                 Image(
                     painterResource(R.drawable.employee),
                     contentDescription = "Test 1",
                     modifier = Modifier.fillMaxWidth()
-                        .size(250.dp)
+                        .size(200.dp)
                         .background(colorResource(id = R.color.white))
                         .clip(RoundedCornerShape(100.dp))
                         .clickable(
@@ -116,7 +136,7 @@ fun EntranceScreen(){
                         color = Color.Black,
                         modifier = Modifier
                             .align(Alignment.BottomCenter)
-                            .padding(top=250.dp)
+                            .padding(top=200.dp)
                     )
                 }
 
@@ -133,7 +153,7 @@ fun EntranceScreen(){
                     painterResource(R.drawable.employer),
                     contentDescription = "Test 1",
                     modifier = Modifier.fillMaxWidth()
-                        .size(300.dp)
+                        .size(250.dp)
                         .background(colorResource(id = R.color.white))
                         .clip(RoundedCornerShape(100.dp))
                         .clickable(
@@ -154,7 +174,7 @@ fun EntranceScreen(){
                     color = Color.Black,
                     modifier = Modifier
                         .align(Alignment.BottomCenter)
-                        .padding(top=290.dp)
+                        .padding(top=250.dp)
                 )
             }
 
