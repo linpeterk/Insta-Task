@@ -1,8 +1,12 @@
 package com.example.instatask.ui.app
 
+import android.annotation.SuppressLint
+import android.app.PendingIntent.getActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Button
@@ -11,15 +15,14 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.lifecycle.ViewModelProvider
-
 import androidx.navigation.NavController
-
-import com.example.instatask.ui.theme.InstaTaskTheme
-import com.example.instatask.viewmodel.TheViewModel
 import com.example.instatask.R
 import com.example.instatask.ui.app.screens.*
+import com.example.instatask.ui.theme.InstaTaskTheme
+import com.example.instatask.viewmodel.TheViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,20 +42,24 @@ class MainActivity : ComponentActivity() {
                    DrawerNavGraph(theViewModel)
        //     test(theViewModel, 1)
 
+
+
                     //Adama'S task for now
                   //SignUpScreen()
                   //SignInScreen()
                     //EntranceScreen()
+
           //          LandingScreen()
 
 
-                  //  TaskBoard(theViewModel, NavController(this))
+
+                //    TaskBoard(theViewModel, NavController(this))
 
 
 
 //                    TaskBoard(theViewModel)
 
-                 //  SkillBoard(theViewModel, NavController(this))
+              //   SkillBoard(theViewModel, NavController(this))
 
 
 
@@ -88,17 +95,18 @@ fun greeting(){
 
 }
 
+@SuppressLint("ResourceType")
 @Composable
-fun test(theViewModel:TheViewModel, index:Int) {
-  //  var a = theViewModel.count
-
-    var list= theViewModel.taskList[index]
-    var listName = list.name
-    var listHr= theViewModel.taskList[index].hourlyRate
-    var a = theViewModel.count
+fun test(theViewModel:TheViewModel) {
+var context = LocalContext.current
+    var list= theViewModel.currentList
+  //  var listName = list.name
+   // var listHr= theViewModel.currentList[index].hourlyRate
+   // var a = theViewModel.count
     Column() {
         Button(onClick = {
-            theViewModel.catlist(1)
+         //   theViewModel.catlist(1)
+            theViewModel.getCatlist(1)
 
         }) {
             Text(text = " GET API ")
@@ -106,11 +114,11 @@ fun test(theViewModel:TheViewModel, index:Int) {
         Button(onClick = { theViewModel.up(1) }) {
 
         }
+        Log.d("Image ID", "Image ID ${R.drawable.petcategory}")
+       Log.d("TESTS", "MSG ${context.getResources().getIdentifier("petcategory", "drawable", context.getPackageName())}")
+        //Image(painter = painterResource(id = 2130968639), contentDescription = "")
 
-        Text(text = "int count $a")
-
-
-        Text(text = "List is ${theViewModel.list[0]}")
+        Text(text = "List is ${theViewModel.currentList}")
 
     }
 

@@ -37,7 +37,7 @@ fun init(vmodel: TheViewModel){
         }
     }
 
-
+    vmodel.getCatlist(1)
 
 }
 @Composable
@@ -71,7 +71,7 @@ fun DrawerNavGraph(vmodel: TheViewModel) {
                     //go destinations
                     navController.navigate(route) {
                         popUpTo(route)
-                        launchSingleTop = true
+                       // launchSingleTop = true
 
                     }
                 }

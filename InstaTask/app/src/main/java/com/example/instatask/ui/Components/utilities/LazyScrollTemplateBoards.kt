@@ -9,18 +9,20 @@ import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.instatask.R
 import com.example.instatask.ui.app.screens.Screens
 import com.example.instatask.ui.theme.graySurface
 import com.example.instatask.viewmodel.TheViewModel
 
 @Composable
-fun LazyScrollTemplate(viewModel: TheViewModel, navcontroller:NavController, mode:Int){
+fun LazyScrollTemplateBoards(vModel: TheViewModel, navcontroller:NavController, mode:Int){
                                                         //MODE 1 = when job click
                                                         //MODE 2 = when skill click
 
@@ -32,7 +34,7 @@ fun LazyScrollTemplate(viewModel: TheViewModel, navcontroller:NavController, mod
 
     ){
 
-        items(viewModel.taskList){ item->
+        items(vModel.currentList){ item->
             Spacer(modifier = Modifier.padding(3.dp))
             Card(
                 shape = RoundedCornerShape(8.dp),
@@ -49,7 +51,7 @@ fun LazyScrollTemplate(viewModel: TheViewModel, navcontroller:NavController, mod
 
             ){
                 Row(){
-                    Image(painter = painterResource(id = item.imageRes ), contentDescription = null,
+                    Image(painter = painterResource(id = vModel.getImageId(context = LocalContext.current,item.imageRes) ), contentDescription = null,
                         modifier = Modifier
                             // .border(2.dp, Color.Red)
                             .padding(40.dp)
@@ -66,7 +68,7 @@ fun LazyScrollTemplate(viewModel: TheViewModel, navcontroller:NavController, mod
                         //        navcontroller.navigate(Screens.WhenSkill.route)
                             }
                             else {
-                                navcontroller.navigate(Screens.WhenJob.route + "/${item.id - 1}")
+                         //       navcontroller.navigate(Screens.WhenJob.route + "/${item.id - 1}")
                             }
 
                         })

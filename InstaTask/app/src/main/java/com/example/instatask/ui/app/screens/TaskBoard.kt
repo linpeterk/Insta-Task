@@ -21,7 +21,7 @@ import com.example.instatask.R
 import com.example.instatask.ui.Components.MakeGoogleMap
 import com.example.instatask.ui.Components.TopBar
 import com.example.instatask.ui.Components.utilities.CategoriesBar
-import com.example.instatask.ui.Components.utilities.LazyScrollTemplate
+import com.example.instatask.ui.Components.utilities.LazyScrollTemplateBoards
 import com.example.instatask.ui.theme.graySurface
 import com.example.instatask.viewmodel.TheViewModel
 import de.charlex.compose.BottomDrawerScaffold
@@ -131,7 +131,7 @@ fun TaskBoard(vmodel: TheViewModel,
 
                         }
 
-                        LazyScrollTemplate(viewModel = vmodel, navcontroller = navcontroller, mode=1)
+                        LazyScrollTemplateBoards(vModel = vmodel, navcontroller = navcontroller, mode=1)
 //                        LazyColumn(
 //                            modifier = Modifier
 //                                .background(graySurface)

@@ -1,6 +1,7 @@
 package com.example.instatask.viewmodel
 
 import android.app.Application
+import android.content.Context
 import android.util.Log
 import androidx.compose.runtime.*
 import androidx.lifecycle.AndroidViewModel
@@ -15,6 +16,7 @@ import com.example.instatask.network.repository.AuthAPIService
 import com.example.instatask.network.repository.RetrofitHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import retrofit2.Response
 
 
 class TheViewModel(application: Application) : AndroidViewModel(application) {
@@ -28,7 +30,10 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
 
    // var taskList: MutableList<JobCreator> = mutableStateListOf() // DOES NOT WORK
 
-    var taskList by mutableStateOf(jobCreators) // works
+   // var currentDisplayedList: List<JobCreator> by mutableStateOf(jobCreators) // works
+
+    /* THIS IS BEING DISPLAYED On THE TASKBOARD/SKILLBOARD WHEN UPDATED*/
+    var currentList: List<ResponseSkillType> by mutableStateOf(listOf(ResponseSkillType()))
 
 
     /* mutable
@@ -51,17 +56,21 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
 
         categoriesSkill = listOf(
             Categories("Post Skill", R.drawable.more),
-            Categories("Pets", R.drawable.petcategory, jobCreators1),
-            Categories("Repair", R.drawable.housemaintenance, jobCreators2),
-            Categories("Cleaning", R.drawable.cleaning, jobCreators3),
-            Categories("Auto", R.drawable.technician, jobCreators4),
-            Categories("Plumbing", R.drawable.workinprogress, jobCreators5),
-            Categories("Gardener", R.drawable.farming, jobCreators),
+            Categories("Pets", R.drawable.petcategory),
+            Categories("Repair", R.drawable.housemaintenance),
+            Categories("Cleaning", R.drawable.cleaning),
+            Categories("Auto", R.drawable.technician),
+            Categories("Plumbing", R.drawable.workinprogress),
+            Categories("Gardener", R.drawable.farming),
         )
 
       //  loadTasks(jobCreators)
     }
 
+    //Get the image ID given image string name
+    fun getImageId(context: Context, imageName:String):Int{
+        return context.getResources().getIdentifier(imageName, "drawable", context.getPackageName())
+    }
     fun up(value: Int) {
         count+=value
     }
@@ -74,8 +83,8 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
         return  categoriesSkill
     }
 
-    fun getTasklist(): List<JobCreator>{
-        return  taskList
+    fun getTasklist(): List<ResponseSkillType>{
+        return  currentList
     }
 
 //    fun addTest(): List<JobCreator>{
@@ -83,45 +92,43 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
 //    }
 
 
-    fun loadTasks(list:List<JobCreator>){
-        viewModelScope.launch {
-            taskList = list
-        }
-    }
+//    fun loadTasks(list:List<JobCreator>){
+//        viewModelScope.launch {
+//            currentDisplayedList = list
+//        }
+//    }
 
     ////////////////API ONLY////////////////////////////////////// API ONLY /////////////////////
 
     private val loginRequestLiveData = MutableLiveData<Boolean>()
 
-    var responseList  = mutableStateListOf<ResponseTokenSkill1>()
+   // var responseList  = mutableStateListOf<ResponseTokenSkill1>()
 
-    var list: List<ResponseSkillType> by mutableStateOf(listOf(ResponseSkillType()))
+
   //  var name:ResponseTokenSkills = ResponseTokenSkills(name="Peter")
 
-    fun catlist(category:Int){
+    val authService = RetrofitHelper.getAuthService()
+
+    //callBack: AuthAPIService.()-> Response<ResponseTokenSkill1>
+
+    fun getCatlist(category:Int){
         viewModelScope.launch (Dispatchers.IO){
             try{
-                val authService = RetrofitHelper.getAuthService()
-                val responseService = authService.getCatBody(GetCatBody(1))
-
-
-
+          //      val authService = RetrofitHelper.getAuthService()
+                val responseService = authService.getCat1(GetCatBody(1))
+               // val responseService = authService.callBack()
                 if(responseService.isSuccessful){
                     responseService.body()?.let{
 
                         Log.d("Logging success", "Response token $it")
-                        list  = it.list
-
+                        currentList  = it.list
                     }
-
-
                 } else{
                     responseService.errorBody()?.let{
 
                         Log.d("Logging error", "response token $it")
                         it.close()
                     }
-
                 }
                // loginRequestLiveData.postValue(responseService.isSuccessful)
 

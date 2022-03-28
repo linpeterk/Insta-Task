@@ -9,6 +9,6 @@ import retrofit2.http.POST
 interface AuthAPIService {
 
     @POST("get_cat_skill1")
-    suspend fun getCatBody(@Body getcat: GetCatBody): Response<ResponseTokenSkill1>
+    suspend fun getCat1(@Body getcat: GetCatBody): Response<ResponseTokenSkill1>
 
 }

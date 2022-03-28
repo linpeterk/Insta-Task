@@ -30,7 +30,7 @@ fun CategoriesBar(vmodel: TheViewModel, list:List<Categories>){
             //.border(3.dp, Color.Red)
 
         ) {
-            items(list) { item ->
+            items(list) { item -> //This is the categories List, loop through
 
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
@@ -43,7 +43,7 @@ fun CategoriesBar(vmodel: TheViewModel, list:List<Categories>){
                         modifier = Modifier
                       //      .border(3.dp, Color.Red)
                             .clickable(onClick = {
-                            vmodel.loadTasks(item.list)
+                            vmodel.getCatlist(1) //When category clicked, load its perspective list
 
                           //      Log.d("Bar", "list is ${vmodel.taskList[0].description}")
                             })
@@ -59,7 +59,7 @@ fun CategoriesBar(vmodel: TheViewModel, list:List<Categories>){
                         modifier = Modifier.wrapContentSize()
                            // .border(3.dp, Color.Red)
                             .clickable(onClick = {
-                            vmodel.loadTasks(item.list)
+                            vmodel.getCatlist(1)
                             //      Log.d("Bar", "list is ${vmodel.taskList[0].description}")
                         })
                         //  .border(2.dp, Color.Yellow)
