@@ -22,3 +22,4 @@ data class ResponseSkillType(
     var workLocation:String = "",
 
     )
+

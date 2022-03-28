@@ -1,22 +1,23 @@
 package com.example.instatask.viewmodel
 
+import android.R.attr.data
 import android.app.Application
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.runtime.*
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.instatask.R
 import com.example.instatask.model.*
 import com.example.instatask.network.GetCatBody
-import com.example.instatask.network.ResponseTokenSkill1
 import com.example.instatask.network.ResponseSkillType
-import com.example.instatask.network.repository.AuthAPIService
+import com.example.instatask.network.baseList
 import com.example.instatask.network.repository.RetrofitHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import retrofit2.Response
 
 
 class TheViewModel(application: Application) : AndroidViewModel(application) {
@@ -110,6 +111,7 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
     val authService = RetrofitHelper.getAuthService()
 
     //callBack: AuthAPIService.()-> Response<ResponseTokenSkill1>
+    var flag:Boolean by mutableStateOf(false)
 
     fun getCatlist(category:Int){
         viewModelScope.launch (Dispatchers.IO){
@@ -133,11 +135,21 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
                // loginRequestLiveData.postValue(responseService.isSuccessful)
 
             }catch (e:Exception){
-                Log.d("Network logging", "Exceptions in networking $e")
-
+                Log.d("Network logging", "Exceptions in networking Displaying Old Data$e")
+                flag = true
+                currentList = baseList.list
             }
 
         }
+        if(true){
+            flag = false
+            Toast.makeText(getApplication(),
+                 "No Internet, Displaying old data",
+                Toast.LENGTH_LONG
+            ).show()
+
+        }
+
 
     }
 
