@@ -62,9 +62,9 @@ class MainActivity : ComponentActivity() {
 
 
 
-//                    WhenSkillClicked(navController = NavController(this), theViewModel, 2)
+    //                WhenSkillClicked(navController = NavController(this), theViewModel, 2)
 
-//                    WhenJobClicked(navController = NavController(this), theViewModel, 2)
+               //     WhenJobClicked(navController = NavController(this), theViewModel, 2)
 //                    WhenSkillClicked(navcontroller = NavController(this))
 
                  //   SignInScreen()
