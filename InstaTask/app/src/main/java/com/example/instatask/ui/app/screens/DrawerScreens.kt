@@ -671,7 +671,7 @@ fun SignInScreen(){
                     backgroundColor = Color.Red,
                     contentColor = Color.Red),
 
-                onClick = {},
+                onClick = {Toast.makeText(context,"You re Signed In....", Toast.LENGTH_LONG).show()},
             ){
                 Text(text="Login", color = Color.White, style = TextStyle(letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)
