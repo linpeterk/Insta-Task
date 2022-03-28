@@ -35,14 +35,15 @@ class MainActivity : ComponentActivity() {
                 ) {
 
 
-                 //  DrawerNavGraph(theViewModel)
-            test(theViewModel, 1)
+
+                   DrawerNavGraph(theViewModel)
+       //     test(theViewModel, 1)
 
                     //Adama'S task for now
                   //SignUpScreen()
                   //SignInScreen()
                     //EntranceScreen()
-                    LandingScreen()
+          //          LandingScreen()
 
 
                   //  TaskBoard(theViewModel, NavController(this))
@@ -66,13 +67,17 @@ class MainActivity : ComponentActivity() {
                   //  TaskBoard()
 
 
+
+                    //DrawerNavGraph(theViewModel)
+
+
                 }
             }
 //            ProfileScreen
-            ProfileScreen(
-                user=UserInfo("User Full Name","username@gmail.com","123 W ABC Ave",681123),
-                activity=Activity(arrayOf<String>("Activity_one","Activity_two"),arrayOf<String>("Activity_1","Activity_2","Activity_3","Activity_4"))
-            )
+//            ProfileScreen(
+//                user=UserInfo("User Full Name","username@gmail.com","123 W ABC Ave",681123),
+//                activity=Activity(arrayOf<String>("Activity_one","Activity_two"),arrayOf<String>("Activity_1","Activity_2","Activity_3","Activity_4"))
+//            )
 
         }
     }
@@ -80,6 +85,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun greeting(){
     Text(text = "hello world")
+
 }
 
 @Composable
@@ -114,3 +120,6 @@ fun test(theViewModel:TheViewModel, index:Int) {
 //Argument require for profile screen
 data class UserInfo(val name:String,val email:String,val address:String,val zip:Int)
 data class Activity(val oldActivity:Array<String>,val currentActivity:Array<String>)
+
+
+
