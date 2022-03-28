@@ -1,0 +1,77 @@
+{
+    "logs": [
+        {
+            "outputFile": "C:\\Users\\User\\Desktop\\Github\\Insta Task\\Insta-Task\\InstaTask\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-or\\values-or.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\User\\.gradle\\caches\\transforms-3\\e8ab9803a1fc87d093acebc86ab9b8de\\transformed\\play-services-basement-18.0.0\\res\\values-or\\values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "195",
+                        "endColumns": "135",
+                        "endOffsets": "330"
+                    },
+                    "to": {
+                        "startLines": "12",
+                        "startColumns": "4",
+                        "startOffsets": "1324",
+                        "endColumns": "139",
+                        "endOffsets": "1459"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\User\\.gradle\\caches\\transforms-3\\adf00ce2f746f1b3bc91961fc8165985\\transformed\\core-1.7.0\\res\\values-or\\values-or.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "30",
+                        "startColumns": "4",
+                        "startOffsets": "3234",
+                        "endColumns": "100",
+                        "endOffsets": "3330"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\User\\.gradle\\caches\\transforms-3\\726553a01210adcafe67ed1829a7ffe3\\transformed\\ui-1.0.2\\res\\values-or\\values-or.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,202,289,381,458,569,657,744,814,884,954,1021",
+                        "endColumns": "96,86,91,76,110,87,86,69,69,69,66,118",
+                        "endOffsets": "197,284,376,453,564,652,739,809,879,949,1016,1135"
+                    },
+                    "to": {
+                        "startLines": "2,3,22,23,24,25,26,27,28,29,31,32",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,202,2569,2661,2738,2849,2937,3024,3094,3164,3335,3402",
+                        "endColumns": "96,86,91,76,110,87,86,69,69,69,66,118",
+                        "endOffsets": "197,284,2656,2733,2844,2932,3019,3089,3159,3229,3397,3516"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\User\\.gradle\\caches\\transforms-3\\87c2266b2b13c0676d58aeeade9a923e\\transformed\\play-services-base-18.0.1\\res\\values-or\\values.xml",
+                    "from": {
+                        "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
+                        "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
+                        "startOffsets": "193,300,457,585,698,849,980,1090,1196,1359,1468,1625,1754,1900,2053,2114,2182",
+                        "endColumns": "106,156,127,112,150,130,109,105,162,108,156,128,145,152,60,67,82",
+                        "endOffsets": "299,456,584,697,848,979,1089,1195,1358,1467,1624,1753,1899,2052,2113,2181,2264"
+                    },
+                    "to": {
+                        "startLines": "4,5,6,7,8,9,10,11,13,14,15,16,17,18,19,20,21",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "289,400,561,693,810,965,1100,1214,1464,1631,1744,1905,2038,2188,2345,2410,2482",
+                        "endColumns": "110,160,131,116,154,134,113,109,166,112,160,132,149,156,64,71,86",
+                        "endOffsets": "395,556,688,805,960,1095,1209,1319,1626,1739,1900,2033,2183,2340,2405,2477,2564"
+                    }
+                }
+            ]
+        }
+    ]
+}
