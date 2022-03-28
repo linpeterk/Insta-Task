@@ -42,8 +42,6 @@ class MainActivity : ComponentActivity() {
                    DrawerNavGraph(theViewModel)
        //     test(theViewModel, 1)
 
-
-
                     //Adama'S task for now
                   //SignUpScreen()
                   //SignInScreen()
@@ -80,7 +78,7 @@ class MainActivity : ComponentActivity() {
 
                 }
             }
-//            ProfileScreen
+//
 //            ProfileScreen(
 //                user=UserInfo("User Full Name","username@gmail.com","123 W ABC Ave",681123),
 //                activity=Activity(arrayOf<String>("Activity_one","Activity_two"),arrayOf<String>("Activity_1","Activity_2","Activity_3","Activity_4"))
