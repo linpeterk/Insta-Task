@@ -45,7 +45,7 @@ fun Start(
     Box(
         modifier = Modifier.fillMaxSize()
             .background(MaterialTheme.colors.background)
-
+            //KOTLIN
        // color = MaterialTheme.colors.background
     ) {
         Column(

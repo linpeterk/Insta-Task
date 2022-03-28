@@ -31,7 +31,7 @@ class MainActivity : ComponentActivity() {
         getLocationPermission()
         Database.data.init() // Don't Comment this out! it's in database
         setContent {
-            writeFile()
+           // writeFile()
              // Don't Comment this out!
             // A surface container using the 'background' color from the theme
 
@@ -39,8 +39,8 @@ class MainActivity : ComponentActivity() {
 
             PelpTheme {
                 navController = rememberNavController()
-               SetupNavGraph(navController = navController)
-            //    MainScreen(navController = navController)
+             //  SetupNavGraph(navController = navController)
+                MainScreen(navController = navController)
             }
 
           //  TestScreen(navController)

@@ -25,6 +25,13 @@ sealed class Screens( val title:String, val route:String)
 {
     object Test1:Screens("Test 1", "test1")
     object Test22:Screens("Test 22", "test22")
+
+    object TaskBoard:Screens("TaskBoard", "Task_Board")
+    object SkillBoard:Screens("SkillBoard", "Skill_Board")
+    object WhenJob:Screens("WhenJob", "WhenJob")
+    object WhenSkill:Screens("WhenSkill", "WhenSkill")
+ //   object SkillBoard:Screens("SkillBoard", "Skill_Board")
+
 /*
 
     object Account:DrawerScreen("Account","account")
@@ -32,8 +39,9 @@ sealed class Screens( val title:String, val route:String)
 */
 }
 val drawerScreens= listOf(
-    Screens.Test1,
-    Screens.Test22
+    Screens.TaskBoard,
+    Screens.SkillBoard,
+
 )
 
 sealed class NavigationItem(var route:String, var icon:Int, var title:String){
@@ -44,5 +52,6 @@ sealed class NavigationItem(var route:String, var icon:Int, var title:String){
     object SignUp: NavigationItem("signUp", R.drawable.logout,"SignUp")
     object Logout: NavigationItem("logout", R.drawable.logout,"Logout")
     object LandingScreen: NavigationItem("landingScreen", R.drawable.logout,"LandingScreen")
+    object EntranceScreen: NavigationItem("entranceScreen", R.drawable.logout,"EntranceScreen")
 }
 

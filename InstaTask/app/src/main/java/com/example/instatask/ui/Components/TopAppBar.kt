@@ -1,4 +1,4 @@
-package com.example.instatask.ui.app.Components
+package com.example.instatask.ui.Components
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,7 +16,7 @@ import com.example.instatask.ui.app.DrawersStatus
 
 @Composable
 
-fun topBar(title: String = "", buttonIcon: ImageVector = Icons.Filled.Menu, onButtonClicked:(Boolean)->Unit = DrawersStatus)
+fun TopBar(title: String = "", buttonIcon: ImageVector = Icons.Filled.Menu, onButtonClicked:(Boolean)->Unit = DrawersStatus)
 {
     TopAppBar(
         title = { Text(text = title) },
