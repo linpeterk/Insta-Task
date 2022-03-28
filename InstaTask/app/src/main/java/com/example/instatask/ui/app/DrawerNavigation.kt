@@ -14,8 +14,8 @@ import kotlinx.coroutines.launch
 import com.example.instatask.R
 import com.example.instatask.ui.app.screens.*
 
-
-lateinit var DrawersStatus:(Boolean)->Unit
+//Initialize values needed for screens to operate drawers in navigation. Created global variables instead of passing through each screen's parameters
+lateinit var DrawersStatus:(Boolean)->Unit  //Used by topappbar in topbar, allow for opening or closing drawers without passing through each functions.
 lateinit var drawerState: DrawerState
 @Composable
 fun init(vmodel: TheViewModel){

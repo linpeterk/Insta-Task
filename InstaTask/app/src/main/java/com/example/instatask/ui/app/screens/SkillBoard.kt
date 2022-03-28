@@ -17,10 +17,16 @@ import com.example.instatask.ui.Components.utilities.CategoriesBar
 import com.example.instatask.ui.Components.utilities.LazyScrollTemplate
 import com.example.instatask.viewmodel.TheViewModel
 import de.charlex.compose.BottomDrawerScaffold
+import de.charlex.compose.BottomDrawerScaffoldState
 import de.charlex.compose.BottomDrawerValue
 import de.charlex.compose.rememberBottomDrawerScaffoldState
 import kotlinx.coroutines.launch
 
+/*
+        KuangCheng (Peter) Lin
+        Display Skillboard
+
+ */
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun SkillBoard(
@@ -32,14 +38,16 @@ fun SkillBoard(
     var peekHeight = remember { mutableStateOf(200.dp) }
     val scope = rememberCoroutineScope()
 
-    val state = rememberBottomDrawerScaffoldState(1)
+    //
+    val state = rememberBottomDrawerScaffoldState(bottomDrawerState =
+    de.charlex.compose.BottomDrawerState(initialValue = BottomDrawerValue.Expanded, drawerTopInset = 0))
 
     var buttonText by remember{ mutableStateOf("Show Map") }
 
 
 
 
-    state.bottomDrawerState.confirmStateChange(BottomDrawerValue.Collapsed)
+   // state.bottomDrawerState.confirmStateChange(BottomDrawerValue.Collapsed)
 
     BottomDrawerScaffold(
         //scaffoldState = rememberBottomDrawerState(5)
@@ -93,10 +101,10 @@ fun SkillBoard(
 
             //initalize values by fixing peekheight
 
-            scope.launch {
-                state.bottomDrawerState.expand()
-
-            }
+//            scope.launch {
+//                state.bottomDrawerState.expand()
+//
+//            }
 
             Surface(
                 //To add Padding to Drawer

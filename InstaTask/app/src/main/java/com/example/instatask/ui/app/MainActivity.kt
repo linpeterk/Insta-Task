@@ -45,7 +45,7 @@ class MainActivity : ComponentActivity() {
 
 
 //                    TaskBoard(theViewModel)
-                  // SkillBoard(theViewModel, NavController(this))
+                   SkillBoard(theViewModel, NavController(this))
 
 
     //                WhenSkillClicked(navController = NavController(this), theViewModel, 2)
@@ -54,7 +54,7 @@ class MainActivity : ComponentActivity() {
 //                    WhenSkillClicked(navcontroller = NavController(this))
 
                  //   SignInScreen()
-                    SignUpScreen()
+                //    SignUpScreen()
                   //  TaskBoard()
 
 
