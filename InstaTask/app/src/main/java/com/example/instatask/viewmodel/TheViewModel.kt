@@ -70,7 +70,9 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
 
     //Get the image ID given image string name
     fun getImageId(context: Context, imageName:String):Int{
-        return context.getResources().getIdentifier(imageName, "drawable", context.getPackageName())
+        var imageID = context.getResources().getIdentifier(imageName, "drawable", context.getPackageName())
+        Log.d("Image IDV", "$imageID")
+        return imageID
     }
     fun up(value: Int) {
         count+=value

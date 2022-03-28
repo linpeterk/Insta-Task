@@ -40,7 +40,7 @@ class MainActivity : ComponentActivity() {
 
 
                    DrawerNavGraph(theViewModel)
-       //     test(theViewModel, 1)
+         //  test(theViewModel)
 
                     //Adama'S task for now
                   //SignUpScreen()

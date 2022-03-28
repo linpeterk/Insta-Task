@@ -1,5 +1,6 @@
 package com.example.instatask.ui.Components.utilities
 
+import android.util.Log
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -51,6 +52,8 @@ fun LazyScrollTemplateBoards(vModel: TheViewModel, navcontroller:NavController, 
 
             ){
                 Row(){
+                    Log.d("ImageRES", item.imageRes)
+                    Log.d("ImageRES", item.name)
                     Image(painter = painterResource(id = vModel.getImageId(context = LocalContext.current,item.imageRes) ), contentDescription = null,
                         modifier = Modifier
                             // .border(2.dp, Color.Red)
