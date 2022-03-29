@@ -44,7 +44,7 @@ val context = LocalContext.current
                         modifier = Modifier
                       //      .border(3.dp, Color.Red)
                             .clickable(onClick = {
-                            vmodel.getCatlist(1) //When category clicked, load its perspective list
+                            vmodel.getCatlist(item.catID) //When category clicked, load its perspective list
 
                           //      Log.d("Bar", "list is ${vmodel.taskList[0].description}")
                             })
@@ -60,7 +60,7 @@ val context = LocalContext.current
                         modifier = Modifier.wrapContentSize()
                            // .border(3.dp, Color.Red)
                             .clickable(onClick = {
-                            vmodel.getCatlist(1)
+                            vmodel.getCatlist(item.catID)
                             //      Log.d("Bar", "list is ${vmodel.taskList[0].description}")
                         })
                         //  .border(2.dp, Color.Yellow)

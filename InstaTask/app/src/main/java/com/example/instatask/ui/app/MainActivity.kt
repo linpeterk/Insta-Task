@@ -2,6 +2,9 @@ package com.example.instatask.ui.app
 
 import android.annotation.SuppressLint
 import android.app.PendingIntent.getActivity
+import android.content.Intent
+import android.content.IntentFilter
+import android.net.wifi.WifiManager
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -20,14 +23,36 @@ import androidx.compose.ui.res.painterResource
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import com.example.instatask.R
+import com.example.instatask.network.AirplaneModeChangeReceiver
+import com.example.instatask.network.Wifi
 import com.example.instatask.ui.app.screens.*
 import com.example.instatask.ui.theme.InstaTaskTheme
 import com.example.instatask.viewmodel.TheViewModel
 
 class MainActivity : ComponentActivity() {
+
+    lateinit var airReceiver: AirplaneModeChangeReceiver
+
+    lateinit var wifiReceiver2: Wifi
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val theViewModel= ViewModelProvider(this).get(TheViewModel::class.java)
+
+        airReceiver = AirplaneModeChangeReceiver()
+        wifiReceiver2 = Wifi()
+
+        val theViewModel= ViewModelProvider(this).get(TheViewModel::class.java) // viewmodel
+
+        IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED).also {
+            registerReceiver(airReceiver,it)
+        }
+
+
+        IntentFilter(WifiManager.WIFI_STATE_CHANGED_ACTION).also {
+            registerReceiver(wifiReceiver2,it)
+        }
+
         setContent {
             init(theViewModel)
             InstaTaskTheme {
