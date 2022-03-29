@@ -42,7 +42,7 @@ class MainActivity : ComponentActivity() {
                   //SignUpScreen()
                   //SignInScreen()
                     //EntranceScreen()
-                    LandingScreen()
+                    //LandingScreen()
 
 
                   //  TaskBoard(theViewModel, NavController(this))
@@ -68,7 +68,7 @@ class MainActivity : ComponentActivity() {
 
                 }
             }
-//            ProfileScreen
+         //ProfileScreen()
             ProfileScreen(
                 user=UserInfo("User Full Name","username@gmail.com","123 W ABC Ave",681123),
                 activity=Activity(arrayOf<String>("Activity_one","Activity_two"),arrayOf<String>("Activity_1","Activity_2","Activity_3","Activity_4"))
