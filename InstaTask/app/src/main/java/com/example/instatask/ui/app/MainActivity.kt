@@ -1,7 +1,6 @@
 package com.example.instatask.ui.app
 
 import android.annotation.SuppressLint
-import android.app.PendingIntent.getActivity
 import android.content.Intent
 import android.content.IntentFilter
 import android.net.wifi.WifiManager
@@ -9,25 +8,35 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.runtime.*
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.NavController
 import com.example.instatask.R
+import com.example.instatask.database.datamodel.Task
 import com.example.instatask.network.AirplaneModeChangeReceiver
 import com.example.instatask.network.Wifi
 import com.example.instatask.ui.app.screens.*
 import com.example.instatask.ui.theme.InstaTaskTheme
 import com.example.instatask.viewmodel.TheViewModel
+import java.util.*
+import kotlin.random.Random
 
 class MainActivity : ComponentActivity() {
 
@@ -63,8 +72,8 @@ class MainActivity : ComponentActivity() {
                 ) {
 
 
-
-                   DrawerNavGraph(theViewModel)
+                    CustomerList(theViewModel)
+               //    DrawerNavGraph(theViewModel)
          //  test(theViewModel)
 
                     //Adama'S task for now
@@ -124,9 +133,9 @@ fun greeting(){
 @Composable
 fun test(theViewModel:TheViewModel) {
 var context = LocalContext.current
-    var list= theViewModel.currentList
+    var list= theViewModel.currentSkillList
   //  var listName = list.name
-   // var listHr= theViewModel.currentList[index].hourlyRate
+   // var listHr= theViewModel.currentSkillList[index].hourlyRate
    // var a = theViewModel.count
     Column() {
         Button(onClick = {
@@ -136,19 +145,139 @@ var context = LocalContext.current
         }) {
             Text(text = " GET API ")
         }
-        Button(onClick = { theViewModel.up(1) }) {
+        Button(onClick = {  }) {
 
         }
         Log.d("Image ID", "Image ID ${R.drawable.petcategory}")
        Log.d("TESTS", "MSG ${context.getResources().getIdentifier("petcategory", "drawable", context.getPackageName())}")
         //Image(painter = painterResource(id = 2130968639), contentDescription = "")
 
-        Text(text = "List is ${theViewModel.currentList}")
+        Text(text = "List is ${theViewModel.currentSkillList}")
 
     }
+}
+
+@Composable
+fun CustomerList (customerViewModel: TheViewModel){
+    val taskList = customerViewModel.fetchAllTask().observeAsState(arrayListOf())
+
+    Scaffold(modifier = Modifier.fillMaxSize(),
+        floatingActionButton = {
+            ExtendedFloatingActionButton(
+                backgroundColor = Color.Red,
+                text = {
+                    Text(text = "Customer", color = Color.White)
+                },
+                onClick = {
+                    val name = UUID.randomUUID().toString()
+                    customerViewModel.insertCustomer(
+                        Task(
+                            /*
+                            taskId: Int = 0,
+                                categories: Int = 0,
+                             task_name: String? = null,
+    person_name: String? = null,
+    description: String? = null,
+    hourly_rate: Int = 0,
+    imageId: String? = null,
+    address: String? = null
+                             */
+                            categories = 1,
+                            task_name = "Walk my dog",
+                            person_name = "Peter",
+                            description = "Got a  dog that needs walking",
+                            hourly_rate = 15,
+                            imageId = "ImageRES",
+                            address = "Orange County CA"
+                        ),
 
 
+                        )
 
+                    //       customerViewModel.deleteAll()
+                }, icon = {
+                    Icon(
+                        imageVector = Icons.Default.Add,
+                        contentDescription = "image",
+                        tint = Color.White
+                    )
+                })
+
+
+        },
+
+        content = {
+            LazyColumn(content = {
+                items(
+                   taskList.value,
+                    itemContent = {
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(horizontal = 16.dp, vertical = 8.dp), content = {
+                                val color =
+                                    Color(
+                                        Random.nextInt(256),
+                                        Random.nextInt(256),
+                                        Random.nextInt(256)
+                                    )
+
+                                Box(
+                                    content = {
+                                        Text(
+                                            text = (it.task_name ?: "")[0].uppercase(),
+                                            fontSize = 24.sp,
+                                            color = color
+                                        )
+                                    }, modifier = Modifier
+                                        .size(80.dp)
+                                        .border(width = 1.2.dp, color = color, shape = CircleShape),
+                                    contentAlignment = Alignment.Center
+                                )
+                                Spacer(modifier = Modifier.size(16.dp))
+                                Column(
+                                    modifier = Modifier.weight(2F),
+                                    content = {
+                                        Spacer(modifier = Modifier.size(8.dp))
+                                        Text(
+                                            text = it.task_name?.uppercase() ?: "",
+                                            color = color,
+                                            fontSize = 16.sp,
+                                            maxLines = 1,
+                                            overflow = TextOverflow.Ellipsis
+                                        )
+                                        Text(
+                                            text = "Categories: ${it.categories}",
+                                            color = Color.Black,
+                                            fontSize = 14.6.sp
+                                        )
+                                        Text(
+                                            text = "Desc: ${it.description ?: "null"}",
+                                            color = Color.Gray,
+                                            maxLines = 1,
+                                            overflow = TextOverflow.Ellipsis
+                                        )
+                                        Text(
+                                            text = "Desc: ${it.address ?: "null"}",
+                                            color = Color.Gray,
+                                            maxLines = 1,
+                                            overflow = TextOverflow.Ellipsis
+                                        )
+                                    })
+                                Spacer(modifier = Modifier.size(16.dp))
+                                Icon(
+                                    imageVector = Icons.Default.Delete,
+                                    contentDescription = "image",
+                                    tint = Color.Red, modifier = Modifier
+                                        .size(30.dp)
+                                        .clickable(onClick = {
+                                            customerViewModel.deleteTaskById(it.taskId)
+                                        })
+                                )
+                            })
+                    })
+            })
+        })
 }
 //Argument require for profile screen
 data class UserInfo(val name:String,val email:String,val address:String,val zip:Int)
