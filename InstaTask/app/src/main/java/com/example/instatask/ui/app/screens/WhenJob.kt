@@ -35,12 +35,12 @@ private const val TAG = "MapSampleActivity"
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun WhenJobClicked(navController: NavController, viewModel:TheViewModel, index: Int) {
+fun WhenJobClicked(navController: NavController, vModel:TheViewModel, index: Int) {
 
     var context= LocalContext.current
     // cardCount =  remember {  mutableStateOf(dataBase.count()) }
     val composableScope = rememberCoroutineScope()
-    val taskInfo = viewModel.getTasklist()[index]
+    val taskInfo = vModel.getTasklist()[index]
     var peekHeight = remember { mutableStateOf(250.dp)}
 
     BottomDrawerScaffold(
@@ -114,7 +114,7 @@ fun WhenJobClicked(navController: NavController, viewModel:TheViewModel, index: 
 
                                 ){
 
-                                    Image(painter = painterResource(taskInfo.imageRes), //WORKER CARD
+                                    Image(painter = painterResource(vModel.getImageId(context = LocalContext.current, taskInfo.imageRes)), //WORKER CARD
                                         contentDescription =null,
                                         modifier= Modifier
                                             .size(130.dp)
@@ -147,7 +147,7 @@ fun WhenJobClicked(navController: NavController, viewModel:TheViewModel, index: 
                             .background(MaterialTheme.colors.primaryVariant)
                         ){
 //                                MakeScrollComponents(navController)
-                            AllReviews(jobCreators)
+                            AllReviews(vModel)
                         }
                     }
 
