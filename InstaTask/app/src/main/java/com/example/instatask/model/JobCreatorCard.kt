@@ -15,13 +15,14 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.example.instatask.viewmodel.TheViewModel
 
 fun cardViewCallBack(context: Context, name: String) {
     Toast.makeText(context,"Hello, ${name}", Toast.LENGTH_LONG).show()
 }
 
 @Composable
-fun JobCreatorCard(name:String,description:String,image:Int)
+fun JobCreatorCard(name:String,description:String,imageRes:String, vModel:TheViewModel)
 {
     var context= LocalContext.current
     Card(
@@ -40,7 +41,7 @@ fun JobCreatorCard(name:String,description:String,image:Int)
 
         ){
 
-            Image(painter = painterResource(id = image),
+            Image(painter = painterResource(id = vModel.getImageId(context,imageRes)),
                 contentDescription =null,
                 modifier= Modifier
                     .size(130.dp)

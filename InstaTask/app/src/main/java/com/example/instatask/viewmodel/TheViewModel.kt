@@ -59,11 +59,11 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
         categoriesSkill = listOf(
             Categories(0,"Post Skill", R.drawable.more),
             Categories(1,"Pets", R.drawable.petcategory),
-            Categories(2,"Repair", R.drawable.housemaintenance),
-            Categories(3,"Cleaning", R.drawable.cleaning),
+            Categories(2,"Garden", R.drawable.farming),
+            Categories(3,"Cleaning", R.drawable.cleaning_peter),
             Categories(4,"Auto", R.drawable.technician),
             Categories(5,"Plumbing", R.drawable.workinprogress),
-            Categories(6,"Gardener", R.drawable.farming),
+            Categories(6,"Repair", R.drawable.repair),
         )
 
       //  loadTasks(jobCreators)
@@ -130,6 +130,7 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
                        0-> responseService = authService.getCat1(GetCatBody(1))
                        1-> responseService = authService.getCat1(GetCatBody(1))
                        2-> responseService = authService.getCat2(GetCatBody(2))
+                       3-> responseService = authService.getCat3(GetCatBody(3))
                        else->responseService = authService.getCat1(GetCatBody(1))
                    }
                 if(responseService.isSuccessful){

@@ -130,7 +130,7 @@ fun WhenSkillClicked(navController: NavController, viewModel: TheViewModel, inde
                             .background(MaterialTheme.colors.primaryVariant)
                         ){
 //                                MakeScrollComponents(navController)
-                            AllReviews(jobCreators)
+                            AllReviews(viewModel)
                         }
                     }
 

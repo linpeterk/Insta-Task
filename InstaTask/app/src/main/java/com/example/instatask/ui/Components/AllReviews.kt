@@ -12,9 +12,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.instatask.model.JobCreator
 import com.example.instatask.model.JobCreatorCard
+import com.example.instatask.viewmodel.TheViewModel
 
 @Composable
-fun AllReviews(creatorList:List<JobCreator>) //add parameters here
+fun AllReviews(vModel: TheViewModel) //add parameters here
 {
 
     Scaffold(
@@ -36,7 +37,7 @@ fun AllReviews(creatorList:List<JobCreator>) //add parameters here
         )
         {
 
-            item {
+            item() {
 
                 Row(
                     modifier= Modifier
@@ -54,10 +55,10 @@ fun AllReviews(creatorList:List<JobCreator>) //add parameters here
 
             }// end of item
 
-            items(creatorList)
+            items(vModel.currentReviews)
             { creator->
 
-                JobCreatorCard(creator.name, creator.description,creator.imageRes)
+                JobCreatorCard(creator.name, creator.review,creator.imageRes, vModel)
 
             }
 
