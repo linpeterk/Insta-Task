@@ -23,7 +23,7 @@ import com.example.instatask.viewmodel.TheViewModel
 import java.util.*
 
 @Composable
-fun CategoriesBar(vmodel: TheViewModel, list:List<Categories>){
+fun CategoriesBar(vModel: TheViewModel, list:List<Categories>, mode:Int){
 val context = LocalContext.current
 
         LazyRow(
@@ -44,7 +44,14 @@ val context = LocalContext.current
                         modifier = Modifier
                       //      .border(3.dp, Color.Red)
                             .clickable(onClick = {
-                            vmodel.getCatlist(item.catID) //When category clicked, load its perspective list
+                                //1 for job board, 2 for skill board. Job board performs database retrieval, skill does API
+                                if(mode == 1) {
+                                    vModel.fetchCategory(item.catID)
+                                }
+                                else{
+                                    //When category clicked, load its perspective list
+                                    vModel.getCatlist(item.catID)
+                                }
 
                           //      Log.d("Bar", "list is ${vmodel.taskList[0].description}")
                             })
@@ -60,7 +67,7 @@ val context = LocalContext.current
                         modifier = Modifier.wrapContentSize()
                            // .border(3.dp, Color.Red)
                             .clickable(onClick = {
-                            vmodel.getCatlist(item.catID)
+                                vModel.getCatlist(item.catID)
                             //      Log.d("Bar", "list is ${vmodel.taskList[0].description}")
                         })
                         //  .border(2.dp, Color.Yellow)

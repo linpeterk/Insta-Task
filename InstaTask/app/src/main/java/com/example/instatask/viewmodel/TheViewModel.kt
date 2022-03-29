@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.util.Log
 import androidx.compose.runtime.*
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -37,6 +38,9 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
 
     var currentReviews: List<ResponseReviewType> by mutableStateOf(listOf(ResponseReviewType()))
 
+     lateinit var currentTaskList : LiveData<List<Task>>
+
+    private val TaskRepository: TaskRepository = TaskRepository(application = application)
 
     /* mutable
     mutableStateOf parameters is prefered used for immutable lists, primitives, simple datatypes
@@ -66,7 +70,7 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
             Categories(5,"Plumbing", R.drawable.workinprogress),
             Categories(6,"Repair", R.drawable.repair),
         )
-
+    fetchCategory(1)
     }
 
     /*
@@ -106,11 +110,11 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
  API Below
   */
 
-    private val loginRequestLiveData = MutableLiveData<Boolean>() //currently not in use
+     val loginRequestLiveData = MutableLiveData<Boolean>() //currently not in use
 
    // var responseList  = mutableStateListOf<ResponseTokenSkill1>()
   //  var name:ResponseTokenSkills = ResponseTokenSkills(name="Peter")
-
+   // loginRequestLiveData.postValue(responseService.isSuccessful)
     val authService = RetrofitHelper.getAuthService()
 
     //API get category list for skill and job board, parameter int for category number
@@ -142,7 +146,7 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
                         it.close()
                     }
                 }
-               // loginRequestLiveData.postValue(responseService.isSuccessful)
+
 
             }catch (e:Exception){
                 Log.d("Network logging", "Exceptions in networking Displaying Old Data$e")
@@ -202,12 +206,17 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
     ROOM DATABASE Below  ***********************************************************************************************
     ROOM DATABASE Below
      */
+   // val taskList = fetchAllTask().observeAsState(arrayListOf())
 
-    private val TaskRepository: TaskRepository = TaskRepository(application = application)
 
-    fun fetchAllTask(): LiveData<List<Task>>{
-        return TaskRepository.readAllTasks
-    }
+
+//    fun fetchAllTask(): LiveData<List<Task>>{
+//        return TaskRepository.readAllTasks
+//    }
+
+
+
+
 
     fun insertCustomer(task: Task)
     {
@@ -222,7 +231,14 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
             TaskRepository.deleteTaskById(id)
         }
     }
-
+    fun fetchCategory(id: Int)
+    {
+      //  loginRequestLiveData.postValue(true)
+        Log.d("Category Testing", "$id")
+        viewModelScope.launch{
+            currentTaskList = TaskRepository.fetchCategory(id)
+        }
+    }
 
 
     /*

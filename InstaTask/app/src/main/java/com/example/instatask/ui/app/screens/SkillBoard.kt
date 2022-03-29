@@ -14,7 +14,7 @@ import androidx.navigation.NavController
 import com.example.instatask.ui.Components.MakeGoogleMap
 import com.example.instatask.ui.Components.TopBar
 import com.example.instatask.ui.Components.utilities.CategoriesBar
-import com.example.instatask.ui.Components.utilities.LazyScrollTemplateBoards
+import com.example.instatask.ui.Components.utilities.LazyScrollSkillBoard
 import com.example.instatask.viewmodel.TheViewModel
 import de.charlex.compose.BottomDrawerScaffold
 import de.charlex.compose.BottomDrawerScaffoldState
@@ -129,11 +129,11 @@ fun SkillBoard(
                                 .background(Color.White)
 
                         ) {
-                            CategoriesBar(vmodel = vmodel, vmodel.categoriesSkill)
+                            CategoriesBar(vModel = vmodel, vmodel.categoriesSkill, 2)
 
                         }
 
-                        LazyScrollTemplateBoards(vModel = vmodel, navcontroller = navcontroller,mode=2)
+                        LazyScrollSkillBoard(vModel = vmodel, navcontroller = navcontroller)
 
                     }
                 }

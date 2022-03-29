@@ -20,14 +20,17 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.instatask.R
 import com.example.instatask.database.datamodel.Task
 import com.example.instatask.network.AirplaneModeChangeReceiver
@@ -64,6 +67,8 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             init(theViewModel)
+            //Do not run this
+           // initDatabase(theViewModel)
             InstaTaskTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
@@ -72,44 +77,22 @@ class MainActivity : ComponentActivity() {
                 ) {
 
 
-                    CustomerList(theViewModel)
-               //    DrawerNavGraph(theViewModel)
+                 //   CustomerList(theViewModel)
+                  DrawerNavGraph(theViewModel)
          //  test(theViewModel)
 
                     //Adama'S task for now
                   //SignUpScreen()
-                  //SignInScreen()
                     //EntranceScreen()
 
           //          LandingScreen()
 
-
-
                 //    TaskBoard(theViewModel, NavController(this))
-
 
 
 //                    TaskBoard(theViewModel)
 
               //   SkillBoard(theViewModel, NavController(this))
-
-
-
-
-
-
-//                    WhenSkillClicked(navController = NavController(this), theViewModel, 2)
-
-//                    WhenJobClicked(navController = NavController(this), theViewModel, 2)
-
-
-                 //   SignInScreen()
-                //    SignUpScreen()
-                  //  TaskBoard()
-
-
-
-                    //DrawerNavGraph(theViewModel)
 
 
                 }
@@ -132,8 +115,10 @@ fun greeting(){
 @SuppressLint("ResourceType")
 @Composable
 fun test(theViewModel:TheViewModel) {
+
 var context = LocalContext.current
     var list= theViewModel.currentSkillList
+
   //  var listName = list.name
    // var listHr= theViewModel.currentSkillList[index].hourlyRate
    // var a = theViewModel.count
@@ -157,10 +142,22 @@ var context = LocalContext.current
     }
 }
 
-@Composable
-fun CustomerList (customerViewModel: TheViewModel){
-    val taskList = customerViewModel.fetchAllTask().observeAsState(arrayListOf())
+/*
+                           taskId: Int = 0,
+                               categories: Int = 0,
+                            task_name: String? = null,
+   person_name: String? = null,
+   description: String? = null,
+   hourly_rate: Int = 0,
+   imageId: String? = null,
+   address: String? = null
+                            */
 
+@Composable
+fun CustomerList (vModel: TheViewModel){
+   val taskList = vModel.currentTaskList.observeAsState(arrayListOf())
+    var category = remember { mutableStateOf("")}
+    //var taskList = vModel.taskList.observeAsState(arrayListOf())
     Scaffold(modifier = Modifier.fillMaxSize(),
         floatingActionButton = {
             ExtendedFloatingActionButton(
@@ -170,18 +167,8 @@ fun CustomerList (customerViewModel: TheViewModel){
                 },
                 onClick = {
                     val name = UUID.randomUUID().toString()
-                    customerViewModel.insertCustomer(
+                    vModel.insertCustomer(
                         Task(
-                            /*
-                            taskId: Int = 0,
-                                categories: Int = 0,
-                             task_name: String? = null,
-    person_name: String? = null,
-    description: String? = null,
-    hourly_rate: Int = 0,
-    imageId: String? = null,
-    address: String? = null
-                             */
                             categories = 1,
                             task_name = "Walk my dog",
                             person_name = "Peter",
@@ -209,7 +196,7 @@ fun CustomerList (customerViewModel: TheViewModel){
         content = {
             LazyColumn(content = {
                 items(
-                   taskList.value,
+                    taskList.value,
                     itemContent = {
                         Row(
                             modifier = Modifier
@@ -271,13 +258,26 @@ fun CustomerList (customerViewModel: TheViewModel){
                                     tint = Color.Red, modifier = Modifier
                                         .size(30.dp)
                                         .clickable(onClick = {
-                                            customerViewModel.deleteTaskById(it.taskId)
+                                            vModel.deleteTaskById(it.taskId)
                                         })
                                 )
                             })
                     })
             })
         })
+    Column()
+    {
+        Box(modifier = Modifier.size(40.dp)) {
+            Button(onClick = {
+                vModel.fetchCategory(category.value.toInt())
+
+
+            }, modifier = Modifier.size(20.dp)) {
+
+            }
+        }
+        TextField(value = category.value, onValueChange = { it -> category.value = it })
+    }
 }
 //Argument require for profile screen
 data class UserInfo(val name:String,val email:String,val address:String,val zip:Int)

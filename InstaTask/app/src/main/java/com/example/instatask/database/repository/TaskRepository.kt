@@ -2,6 +2,7 @@ package com.example.instatask.database.repository
 
 import android.app.Application
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.instatask.database.dao.TaskData
 import com.example.instatask.database.datamodel.AppDatabase
 import com.example.instatask.database.datamodel.Task
@@ -19,6 +20,9 @@ class TaskRepository (application: Application){
 
     val readAllTasks: LiveData<List<Task>> = taskDao.fetchAllTask()
 
+
+
+    //MutableLiveData<List<Task>>
     suspend fun deleteTaskById(id:Int)
     {
         taskDao.deleteTaskById(id)
@@ -32,6 +36,21 @@ class TaskRepository (application: Application){
     {
         taskDao.deleteTask()
     }
+
+//     fun fetchCategory(id:Int) : LiveData<List<Task>>
+//    {
+//     var  readSomeTasks: LiveData<List<Task>>  = taskDao.fetchCategory(id)
+//
+//        return readSomeTasks
+//    }
+
+    fun fetchCategory(id:Int) : LiveData<List<Task>>
+    {
+        var  readSomeTasks: LiveData<List<Task>>  = taskDao.fetchCategory(id)
+
+        return readSomeTasks
+    }
+
 
 
 }
