@@ -73,7 +73,7 @@ fun WhenSkillClicked(navController: NavController, viewModel: TheViewModel, inde
 
                                 ){
 
-                                    Image(painter = painterResource(taskInfo.imageRes), //WORKER CARD
+                                    Image(painter = painterResource(viewModel.getImageId(context = LocalContext.current,taskInfo.imageRes)), //WORKER CARD
                                         contentDescription =null,
                                         modifier= Modifier
                                             .size(130.dp)
@@ -130,7 +130,7 @@ fun WhenSkillClicked(navController: NavController, viewModel: TheViewModel, inde
                             .background(MaterialTheme.colors.primaryVariant)
                         ){
 //                                MakeScrollComponents(navController)
-                            AllReviews(jobCreators)
+                            AllReviews(viewModel)
                         }
                     }
 

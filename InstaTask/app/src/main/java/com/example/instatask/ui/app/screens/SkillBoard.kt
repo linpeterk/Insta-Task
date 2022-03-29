@@ -14,7 +14,7 @@ import androidx.navigation.NavController
 import com.example.instatask.ui.Components.MakeGoogleMap
 import com.example.instatask.ui.Components.TopBar
 import com.example.instatask.ui.Components.utilities.CategoriesBar
-import com.example.instatask.ui.Components.utilities.LazyScrollTemplate
+import com.example.instatask.ui.Components.utilities.LazyScrollTemplateBoards
 import com.example.instatask.viewmodel.TheViewModel
 import de.charlex.compose.BottomDrawerScaffold
 import de.charlex.compose.BottomDrawerScaffoldState
@@ -39,9 +39,9 @@ fun SkillBoard(
     val scope = rememberCoroutineScope()
 
     //
-    val state = rememberBottomDrawerScaffoldState(bottomDrawerState =
-    de.charlex.compose.BottomDrawerState(initialValue = BottomDrawerValue.Expanded, drawerTopInset = 0))
-
+  //  val state = rememberBottomDrawerScaffoldState(bottomDrawerState =
+   // de.charlex.compose.BottomDrawerState(initialValue = BottomDrawerValue.Expanded, drawerTopInset = 0))
+    val state = rememberBottomDrawerScaffoldState()
     var buttonText by remember{ mutableStateOf("Show Map") }
 
 
@@ -101,10 +101,10 @@ fun SkillBoard(
 
             //initalize values by fixing peekheight
 
-//            scope.launch {
-//                state.bottomDrawerState.expand()
-//
-//            }
+            scope.launch {
+                state.bottomDrawerState.expand()
+
+            }
 
             Surface(
                 //To add Padding to Drawer
@@ -133,7 +133,7 @@ fun SkillBoard(
 
                         }
 
-                        LazyScrollTemplate(viewModel = vmodel, navcontroller = navcontroller,mode=2)
+                        LazyScrollTemplateBoards(vModel = vmodel, navcontroller = navcontroller,mode=2)
 
                     }
                 }

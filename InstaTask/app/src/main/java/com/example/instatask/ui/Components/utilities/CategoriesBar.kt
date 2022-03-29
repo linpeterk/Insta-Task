@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Blue
 import androidx.compose.ui.graphics.Color.Companion.Red
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -23,14 +24,14 @@ import java.util.*
 
 @Composable
 fun CategoriesBar(vmodel: TheViewModel, list:List<Categories>){
-
+val context = LocalContext.current
 
         LazyRow(
             modifier = Modifier
             //.border(3.dp, Color.Red)
 
         ) {
-            items(list) { item ->
+            items(list) { item -> //This is the categories List, loop through
 
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,
@@ -43,7 +44,7 @@ fun CategoriesBar(vmodel: TheViewModel, list:List<Categories>){
                         modifier = Modifier
                       //      .border(3.dp, Color.Red)
                             .clickable(onClick = {
-                            vmodel.loadTasks(item.list)
+                            vmodel.getCatlist(item.catID) //When category clicked, load its perspective list
 
                           //      Log.d("Bar", "list is ${vmodel.taskList[0].description}")
                             })
@@ -59,7 +60,7 @@ fun CategoriesBar(vmodel: TheViewModel, list:List<Categories>){
                         modifier = Modifier.wrapContentSize()
                            // .border(3.dp, Color.Red)
                             .clickable(onClick = {
-                            vmodel.loadTasks(item.list)
+                            vmodel.getCatlist(item.catID)
                             //      Log.d("Bar", "list is ${vmodel.taskList[0].description}")
                         })
                         //  .border(2.dp, Color.Yellow)

@@ -22,3 +22,22 @@ data class ResponseSkillType(
     var workLocation:String = "",
 
     )
+
+data class ResponseReviewType(
+    @SerializedName("id")
+    var id:Int = 0,
+    @SerializedName("name")
+    var name:String = "",
+    @SerializedName("review")
+    var review:String = "",
+    @SerializedName("imageRes")
+    var imageRes:String = "",
+    @SerializedName("available")
+    var available:String = "",
+    @SerializedName("workLocation")
+    var workLocation:String? = null
+
+
+)
+
+

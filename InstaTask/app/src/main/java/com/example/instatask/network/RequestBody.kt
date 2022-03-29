@@ -11,4 +11,12 @@ data class GetCatBody(
 
 )
 
+data class GetReviewBody(
+
+    @SerializedName("personID")
+    val personID: Int,
+    @SerializedName("review")
+    val review: Int
+
+)
 
