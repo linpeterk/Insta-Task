@@ -12,10 +12,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.instatask.R
 import com.example.instatask.model.*
-import com.example.instatask.network.GetCatBody
-import com.example.instatask.network.ResponseSkillType
-import com.example.instatask.network.ResponseTokenSkill
-import com.example.instatask.network.baseList
+import com.example.instatask.network.*
 import com.example.instatask.network.repository.RetrofitHelper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -37,6 +34,8 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
 
     /* THIS IS BEING DISPLAYED On THE TASKBOARD/SKILLBOARD WHEN UPDATED*/
     var currentList: List<ResponseSkillType> by mutableStateOf(listOf(ResponseSkillType()))
+
+    var currentReviews: List<ResponseReviewType> by mutableStateOf(listOf(ResponseReviewType()))
 
 
     /* mutable
@@ -133,7 +132,6 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
                        2-> responseService = authService.getCat2(GetCatBody(2))
                        else->responseService = authService.getCat1(GetCatBody(1))
                    }
-               // val responseService = authService.callBack()
                 if(responseService.isSuccessful){
                     responseService.body()?.let{
 
@@ -153,11 +151,39 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
                 Log.d("Network logging", "Exceptions in networking Displaying Old Data$e")
                 currentList = baseList.list
             }
-
         }
+    }
+
+    fun getReviews(id:Int, review: Int){
+        viewModelScope.launch (Dispatchers.IO){
+            try{
+                //      val authService = RetrofitHelper.getAuthService()
+                val responseService: Response<ResponseTokenReview>
 
 
+                    responseService = authService.getReviews(GetReviewBody(2, 2))
 
+
+                if(responseService.isSuccessful){
+                    responseService.body()?.let{ review ->
+
+                        Log.d("Logging success", "Response token $review") //it is response token review
+                        currentReviews  = review.list
+                    }
+                } else{
+                    responseService.errorBody()?.let{
+
+                        Log.d("Logging error", "response token $review")
+                        it.close()
+                    }
+                }
+                // loginRequestLiveData.postValue(responseService.isSuccessful)
+
+            }catch (e:Exception){
+                Log.d("Network logging", "Exceptions in networking Displaying Old Data$e")
+                currentList = baseList.list
+            }
+        }
     }
 
 }

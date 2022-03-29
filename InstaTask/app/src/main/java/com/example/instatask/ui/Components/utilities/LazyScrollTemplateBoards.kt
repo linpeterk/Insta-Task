@@ -68,7 +68,8 @@ fun LazyScrollTemplateBoards(vModel: TheViewModel, navcontroller:NavController, 
                                 navcontroller.navigate(Screens.WhenJob.route + "/${item.id - 1}")
                             }
                             else if(mode==2){
-                        //        navcontroller.navigate(Screens.WhenSkill.route)
+                                vModel.getReviews(2, 2)
+                                navcontroller.navigate(Screens.WhenSkill.route)
                             }
                             else {
                          //       navcontroller.navigate(Screens.WhenJob.route + "/${item.id - 1}")

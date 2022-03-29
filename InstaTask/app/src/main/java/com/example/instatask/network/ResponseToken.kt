@@ -10,6 +10,11 @@ data class ResponseTokenSkill(
 
     )
 
+data class ResponseTokenReview(
+    @SerializedName("review2")
+    val list:List<ResponseReviewType>
+)
+
 
 object baseList {
 
