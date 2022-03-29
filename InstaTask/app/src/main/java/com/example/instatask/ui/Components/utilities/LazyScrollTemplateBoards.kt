@@ -9,11 +9,13 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -85,11 +87,12 @@ fun LazyScrollTemplateBoards(vModel: TheViewModel, navcontroller:NavController, 
                         })
                     ){
 
-                        Text(text = "${item.name}", fontSize = 16.sp)
-                        Text(text = "Hourly rate $${item.hourlyRate}", fontSize = 12.sp)
-                        Text(text = "Areas served:${item.workLocation}, CA", fontSize = 12.sp)
-                        Text(text = "Hours:${item.available}", fontSize = 12.sp)
+                        Text(text = "${item.name}", fontSize = 16.sp, modifier = Modifier.fillMaxWidth())
+                        Text(text = "Hourly $${item.hourlyRate}", fontSize = 12.sp,  modifier = Modifier.fillMaxWidth())
+                        Text(text = "Areas served: ${item.workLocation}, CA", fontSize = 12.sp,  modifier = Modifier.fillMaxWidth())
+                        Text(text = "Hours: ${item.available}", fontSize = 12.sp,  modifier = Modifier.fillMaxWidth())
                         Spacer(modifier = Modifier.padding(5.dp))
+
                         Text(text = "Review: \n\"${item.description} \"",
                             overflow = TextOverflow.Visible,
                             fontSize = 16.sp,

@@ -127,10 +127,13 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
           //      val authService = RetrofitHelper.getAuthService()
                 val responseService: Response<ResponseTokenSkill>
                    when(category) {
-                       0-> responseService = authService.getCat1(GetCatBody(1))
+                       0-> responseService = authService.getCat1(GetCatBody(1)) //load default, this is for post skill
                        1-> responseService = authService.getCat1(GetCatBody(1))
                        2-> responseService = authService.getCat2(GetCatBody(2))
                        3-> responseService = authService.getCat3(GetCatBody(3))
+                       4-> responseService = authService.getCat4(GetCatBody(4))
+                       5-> responseService = authService.getCat5(GetCatBody(4))
+                       6-> responseService = authService.getCat6(GetCatBody(4))
                        else->responseService = authService.getCat1(GetCatBody(1))
                    }
                 if(responseService.isSuccessful){
