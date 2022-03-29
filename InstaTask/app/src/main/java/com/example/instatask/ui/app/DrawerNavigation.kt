@@ -98,13 +98,18 @@ fun DrawerNavGraph(vmodel: TheViewModel) {
                 }
 
                 composable(
-                    route = Screens.WhenSkill.route,
-              //      arguments = listOf(navArgument("taskId"){type = NavType.IntType})
+                    route = Screens.WhenSkill.route + "/{taskID}",
+                    arguments = listOf(navArgument("taskID"){type = NavType.IntType})
                 )
                 {
-
-                        WhenSkillClicked(viewModel = vmodel, navController = navController, index = 0 )
-
+                    val id: Int? = it.arguments?.getInt("taskID")
+                    if(id!=null) {
+                        WhenSkillClicked(
+                            viewModel = vmodel,
+                            navController = navController,
+                            index = id
+                        )
+                    }
                 }
 
                 composable(Screens.TaskBoard.route)
