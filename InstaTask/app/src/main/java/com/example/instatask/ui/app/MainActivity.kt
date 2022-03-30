@@ -365,7 +365,7 @@ fun BottomNavigationBar(navController: NavController) {
 fun MainScreen() {
     val navController = rememberNavController()
     Scaffold(
-       
+
         bottomBar = { BottomNavigationBar(navController) }
     ) {
         Navigation(navController = navController)
