@@ -36,6 +36,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.instatask.R
 import com.example.instatask.database.datamodel.Task
+import com.example.instatask.database.datamodel.initDatabase
 import com.example.instatask.network.AirplaneModeChangeReceiver
 import com.example.instatask.network.Wifi
 import com.example.instatask.ui.app.screens.*
@@ -70,8 +71,8 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             init(theViewModel)
-            //Do not run this
-           // initDatabase(theViewModel)
+
+         //  initDatabase(theViewModel) //Do not run this
             InstaTaskTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
@@ -111,11 +112,13 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-@Composable
-fun greeting(){
-    Text(text = "hello world")
 
-}
+
+
+
+
+
+
 
 @SuppressLint("ResourceType")
 @Composable
@@ -157,7 +160,7 @@ var context = LocalContext.current
    imageId: String? = null,
    address: String? = null
                             */
-
+/*
 @Composable
 fun CustomerList (vModel: TheViewModel){
    val taskList = vModel.currentTaskList.observeAsState(arrayListOf())
@@ -284,7 +287,13 @@ fun CustomerList (vModel: TheViewModel){
         TextField(value = category.value, onValueChange = { it -> category.value = it })
     }
 }
+
 //Argument require for profile screen and job accepted screen
+=======
+*/
+
+//Argument require for profile screen
+
 data class UserInfo(val name:String,val email:String,val address:String,val zip:Int)
 data class Activity(val oldActivity:Array<String>,val currentActivity:Array<String>)
 data class JobDetails(val acceptorName:String,val hours:Int,val rate:Int,val desination:String,val creatorName:String,val description:String,val acceptedDate:String)

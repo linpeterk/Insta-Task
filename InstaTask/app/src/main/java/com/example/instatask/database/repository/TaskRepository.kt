@@ -44,9 +44,9 @@ class TaskRepository (application: Application){
 //        return readSomeTasks
 //    }
 
-    fun fetchCategory(id:Int) : LiveData<List<Task>>
+    suspend fun fetchCategory(id:Int) : List<Task>
     {
-        var  readSomeTasks: LiveData<List<Task>>  = taskDao.fetchCategory(id)
+        var  readSomeTasks: List<Task>  = taskDao.fetchCategory(id)
 
         return readSomeTasks
     }

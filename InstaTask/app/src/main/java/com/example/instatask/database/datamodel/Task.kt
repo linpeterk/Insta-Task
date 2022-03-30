@@ -3,6 +3,7 @@ package com.example.instatask.database.datamodel
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.google.android.gms.maps.model.LatLng
 
 @Entity(tableName = "task")
 data class Task (
@@ -25,10 +26,18 @@ data class Task (
     @ColumnInfo(name = "hourly_rate")
     val hourly_rate:Int = 0,
 
+    @ColumnInfo(name = "datetime")
+    val datetime:String? = null,
+
     @ColumnInfo(name = "imageId")
     val imageId:String? = null,
 
     @ColumnInfo(name = "address")
-    val address:String? = null
+    val address:String? = null,
 
+    @ColumnInfo(name = "lat")
+    val lat:Float? = null,
+
+    @ColumnInfo(name = "long")
+    val lng:Float? = null
 )

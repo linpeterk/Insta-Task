@@ -19,7 +19,7 @@ interface TaskData {
     fun fetchAllTask(): LiveData<List<Task>>
 
     @Query("SELECT * FROM task where categories=:id")
-    fun fetchCategory(id:Int): LiveData<List<Task>>
+    suspend fun fetchCategory(id:Int): List<Task>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTask(task:Task)

@@ -38,7 +38,7 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
 
     var currentReviews: List<ResponseReviewType> by mutableStateOf(listOf(ResponseReviewType()))
 
-     lateinit var currentTaskList : LiveData<List<Task>>
+      var currentTaskList : List<Task> by  mutableStateOf(listOf(Task()))
 
     private val TaskRepository: TaskRepository = TaskRepository(application = application)
 
@@ -240,6 +240,12 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
+    fun deleteALL(){
+        viewModelScope.launch {
+
+            TaskRepository.deleteAll()
+        }
+    }
 
     /*
    ROOM DATABASE Above

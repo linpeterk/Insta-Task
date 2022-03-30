@@ -27,7 +27,8 @@ import com.example.instatask.viewmodel.TheViewModel
 @Composable
 fun LazyScrollTaskBoard(vModel: TheViewModel, navcontroller:NavController){
 
-    val currentList = vModel.currentTaskList.observeAsState(arrayListOf())
+   // val currentList = vModel.currentTaskList.observeAsState(arrayListOf())
+    val currentList = vModel.currentTaskList
    // vModel.loginRequestLiveData
     LazyColumn(
         modifier = Modifier
@@ -38,7 +39,7 @@ fun LazyScrollTaskBoard(vModel: TheViewModel, navcontroller:NavController){
     ){
 
         items(
-            currentList.value
+            currentList
         ){ item->
             Spacer(modifier = Modifier.padding(3.dp))
             Card(
