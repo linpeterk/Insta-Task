@@ -36,6 +36,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.instatask.R
 import com.example.instatask.database.datamodel.Task
+import com.example.instatask.database.datamodel.deleteDB
 import com.example.instatask.database.datamodel.initDatabase
 import com.example.instatask.network.AirplaneModeChangeReceiver
 import com.example.instatask.network.Wifi
@@ -72,7 +73,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             init(theViewModel)
 
-         //  initDatabase(theViewModel) //Do not run this
+         //   deleteDB(theViewModel) // Definitely don't run this
+         //   initDatabase(theViewModel) //Do not run this, run only once to initiate database
+
+
             InstaTaskTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(

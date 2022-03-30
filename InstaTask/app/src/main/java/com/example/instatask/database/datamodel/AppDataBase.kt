@@ -37,11 +37,15 @@ abstract class AppDatabase : RoomDatabase() {
     }
 }
 
+fun deleteDB(vModel:TheViewModel){
+    vModel.deleteALL()
 
+}
 
 /*
 Warnings do not run or modify this function
  */
+
 fun initDatabase(vModel: TheViewModel){
 
       // vModel.deleteALL()
@@ -54,7 +58,9 @@ fun initDatabase(vModel: TheViewModel){
             description = "Got a  dog that needs walking",
             hourly_rate = 15,
             imageId = "petcategory",
-            address = "67 Sanctuary, Irvine, CA 92620"
+            address = "67 Sanctuary, Irvine, CA 92620",
+            lat = 37.4242 ,
+            lng = -122.0813
         ))
 
     vModel.insertCustomer(
@@ -65,7 +71,9 @@ fun initDatabase(vModel: TheViewModel){
             description = "Working overtime tonight, need someone to take care of my cats",
             hourly_rate = 20,
             imageId = "petcategory",
-            address = "52 Fanlight, Irvine, CA 92620"
+            address = "52 Fanlight, Irvine, CA 92620",
+            lat = 37.4302 ,
+            lng = -122.08561
         ))
 
     vModel.insertCustomer(
@@ -76,7 +84,9 @@ fun initDatabase(vModel: TheViewModel){
             description = "Out of town for 2 weeks, looking for someone to feed my fish every day",
             hourly_rate = 20,
             imageId = "petcategory",
-            address = "6222 Irvine Blvd, Irvine, CA 92620"
+            address = "6222 Irvine Blvd, Irvine, CA 92620",
+            lat = 37.4174 ,
+            lng = -122.0919
         ))
 
     vModel.insertCustomer(
@@ -87,7 +97,9 @@ fun initDatabase(vModel: TheViewModel){
             description = "I got a nice pitbull that needs a haircut",
             hourly_rate = 35,
             imageId = "petcategory",
-            address = "36 Lyndhurst, Irvine, CA 92620"
+            address = "36 Lyndhurst, Irvine, CA 92620",
+            lat = 37.4129 ,
+            lng = -122.0904
         ))
 
     vModel.insertCustomer(
@@ -98,7 +110,9 @@ fun initDatabase(vModel: TheViewModel){
             description = "2 vines and advocado trees that need to be watered",
             hourly_rate = 25,
             imageId = "petcategory",
-            address = "71 Interlude, Irvine, CA 92620"
+            address = "71 Interlude, Irvine, CA 92620",
+            lat = 37.4074 ,
+            lng = -122.0881
         ))
 
     vModel.insertCustomer(
@@ -109,7 +123,9 @@ fun initDatabase(vModel: TheViewModel){
             description = "Looking for dog walker",
             hourly_rate = 15,
             imageId = "petcategory",
-            address = "109 Tidal Line, Irvine, CA 92620"
+            address = "109 Tidal Line, Irvine, CA 92620",
+            lat = 37.4067 ,
+            lng = -122.0743
         ))
 
     ////////////////////////////////
@@ -122,7 +138,9 @@ fun initDatabase(vModel: TheViewModel){
             description = "Large amount of vines around the fence that needs to be cut off, good tips",
             hourly_rate = 45,
             imageId = "farming",
-            address = "67 Sanctuary, Irvine, CA 92620"
+            address = "67 Sanctuary, Irvine, CA 92620",
+            lat = 37.4242 ,
+            lng = -122.0813
         ))
 
     vModel.insertCustomer(
@@ -133,7 +151,9 @@ fun initDatabase(vModel: TheViewModel){
             description = "Need a helping hand on planting a dozen avocado trees.",
             hourly_rate = 20,
             imageId = "farming",
-            address = "52 Fanlight, Irvine, CA 92620"
+            address = "52 Fanlight, Irvine, CA 92620",
+            lat = 37.4137 ,
+            lng = -122.05284619973649
         ))
 
     vModel.insertCustomer(
@@ -144,7 +164,9 @@ fun initDatabase(vModel: TheViewModel){
             description = "Help me kill weeds, no chemicals",
             hourly_rate = 20,
             imageId = "farming",
-            address = "6222 Irvine Blvd, Irvine, CA 92620"
+            address = "6222 Irvine Blvd, Irvine, CA 92620",
+            lat = 37.3591 ,
+            lng = -122.0754
         ))
 
     vModel.insertCustomer(
@@ -155,7 +177,9 @@ fun initDatabase(vModel: TheViewModel){
             description = "Sprinkler broke down, need long term caretaker for my garden",
             hourly_rate = 35,
             imageId = "farming",
-            address = "36 Lyndhurst, Irvine, CA 92620"
+            address = "36 Lyndhurst, Irvine, CA 92620",
+            lat = 37.3796 ,
+            lng = -122.0813
         ))
 
     vModel.insertCustomer(
@@ -166,7 +190,9 @@ fun initDatabase(vModel: TheViewModel){
             description = "2 vines and advocado trees that need to be watered",
             hourly_rate = 25,
             imageId = "farming",
-            address = "71 Interlude, Irvine, CA 92620"
+            address = "71 Interlude, Irvine, CA 92620",
+            lat =  37.4006 ,
+            lng = -122.1049
         ))
 
     //////
@@ -178,7 +204,9 @@ fun initDatabase(vModel: TheViewModel){
             description = "Looking for a Chimney Sweeper, must have the proper equipment",
             hourly_rate = 20,
             imageId = "renovation",
-            address = "6222 Irvine Blvd, Irvine, CA 92620"
+            address = "6222 Irvine Blvd, Irvine, CA 92620",
+            lat = 37.3796 ,
+            lng = -122.04147
         ))
 
     vModel.insertCustomer(
@@ -189,7 +217,9 @@ fun initDatabase(vModel: TheViewModel){
             description = "Need a painter for my fence, about 200 yards",
             hourly_rate = 35,
             imageId = "renovation",
-            address = "36 Lyndhurst, Irvine, CA 92620"
+            address = "36 Lyndhurst, Irvine, CA 92620",
+            lat = 37.3569 ,
+            lng = -122.0040
         ))
 
     vModel.insertCustomer(
@@ -200,7 +230,9 @@ fun initDatabase(vModel: TheViewModel){
             description = "Someone to watch the house for a month",
             hourly_rate = 15,
             imageId = "renovation",
-            address = "71 Interlude, Irvine, CA 92620"
+            address = "71 Interlude, Irvine, CA 92620",
+            lat = 37.4242 ,
+            lng = -122.0813
         ))
     /////////////////////////////
 
@@ -212,7 +244,9 @@ fun initDatabase(vModel: TheViewModel){
             description = "Only used for 1 month for sale",
             hourly_rate = 500,
             imageId = "trading",
-            address = "6222 Irvine Blvd, Irvine, CA 92620"
+            address = "6222 Irvine Blvd, Irvine, CA 92620",
+            lat = 37.3569 ,
+            lng = -122.0040
         ))
 
     vModel.insertCustomer(
@@ -223,7 +257,9 @@ fun initDatabase(vModel: TheViewModel){
             description = "Brand new, got it from a raffle",
             hourly_rate = 35,
             imageId = "trading",
-            address = "36 Lyndhurst, Irvine, CA 92620"
+            address = "36 Lyndhurst, Irvine, CA 92620",
+            lat = 37.3948 ,
+            lng = -122.0789
         ))
 
     vModel.insertCustomer(
@@ -234,7 +270,9 @@ fun initDatabase(vModel: TheViewModel){
             description = "Found bunch of my kids cards in attic, no idea what they are all for $20",
             hourly_rate = 20,
             imageId = "trading",
-            address = "71 Interlude, Irvine, CA 92620"
+            address = "71 Interlude, Irvine, CA 92620",
+            lat = 37.3781 ,
+            lng = -122.0708
         ))
 
     vModel.insertCustomer(
@@ -245,7 +283,9 @@ fun initDatabase(vModel: TheViewModel){
             description = "Office leftover inventories, in good condition",
             hourly_rate = 200,
             imageId = "trading",
-            address = "36 Lyndhurst, Irvine, CA 92620"
+            address = "36 Lyndhurst, Irvine, CA 92620",
+            lat = 37.3909 ,
+            lng = -122.1083
         ))
 
     vModel.insertCustomer(
@@ -256,7 +296,9 @@ fun initDatabase(vModel: TheViewModel){
             description = "Silver eagles and bars for sales",
             hourly_rate = 15,
             imageId = "trading",
-            address = "71 Interlude, Irvine, CA 92620"
+            address = "71 Interlude, Irvine, CA 92620",
+            lat = 37.3696 ,
+            lng = -122.0699
         ))
 
     ///////////////////////
@@ -269,7 +311,9 @@ fun initDatabase(vModel: TheViewModel){
             description = "Need this box delivered for his Birthday",
             hourly_rate = 35,
             imageId = "deliveryman",
-            address = "36 Lyndhurst, Irvine, CA 92620"
+            address = "36 Lyndhurst, Irvine, CA 92620",
+            lat = 37.43295 ,
+            lng = -122.133199
         ))
 
     vModel.insertCustomer(
@@ -280,7 +324,9 @@ fun initDatabase(vModel: TheViewModel){
             description = "WTB chipotle delivery chipotle for lunch, good tips",
             hourly_rate = 20,
             imageId = "deliveryman",
-            address = "71 Interlude, Irvine, CA 92620"
+            address = "71 Interlude, Irvine, CA 92620",
+            lat = 37.4015 ,
+            lng = -122.1023
         ))
 
     vModel.insertCustomer(
@@ -291,7 +337,9 @@ fun initDatabase(vModel: TheViewModel){
             description = "Letter to be sent down the block to 200 technology Dr",
             hourly_rate = 20,
             imageId = "deliveryman",
-            address = "36 Lyndhurst, Irvine, CA 92620"
+            address = "36 Lyndhurst, Irvine, CA 92620",
+            lat = 37.4006 ,
+            lng = -122.1049
         ))
 
     vModel.insertCustomer(
@@ -302,7 +350,9 @@ fun initDatabase(vModel: TheViewModel){
             description = "Hungry for mcdonalds",
             hourly_rate = 15,
             imageId = "deliveryman",
-            address = "71 Interlude, Irvine, CA 92620"
+            address = "71 Interlude, Irvine, CA 92620",
+            lat = 37.3815 ,
+            lng = -122.0454
         ))
 
     /////////////////////////////
@@ -315,7 +365,9 @@ fun initDatabase(vModel: TheViewModel){
             description = "Looking for temporary worker",
             hourly_rate = 35,
             imageId = "workinprogress",
-            address = "36 Lyndhurst, Irvine, CA 92620"
+            address = "36 Lyndhurst, Irvine, CA 92620",
+            lat = 37.39741 ,
+            lng = -122.09653
         ))
 
     vModel.insertCustomer(
@@ -326,7 +378,9 @@ fun initDatabase(vModel: TheViewModel){
             description = "Just moved here, need a pair of strong hands",
             hourly_rate = 30,
             imageId = "workinprogress",
-            address = "71 Interlude, Irvine, CA 92620"
+            address = "71 Interlude, Irvine, CA 92620",
+            lat = 37.4242 ,
+            lng = -122.0813
         ))
 
     vModel.insertCustomer(
@@ -337,7 +391,9 @@ fun initDatabase(vModel: TheViewModel){
             description = "Need temporary workers for strawberry field",
             hourly_rate = 34,
             imageId = "workinprogress",
-            address = "36 Lyndhurst, Irvine, CA 92620"
+            address = "36 Lyndhurst, Irvine, CA 92620",
+            lat = 37.41599 ,
+            lng = -122.05207
         ))
 
     vModel.insertCustomer(
@@ -348,7 +404,9 @@ fun initDatabase(vModel: TheViewModel){
             description = "Driver needed for a day, must be willing to lift stuff",
             hourly_rate = 25,
             imageId = "workinprogress",
-            address = "71 Interlude, Irvine, CA 92620"
+            address = "71 Interlude, Irvine, CA 92620",
+            lat = 37.38365 ,
+            lng = -122.04168
         ))
     vModel.insertCustomer(
         Task(
@@ -358,7 +416,9 @@ fun initDatabase(vModel: TheViewModel){
             description = "Dirty house needs a clean",
             hourly_rate = 35,
             imageId = "workinprogress",
-            address = "36 Lyndhurst, Irvine, CA 92620"
+            address = "36 Lyndhurst, Irvine, CA 92620",
+            lat = 37.35084 ,
+            lng = -122.073149
         ))
 
 

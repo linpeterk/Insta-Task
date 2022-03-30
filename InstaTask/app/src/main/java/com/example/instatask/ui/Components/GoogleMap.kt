@@ -33,7 +33,7 @@ val googleHQ = LatLng(lat, lng)
     navController: NavController
 ) {
     var cameraPositionState = rememberCameraPositionState {
-        position = CameraPosition.fromLatLngZoom(googleHQ, 15f)
+        position = CameraPosition.fromLatLngZoom(googleHQ, 14f)
     }
 
     var uiSettings by remember {
@@ -113,12 +113,12 @@ fun createMarkers(vModel: TheViewModel, mode:Int, navController:NavController){
     //NEED TO BE IMPLEMENTED
     if(mode == 1 ) {
         var list= vModel.currentTaskList
-        repeat(list.count()){
+        repeat(list.count()){ index->
 
             Marker(
-                position = caliMuseum, //LatLng(list[it].lat, list[it].lng),
-                title = "Singapore",
-                snippet = "Marker in Singapore"
+                position = LatLng(list[index].lat?: googleHQ.latitude, list[index].lng ?: googleHQ.latitude), //LatLng(list[it].lat, list[it].lng),
+                title = list[index].task_name,
+                snippet = list[index].description
             )
 
         }
