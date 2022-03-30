@@ -13,12 +13,14 @@ import com.example.instatask.model.Categories
 import com.example.instatask.viewmodel.TheViewModel
 import kotlinx.coroutines.launch
 import com.example.instatask.R
+import com.example.instatask.database.datamodel.Task
 import com.example.instatask.ui.app.screens.*
 
 //Initialize values needed for screens to operate drawers in navigation. Created global variables instead of passing through each screen's parameters
 lateinit var DrawersStatus:(Boolean)->Unit  //Used by topappbar in topbar, allow for opening or closing drawers without passing through each functions.
 lateinit var drawerState: DrawerState
 @Composable
+
 fun init(vmodel: TheViewModel){
 
      drawerState = rememberDrawerState(DrawerValue.Closed)
@@ -40,7 +42,80 @@ fun init(vmodel: TheViewModel){
 
     vmodel.getCatlist(1)
 
+
 }
+
+fun initDatabase(vModel: TheViewModel){
+
+    vModel.insertCustomer(
+        Task(
+            categories = 1,
+            task_name = "ABCD",
+            person_name = "Peter",
+            description = "Got a  dog that needs walking",
+            hourly_rate = 15,
+            imageId = "ImageRES",
+            address = "Orange County CA"
+        ))
+
+    vModel.insertCustomer(
+        Task(
+            categories = 2,
+            task_name = "EFG",
+            person_name = "Peter",
+            description = "Got a  dog that needs walking",
+            hourly_rate = 15,
+            imageId = "ImageRES",
+            address = "Orange County CA"
+        ))
+
+    vModel.insertCustomer(
+        Task(
+            categories = 3,
+            task_name = "HIJ",
+            person_name = "Peter",
+            description = "Got a  dog that needs walking",
+            hourly_rate = 15,
+            imageId = "ImageRES",
+            address = "Orange County CA"
+        ))
+
+    vModel.insertCustomer(
+        Task(
+            categories = 1,
+            task_name = "KLMN",
+            person_name = "Peter",
+            description = "Got a  dog that needs walking",
+            hourly_rate = 15,
+            imageId = "ImageRES",
+            address = "Orange County CA"
+        ))
+
+    vModel.insertCustomer(
+        Task(
+            categories = 2,
+            task_name = "OPQRS",
+            person_name = "Peter",
+            description = "Got a  dog that needs walking",
+            hourly_rate = 15,
+            imageId = "ImageRES",
+            address = "Orange County CA"
+        ))
+
+    vModel.insertCustomer(
+        Task(
+            categories = 1,
+            task_name = "Walk my dog",
+            person_name = "Peter",
+            description = "Got a  dog that needs walking",
+            hourly_rate = 15,
+            imageId = "ImageRES",
+            address = "Orange County CA"
+        ))
+}
+
+
+
 @Composable
 fun DrawerNavGraph(vmodel: TheViewModel) {
 

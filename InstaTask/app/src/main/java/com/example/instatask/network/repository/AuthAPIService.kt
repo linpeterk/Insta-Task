@@ -23,6 +23,15 @@ interface AuthAPIService {
     @POST("get_cat_skill3")
     suspend fun getCat3(@Body getcat:GetCatBody): Response<ResponseTokenSkill>
 
+    @POST("get_cat_skill4")
+    suspend fun getCat4(@Body getcat:GetCatBody): Response<ResponseTokenSkill>
+
+    @POST("get_cat_skill5")
+    suspend fun getCat5(@Body getcat:GetCatBody): Response<ResponseTokenSkill>
+
+    @POST("get_cat_skill6")
+    suspend fun getCat6(@Body getcat:GetCatBody): Response<ResponseTokenSkill>
+
     @POST("reviews_skillComponent")
     suspend fun getReviews(@Body getReview: GetReviewBody): Response<ResponseTokenReview>
 
