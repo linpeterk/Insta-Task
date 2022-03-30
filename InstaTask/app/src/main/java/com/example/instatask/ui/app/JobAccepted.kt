@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.google.maps.android.compose.GoogleMap
 
 @Composable
 fun JobAccepted(
@@ -35,8 +36,8 @@ fun JobAccepted(
             }
         }
         //-------------Box2------------------
-        Box(){
-            Text(text = "Here comes the GoogleMap")
+        Box(modifier = Modifier.width(500.dp).height(200.dp)) {
+            GoogleMap()
         }
         //-----------Box3----------------------
         Box(
@@ -85,7 +86,9 @@ fun JobAccepted(
         Box(modifier = Modifier
             .fillMaxWidth()
             .padding(15.dp)){
-            Column(modifier = Modifier.border(2.dp, Color.Gray).padding(10.dp)) {
+            Column(modifier = Modifier
+                .border(2.dp, Color.Gray)
+                .padding(10.dp)) {
                 Text(text = "Maybe implement:")
                 Text(text = "Camera")
                 Text(text = "Permission")
