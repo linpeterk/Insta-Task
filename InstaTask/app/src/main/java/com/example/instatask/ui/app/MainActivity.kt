@@ -312,7 +312,8 @@ data class Activity(val oldActivity:Array<String>,val currentActivity:Array<Stri
 data class JobDetails(val acceptorName:String,val hours:Int,val rate:Int,val desination:String,val creatorName:String,val description:String,val acceptedDate:String)
 
 
-//TopBar stuff
+//BOTTOM NAVIGATION BAR stuff
+//NEW FILES ADDED - NavigationItem.kt, ContentScreens.kt
 @Composable
 fun TopBar() {
     TopAppBar(
@@ -400,4 +401,5 @@ fun Navigation(navController: NavHostController) {
     }
 }
 
+//END OF BOTTOM NAVIGATION BAR stuff
 
