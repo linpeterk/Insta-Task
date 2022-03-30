@@ -30,7 +30,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun SkillBoard(
-    vmodel:TheViewModel,
+    vModel:TheViewModel,
     navcontroller: NavController
 
 ){
@@ -129,11 +129,11 @@ fun SkillBoard(
                                 .background(Color.White)
 
                         ) {
-                            CategoriesBar(vModel = vmodel, vmodel.categoriesSkill, 2)
+                            CategoriesBar(vModel = vModel, vModel.categoriesSkill, 2)
 
                         }
 
-                        LazyScrollSkillBoard(vModel = vmodel, navcontroller = navcontroller)
+                        LazyScrollSkillBoard(vModel = vModel, navcontroller = navcontroller)
 
                     }
                 }
@@ -145,7 +145,7 @@ fun SkillBoard(
             .padding(bottom = 200.dp)
            // .border(3.dp, Color.Red)
         ) {
-            MakeGoogleMap()
+            MakeGoogleMap(vModel = vModel, mode = 2, navController = navcontroller)
             TopBar()
         }
     }

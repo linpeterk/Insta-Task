@@ -20,7 +20,10 @@ data class ResponseSkillType(
     var available:String = "",
     @SerializedName("workLocation")
     var workLocation:String = "",
-
+    @SerializedName("lat")
+    var lat:Double = 37.4198,
+    @SerializedName("lng")
+    var lng:Double = -122.0788,
     )
 
 data class ResponseReviewType(

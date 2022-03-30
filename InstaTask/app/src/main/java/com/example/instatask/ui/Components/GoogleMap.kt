@@ -4,10 +4,15 @@ import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.Button
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.navigation.NavController
+import com.example.instatask.ui.app.screens.Screens
+import com.example.instatask.viewmodel.TheViewModel
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
+import com.google.gson.annotations.SerializedName
 import com.google.maps.android.compose.*
 
 //var cameraPositionState:CameraPositionState?=null
@@ -17,15 +22,18 @@ val toyDistrict = LatLng(34.047, -118.243)
 val brew = LatLng(34.051, -118.234)
 val dodgerS = LatLng(34.073, -118.241)
 val church = LatLng(34.05693923331048, -118.23957346932366)
-
-
-
+var lat:Double = 37.4198
+var lng:Double = -122.0788
+val googleHQ = LatLng(lat, lng)
 @Composable
   fun MakeGoogleMap(
     makeMarker: Boolean = false,
+    vModel:TheViewModel,
+    mode:Int = 0,
+    navController: NavController
 ) {
     var cameraPositionState = rememberCameraPositionState {
-        position = CameraPosition.fromLatLngZoom(caliMuseum, 15f)
+        position = CameraPosition.fromLatLngZoom(googleHQ, 15f)
     }
 
     var uiSettings by remember {
@@ -67,7 +75,18 @@ val church = LatLng(34.05693923331048, -118.23957346932366)
 
 
             }
-        )
+        ){
+             Log.d("Big map", "Big Map")
+             //default mode 0, don't create markers
+             if(mode!=0) {
+                 if(mode==1) {
+                     createMarkers(vModel, mode = mode, navController=navController)
+                 }
+                 else if(mode==2){
+                     createMarkers(vModel, mode = mode, navController=navController)
+                 }
+             }
+         }
 //        Switch(
 //            checked = uiSettings.mapToolbarEnabled,
 //            onCheckedChange = {
@@ -76,15 +95,50 @@ val church = LatLng(34.05693923331048, -118.23957346932366)
 //        )
 
 
-
-
-
-
-
 //    LaunchedEffect(){
 //
 //    }
 
-
     }
+}
+
+@Composable
+fun createMarkers(vModel: TheViewModel, mode:Int, navController:NavController){
+
+    /*mode == 1 is job board, mode==2 is skill board, display respective board's markers
+    * on any list updates
+    * */
+    Log.d("Map was here", "Map is here")
+
+    //NEED TO BE IMPLEMENTED
+    if(mode == 1 ) {
+        var list= vModel.currentTaskList
+        repeat(list.count()){
+
+            Marker(
+                position = caliMuseum, //LatLng(list[it].lat, list[it].lng),
+                title = "Singapore",
+                snippet = "Marker in Singapore"
+            )
+
+        }
+    }
+
+    else if(mode==2) {
+       var list=   vModel.currentSkillList
+        repeat(list.count()){ index->
+
+            Marker(
+                position = LatLng(list[index].lat, list[index].lng),
+                title = list[index].name,
+                snippet = list[index].description,
+
+            )
+
+        }
+    }
+
+
+
+
 }

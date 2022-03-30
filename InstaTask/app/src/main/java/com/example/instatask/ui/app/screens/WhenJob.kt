@@ -157,7 +157,7 @@ fun WhenJobClicked(navController: NavController, vModel:TheViewModel, index: Int
             }
         }
     ){
-        MakeGoogleMap()
+        MakeGoogleMap(vModel = vModel, navController = navController)
         TopBar()
     }
 

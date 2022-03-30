@@ -36,8 +36,8 @@ data class Task (
     val address:String? = null,
 
     @ColumnInfo(name = "lat")
-    val lat:Float? = null,
+    val lat:Double? = null,
 
     @ColumnInfo(name = "long")
-    val lng:Float? = null
+    val lng:Double? = null
 )

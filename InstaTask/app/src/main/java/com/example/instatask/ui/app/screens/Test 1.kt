@@ -39,7 +39,7 @@ fun greeting1(openDrawer:(Boolean)->Unit = DrawersStatus){
 
 
             Box(){
-                MakeGoogleMap()
+               // MakeGoogleMap(vModel)
             }
         }
 

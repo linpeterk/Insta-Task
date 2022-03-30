@@ -31,7 +31,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun TaskBoard(vmodel: TheViewModel,
+fun TaskBoard(vModel: TheViewModel,
               navcontroller: NavController
               ){
 
@@ -127,11 +127,11 @@ fun TaskBoard(vmodel: TheViewModel,
                                 .background(Color.White)
 
                         ) {
-                            CategoriesBar(vModel = vmodel, vmodel.categoriesTask, 1)
+                            CategoriesBar(vModel = vModel, vModel.categoriesTask, 1)
 
                         }
 
-                        LazyScrollTaskBoard(vModel = vmodel, navcontroller = navcontroller)
+                        LazyScrollTaskBoard(vModel = vModel, navcontroller = navcontroller)
 //                        LazyColumn(
 //                            modifier = Modifier
 //                                .background(graySurface)
@@ -193,8 +193,9 @@ fun TaskBoard(vmodel: TheViewModel,
             }
         }
     ){
-        Box() {
-            MakeGoogleMap()
+        Box(modifier=Modifier
+            .padding(bottom = 200.dp)) {
+            MakeGoogleMap(vModel = vModel, mode = 1, navController = navcontroller)
             TopBar()
         }
     }

@@ -21,6 +21,7 @@ import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
 import com.example.instatask.database.datamodel.Task
 import com.example.instatask.ui.app.screens.Screens
+import com.example.instatask.ui.app.screens.cameraPositionState
 import com.example.instatask.ui.theme.graySurface
 import com.example.instatask.viewmodel.TheViewModel
 
@@ -125,7 +126,7 @@ fun LazyScrollSkillBoard(vModel: TheViewModel, navcontroller:NavController){
                             //    .border(2.dp, Color.Red)
                             .padding(20.dp)
                             .size(70.dp)
-
+                         //   .clickable { cameraPositionState.position }
                     )
                     Column(modifier = Modifier
                         .padding(8.dp)
@@ -133,7 +134,10 @@ fun LazyScrollSkillBoard(vModel: TheViewModel, navcontroller:NavController){
                         .clickable(onClick = {
 
                             vModel.getReviews(2, 2)
-                            navcontroller.navigate(Screens.WhenSkill.route + "/${item.id - 1}")
+                            navcontroller.navigate(Screens.WhenSkill.route + "/${item.id - 1}"){
+                                popUpTo(Screens.WhenSkill.route)
+                                 launchSingleTop = true
+                            }
 
                         })
                     ){
