@@ -314,14 +314,7 @@ data class JobDetails(val acceptorName:String,val hours:Int,val rate:Int,val des
 
 //BOTTOM NAVIGATION BAR stuff
 //NEW FILES ADDED - NavigationItem.kt, ContentScreens.kt
-@Composable
-fun TopBar() {
-    TopAppBar(
-        title = { Text(text = stringResource(R.string.app_name), fontSize = 18.sp) },
-        backgroundColor = graySurface,
-        contentColor = Color.White
-    )
-}
+
 
 @Composable
 fun BottomNavigationBar(navController: NavController) {
@@ -372,7 +365,7 @@ fun BottomNavigationBar(navController: NavController) {
 fun MainScreen() {
     val navController = rememberNavController()
     Scaffold(
-        topBar = { TopBar() },
+       
         bottomBar = { BottomNavigationBar(navController) }
     ) {
         Navigation(navController = navController)
