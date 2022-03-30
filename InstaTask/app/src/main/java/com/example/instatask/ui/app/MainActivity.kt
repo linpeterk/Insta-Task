@@ -15,6 +15,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
+import androidx.compose.material.SnackbarDefaults.backgroundColor
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
@@ -26,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextOverflow
@@ -34,6 +36,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
 import com.example.instatask.R
 import com.example.instatask.database.datamodel.Task
 import com.example.instatask.database.datamodel.deleteDB
@@ -42,6 +50,7 @@ import com.example.instatask.network.AirplaneModeChangeReceiver
 import com.example.instatask.network.Wifi
 import com.example.instatask.ui.app.screens.*
 import com.example.instatask.ui.theme.InstaTaskTheme
+import com.example.instatask.ui.theme.graySurface
 import com.example.instatask.viewmodel.TheViewModel
 import java.util.*
 import kotlin.random.Random
@@ -86,7 +95,7 @@ class MainActivity : ComponentActivity() {
 
 
                  //   CustomerList(theViewModel)
-                  DrawerNavGraph(theViewModel)
+//                  DrawerNavGraph(theViewModel)
          //  test(theViewModel)
 
                     //Adama'S task for now
@@ -97,7 +106,7 @@ class MainActivity : ComponentActivity() {
 
                 //    TaskBoard(theViewModel, NavController(this))
 
-
+                MainScreen()
 //                    TaskBoard(theViewModel)
 
               //   SkillBoard(theViewModel, NavController(this))
@@ -302,18 +311,93 @@ data class UserInfo(val name:String,val email:String,val address:String,val zip:
 data class Activity(val oldActivity:Array<String>,val currentActivity:Array<String>)
 data class JobDetails(val acceptorName:String,val hours:Int,val rate:Int,val desination:String,val creatorName:String,val description:String,val acceptedDate:String)
 
+
 //TopBar stuff
 @Composable
 fun TopBar() {
     TopAppBar(
         title = { Text(text = stringResource(R.string.app_name), fontSize = 18.sp) },
-        backgroundColor = colorResource(id = R.color.purple_700),
+        backgroundColor = graySurface,
         contentColor = Color.White
     )
 }
 
-@Preview(showBackground = true)
 @Composable
-fun TopBarPreview() {
-    TopBar()
+fun BottomNavigationBar(navController: NavController) {
+
+    val items = listOf(
+        NavigationItem.Home,
+        NavigationItem.Music,
+        NavigationItem.Movies,
+        NavigationItem.Books,
+        NavigationItem.Profile
+    )
+    BottomNavigation (
+        backgroundColor = graySurface,
+        contentColor = Color.White
+            ){
+        val navBackStackEntry by navController.currentBackStackEntryAsState()
+        val currentRoute = navBackStackEntry?.destination?.route
+        items.forEach { item ->
+            BottomNavigationItem(
+                icon = { Icon(painterResource(id = item.icon), contentDescription = item.title)},
+                label = { Text(text = item.title) },
+                selectedContentColor = Color.White,
+                unselectedContentColor = Color.White.copy(0.4f),
+                alwaysShowLabel = true,
+                selected = false,
+                onClick = {
+                    navController.navigate(item.route) {
+                        //Pop up to the start destination of the graph to
+                        //avoid building up a large stack of destinations
+                        // on the back stack as users select items
+                        navController.graph.startDestinationRoute?.let { route ->
+                            popUpTo(route) {
+                                saveState = true
+                            }
+                        }
+                        //avoid multiple copies of the same destination when
+                        //reselecting the same item
+                        launchSingleTop = true
+
+                    }
+                }
+            )
+        }
+    }
 }
+
+@Composable
+fun MainScreen() {
+    val navController = rememberNavController()
+    Scaffold(
+        topBar = { TopBar() },
+        bottomBar = { BottomNavigationBar(navController) }
+    ) {
+        Navigation(navController = navController)
+        /* Add Code later */
+    }
+}
+
+@Composable
+fun Navigation(navController: NavHostController) {
+    NavHost(navController, startDestination = NavigationItem.Home.route) {
+        composable(NavigationItem.Home.route) {
+            homeScreen()
+        }
+        composable(NavigationItem.Music.route) {
+            MusicScreen()
+        }
+        composable(NavigationItem.Movies.route) {
+            MovieScreen()
+        }
+        composable(NavigationItem.Books.route) {
+            BookScreen()
+        }
+        composable(NavigationItem.Profile.route) {
+            profileScreen()
+        }
+    }
+}
+
+
