@@ -38,7 +38,7 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
 
     var currentReviews: List<ResponseReviewType> by mutableStateOf(listOf(ResponseReviewType()))
 
-      var currentTaskList : List<Task> by  mutableStateOf(listOf(Task()))
+    var currentTaskList : List<Task> by  mutableStateOf(listOf(Task()))
 
     private val TaskRepository: TaskRepository = TaskRepository(application = application)
 
@@ -215,13 +215,19 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
 //    }
 
 
-
-
-
-    fun insertCustomer(task: Task)
+    var task=  mutableStateOf(Task())
+    fun fetchTaskById(id:Int)
     {
         viewModelScope.launch{
-            TaskRepository.insertCustomer(task=task)
+            task.value =  TaskRepository.fetchTaskById(id)
+        }
+
+    }
+
+    fun insertTask(task: Task)
+    {
+        viewModelScope.launch{
+            TaskRepository.insertTask(task=task)
         }
 
     }
@@ -267,9 +273,9 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
         return customerRepository.readAllCustomers
     }
 
-    fun insertCustomer(customer:Customer){
+    fun insertTask(customer:Customer){
         viewModelScope.launch{
-            customerRepository.insertCustomer(customer=customer)
+            customerRepository.insertTask(customer=customer)
         }
 
     }

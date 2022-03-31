@@ -27,7 +27,7 @@ class TaskRepository (application: Application){
     {
         taskDao.deleteTaskById(id)
     }
-    suspend fun insertCustomer(task: Task)
+    suspend fun insertTask(task: Task)
     {
         taskDao.insertTask(task)
     }
@@ -37,18 +37,16 @@ class TaskRepository (application: Application){
         taskDao.deleteTask()
     }
 
-//     fun fetchCategory(id:Int) : LiveData<List<Task>>
-//    {
-//     var  readSomeTasks: LiveData<List<Task>>  = taskDao.fetchCategory(id)
-//
-//        return readSomeTasks
-//    }
-
     suspend fun fetchCategory(id:Int) : List<Task>
     {
         var  readSomeTasks: List<Task>  = taskDao.fetchCategory(id)
 
         return readSomeTasks
+    }
+
+    suspend fun fetchTaskById(id:Int) : Task
+    {
+        return taskDao.fetchTaskById(id)
     }
 
 

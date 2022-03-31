@@ -42,7 +42,7 @@ fun SkillBoard(
   //  val state = rememberBottomDrawerScaffoldState(bottomDrawerState =
    // de.charlex.compose.BottomDrawerState(initialValue = BottomDrawerValue.Expanded, drawerTopInset = 0))
     val state = rememberBottomDrawerScaffoldState()
-    var buttonText by remember{ mutableStateOf("Show Map") }
+    var buttonText = remember{ mutableStateOf("Show Map") }
 
 
 
@@ -56,7 +56,7 @@ fun SkillBoard(
         drawerGesturesEnabled = true,
         floatingActionButton = {
             ExtendedFloatingActionButton(
-                text = { Text(buttonText,
+                text = { Text(buttonText.value,
                     color= Color.White
 
                 ) },
@@ -73,7 +73,7 @@ fun SkillBoard(
 
                         }
 
-                        buttonText = "Show Map"
+                        buttonText.value = "Show Map"
                     } else {
                         Log.d(ContentValues.TAG, "isnotcollapsed")
                         scope.launch {
@@ -82,7 +82,7 @@ fun SkillBoard(
 
                         }
 
-                        buttonText = "Expand"
+                        buttonText.value = "Expand"
 
                     }
 
@@ -129,11 +129,11 @@ fun SkillBoard(
                                 .background(Color.White)
 
                         ) {
-                            CategoriesBar(vModel = vModel, vModel.categoriesSkill, 2)
+                            CategoriesBar(vModel = vModel, vModel.categoriesSkill, 2, navController = navcontroller)
 
                         }
 
-                        LazyScrollSkillBoard(vModel = vModel, navcontroller = navcontroller)
+                        LazyScrollSkillBoard(vModel = vModel, navcontroller = navcontroller, state, buttonText)
 
                     }
                 }

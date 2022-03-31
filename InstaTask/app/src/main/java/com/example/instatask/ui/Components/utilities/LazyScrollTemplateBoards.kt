@@ -7,9 +7,12 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -20,16 +23,25 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
 import com.example.instatask.database.datamodel.Task
+import com.example.instatask.ui.Components.cameraPositionState
+import com.example.instatask.ui.Components.googleHQ
 import com.example.instatask.ui.app.screens.Screens
-import com.example.instatask.ui.app.screens.cameraPositionState
 import com.example.instatask.ui.theme.graySurface
 import com.example.instatask.viewmodel.TheViewModel
+import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.LatLng
+import de.charlex.compose.BottomDrawerScaffoldState
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun LazyScrollTaskBoard(vModel: TheViewModel, navcontroller:NavController){
+fun LazyScrollTaskBoard(vModel: TheViewModel, navcontroller:NavController, state: BottomDrawerScaffoldState, buttonText : MutableState<String>){
 
    // val currentList = vModel.currentTaskList.observeAsState(arrayListOf())
     val currentList = vModel.currentTaskList
+    val scope  = rememberCoroutineScope()
+
    // vModel.loginRequestLiveData
     LazyColumn(
         modifier = Modifier
@@ -61,14 +73,21 @@ fun LazyScrollTaskBoard(vModel: TheViewModel, navcontroller:NavController){
                             //    .border(2.dp, Color.Red)
                             .padding(20.dp)
                             .size(70.dp)
+                            .clickable {
+                                cameraPositionState?.position = CameraPosition.fromLatLngZoom(
+                                    LatLng(item.lat ?: 37.4198, item.lng ?: -122.0788), 14f
+                                )
+                                scope.launch { state.bottomDrawerState.collapse() }
+                                buttonText.value = "Expand"
+                            }
 
                     )
                     Column(modifier = Modifier
                         .padding(8.dp)
                         .verticalScroll(rememberScrollState())
                         .clickable(onClick = {
-
-                            navcontroller.navigate(Screens.WhenJob.route + "/${item.taskId - 1}")
+                            vModel.fetchTaskById(item.taskId)
+                            navcontroller.navigate(Screens.WhenJob.route + "/${item.taskId}")
 
                         })
                     ){
@@ -93,8 +112,11 @@ fun LazyScrollTaskBoard(vModel: TheViewModel, navcontroller:NavController){
     }
 }
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun LazyScrollSkillBoard(vModel: TheViewModel, navcontroller:NavController){
+fun LazyScrollSkillBoard(vModel: TheViewModel, navcontroller:NavController , state: BottomDrawerScaffoldState, buttonText:MutableState<String>){
+
+    val scope  = rememberCoroutineScope()
 
     LazyColumn(
         modifier = Modifier
@@ -126,7 +148,13 @@ fun LazyScrollSkillBoard(vModel: TheViewModel, navcontroller:NavController){
                             //    .border(2.dp, Color.Red)
                             .padding(20.dp)
                             .size(70.dp)
-                         //   .clickable { cameraPositionState.position }
+                            .clickable {
+                                cameraPositionState?.position = CameraPosition.fromLatLngZoom(
+                                    LatLng(item.lat, item.lng), 14f)
+
+                                scope.launch { state.bottomDrawerState.collapse() }
+                                buttonText.value = "Expand"
+                            }
                     )
                     Column(modifier = Modifier
                         .padding(8.dp)
@@ -134,9 +162,9 @@ fun LazyScrollSkillBoard(vModel: TheViewModel, navcontroller:NavController){
                         .clickable(onClick = {
 
                             vModel.getReviews(2, 2)
-                            navcontroller.navigate(Screens.WhenSkill.route + "/${item.id - 1}"){
+                            navcontroller.navigate(Screens.WhenSkill.route + "/${item.id - 1}") {
                                 popUpTo(Screens.WhenSkill.route)
-                                 launchSingleTop = true
+                                launchSingleTop = true
                             }
 
                         })

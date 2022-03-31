@@ -29,7 +29,7 @@ import com.google.maps.android.compose.*
 //import com.pelp.ui.theme.lightBlue
 import de.charlex.compose.BottomDrawerScaffold
 
-var cameraPositionState:CameraPositionState?=null
+
 //var addressGlobal: Location_Restroom = Location_Restroom(loc=LatLng(100.0, 100.0))
 private const val TAG = "MapSampleActivity"
 
@@ -40,9 +40,9 @@ fun WhenJobClicked(navController: NavController, vModel:TheViewModel, index: Int
     var context= LocalContext.current
     // cardCount =  remember {  mutableStateOf(dataBase.count()) }
     val composableScope = rememberCoroutineScope()
-    val taskInfo = vModel.getTasklist()[index]
+  //  val taskInfo = vModel.getTasklist()[index]
     var peekHeight = remember { mutableStateOf(250.dp)}
-
+    var task = vModel.task.value
     BottomDrawerScaffold(
         //scaffoldState = rememberBottomDrawerState(5)
         drawerModifier = Modifier.size(530.dp),
@@ -114,7 +114,7 @@ fun WhenJobClicked(navController: NavController, vModel:TheViewModel, index: Int
 
                                 ){
 
-                                    Image(painter = painterResource(vModel.getImageId(context = LocalContext.current, taskInfo.imageRes)), //WORKER CARD
+                                    Image(painter = painterResource(vModel.getImageId(context = LocalContext.current, task.imageId ?: "workinprogress")), //WORKER CARD
                                         contentDescription =null,
                                         modifier= Modifier
                                             .size(130.dp)
@@ -123,12 +123,12 @@ fun WhenJobClicked(navController: NavController, vModel:TheViewModel, index: Int
                                     )
                                     Column(Modifier.padding(8.dp)) {
 
-                                        Text(text = "Name is ${taskInfo.name}",
+                                        Text(text = "Name is ${task.task_name}",
                                             style= MaterialTheme.typography.h6,
                                             color= MaterialTheme.colors.onSurface,
                                             modifier= Modifier.padding(start=30.dp)
                                         )
-                                        Text(text = "Description is ${taskInfo.description}",
+                                        Text(text = "Description is ${task.description}",
                                             style= MaterialTheme.typography.body1,
                                             color= MaterialTheme.colors.onSurface,
                                             modifier= Modifier.padding(start=15.dp)

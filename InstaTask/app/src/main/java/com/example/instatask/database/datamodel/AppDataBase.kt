@@ -50,7 +50,7 @@ fun initDatabase(vModel: TheViewModel){
 
       // vModel.deleteALL()
 
-    vModel.insertCustomer(
+    vModel.insertTask(
         Task(
             categories = 1,
             task_name = "Dog walk",
@@ -63,7 +63,7 @@ fun initDatabase(vModel: TheViewModel){
             lng = -122.0813
         ))
 
-    vModel.insertCustomer(
+    vModel.insertTask(
         Task(
             categories = 1,
             task_name = "Cat sitting",
@@ -76,7 +76,7 @@ fun initDatabase(vModel: TheViewModel){
             lng = -122.08561
         ))
 
-    vModel.insertCustomer(
+    vModel.insertTask(
         Task(
             categories = 1,
             task_name = "Feeding Fish",
@@ -89,7 +89,7 @@ fun initDatabase(vModel: TheViewModel){
             lng = -122.0919
         ))
 
-    vModel.insertCustomer(
+    vModel.insertTask(
         Task(
             categories = 1,
             task_name = "Grooming pitbull",
@@ -102,7 +102,7 @@ fun initDatabase(vModel: TheViewModel){
             lng = -122.0904
         ))
 
-    vModel.insertCustomer(
+    vModel.insertTask(
         Task(
             categories = 1,
             task_name = "Water plants",
@@ -115,7 +115,7 @@ fun initDatabase(vModel: TheViewModel){
             lng = -122.0881
         ))
 
-    vModel.insertCustomer(
+    vModel.insertTask(
         Task(
             categories = 1,
             task_name = "Dog Walking - Maltease",
@@ -130,7 +130,7 @@ fun initDatabase(vModel: TheViewModel){
 
     ////////////////////////////////
 
-    vModel.insertCustomer(
+    vModel.insertTask(
         Task(
             categories = 2,
             task_name = "Looking for Cutter",
@@ -143,7 +143,7 @@ fun initDatabase(vModel: TheViewModel){
             lng = -122.0813
         ))
 
-    vModel.insertCustomer(
+    vModel.insertTask(
         Task(
             categories = 2,
             task_name = "Planting Trees",
@@ -156,7 +156,7 @@ fun initDatabase(vModel: TheViewModel){
             lng = -122.05284619973649
         ))
 
-    vModel.insertCustomer(
+    vModel.insertTask(
         Task(
             categories = 2,
             task_name = "Weed Killer",
@@ -169,7 +169,7 @@ fun initDatabase(vModel: TheViewModel){
             lng = -122.0754
         ))
 
-    vModel.insertCustomer(
+    vModel.insertTask(
         Task(
             categories = 2,
             task_name = "Water Service",
@@ -182,7 +182,7 @@ fun initDatabase(vModel: TheViewModel){
             lng = -122.0813
         ))
 
-    vModel.insertCustomer(
+    vModel.insertTask(
         Task(
             categories = 2,
             task_name = "Watering plants",
@@ -196,7 +196,7 @@ fun initDatabase(vModel: TheViewModel){
         ))
 
     //////
-    vModel.insertCustomer(
+    vModel.insertTask(
         Task(
             categories = 3,
             task_name = "Chimney Sweeps",
@@ -209,7 +209,7 @@ fun initDatabase(vModel: TheViewModel){
             lng = -122.04147
         ))
 
-    vModel.insertCustomer(
+    vModel.insertTask(
         Task(
             categories = 3,
             task_name = "Painter needed",
@@ -222,7 +222,7 @@ fun initDatabase(vModel: TheViewModel){
             lng = -122.0040
         ))
 
-    vModel.insertCustomer(
+    vModel.insertTask(
         Task(
             categories = 3,
             task_name = "House sitter",
@@ -236,7 +236,7 @@ fun initDatabase(vModel: TheViewModel){
         ))
     /////////////////////////////
 
-    vModel.insertCustomer(
+    vModel.insertTask(
         Task(
             categories = 4,
             task_name = "PS5 for sale",
@@ -249,7 +249,7 @@ fun initDatabase(vModel: TheViewModel){
             lng = -122.0040
         ))
 
-    vModel.insertCustomer(
+    vModel.insertTask(
         Task(
             categories = 4,
             task_name = "Mountain Bike",
@@ -262,7 +262,7 @@ fun initDatabase(vModel: TheViewModel){
             lng = -122.0789
         ))
 
-    vModel.insertCustomer(
+    vModel.insertTask(
         Task(
             categories = 4,
             task_name = "Some Cards",
@@ -275,7 +275,7 @@ fun initDatabase(vModel: TheViewModel){
             lng = -122.0708
         ))
 
-    vModel.insertCustomer(
+    vModel.insertTask(
         Task(
             categories = 4,
             task_name = "Monitors",
@@ -288,7 +288,7 @@ fun initDatabase(vModel: TheViewModel){
             lng = -122.1083
         ))
 
-    vModel.insertCustomer(
+    vModel.insertTask(
         Task(
             categories = 4,
             task_name = "Silver bullions",
@@ -303,7 +303,7 @@ fun initDatabase(vModel: TheViewModel){
 
     ///////////////////////
 
-    vModel.insertCustomer(
+    vModel.insertTask(
         Task(
             categories = 5,
             task_name = "Tustin to Anaheim",
@@ -316,7 +316,7 @@ fun initDatabase(vModel: TheViewModel){
             lng = -122.133199
         ))
 
-    vModel.insertCustomer(
+    vModel.insertTask(
         Task(
             categories = 5,
             task_name = "Chipotle Culver City",
@@ -329,7 +329,7 @@ fun initDatabase(vModel: TheViewModel){
             lng = -122.1023
         ))
 
-    vModel.insertCustomer(
+    vModel.insertTask(
         Task(
             categories = 5,
             task_name = "Along Technology Drive",
@@ -342,7 +342,7 @@ fun initDatabase(vModel: TheViewModel){
             lng = -122.1049
         ))
 
-    vModel.insertCustomer(
+    vModel.insertTask(
         Task(
             categories = 5,
             task_name = "Mcdonalds",
@@ -357,7 +357,7 @@ fun initDatabase(vModel: TheViewModel){
 
     /////////////////////////////
 
-    vModel.insertCustomer(
+    vModel.insertTask(
         Task(
             categories = 6,
             task_name = "Construction",
@@ -370,7 +370,7 @@ fun initDatabase(vModel: TheViewModel){
             lng = -122.09653
         ))
 
-    vModel.insertCustomer(
+    vModel.insertTask(
         Task(
             categories = 6,
             task_name = "Lifters",
@@ -383,7 +383,7 @@ fun initDatabase(vModel: TheViewModel){
             lng = -122.0813
         ))
 
-    vModel.insertCustomer(
+    vModel.insertTask(
         Task(
             categories = 6,
             task_name = "Plucking strawberries",
@@ -396,7 +396,7 @@ fun initDatabase(vModel: TheViewModel){
             lng = -122.05207
         ))
 
-    vModel.insertCustomer(
+    vModel.insertTask(
         Task(
             categories = 6,
             task_name = "General Labor",
@@ -408,7 +408,7 @@ fun initDatabase(vModel: TheViewModel){
             lat = 37.38365 ,
             lng = -122.04168
         ))
-    vModel.insertCustomer(
+    vModel.insertTask(
         Task(
             categories = 6,
             task_name = "House cleaning",

@@ -30,6 +30,7 @@ sealed class Screens( val title:String, val route:String)
     object SkillBoard:Screens("SkillBoard", "Skill_Board")
     object WhenJob:Screens("WhenJob", "WhenJob")
     object WhenSkill:Screens("WhenSkill", "WhenSkill")
+    object PostScreen:Screens("PostScreen", "PostScreen")
  //   object SkillBoard:Screens("SkillBoard", "Skill_Board")
 
 /*

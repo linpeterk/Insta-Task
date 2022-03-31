@@ -18,12 +18,14 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.instatask.model.Categories
+import com.example.instatask.ui.app.screens.Screens
 import com.example.instatask.viewmodel.TheViewModel
 import java.util.*
 
 @Composable
-fun CategoriesBar(vModel: TheViewModel, list:List<Categories>, mode:Int){
+fun CategoriesBar(vModel: TheViewModel, list:List<Categories>, mode:Int, navController: NavController){
 val context = LocalContext.current
 
         LazyRow(
@@ -52,7 +54,13 @@ val context = LocalContext.current
                                     //When category clicked, load its perspective list
                                     vModel.getCatlist(item.catID)
                                 }
-
+                                if(item.catID == 0) //POST TASK CLICKED, NAVIGATE TO POST SCREEN
+                                {
+                                    navController.navigate(Screens.PostScreen.route){
+                                        popUpTo(Screens.PostScreen.route)
+                                        launchSingleTop = true
+                                    }
+                                }
                           //      Log.d("Bar", "list is ${vmodel.taskList[0].description}")
                             })
                         //.border(3.dp, Color.Blue)

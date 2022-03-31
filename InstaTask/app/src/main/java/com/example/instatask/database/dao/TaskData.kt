@@ -21,6 +21,9 @@ interface TaskData {
     @Query("SELECT * FROM task where categories=:id")
     suspend fun fetchCategory(id:Int): List<Task>
 
+    @Query("SELECT * FROM task where taskId=:id")
+    suspend fun fetchTaskById(id:Int): Task
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTask(task:Task)
 

@@ -37,15 +37,16 @@ fun TaskBoard(vModel: TheViewModel,
 
     var peekHeight = remember { mutableStateOf(200.dp) }
     val scope = rememberCoroutineScope()
+    //de.charlex.compose.BottomDrawerState(initialValue = BottomDrawerValue.Expanded, drawerTopInset = 0))
+    //val state = rememberBottomDrawerScaffoldState(1)
+    val state = rememberBottomDrawerScaffoldState()
 
-    val state = rememberBottomDrawerScaffoldState(1)
-
-    var buttonText by remember{mutableStateOf("Show Map")}
+    var buttonText = remember{mutableStateOf("Show Map")}
 
 
 
 
-    state.bottomDrawerState.confirmStateChange(BottomDrawerValue.Collapsed)
+   // state.bottomDrawerState.confirmStateChange(BottomDrawerValue.Expanded)
 
     BottomDrawerScaffold(
         //scaffoldState = rememberBottomDrawerState(5)
@@ -54,15 +55,12 @@ fun TaskBoard(vModel: TheViewModel,
         drawerGesturesEnabled = true,
         floatingActionButton = {
             ExtendedFloatingActionButton(
-                text = { Text(buttonText,
+                text = { Text(buttonText.value,
                             color= Color.White
-
                 ) },
                 backgroundColor= Color.Red,
                 modifier = Modifier.wrapContentSize(),
                 onClick = {
-
-
                     if (state.bottomDrawerState.isCollapsed) {
 
                         Log.d(TAG, "iscollapsed ${state.bottomDrawerState.isCollapsed}")
@@ -70,8 +68,7 @@ fun TaskBoard(vModel: TheViewModel,
                             state.bottomDrawerState.expand()
 
                         }
-
-                        buttonText = "Show Map"
+                        buttonText.value = "Show Map"
                     } else {
                         Log.d(TAG, "isnotcollapsed")
                         scope.launch {
@@ -79,9 +76,7 @@ fun TaskBoard(vModel: TheViewModel,
 
 
                         }
-
-                        buttonText = "Expand"
-
+                        buttonText.value = "Expand"
                     }
 
 
@@ -98,7 +93,6 @@ fun TaskBoard(vModel: TheViewModel,
         drawerContent = {
 
             //initalize values by fixing peekheight
-
             scope.launch {
                 state.bottomDrawerState.expand()
 
@@ -127,11 +121,11 @@ fun TaskBoard(vModel: TheViewModel,
                                 .background(Color.White)
 
                         ) {
-                            CategoriesBar(vModel = vModel, vModel.categoriesTask, 1)
+                            CategoriesBar(vModel = vModel, vModel.categoriesTask, mode = 1, navController = navcontroller)
 
                         }
 
-                        LazyScrollTaskBoard(vModel = vModel, navcontroller = navcontroller)
+                        LazyScrollTaskBoard(vModel = vModel, navcontroller = navcontroller, state, buttonText)
 //                        LazyColumn(
 //                            modifier = Modifier
 //                                .background(graySurface)

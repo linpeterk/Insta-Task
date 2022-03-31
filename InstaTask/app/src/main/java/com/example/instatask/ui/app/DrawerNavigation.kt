@@ -120,6 +120,12 @@ fun DrawerNavGraph(vmodel: TheViewModel) {
                     TaskBoard(vModel = vmodel, navController)
                 }
 
+                composable(Screens.PostScreen.route)
+                {
+
+                    PostTask(vModel = vmodel, navController= navController)
+                }
+
                 composable(Screens.SkillBoard.route)
                 {
 

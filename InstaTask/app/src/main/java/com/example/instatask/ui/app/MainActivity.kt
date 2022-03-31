@@ -93,9 +93,9 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
 
-
+        //PostTask(theViewModel, navController = NavController(this))
                  //   CustomerList(theViewModel)
-//                  DrawerNavGraph(theViewModel)
+                 DrawerNavGraph(theViewModel)
          //  test(theViewModel)
 
                     //Adama'S task for now
@@ -106,7 +106,7 @@ class MainActivity : ComponentActivity() {
 
                 //    TaskBoard(theViewModel, NavController(this))
 
-                MainScreen()
+           //     MainScreen()
 //                    TaskBoard(theViewModel)
 
               //   SkillBoard(theViewModel, NavController(this))
@@ -188,7 +188,7 @@ fun CustomerList (vModel: TheViewModel){
                 },
                 onClick = {
                     val name = UUID.randomUUID().toString()
-                    vModel.insertCustomer(
+                    vModel.insertTask(
                         Task(
                             categories = 1,
                             task_name = "Walk my dog",

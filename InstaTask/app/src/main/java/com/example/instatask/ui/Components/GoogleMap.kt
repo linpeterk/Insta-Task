@@ -25,6 +25,9 @@ val church = LatLng(34.05693923331048, -118.23957346932366)
 var lat:Double = 37.4198
 var lng:Double = -122.0788
 val googleHQ = LatLng(lat, lng)
+
+var cameraPositionState:CameraPositionState?=null
+
 @Composable
   fun MakeGoogleMap(
     makeMarker: Boolean = false,
@@ -32,7 +35,7 @@ val googleHQ = LatLng(lat, lng)
     mode:Int = 0,
     navController: NavController
 ) {
-    var cameraPositionState = rememberCameraPositionState {
+     cameraPositionState = rememberCameraPositionState {
         position = CameraPosition.fromLatLngZoom(googleHQ, 14f)
     }
 
