@@ -28,7 +28,10 @@ import com.google.maps.android.compose.*
 //import com.pelp.ui.theme.Blue300
 //import com.pelp.ui.theme.lightBlue
 import de.charlex.compose.BottomDrawerScaffold
-
+/*
+Carlos Castellanos
+display jobs
+ */
 
 //var addressGlobal: Location_Restroom = Location_Restroom(loc=LatLng(100.0, 100.0))
 private const val TAG = "MapSampleActivity"

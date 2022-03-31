@@ -95,7 +95,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    GigPage()
+//                    GigPage()
         //PostTask(theViewModel, navController = NavController(this))
                  //   CustomerList(theViewModel)
 
@@ -123,7 +123,7 @@ class MainActivity : ComponentActivity() {
 
                 //MainScreen(theViewModel)
 
-            //    MainScreen(theViewModel)
+                MainScreen(theViewModel)
 
 
 //                    TaskBoard(theViewModel)

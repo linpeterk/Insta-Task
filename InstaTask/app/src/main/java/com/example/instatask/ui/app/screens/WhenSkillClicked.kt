@@ -26,6 +26,10 @@ import com.example.instatask.ui.theme.graySurface
 import com.example.instatask.viewmodel.TheViewModel
 import de.charlex.compose.BottomDrawerScaffold
 
+/*
+Carlos Castellanos
+display skill and reviews
+ */
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun WhenSkillClicked(navController: NavController, viewModel: TheViewModel, index: Int) {

@@ -13,7 +13,7 @@ import com.example.instatask.viewmodel.TheViewModel
 fun Navigation(navController: NavHostController, vModel : TheViewModel) {
     NavHost(navController, startDestination = NavScreens.TaskBoard.route) {
 
-        //task board
+        //task board Gigs
         composable(NavScreens.TaskBoard.route) {
             TaskBoard(vModel = vModel, navcontroller = navController)
         }
