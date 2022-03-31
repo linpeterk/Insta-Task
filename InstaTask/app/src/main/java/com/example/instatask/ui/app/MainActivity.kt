@@ -55,7 +55,6 @@ import com.example.instatask.ui.app.screens.*
 import com.example.instatask.ui.theme.InstaTaskTheme
 import com.example.instatask.ui.theme.graySurface
 import com.example.instatask.viewmodel.TheViewModel
-import com.google.accompanist.pager.ExperimentalPagerApi
 import java.util.*
 import kotlin.random.Random
 
@@ -66,7 +65,6 @@ class MainActivity : ComponentActivity() {
     lateinit var wifiReceiver2: Wifi
 
 
-    @OptIn(ExperimentalPagerApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -97,7 +95,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-
+                    GigPage()
         //PostTask(theViewModel, navController = NavController(this))
                  //   CustomerList(theViewModel)
 
@@ -110,19 +108,24 @@ class MainActivity : ComponentActivity() {
                     //Adama'S task for now
                      //SignUpScreen()
                     //EntranceScreen()
-<<<<<<< Updated upstream
+
                    // LandingScreen()
                     SliderScreen()
-=======
+
                     LandingScreen()
 
 
->>>>>>> Stashed changes
+                 //   LandingScreen()
+
 
                 //    TaskBoard(theViewModel, NavController(this))
 
 
+
                 //MainScreen(theViewModel)
+
+            //    MainScreen(theViewModel)
+
 
 //                    TaskBoard(theViewModel)
 
