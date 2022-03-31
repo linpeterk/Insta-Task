@@ -110,8 +110,14 @@ class MainActivity : ComponentActivity() {
                     //Adama'S task for now
                      //SignUpScreen()
                     //EntranceScreen()
+<<<<<<< Updated upstream
                    // LandingScreen()
                     SliderScreen()
+=======
+                    LandingScreen()
+
+
+>>>>>>> Stashed changes
 
                 //    TaskBoard(theViewModel, NavController(this))
 

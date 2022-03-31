@@ -1,0 +1,354 @@
+FORMAT: 1A
+HOST: https://polls.apiblueprint.org/
+
+# InstaTask
+
+Polls is a simple API allowing consumers to view polls and vote in them.
+
+## Questions Collection [/get_cat_skill1]
+
+
+### Get Skill1 [POST]
+
+Requesting Data Category 1 PETS
+
++ Request (application/json)
+
+        {
+            "categories" : "1"
+        }
+
++ Response 201 (application/json)
+
+
+    + Body
+
+            {
+                "skills1": [
+                    {
+                        "id": "1",
+                        "name": "Eliott Barker",
+                        "hourlyRate": "25",
+                        "description": "Animal Clinic is committed to high quality medicine with service" ,
+                        "imageRes": "petcategory",
+                        "available": "Monday-Friday 9am-5pm",
+                        "workLocation": "Orange County"
+                    },
+                        {
+                        "id": "2",
+                        "name": "PetCo Service",
+                        "hourlyRate": "45",
+                        "description": "PetSmart has all the pet services you need from Grooming, Training, PetsHotel, Doggie Day Camp and Banfield to keep your pet looking and feeling great!" ,
+                        "imageRes": "petcategory",
+                        "available": "Everyday 11am-8pm",
+                        "workLocation": "Orange County"
+                       },
+                         {
+                        "id": "3",
+                        "name": "Mabel Cortez - Mobile Pet groom service",
+                        "hourlyRate": "15",
+                        "description": "We will come to you for all your pets needs!" ,
+                        "imageRes": "petcategory",
+                        "available": "Flexible",
+                        "workLocation": "LA district"
+                       },
+                         {
+                        "id": "4",
+                        "name": "Golden Days Pet Service",
+                        "hourlyRate": "25",
+                        "description": "Golden Days Pet Services - Pet Care Elevated Dog Boarding, Pet Sitting, Private Dog Walking Dog Day Care, Lux Pet Transportation, Hotel Pet Sitting Licensed ..." ,
+                        "imageRes": "petcategory",
+                        "available": "Monday-Friday 1pm-10pm",
+                        "workLocation": "Irvine"
+                       },
+                         {
+                        "id": "5",
+                        "name": "Walmart affiliated ",
+                        "hourlyRate": "30",
+                        "description": "Visit your local Walmart's Pet Services for dog walking and pet sitting for dogs, cats, and more so you and your pets can save money and live better." ,
+                        "imageRes": "petcategory",
+                        "available": "Monday-Friday 9pm-10pm",
+                        "workLocation": "Anaheim"
+                       },
+                         {
+                        "id": "6",
+                        "name": "Groom Service Mobile Pet Spa",
+                        "hourlyRate": "25",
+                        "description": "We come to you for all your pets needs!" ,
+                        "imageRes": "petcategory",
+                        "available": "Any day",
+                        "workLocation": "Orange County area"
+                       },
+                         {
+                        "id": "7",
+                        "name": "Doggo Daycare",
+                        "hourlyRate": "35",
+                        "description": "We are fostering an adorable little pup who had never been groomed. She was badly in need of a spa day and Ana of MJ's Pet Spaw could not have been better. She was great with her and little Fiona looks and feels beautiful!" ,
+                        "imageRes": "petcategory",
+                        "available": "Monday-Friday Appointments only",
+                        "workLocation": "Tustin-Irvine"
+                       }
+                      
+                       
+                  ]
+            }
+            
+            
+
+## Questions Collection [/get_cat_skill2]
+### Get Skill2 [POST]
+
+Requesting Data Category 2 GARDEN
+
++ Request (application/json)
+
+        {
+            "categoriesId" : "2"
+        }
+
++ Response 201 (application/json)
+
+
+    + Body
+
+           {
+                "skills1": [
+                    {
+                        "id": "1",
+                        "name": "Domingo Moreno Gardening Service",
+                        "hourlyRate": "35",
+                        "description": " I get satisfied when my customers are happy for what I am doing. I enjoy my job because I love what I do and I always do my best",
+                        "imageRes": "farming",
+                        "available": "Mon/Wed/Friday 9am-5pm",
+                        "workLocation": "Orange County"
+                    },
+                        {
+                        "id": "2",
+                        "name": "D. Flores Landscape Services",
+                        "hourlyRate": "30",
+                        "description": "Got a project for me? I do all landscaping works" ,
+                        "imageRes": "farming",
+                        "available": "Everyday 11am-5pm",
+                        "workLocation": "Orange County"
+                       },
+                        {
+                        "id": "3",
+                        "name": "Nature Hills Nursery",
+                        "hourlyRate": "25",
+                        "description": "Free plants delivery on orders over $100",
+                        "imageRes": "farming",
+                        "available": "Mon-Fri 9am-5pm",
+                        "workLocation": "LA district"
+                       },
+                         {
+                        "id": "4",
+                        "name": "J.C Gardening Services",
+                        "hourlyRate": "25",
+                        "description": "Jose is a gifted landscape designer, and a very professional, hardworking businessman",
+                        "imageRes": "farming",
+                        "available": "Monday-Friday 1pm-10pm",
+                        "workLocation": "Irvine"
+                       },
+                         {
+                        "id": "5",
+                        "name": "HomeDepot affiliated",
+                        "hourlyRate": "25",
+                        "description": "Gardening, landscaping, supplies delivery. Call to get your quotes today!",
+                        "imageRes": "farming",
+                        "available": "Monday-Friday 8am-10pm",
+                        "workLocation": "Anaheim"
+                       }
+                      
+                       
+                  ]
+            }
+            
+            
+            
+            
+## Questions Collection [/get_cat_skill3]
+### Get Skill3 [POST]
+
+Requesting Data Category 3 Cleaning
+
++ Request (application/json)
+
+        {
+            "categoriesId" : "3"
+        }
+
++ Response 201 (application/json)
+
+
+    + Body
+
+                   {
+                "skills1": [
+                    {
+                        "id": "1",
+                        "name": "Early Birds House Cleaning",
+                        "hourlyRate": "45",
+                        "description": "House cleaning service in Irvine, California",
+                        "imageRes": "cleaning_peter",
+                        "available": "Mon/Wed/Friday 6am-2pm",
+                        "workLocation": "Orange County"
+                    },
+                        {
+                        "id": "2",
+                        "name": "Sharks Cleaning Service",
+                        "hourlyRate": "50",
+                        "description": "Appointment required · Mask required · Temperature check required · Staff wear masks · Staff get temperature checks · Staff required to disinfect surfaces between visits" ,
+                        "imageRes": "cleaning_peter",
+                        "available": "Everyday 10am-6pm",
+                        "workLocation": "Tustin County"
+                       },
+                        {
+                        "id": "3",
+                        "name": "Like Never Before Janitorial Services",
+                        "hourlyRate": "45",
+                        "description": "You've never seen a Janitor like me",
+                        "imageRes": "cleaning_peter",
+                        "available": "Mon-Fri 9am-5pm",
+                        "workLocation": "LA district"
+                       },
+                         {
+                        "id": "4",
+                        "name": "Mother Earth Maids",
+                        "hourlyRate": "25",
+                        "description": "Cleanings crews always stay the same for consistent service with specialists you know! ",
+                        "imageRes": "cleaning_peter",
+                        "available": "Monday-Friday 1pm-10pm",
+                        "workLocation": "Irvine"
+                       },
+                         {
+                        "id": "5",
+                        "name": "MOLLY MAID",
+                        "hourlyRate": "45",
+                        "description": "Request a cleaning estimate with Molly Maid",
+                        "imageRes": "cleaning_peter",
+                        "available": "Monday-Friday 8am-10pm",
+                        "workLocation": "Anaheim"
+                       }
+                      
+                       
+                  ]
+            }
+            
+## Questions Collection [/get_cat_skill4]
+### Get Skill4 [POST]
+
+Requesting Data Category 4
+
++ Request (application/json)
+
+        {
+            "categoriesId" : "4"
+        }
+
++ Response 201 (application/json)
+
+
+    + Body
+
+                   {
+                "skills1": [
+                    {
+                        "id": "1",
+                        "name": "Firestone Complete Auto Care",
+                        "hourlyRate": "35",
+                        "description": " I get satisfied when my customers are happy for what I am doing. I enjoy my job because I love what I do and I always do my best",
+                        "imageRes": "technician",
+                        "available": "Mon/Wed/Friday 9am-5pm",
+                        "workLocation": "Orange County"
+                    },
+                        {
+                        "id": "2",
+                        "name": "D. Flores Landscape Services",
+                        "hourlyRate": "30",
+                        "description": "Got a project for me? I do all landscaping works" ,
+                        "imageRes": "technician",
+                        "available": "Everyday 11am-5pm",
+                        "workLocation": "Orange County"
+                       },
+                        {
+                        "id": "3",
+                        "name": "Nature Hills Nursery",
+                        "hourlyRate": "25",
+                        "description": "Free plants delivery on orders over $100",
+                        "imageRes": "technician",
+                        "available": "Mon-Fri 9am-5pm",
+                        "workLocation": "LA district"
+                       },
+                         {
+                        "id": "4",
+                        "name": "J.C Gardening Services",
+                        "hourlyRate": "25",
+                        "description": "Jose is a gifted landscape designer, and a very professional, hardworking businessman",
+                        "imageRes": "technician",
+                        "available": "Monday-Friday 1pm-10pm",
+                        "workLocation": "Irvine"
+                       },
+                         {
+                        "id": "5",
+                        "name": "HomeDepot affiliated",
+                        "hourlyRate": "25",
+                        "description": "Gardening, landscaping, supplies delivery. Call to get your quotes today!",
+                        "imageRes": "technician",
+                        "available": "Monday-Friday 8am-10pm",
+                        "workLocation": "Anaheim"
+                       },
+                         {
+                        "id": "6",
+                        "name": "HomeDepot affiliated",
+                        "hourlyRate": "25",
+                        "description": "Gardening, landscaping, supplies delivery. Call to get your quotes today!",
+                        "imageRes": "technician",
+                        "available": "Monday-Friday 8am-10pm",
+                        "workLocation": "Anaheim"
+                       }
+ 
+                  ]
+            }
+
+
+## Questions Collection [/reviews_skillComponent]
+### Reviews Skill Components [POST]
+
+Requesting Data given categories
+
++ Request (application/json)
+
+        {
+          "personID" : "1"
+          "review": "5"
+        }
+
++ Response 201 (application/json)
+
+
+    + Body
+
+               {
+                "review2": [
+                    {
+                        "id": "1",
+                        "name": "Eliott Barker",
+                        "review": "Animal Clinic is committed to high quality medicine with service",
+                        "imageRes": "review",
+                        "available": "Monday-Friday",
+                        "workLocation": "Orange County"
+                    },
+                        {
+                        "id": "2",
+                        "name": "Amira Harper",
+                        "review": "Animal Clinic is committed to high quality medicine with",
+                        "imageRes": "review",
+                        "available": "Monday-Friday",
+                        "workLocation": "Orange County"
+                       }
+                      
+                       
+                  ]
+            } 
+            
+
