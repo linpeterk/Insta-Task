@@ -30,6 +30,11 @@ fun Navigation(navController: NavHostController, vModel : TheViewModel) {
                 WhenJobClicked(vModel = vModel, navController = navController, taskId = id )
             }
         }
+        composable(NavScreens.SkillBoard.route)
+        {
+
+            SkillBoard(vModel = vModel, navController)
+        }
 
 
 

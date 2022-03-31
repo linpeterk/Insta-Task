@@ -86,7 +86,7 @@ class MainActivity : ComponentActivity() {
             init(theViewModel)
 
          //   deleteDB(theViewModel) // Definitely don't run this
-         //   initDatabase(theViewModel) //Do not run this, run only once to initiate database
+//            initDatabase(theViewModel) //Do not run this, run only once to initiate database
 
 
             InstaTaskTheme {
@@ -181,7 +181,7 @@ data class JobDetails(val acceptorName:String,val hours:Int,val rate:Int,val des
 
 
 //BOTTOM NAVIGATION BAR stuff
-//NEW FILES ADDED - NavigationItem.kt, ContentScreens.kt
+//NEW FILES ADDED - NavScreens.kt, ContentScreens.kt
 
 @Composable
 fun MainScreen(vModel : TheViewModel) {
