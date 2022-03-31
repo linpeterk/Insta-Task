@@ -25,6 +25,7 @@ import androidx.navigation.NavController
 import com.example.instatask.database.datamodel.Task
 import com.example.instatask.ui.Components.cameraPositionState
 import com.example.instatask.ui.Components.googleHQ
+import com.example.instatask.ui.app.Navigation.NavScreens
 import com.example.instatask.ui.app.screens.Screens
 import com.example.instatask.ui.theme.graySurface
 import com.example.instatask.viewmodel.TheViewModel
@@ -87,7 +88,8 @@ fun LazyScrollTaskBoard(vModel: TheViewModel, navcontroller:NavController, state
                         .verticalScroll(rememberScrollState())
                         .clickable(onClick = {
                             vModel.fetchTaskById(item.taskId)
-                            navcontroller.navigate(Screens.WhenJob.route + "/${item.taskId}")
+//                            vModel.getReviews(2, 2)
+                            navcontroller.navigate(NavScreens.WhenJob.route + "/${item.taskId}")
 
                         })
                     ){
@@ -162,8 +164,8 @@ fun LazyScrollSkillBoard(vModel: TheViewModel, navcontroller:NavController , sta
                         .clickable(onClick = {
 
                             vModel.getReviews(2, 2)
-                            navcontroller.navigate(Screens.WhenSkill.route + "/${item.id - 1}") {
-                                popUpTo(Screens.WhenSkill.route)
+                            navcontroller.navigate(NavScreens.WhenSkill.route + "/${item.id - 1}") {
+                                popUpTo(NavScreens.WhenSkill.route)
                                 launchSingleTop = true
                             }
 

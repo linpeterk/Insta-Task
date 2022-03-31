@@ -6,6 +6,8 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.example.instatask.ui.app.Activity
+import com.example.instatask.ui.app.UserInfo
 import com.example.instatask.ui.app.screens.*
 import com.example.instatask.viewmodel.TheViewModel
 
@@ -35,8 +37,30 @@ fun Navigation(navController: NavHostController, vModel : TheViewModel) {
 
             SkillBoard(vModel = vModel, navController)
         }
+        composable(
+            route = Screens.WhenSkill.route + "/{taskID}",
+            arguments = listOf(navArgument("taskID"){type = NavType.IntType})
+        )
+        {
+            val id: Int? = it.arguments?.getInt("taskID")
 
+            if(id!= null) {
+                WhenSkillClicked(viewModel = vModel, navController = navController, index = id )
+            }
+        }
+        composable(NavScreens.Profile.route)
+        {
 
+            com.example.instatask.ui.app.ProfileScreen(
+                user= UserInfo("User Full Name","username@gmail.com","123 W ABC Ave",681123),
+                activity= Activity(arrayOf<String>("Activity_one","Activity_two"),arrayOf<String>("Activity_1","Activity_2","Activity_3","Activity_4"))
+            )
+        }
+        composable(NavScreens.PostTask.route)
+        {
+
+            PostTask(vModel = vModel, navController)
+        }
 
 
         /*
