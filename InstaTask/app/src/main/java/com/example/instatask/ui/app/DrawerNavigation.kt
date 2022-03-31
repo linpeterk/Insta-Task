@@ -116,7 +116,6 @@ fun DrawerNavGraph(vmodel: TheViewModel) {
 
                 composable(Screens.TaskBoard.route)
                 {
-
                     TaskBoard(vModel = vmodel, navController)
                 }
 
