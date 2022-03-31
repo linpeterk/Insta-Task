@@ -37,7 +37,9 @@ fun BottomNavigationBar(navController: NavController) {
         val currentRoute = navBackStackEntry?.destination?.route
         items.forEach { item ->
             BottomNavigationItem(
+
                 icon = { Image(painterResource(id = item.icon), contentDescription = item.title, modifier = Modifier.size(30.dp)) },
+
                 label = { Text(text = item.title) },
                 selectedContentColor = Color.White,
                 unselectedContentColor = Color.White.copy(0.4f),

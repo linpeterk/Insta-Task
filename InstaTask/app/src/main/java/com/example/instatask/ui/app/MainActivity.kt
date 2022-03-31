@@ -191,7 +191,9 @@ fun MainScreen(vModel : TheViewModel) {
        bottomBar = { BottomNavigationBar(navController) }
     ) {
 
-        Navigation(navController = navController, vModel = vModel)
+        Box(modifier = Modifier.padding(bottom=56.dp)) {
+            Navigation(navController = navController, vModel = vModel)
+        }
 
     }
 }
