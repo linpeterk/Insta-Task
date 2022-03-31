@@ -35,7 +35,7 @@ private const val TAG = "MapSampleActivity"
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun WhenJobClicked(navController: NavController, vModel:TheViewModel, index: Int) {
+fun WhenJobClicked(navController: NavController, vModel:TheViewModel, taskId: Int) {
 
     var context= LocalContext.current
     // cardCount =  remember {  mutableStateOf(dataBase.count()) }
