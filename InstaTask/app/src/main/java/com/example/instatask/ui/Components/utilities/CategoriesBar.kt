@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.instatask.model.Categories
+import com.example.instatask.ui.app.Navigation.NavScreens
 import com.example.instatask.ui.app.screens.Screens
 import com.example.instatask.viewmodel.TheViewModel
 import java.util.*
@@ -56,8 +57,8 @@ val context = LocalContext.current
                                 }
                                 if(item.catID == 0) //POST TASK CLICKED, NAVIGATE TO POST SCREEN
                                 {
-                                    navController.navigate(Screens.PostScreen.route){
-                                        popUpTo(Screens.PostScreen.route)
+                                    navController.navigate(NavScreens.PostTask.route){
+                                        popUpTo(NavScreens.PostTask.route)
                                         launchSingleTop = true
                                     }
                                 }

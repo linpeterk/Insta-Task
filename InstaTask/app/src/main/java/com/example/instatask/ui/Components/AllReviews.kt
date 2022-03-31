@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.instatask.model.JobCreator
 import com.example.instatask.model.JobCreatorCard
+import com.example.instatask.network.ResponseReviewType
 import com.example.instatask.viewmodel.TheViewModel
 
 @Composable

@@ -23,6 +23,7 @@ import androidx.navigation.NavController
 import androidx.room.ColumnInfo
 import com.example.instatask.R
 import com.example.instatask.database.datamodel.Task
+import com.example.instatask.ui.app.Navigation.NavScreens
 import com.example.instatask.ui.theme.graySurface
 import com.example.instatask.viewmodel.TheViewModel
 import kotlin.math.log
@@ -186,8 +187,8 @@ fun PostTask(vModel: TheViewModel, navController: NavController){
                                     address = address
                                     )
                                 vModel.insertTask(task)
-                                navController.navigate(Screens.TaskBoard.route){
-                                    popUpTo(Screens.TaskBoard.route)
+                                navController.navigate(NavScreens.TaskBoard.route){
+                                    popUpTo(NavScreens.TaskBoard.route)
                                     launchSingleTop = true
                                 }
                             }
