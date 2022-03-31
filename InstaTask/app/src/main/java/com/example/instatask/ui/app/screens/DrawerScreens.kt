@@ -1,6 +1,9 @@
 package com.example.instatask.ui.app.screens
 
+import android.graphics.PorterDuff
+import android.widget.RatingBar
 import android.widget.Toast
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -14,6 +17,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
@@ -27,7 +31,16 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.util.lerp
+import androidx.compose.ui.viewinterop.AndroidView
 import com.example.instatask.R
+import com.example.instatask.data.SliderList
+import com.example.instatask.ui.theme.Purple500
+import com.google.accompanist.pager.*
+import com.google.maps.android.compose.*
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.yield
+import kotlin.math.absoluteValue
 
 //Home Screen
 @Preview(showBackground = true)
@@ -45,7 +58,7 @@ fun HomeScreen(){
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start=10.dp, top=200.dp, end = 10.dp)
+                .padding(start = 10.dp, top = 200.dp, end = 10.dp)
         ) {
             Card(
                 elevation = 5.dp
@@ -70,6 +83,120 @@ fun HomeScreen(){
         }
 }
 
+//Pager Slider Screen
+@Preview(showBackground = true)
+@ExperimentalPagerApi
+@Composable
+fun SliderScreen(){
+    val pagerState = rememberPagerState(
+        pageCount = SliderList.size,
+        initialPage = 2
+        )
+    LaunchedEffect(Unit){
+        while(true){
+            yield()
+            delay(2000)
+            pagerState.animateScrollToPage(
+                page = (pagerState.currentPage + 1) % (pagerState.pageCount),
+                animationSpec = tween(600)
+            )
+        }
+    }
+
+    Column(modifier = Modifier.fillMaxSize()) {
+        Column(modifier = Modifier
+            .height(50.dp)
+            .fillMaxWidth()
+            .background(color = Purple500),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center)
+        {
+            Text(text="QUICK CASH CATEGORIES", color = Color.White, fontSize = 20.sp)
+        }
+        Spacer(modifier = Modifier.height(30.dp))
+        HorizontalPager(state = pagerState,
+            modifier = Modifier
+                .weight(1f)
+                .padding(0.dp, 40.dp, 0.dp, 40.dp)
+        ) {page ->
+            Card(modifier = Modifier
+                .graphicsLayer {
+                    val pageOffset = calculateCurrentOffsetForPage(page).absoluteValue
+                    lerp(
+                        start = 0.85f,
+                        stop = 1f,
+                        fraction = 1f - pageOffset.coerceIn(0f, 1f)
+                    ).also { scale ->
+                        scaleX = scale
+                        scaleY = scale
+                    }
+                    alpha = lerp(
+                        start = 0.5f,
+                        stop = 1f,
+                        fraction = 1f - pageOffset.coerceIn(0f, 1f)
+                    )
+                }
+                .fillMaxWidth()
+                .padding(25.dp, 0.dp, 25.dp, 0.dp),
+            shape = RoundedCornerShape(20.dp)
+             ){
+                val newSliders = SliderList[page]
+                Box(modifier = Modifier
+                    .fillMaxSize()
+                    .background(Color.LightGray)
+                    .align(Alignment.Center)
+                )   {
+                    Image(painter = painterResource(id = newSliders.imgUri) , contentDescription = "Image",contentScale = ContentScale.Crop,
+                        modifier = Modifier.fillMaxSize()
+                    )
+                    Column(modifier = Modifier
+                        .align(Alignment.BottomStart)
+                        .padding(15.dp)
+                    ) {
+                            Text(
+                                text=newSliders.title,
+                                style = MaterialTheme.typography.h5,
+                                color = Color.White,
+                                fontWeight = FontWeight.Bold
+                            )
+
+                        //val ratingBar = RatingBar(
+                        //LocalContext.current, null, R.attr.ratingBarStyleSmall
+                        val context = LocalContext.current
+                        var ratingBar = RatingBar(context, null, android.R.attr.ratingBarStyleSmall).apply{
+                            rating = newSliders.rating
+                            progressDrawable.setColorFilter(
+                                android.graphics.Color.parseColor("#FF0000"),
+                                PorterDuff.Mode.SRC_ATOP
+                            )
+                        }
+                        AndroidView(factory = { ratingBar },
+                                modifier = Modifier.padding(0.dp,8.dp,0.dp,0.dp)
+                        )
+                        Text(
+                            text=newSliders.description,
+                            style = MaterialTheme.typography.body1,
+                            color = Color.White,
+                            fontWeight = FontWeight.Normal,
+                            modifier = Modifier.padding(0.dp,8.dp,0.dp,0.dp)
+                        )
+                    }
+                }
+            }
+
+        }
+        //HOrizontal dot indicator
+        HorizontalPagerIndicator(
+            pagerState = pagerState,
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally)
+                .padding(16.dp)
+        )
+    }
+
+}
+
+
 //Entrance Screen
 @Preview(showBackground = true)
 @Composable
@@ -87,18 +214,22 @@ fun EntranceScreen(){
         horizontalArrangement = Arrangement.Center,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(start=2.dp, top=0.dp, end = 2.dp)
+            .padding(start = 2.dp, top = 0.dp, end = 2.dp)
     ) {
         Image(
             painterResource(R.drawable.ic_sea_icon_round),
             contentDescription = "Test 1",
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
                 .size(80.dp)
                 .background(colorResource(id = R.color.white))
                 .clickable(
                     enabled = true,
                     onClickLabel = "Clickable image",
-                    onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()
+                    onClick = {
+                        Toast
+                            .makeText(context, "Image clicked", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 )
 
@@ -108,13 +239,14 @@ fun EntranceScreen(){
             horizontalArrangement = Arrangement.Center,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start=2.dp, top=0.dp, end = 2.dp, bottom = 20.dp)
+                .padding(start = 2.dp, top = 0.dp, end = 2.dp, bottom = 20.dp)
         ) {
                 Box(){
                 Image(
                     painterResource(R.drawable.employee),
                     contentDescription = "Test 1",
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
                         .size(200.dp)
                         .background(colorResource(id = R.color.white))
                         .clip(RoundedCornerShape(100.dp))
@@ -122,11 +254,13 @@ fun EntranceScreen(){
                             enabled = true,
                             onClickLabel = "Clickable image",
                             onClick = {
-                                Toast.makeText(
-                                    context,
-                                    "Employee Button clicked",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Toast
+                                    .makeText(
+                                        context,
+                                        "Employee Button clicked",
+                                        Toast.LENGTH_SHORT
+                                    )
+                                    .show()
                             }
                         )
                 )
@@ -136,7 +270,7 @@ fun EntranceScreen(){
                         color = Color.Black,
                         modifier = Modifier
                             .align(Alignment.BottomCenter)
-                            .padding(top=200.dp)
+                            .padding(top = 200.dp)
                     )
                 }
 
@@ -145,14 +279,15 @@ fun EntranceScreen(){
             horizontalArrangement = Arrangement.Center,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start=2.dp, top=0.dp, end = 2.dp, bottom=20.dp),
+                .padding(start = 2.dp, top = 0.dp, end = 2.dp, bottom = 20.dp),
 
         ) {
             Box() {
                 Image(
                     painterResource(R.drawable.employer),
                     contentDescription = "Test 1",
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier
+                        .fillMaxWidth()
                         .size(250.dp)
                         .background(colorResource(id = R.color.white))
                         .clip(RoundedCornerShape(100.dp))
@@ -160,11 +295,13 @@ fun EntranceScreen(){
                             enabled = true,
                             onClickLabel = "Clickable image",
                             onClick = {
-                                Toast.makeText(
-                                    context,
-                                    "Employer Button clicked",
-                                    Toast.LENGTH_SHORT
-                                ).show()
+                                Toast
+                                    .makeText(
+                                        context,
+                                        "Employer Button clicked",
+                                        Toast.LENGTH_SHORT
+                                    )
+                                    .show()
                             }
                         )
                 )
@@ -174,7 +311,7 @@ fun EntranceScreen(){
                     color = Color.Black,
                     modifier = Modifier
                         .align(Alignment.BottomCenter)
-                        .padding(top=250.dp)
+                        .padding(top = 250.dp)
                 )
             }
 
@@ -204,18 +341,22 @@ fun LandingScreen(){
         horizontalArrangement = Arrangement.Center,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(start=2.dp, top=0.dp, end = 2.dp)
+            .padding(start = 2.dp, top = 0.dp, end = 2.dp)
     ) {
         Image(
             painterResource(R.drawable.ic_sea_icon_round),
             contentDescription = "Test 1",
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
                 .size(80.dp)
                 .background(colorResource(id = R.color.white))
                 .clickable(
                     enabled = true,
                     onClickLabel = "Clickable image",
-                    onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()
+                    onClick = {
+                        Toast
+                            .makeText(context, "Image clicked", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 )
 
@@ -227,19 +368,23 @@ fun LandingScreen(){
             horizontalArrangement = Arrangement.Center,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start=0.dp, top=20.dp, end = 0.dp)
+                .padding(start = 0.dp, top = 20.dp, end = 0.dp)
         ) {
             Image(
                 painterResource(R.drawable.background),
                 contentDescription = "Test 1",
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
                     .size(300.dp)
                     .background(colorResource(id = R.color.white))
                     .clip(RoundedCornerShape(100.dp))
                     .clickable(
                         enabled = true,
                         onClickLabel = "Clickable image",
-                        onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()
+                        onClick = {
+                            Toast
+                                .makeText(context, "Image clicked", Toast.LENGTH_SHORT)
+                                .show()
                         }
                     )
 
@@ -250,7 +395,7 @@ fun LandingScreen(){
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start=80.dp, top=20.dp, end = 80.dp)
+                .padding(start = 80.dp, top = 20.dp, end = 80.dp)
         ) {
             Box() {
                 Image(
@@ -264,7 +409,9 @@ fun LandingScreen(){
                             enabled = true,
                             onClickLabel = "Clickable image",
                             onClick = {
-                                Toast.makeText(context, "Image clicked", Toast.LENGTH_SHORT).show()
+                                Toast
+                                    .makeText(context, "Image clicked", Toast.LENGTH_SHORT)
+                                    .show()
                             }
                         )
 
@@ -275,7 +422,7 @@ fun LandingScreen(){
                     color = Color.Red,
                     modifier = Modifier
                         .align(Alignment.BottomCenter)
-                        .padding(top=55.dp)
+                        .padding(top = 55.dp)
                 )
             }
             Box() {
@@ -290,7 +437,9 @@ fun LandingScreen(){
                             enabled = true,
                             onClickLabel = "Clickable image",
                             onClick = {
-                                Toast.makeText(context, "Image clicked", Toast.LENGTH_SHORT).show()
+                                Toast
+                                    .makeText(context, "Image clicked", Toast.LENGTH_SHORT)
+                                    .show()
                             }
                         )
                 )
@@ -300,7 +449,7 @@ fun LandingScreen(){
                     color = Color.Red,
                     modifier = Modifier
                         .align(Alignment.BottomCenter)
-                        .padding(top=55.dp)
+                        .padding(top = 55.dp)
                 )
             }
             Box() {
@@ -315,7 +464,9 @@ fun LandingScreen(){
                             enabled = true,
                             onClickLabel = "Clickable image",
                             onClick = {
-                                Toast.makeText(context, "Image clicked", Toast.LENGTH_SHORT).show()
+                                Toast
+                                    .makeText(context, "Image clicked", Toast.LENGTH_SHORT)
+                                    .show()
                             }
                         )
                 )
@@ -325,7 +476,7 @@ fun LandingScreen(){
                     color = Color.Red,
                     modifier = Modifier
                         .align(Alignment.BottomCenter)
-                        .padding(top=55.dp)
+                        .padding(top = 55.dp)
                 )
             }
 
@@ -334,7 +485,7 @@ fun LandingScreen(){
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start=80.dp, top=10.dp, end = 80.dp)
+                .padding(start = 80.dp, top = 10.dp, end = 80.dp)
         ) {
             Box() {
                 Image(
@@ -349,7 +500,9 @@ fun LandingScreen(){
                             enabled = true,
                             onClickLabel = "Clickable image",
                             onClick = {
-                                Toast.makeText(context, "Image clicked", Toast.LENGTH_SHORT).show()
+                                Toast
+                                    .makeText(context, "Image clicked", Toast.LENGTH_SHORT)
+                                    .show()
                             }
                         )
 
@@ -360,7 +513,7 @@ fun LandingScreen(){
                     color = Color.Red,
                     modifier = Modifier
                         .align(Alignment.BottomCenter)
-                        .padding(top=55.dp)
+                        .padding(top = 55.dp)
                 )
             }
             Box() {
@@ -376,7 +529,9 @@ fun LandingScreen(){
                             enabled = true,
                             onClickLabel = "Clickable image",
                             onClick = {
-                                Toast.makeText(context, "Image clicked", Toast.LENGTH_SHORT).show()
+                                Toast
+                                    .makeText(context, "Image clicked", Toast.LENGTH_SHORT)
+                                    .show()
                             }
                         )
                 )
@@ -386,7 +541,7 @@ fun LandingScreen(){
                     color = Color.Red,
                     modifier = Modifier
                         .align(Alignment.BottomCenter)
-                        .padding(top=55.dp)
+                        .padding(top = 55.dp)
                 )
             }
             Box() {
@@ -402,7 +557,9 @@ fun LandingScreen(){
                             enabled = true,
                             onClickLabel = "Clickable image",
                             onClick = {
-                                Toast.makeText(context, "Image clicked", Toast.LENGTH_SHORT).show()
+                                Toast
+                                    .makeText(context, "Image clicked", Toast.LENGTH_SHORT)
+                                    .show()
                             }
                         )
                 )
@@ -412,7 +569,7 @@ fun LandingScreen(){
                     color = Color.Red,
                     modifier = Modifier
                         .align(Alignment.BottomCenter)
-                        .padding(top=55.dp)
+                        .padding(top = 55.dp)
                 )
             }
         }
@@ -420,7 +577,7 @@ fun LandingScreen(){
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start=80.dp, top=20.dp, end = 80.dp)
+                .padding(start = 80.dp, top = 20.dp, end = 80.dp)
         ) {
             Button( modifier=Modifier
                 .shadow(
@@ -484,18 +641,22 @@ fun SignUpScreen(){
             horizontalArrangement = Arrangement.Center,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start=2.dp, top=0.dp, end = 2.dp)
+                .padding(start = 2.dp, top = 0.dp, end = 2.dp)
         ) {
             Image(
                 painterResource(R.drawable.ic_sea_icon_round),
                 contentDescription = "Test 1",
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
                     .size(80.dp)
                     .background(colorResource(id = R.color.white))
                     .clickable(
                         enabled = true,
                         onClickLabel = "Clickable image",
-                        onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()
+                        onClick = {
+                            Toast
+                                .makeText(context, "Image clicked", Toast.LENGTH_SHORT)
+                                .show()
                         }
                     )
 
@@ -557,9 +718,9 @@ fun SignUpScreen(){
 
             Spacer(modifier = Modifier.padding(10.dp))
             // var regStatus by rememberSaveable{ mutableStateOf("") }
-            Button(modifier=Modifier
+            Button(modifier= Modifier
                 .fillMaxWidth()
-                .padding(start=40.dp, end=40.dp)
+                .padding(start = 40.dp, end = 40.dp)
                 .shadow(
                     elevation = 10.dp,
                     shape = CircleShape,
@@ -628,18 +789,22 @@ fun SignInScreen(){
             horizontalArrangement = Arrangement.Center,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start=2.dp, top=0.dp, end = 2.dp)
+                .padding(start = 2.dp, top = 0.dp, end = 2.dp)
         ) {
             Image(
                 painterResource(R.drawable.ic_sea_icon_round),
                 contentDescription = "Test 1",
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
                     .size(80.dp)
                     .background(colorResource(id = R.color.white))
                     .clickable(
                         enabled = true,
                         onClickLabel = "Clickable image",
-                        onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()
+                        onClick = {
+                            Toast
+                                .makeText(context, "Image clicked", Toast.LENGTH_SHORT)
+                                .show()
                         }
                     )
 
@@ -679,9 +844,9 @@ fun SignInScreen(){
             var status by rememberSaveable{mutableStateOf("")}
             val context= LocalContext.current
             Button(
-                modifier=Modifier
+                modifier= Modifier
                     .fillMaxWidth()
-                    .padding(start=40.dp, end=40.dp)
+                    .padding(start = 40.dp, end = 40.dp)
                     .shadow(
                         elevation = 10.dp,
                         shape = CircleShape,

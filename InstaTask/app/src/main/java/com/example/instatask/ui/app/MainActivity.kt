@@ -52,6 +52,7 @@ import com.example.instatask.ui.app.screens.*
 import com.example.instatask.ui.theme.InstaTaskTheme
 import com.example.instatask.ui.theme.graySurface
 import com.example.instatask.viewmodel.TheViewModel
+import com.google.accompanist.pager.ExperimentalPagerApi
 import java.util.*
 import kotlin.random.Random
 
@@ -62,6 +63,7 @@ class MainActivity : ComponentActivity() {
     lateinit var wifiReceiver2: Wifi
 
 
+    @OptIn(ExperimentalPagerApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -99,15 +101,15 @@ class MainActivity : ComponentActivity() {
          //  test(theViewModel)
 
                     //Adama'S task for now
-                  //SignUpScreen()
+                     //SignUpScreen()
                     //EntranceScreen()
-
-          //          LandingScreen()
+                   // LandingScreen()
+                    SliderScreen()
 
                 //    TaskBoard(theViewModel, NavController(this))
 
 
-                MainScreen(theViewModel)
+                //MainScreen(theViewModel)
 
 //                    TaskBoard(theViewModel)
 
