@@ -95,7 +95,7 @@ fun DrawerNavGraph(vmodel: TheViewModel) {
                     val id: Int? = it.arguments?.getInt("taskID")
 
                     if(id!= null) {
-                        WhenJobClicked(vModel = vmodel, navController = navController, index = id )
+                        WhenJobClicked(vModel = vmodel, navController = navController, taskId = id )
                     }
                 }
 

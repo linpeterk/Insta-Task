@@ -27,7 +27,7 @@ fun Navigation(navController: NavHostController, vModel : TheViewModel) {
             val id: Int? = it.arguments?.getInt("taskID")
 
             if(id!= null) {
-                WhenJobClicked(vModel = vModel, navController = navController, index = id )
+                WhenJobClicked(vModel = vModel, navController = navController, taskId = id )
             }
         }
 
