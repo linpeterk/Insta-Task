@@ -106,7 +106,11 @@ class MainActivity : ComponentActivity() {
 
                 //    TaskBoard(theViewModel, NavController(this))
 
+
            //     MainScreen()
+
+                MainScreen(theViewModel)
+
 //                    TaskBoard(theViewModel)
 
               //   SkillBoard(theViewModel, NavController(this))
@@ -330,8 +334,8 @@ fun BottomNavigationBar(navController: NavController) {
         backgroundColor = graySurface,
         contentColor = Color.White
             ){
-        val navBackStackEntry by navController.currentBackStackEntryAsState()
-        val currentRoute = navBackStackEntry?.destination?.route
+//        val navBackStackEntry by navController.currentBackStackEntryAsState()
+//        val currentRoute = navBackStackEntry?.destination?.route
         items.forEach { item ->
             BottomNavigationItem(
                 icon = { Icon(painterResource(id = item.icon), contentDescription = item.title)},
@@ -362,22 +366,22 @@ fun BottomNavigationBar(navController: NavController) {
 }
 
 @Composable
-fun MainScreen() {
+fun MainScreen(vModel : TheViewModel) {
     val navController = rememberNavController()
     Scaffold(
 
         bottomBar = { BottomNavigationBar(navController) }
     ) {
-        Navigation(navController = navController)
+        Navigation(navController = navController, vModel = vModel)
         /* Add Code later */
     }
 }
 
 @Composable
-fun Navigation(navController: NavHostController) {
+fun Navigation(navController: NavHostController, vModel : TheViewModel) {
     NavHost(navController, startDestination = NavigationItem.Home.route) {
         composable(NavigationItem.Home.route) {
-            homeScreen()
+            TaskBoard(vModel = vModel, navcontroller = navController)
         }
         composable(NavigationItem.Music.route) {
             MusicScreen()
