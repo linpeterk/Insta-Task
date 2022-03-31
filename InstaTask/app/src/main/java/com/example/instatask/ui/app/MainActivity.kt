@@ -86,7 +86,7 @@ class MainActivity : ComponentActivity() {
             init(theViewModel)
 
          //   deleteDB(theViewModel) // Definitely don't run this
-//            initDatabase(theViewModel) //Do not run this, run only once to initiate database
+//initDatabase(theViewModel) //Do not run this, run only once to initiate database
 
 
             InstaTaskTheme {
@@ -109,7 +109,10 @@ class MainActivity : ComponentActivity() {
                      //SignUpScreen()
                     //EntranceScreen()
 
-                  //  LandingScreen()
+                  //LandingScreen()
+
+
+
 
 
 
