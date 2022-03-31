@@ -109,6 +109,7 @@ class MainActivity : ComponentActivity() {
                      //SignUpScreen()
                     //EntranceScreen()
 
+
                    // LandingScreen()
                     SliderScreen()
 
@@ -116,6 +117,13 @@ class MainActivity : ComponentActivity() {
 
 
                  //   LandingScreen()
+
+                   // LandingScreen()
+                    SliderScreen()
+
+                    //LandingScreen()
+
+
 
 
                 //    TaskBoard(theViewModel, NavController(this))
