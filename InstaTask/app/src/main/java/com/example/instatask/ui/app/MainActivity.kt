@@ -109,21 +109,12 @@ class MainActivity : ComponentActivity() {
                      //SignUpScreen()
                     //EntranceScreen()
 
-
-                   // LandingScreen()
-                    SliderScreen()
-
-                    LandingScreen()
+                  //  LandingScreen()
 
 
-                 //   LandingScreen()
 
-                   // LandingScreen()
-                    SliderScreen()
 
                     //LandingScreen()
-
-
 
 
                 //    TaskBoard(theViewModel, NavController(this))
@@ -138,28 +129,17 @@ class MainActivity : ComponentActivity() {
 //                    TaskBoard(theViewModel)
 
               //   SkillBoard(theViewModel, NavController(this))
-
-
                 }
             }
-//
 //            ProfileScreen(
 //                user=UserInfo("User Full Name","username@gmail.com","123 W ABC Ave",681123),
 //                activity=Activity(arrayOf<String>("Activity_one","Activity_two"),arrayOf<String>("Activity_1","Activity_2","Activity_3","Activity_4"))
 //            )
      //       JobAccepted(job = JobDetails("QwertyName",12,15,"Developer","Name_Qwerty","Test_Test","2022-03-01"))
 
-
         }
     }
 }
-
-
-
-
-
-
-
 
 @SuppressLint("ResourceType")
 @Composable
