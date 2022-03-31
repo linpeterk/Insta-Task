@@ -49,6 +49,7 @@ import com.example.instatask.database.datamodel.initDatabase
 import com.example.instatask.network.AirplaneModeChangeReceiver
 import com.example.instatask.network.Wifi
 import com.example.instatask.ui.app.Navigation.BottomNavigationBar
+import com.example.instatask.ui.app.Navigation.NavScreens
 import com.example.instatask.ui.app.Navigation.Navigation
 import com.example.instatask.ui.app.screens.*
 import com.example.instatask.ui.theme.InstaTaskTheme
@@ -182,55 +183,6 @@ data class JobDetails(val acceptorName:String,val hours:Int,val rate:Int,val des
 //BOTTOM NAVIGATION BAR stuff
 //NEW FILES ADDED - NavigationItem.kt, ContentScreens.kt
 
-<<<<<<< Updated upstream
-=======
-
-@Composable
-fun BottomNavigationBar(navController: NavController) {
-
-    val items = listOf(
-        NavigationItem.Home,
-        NavigationItem.Music,
-        NavigationItem.Movies,
-        NavigationItem.Books,
-        NavigationItem.Profile
-    )
-    BottomNavigation (
-        backgroundColor = graySurface,
-        contentColor = Color.White
-            ){
-        val navBackStackEntry by navController.currentBackStackEntryAsState()
-        val currentRoute = navBackStackEntry?.destination?.route
-        items.forEach { item ->
-            BottomNavigationItem(
-                icon = { Icon(painterResource(id = item.icon), contentDescription = item.title)},
-                label = { Text(text = item.title) },
-                selectedContentColor = Color.White,
-                unselectedContentColor = Color.White.copy(0.4f),
-                alwaysShowLabel = true,
-                selected = currentRoute == item.route,
-                onClick = {
-                    navController.navigate(item.route) {
-                        //Pop up to the start destination of the graph to
-                        //avoid building up a large stack of destinations
-                        // on the back stack as users select items
-                        navController.graph.startDestinationRoute?.let { route ->
-                            popUpTo(route) {
-                                saveState = true
-                            }
-                        }
-                        //avoid multiple copies of the same destination when
-                        //reselecting the same item
-                        launchSingleTop = true
-
-                    }
-                }
-            )
-        }
-    }
-}
-
->>>>>>> Stashed changes
 @Composable
 fun MainScreen(vModel : TheViewModel) {
     val navController = rememberNavController()
@@ -238,17 +190,9 @@ fun MainScreen(vModel : TheViewModel) {
     modifier = Modifier,
        bottomBar = { BottomNavigationBar(navController) }
     ) {
-<<<<<<< Updated upstream
-=======
+
         Navigation(navController = navController, vModel = vModel)
 
-    }
-}
->>>>>>> Stashed changes
-
-        Box(modifier = Modifier.padding(bottom = 56.dp)) {
-            Navigation(navController = navController, vModel = vModel)
-        }
     }
 }
 
