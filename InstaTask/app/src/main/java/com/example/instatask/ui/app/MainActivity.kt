@@ -95,7 +95,7 @@ class MainActivity : ComponentActivity() {
 
         //PostTask(theViewModel, navController = NavController(this))
                  //   CustomerList(theViewModel)
-                 DrawerNavGraph(theViewModel)
+              //   DrawerNavGraph(theViewModel)
          //  test(theViewModel)
 
                     //Adama'S task for now
@@ -106,8 +106,6 @@ class MainActivity : ComponentActivity() {
 
                 //    TaskBoard(theViewModel, NavController(this))
 
-
-           //     MainScreen()
 
                 MainScreen(theViewModel)
 
@@ -330,15 +328,17 @@ fun BottomNavigationBar(navController: NavController) {
         NavigationItem.Books,
         NavigationItem.Profile
     )
+
     BottomNavigation (
         backgroundColor = graySurface,
-        contentColor = Color.White
-            ){
+        contentColor = Color.White,
+        modifier = Modifier.fillMaxWidth().border(2.dp, Color.Red)
+            ) {
 //        val navBackStackEntry by navController.currentBackStackEntryAsState()
 //        val currentRoute = navBackStackEntry?.destination?.route
         items.forEach { item ->
             BottomNavigationItem(
-                icon = { Icon(painterResource(id = item.icon), contentDescription = item.title)},
+                icon = { Icon(painterResource(id = item.icon), contentDescription = item.title) },
                 label = { Text(text = item.title) },
                 selectedContentColor = Color.White,
                 unselectedContentColor = Color.White.copy(0.4f),
@@ -351,7 +351,7 @@ fun BottomNavigationBar(navController: NavController) {
                         // on the back stack as users select items
                         navController.graph.startDestinationRoute?.let { route ->
                             popUpTo(route) {
-                                saveState = true
+                                    saveState = true
                             }
                         }
                         //avoid multiple copies of the same destination when
@@ -363,17 +363,20 @@ fun BottomNavigationBar(navController: NavController) {
             )
         }
     }
+
 }
 
 @Composable
 fun MainScreen(vModel : TheViewModel) {
     val navController = rememberNavController()
     Scaffold(
-
-        bottomBar = { BottomNavigationBar(navController) }
+    modifier = Modifier,
+       bottomBar = { BottomNavigationBar(navController) }
     ) {
-        Navigation(navController = navController, vModel = vModel)
-        /* Add Code later */
+
+        Box(modifier = Modifier.padding(bottom = 56.dp)) {
+            Navigation(navController = navController, vModel = vModel)
+        }
     }
 }
 
