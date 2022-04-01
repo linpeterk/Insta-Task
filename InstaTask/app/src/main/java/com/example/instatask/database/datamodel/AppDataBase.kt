@@ -5,12 +5,14 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.instatask.database.dao.TaskData
+import com.example.instatask.database.dao.UserInfoDao
 import com.example.instatask.viewmodel.TheViewModel
 
-@Database(entities = [Task::class], version =2, exportSchema = false)
+@Database(entities = [Task::class, UserEntity::class], version =2, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun taskDao(): TaskData
+    abstract fun UserInfoDao():UserInfoDao
 
     companion object{
         @Volatile
