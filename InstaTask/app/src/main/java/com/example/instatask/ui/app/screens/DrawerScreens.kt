@@ -88,6 +88,8 @@ fun HomeScreen(){
 @ExperimentalPagerApi
 @Composable
 fun SliderScreen(){
+
+    val context = LocalContext.current
     val pagerState = rememberPagerState(
         pageCount = SliderList.size,
         initialPage = 2
@@ -107,17 +109,41 @@ fun SliderScreen(){
         Column(modifier = Modifier
             .height(50.dp)
             .fillMaxWidth()
-            .background(color = Purple500),
+            .background(color = Color.Red),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center)
         {
             Text(text="QUICK CASH CATEGORIES", color = Color.White, fontSize = 20.sp)
         }
-        Spacer(modifier = Modifier.height(30.dp))
+        Row(
+            horizontalArrangement = Arrangement.Center,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 2.dp, top = 0.dp, end = 2.dp)
+        ) {
+            Image(
+                painterResource(R.drawable.ic_sea_icon_round),
+                contentDescription = "Test 1",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .size(80.dp)
+                    .background(colorResource(id = R.color.white))
+                    .clickable(
+                        enabled = true,
+                        onClickLabel = "Clickable image",
+                        onClick = {
+                            Toast
+                                .makeText(context, "Image clicked", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                    )
+            )
+        }
+       // Spacer(modifier = Modifier.height(30.dp))
         HorizontalPager(state = pagerState,
             modifier = Modifier
                 .weight(1f)
-                .padding(0.dp, 40.dp, 0.dp, 40.dp)
+                .padding(0.dp, 0.dp, 0.dp, 40.dp)
         ) {page ->
             Card(modifier = Modifier
                 .graphicsLayer {
