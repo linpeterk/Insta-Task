@@ -1,5 +1,6 @@
 package com.example.instatask.ui.app
 
+import android.util.Log
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
@@ -14,6 +15,7 @@ import com.example.instatask.viewmodel.TheViewModel
 import kotlinx.coroutines.launch
 import com.example.instatask.R
 import com.example.instatask.database.datamodel.Task
+import com.example.instatask.network.ResponseGig
 import com.example.instatask.ui.app.screens.*
 
 //Initialize values needed for screens to operate drawers in navigation. Created global variables instead of passing through each screen's parameters
@@ -21,7 +23,7 @@ lateinit var DrawersStatus:(Boolean)->Unit  //Used by topappbar in topbar, allow
 lateinit var drawerState: DrawerState
 @Composable
 
-fun init(vmodel: TheViewModel){
+fun init(vModel: TheViewModel){
 
      drawerState = rememberDrawerState(DrawerValue.Closed)
 
@@ -40,7 +42,16 @@ fun init(vmodel: TheViewModel){
         }
     }
 
-    vmodel.getCatlist(1)
+    vModel.getCatlist(1)
+    val temp = vModel.getGigLists()
+
+
+    if(temp != null){
+        yourInterest = temp.ur
+        otherInterest = temp.other
+
+    }
+    Log.d("urInt", "$yourInterest")
 }
 
 @Composable

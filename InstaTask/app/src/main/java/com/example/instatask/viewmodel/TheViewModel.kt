@@ -116,6 +116,37 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
   //  var name:ResponseTokenSkills = ResponseTokenSkills(name="Peter")
    // loginRequestLiveData.postValue(responseService.isSuccessful)
     val authService = RetrofitHelper.getAuthService()
+    var temp = mutableStateOf(ResponseGig(listOf(),listOf()))
+    fun getGigLists() : ResponseGig?{
+
+        viewModelScope.launch (Dispatchers.IO) {
+            try {
+                val responseService: Response<ResponseGig>
+                responseService = authService.getGigs(GetGiGCategory(5))
+
+                if(responseService.isSuccessful){
+                    responseService.body()?.let{
+
+                        Log.d("Logging success", "Response token $it")
+                        temp.value = it
+                    }
+                } else{
+                    responseService.errorBody()?.let{
+
+                        Log.d("Logging error", "response token $it")
+                        it.close()
+                    }
+                }
+
+
+            }catch(e:Exception){
+                Log.d("Network logging", "Exceptions in networking Displaying Old Data$e")
+
+            }
+
+        }
+        return temp.value
+    }
 
     //API get category list for skill and job board, parameter int for category number
     fun getCatlist(category:Int){

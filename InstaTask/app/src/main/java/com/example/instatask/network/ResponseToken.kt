@@ -15,6 +15,14 @@ data class ResponseTokenReview(
     val list:List<ResponseReviewType>
 )
 
+data class ResponseGig(
+    @SerializedName("yourInterest")
+    val ur:List<ResponseGigType>,
+
+    @SerializedName("otherInterest")
+    val other:List<ResponseGigType>
+)
+
 
 object baseList {
 

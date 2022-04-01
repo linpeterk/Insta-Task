@@ -44,3 +44,14 @@ data class ResponseReviewType(
 )
 
 
+data class ResponseGigType(
+    @SerializedName("catID")
+    var id:Int = 0,
+    @SerializedName("name")
+    var name:String = "",
+    @SerializedName("money")
+    var money:String = "",
+    @SerializedName("imageRes")
+    var imageRes:String = "",
+
+)

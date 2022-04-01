@@ -20,3 +20,11 @@ data class GetReviewBody(
 
 )
 
+data class GetGiGCategory(
+
+    @SerializedName("personID")
+    val personID: Int,
+
+)
+
+

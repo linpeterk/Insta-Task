@@ -21,6 +21,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
@@ -34,10 +35,14 @@ import com.example.instatask.model.interests
 import com.example.instatask.ui.theme.graySurface
 import com.example.instatask.ui.theme.lightBlue
 import com.example.instatask.R
+import com.example.instatask.network.ResponseGig
+import com.example.instatask.network.ResponseGigType
 import com.example.instatask.ui.app.Navigation.NavScreens
 import com.example.instatask.viewmodel.TheViewModel
+import java.security.AccessController.getContext
 
-val yourInterest = listOf(
+/*
+var yourInterest = listOf(
     interests(title = "Pets", "$24/hr avg.",  R.drawable.petcategory),
     interests(title = "Gardening", "$27/hr avg.",  R.drawable.farming),
     interests(title = "Home Repairs", "$25/hr avg.",  R.drawable.renovation)
@@ -48,10 +53,17 @@ val otherInterest = listOf(
     interests(title = "Delivery", "$19/hr avg.",  R.drawable.deliveryman),
     interests(title = "Grunt Work", "$30/hr avg.",  R.drawable.workinprogress)
     )
+    */
+  var yourInterest:List<ResponseGigType>? = null
+ var otherInterest:List<ResponseGigType>? = null
+
+var baseInterests:List<ResponseGigType> = listOf(ResponseGigType(imageRes = "workinprogress"), ResponseGigType(imageRes = "workinprogress"), ResponseGigType(imageRes = "workinprogress"))
+
 
 @Composable
 fun GigPage(navController: NavController, vModel:TheViewModel){
 
+    vModel.getGigLists()
     LazyColumn(modifier = Modifier.fillMaxSize()){
         item(){
             Box(modifier = Modifier
@@ -79,7 +91,7 @@ fun GigPage(navController: NavController, vModel:TheViewModel){
                 fontFamily = FontFamily.Serif
                 )
         }
-        itemsIndexed(yourInterest){ index,item->
+        itemsIndexed(yourInterest?: baseInterests){ index,item->
             Card(modifier = Modifier
                 .fillMaxWidth()
                 .height(130.dp)
@@ -101,7 +113,7 @@ fun GigPage(navController: NavController, vModel:TheViewModel){
                 fontFamily = FontFamily.Serif
             )
         }
-        itemsIndexed(otherInterest){index, item->
+        itemsIndexed(otherInterest ?: baseInterests){index, item->
             Card(modifier = Modifier
                 .fillMaxWidth()
                 .height(130.dp)
@@ -110,15 +122,17 @@ fun GigPage(navController: NavController, vModel:TheViewModel){
                 ,shape= RoundedCornerShape(8.dp),
                 elevation = 5.dp
             ) {
-                makeItems(item,navController = navController, vModel = vModel, index=index+1+ yourInterest.count()) //make the item cards
+                makeItems(item,navController = navController, vModel = vModel, index=index+1+ (yourInterest?.count()
+                    ?: baseInterests.count())) //make the item cards
             }
         }
     }
 }
 
 @Composable
-fun makeItems(item:interests, navController: NavController, vModel: TheViewModel, index:Int)
+fun makeItems(item:ResponseGigType, navController: NavController, vModel: TheViewModel, index:Int)
 {
+    val context = LocalContext.current
     Row() {
         //Make pictures
         Surface(            shape = RoundedCornerShape(8.dp),
@@ -127,7 +141,7 @@ fun makeItems(item:interests, navController: NavController, vModel: TheViewModel
             .padding(15.dp)
             .weight(.5f),
         ){
-            Image(painter = painterResource(id = item.imageId), contentDescription = "icon image" )
+            Image(painter = painterResource(id = vModel.getImageId(context = context, item.imageRes)), contentDescription = "icon image" )
         }
         //make contents
         Box(modifier = Modifier
@@ -145,7 +159,7 @@ fun makeItems(item:interests, navController: NavController, vModel: TheViewModel
             contentAlignment = Alignment.CenterStart
         ){
             Column(){
-                Text(item.title, fontWeight = FontWeight.Normal, fontSize = 18.sp)
+                Text(item.name, fontWeight = FontWeight.Normal, fontSize = 18.sp)
                 Text(item.money)
             }
         }
@@ -154,7 +168,15 @@ fun makeItems(item:interests, navController: NavController, vModel: TheViewModel
 
         Box(modifier = Modifier
             .fillMaxSize()
-            .weight(0.2f),
+            .weight(0.2f)
+            .clickable {
+
+                vModel.fetchCategory(index)
+                navController.navigate(NavScreens.TaskBoard.route){
+                    popUpTo(NavScreens.TaskBoard.route)
+                }
+
+            },
             contentAlignment = Alignment.TopEnd
         ){
             Icon(imageVector = Icons.Outlined.KeyboardArrowRight, contentDescription = "arrow forward")

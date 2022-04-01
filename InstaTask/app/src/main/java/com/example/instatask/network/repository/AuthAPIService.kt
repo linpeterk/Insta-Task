@@ -1,11 +1,6 @@
 package com.example.instatask.network.repository
 
-import com.example.instatask.network.GetCatBody
-
-import com.example.instatask.network.ResponseTokenSkill
-
-import com.example.instatask.network.GetReviewBody
-import com.example.instatask.network.ResponseTokenReview
+import com.example.instatask.network.*
 
 
 import retrofit2.Response
@@ -34,6 +29,10 @@ interface AuthAPIService {
 
     @POST("reviews_skillComponent")
     suspend fun getReviews(@Body getReview: GetReviewBody): Response<ResponseTokenReview>
+
+    @POST("get_gig")
+    suspend fun getGigs(@Body getGig: GetGiGCategory): Response<ResponseGig>
+
 
 }
 
