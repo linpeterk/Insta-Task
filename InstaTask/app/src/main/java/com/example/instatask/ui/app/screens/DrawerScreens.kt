@@ -1,6 +1,7 @@
 package com.example.instatask.ui.app.screens
 
 import android.graphics.PorterDuff
+import android.provider.Telephony.Mms.Part.TEXT
 import android.widget.RatingBar
 import android.widget.Toast
 import androidx.compose.animation.core.tween
@@ -33,6 +34,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.util.lerp
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.room.ColumnInfo.Companion.TEXT
 import com.example.instatask.R
 import com.example.instatask.data.SliderList
 import com.example.instatask.ui.theme.Purple500
@@ -206,7 +208,7 @@ fun SliderScreen(){
             pagerState = pagerState,
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
-                .padding(16.dp, 0.dp,16.dp,20.dp)
+                .padding(16.dp, 0.dp, 16.dp, 20.dp)
         )
 
         Row(
@@ -216,7 +218,8 @@ fun SliderScreen(){
                 .padding(start = 80.dp, top = 0.dp, end = 80.dp, 20.dp)
         ) {
             Button(
-                modifier = Modifier.fillMaxWidth(10f)
+                modifier = Modifier
+                    .fillMaxWidth(10f)
                     .shadow(
                         elevation = 10.dp,
                         shape = CircleShape,
@@ -243,7 +246,8 @@ fun SliderScreen(){
             )
             {
                 Button(
-                    modifier = Modifier.fillMaxWidth(10f)
+                    modifier = Modifier
+                        .fillMaxWidth(10f)
                         .shadow(
                             elevation = 10.dp,
                             shape = CircleShape,
@@ -730,7 +734,15 @@ fun SignUpScreen(){
 
             )
         }
-        Spacer(modifier = Modifier.padding(10.dp))
+        Column(modifier = Modifier
+            .height(20.dp)
+            .fillMaxWidth()
+            .background(color = Color.White),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center) {
+            Text(text="A statement that denies something, especially responsibility", color = Color.Red, fontSize = 15.sp)
+        }
+        Spacer(modifier = Modifier.padding(5.dp))
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             //FullName Addres textfield field
             OutlinedTextField(value = fullName.value, onValueChange = {fullName.value=it},
