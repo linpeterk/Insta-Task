@@ -713,7 +713,7 @@ fun SignUpScreen(){
             horizontalArrangement = Arrangement.Center,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 2.dp, top = 0.dp, end = 2.dp)
+                .padding(start = 2.dp, top = 0.dp, end = 2.dp, 10.dp)
         ) {
             Image(
                 painterResource(R.drawable.ic_sea_icon_round),
@@ -869,7 +869,7 @@ fun SignInScreen(){
             horizontalArrangement = Arrangement.Center,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 2.dp, top = 0.dp, end = 10.dp)
+                .padding(start = 2.dp, top = 0.dp, end = 2.dp, 10.dp)
         ) {
             Image(
                 painterResource(R.drawable.ic_sea_icon_round),
