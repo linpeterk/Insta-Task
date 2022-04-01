@@ -215,37 +215,50 @@ fun SliderScreen(){
                 .fillMaxWidth()
                 .padding(start = 80.dp, top = 0.dp, end = 80.dp, 20.dp)
         ) {
-            Button( modifier=Modifier
-                .shadow(
-                    elevation = 10.dp,
-                    shape = CircleShape,
-                    clip = true
-                ),
-                onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()},
-                colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Color.Red,
-                    contentColor = Color.Red)
-
-            ) {
-
-                Text(text = "Sign Up", color=Color.White)
-            }
             Button(
-                modifier=Modifier
+                modifier = Modifier.fillMaxWidth(10f)
                     .shadow(
                         elevation = 10.dp,
                         shape = CircleShape,
                         clip = true
                     ),
-                onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()},
+                onClick = { Toast.makeText(context, "Image clicked", Toast.LENGTH_SHORT).show() },
                 colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Color.Blue,
-                    contentColor = Color.Red)
+                    backgroundColor = Color.Red,
+                    contentColor = Color.Red
+                )
 
             ) {
 
-                Text(text = "Login", color=Color.White)
+                Text(text = "Sign Up", color = Color.White)
             }
+
+        }
+        Spacer(modifier = Modifier.height(2.dp))
+            Row(
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 80.dp, top = 0.dp, end = 80.dp, 20.dp)
+            )
+            {
+                Button(
+                    modifier = Modifier.fillMaxWidth(10f)
+                        .shadow(
+                            elevation = 10.dp,
+                            shape = CircleShape,
+                            clip = true
+                        ),
+                    onClick = { Toast.makeText(context, "Image clicked", Toast.LENGTH_SHORT).show() },
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = Color.Blue,
+                        contentColor = Color.Red
+                    )
+
+                ) {
+
+                    Text(text = "Login", color = Color.White)
+                }
         }
     }
 
