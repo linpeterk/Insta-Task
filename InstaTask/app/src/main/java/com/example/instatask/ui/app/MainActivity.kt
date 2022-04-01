@@ -97,31 +97,30 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-//                    GigPage()
-        //PostTask(theViewModel, navController = NavController(this))
+                    MainScreen(theViewModel)
+               //     GigPage()
+       // PostTask(theViewModel, navController = NavController(this))
                  //   CustomerList(theViewModel)
 
-              //   DrawerNavGraph(theViewModel)
 
-//                 DrawerNavGraph(theViewModel)
 
          //  test(theViewModel)
 
                     //Adama'S task for now
                      //SignUpScreen()
-                    //EntranceScreen()
+
                     //SignInScreen()
 
                   //LandingScreen()
 
-                    SliderScreen()
+               //     SliderScreen()
 
 
                 //    TaskBoard(theViewModel, NavController(this))
 
 
 
-                //MainScreen(theViewModel)
+
 
                 //MainScreen(theViewModel)
 

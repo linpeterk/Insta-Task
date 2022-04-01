@@ -17,6 +17,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -94,16 +96,17 @@ fun LazyScrollTaskBoard(vModel: TheViewModel, navcontroller:NavController, state
                         })
                     ){
 
-                        Text(text = "${item.task_name?: "No name Found"}", fontSize = 16.sp, modifier = Modifier.fillMaxWidth())
-                        Text(text = "Hourly $${item.hourly_rate?: 0}", fontSize = 12.sp,  modifier = Modifier.fillMaxWidth())
-                        Text(text = "Areas served: ${item.address ?: "No Address Found"}, CA", fontSize = 12.sp,  modifier = Modifier.fillMaxWidth())
-                        Text(text = "Hours: ${item.description ?: "No Descript"}", fontSize = 12.sp,  modifier = Modifier.fillMaxWidth())
+                        Text(text = "${item.task_name?: "No name Found"}", fontSize = 18.sp, fontWeight = FontWeight.W500, modifier = Modifier.fillMaxWidth())
+                        Text(text = "${item.person_name}", fontSize = 14.sp,  modifier = Modifier.fillMaxWidth())
+                        Text(text = "Hourly $${item.hourly_rate?: 0}", fontSize = 14.sp,  modifier = Modifier.fillMaxWidth())
+                        Text(text = "Areas served: ${item.address ?: "No Address Found"}, CA", fontSize = 14.sp,  modifier = Modifier.fillMaxWidth())
+
                         Spacer(modifier = Modifier.padding(5.dp))
 
                         Text(text = "Description: \n\"${item.description} \"",
                             overflow = TextOverflow.Visible,
-                            fontSize = 16.sp,
-                            fontFamily = FontFamily.Cursive
+                            fontSize = 14.sp,
+                            fontFamily = FontFamily.Serif
                         )
                     }
                 }
@@ -172,16 +175,16 @@ fun LazyScrollSkillBoard(vModel: TheViewModel, navcontroller:NavController , sta
                         })
                     ){
 
-                        Text(text = "${item.name}", fontSize = 16.sp, modifier = Modifier.fillMaxWidth())
-                        Text(text = "Hourly $${item.hourlyRate}", fontSize = 12.sp,  modifier = Modifier.fillMaxWidth())
-                        Text(text = "Areas served: ${item.workLocation}, CA", fontSize = 12.sp,  modifier = Modifier.fillMaxWidth())
-                        Text(text = "Hours: ${item.available}", fontSize = 12.sp,  modifier = Modifier.fillMaxWidth())
+                        Text(text = "${item.name}", fontSize = 18.sp, fontWeight = FontWeight.W500, modifier = Modifier.fillMaxWidth())
+                        Text(text = "Hourly $${item.hourlyRate}", fontSize = 14.sp,  modifier = Modifier.fillMaxWidth())
+                        Text(text = "Areas served: ${item.workLocation}, CA", fontSize = 14.sp,  modifier = Modifier.fillMaxWidth())
+                        Text(text = "Hours: ${item.available}", fontSize = 14.sp,  modifier = Modifier.fillMaxWidth())
                         Spacer(modifier = Modifier.padding(5.dp))
 
                         Text(text = "Description: \n\"${item.description} \"",
                             overflow = TextOverflow.Visible,
-                            fontSize = 16.sp,
-                            fontFamily = FontFamily.Cursive
+                            fontSize = 14.sp,
+                            fontFamily = FontFamily.Serif
                         )
                     }
                 }
