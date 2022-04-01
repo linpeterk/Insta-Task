@@ -109,13 +109,12 @@ class MainActivity : ComponentActivity() {
 
                     //Adama'S task for now
                      //SignUpScreen()
-                    //EntranceScreen()
-                    SignInScreen()
+                    EntranceScreen()
+                    //SignInScreen()
 
                   //LandingScreen()
 
                     //SliderScreen()
-                    //LandingScreen()
 
 
                 //    TaskBoard(theViewModel, NavController(this))
