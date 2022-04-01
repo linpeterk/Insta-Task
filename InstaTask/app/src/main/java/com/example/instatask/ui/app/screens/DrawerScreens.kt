@@ -106,15 +106,6 @@ fun SliderScreen(){
     }
 
     Column(modifier = Modifier.fillMaxSize()) {
-        Column(modifier = Modifier
-            .height(50.dp)
-            .fillMaxWidth()
-            .background(color = Color.Red),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center)
-        {
-            Text(text="QUICK CASH CATEGORIES", color = Color.White, fontSize = 20.sp)
-        }
         Row(
             horizontalArrangement = Arrangement.Center,
             modifier = Modifier
@@ -139,7 +130,7 @@ fun SliderScreen(){
                     )
             )
         }
-       // Spacer(modifier = Modifier.height(30.dp))
+       Spacer(modifier = Modifier.height(5.dp))
         HorizontalPager(state = pagerState,
             modifier = Modifier
                 .weight(1f)
@@ -197,26 +188,25 @@ fun SliderScreen(){
                             )
                         }
                         AndroidView(factory = { ratingBar },
-                                modifier = Modifier.padding(0.dp,8.dp,0.dp,0.dp)
+                                modifier = Modifier.padding(0.dp,0.dp,0.dp,0.dp)
                         )
                         Text(
                             text=newSliders.description,
                             style = MaterialTheme.typography.body1,
                             color = Color.White,
                             fontWeight = FontWeight.Normal,
-                            modifier = Modifier.padding(0.dp,8.dp,0.dp,0.dp)
+                            modifier = Modifier.padding(0.dp,0.dp,0.dp,0.dp)
                         )
                     }
                 }
             }
-
         }
         //HOrizontal dot indicator
         HorizontalPagerIndicator(
             pagerState = pagerState,
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
-                .padding(16.dp)
+                .padding(16.dp, 0.dp,16.dp,100.dp)
         )
     }
 
