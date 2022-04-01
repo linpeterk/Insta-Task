@@ -7,6 +7,7 @@ import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -15,14 +16,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.text.isDigitsOnly
 import androidx.navigation.NavController
 import androidx.room.ColumnInfo
 import com.example.instatask.R
 import com.example.instatask.database.datamodel.Task
+import com.example.instatask.ui.Components.googleHQ
 import com.example.instatask.ui.app.Navigation.NavScreens
 import com.example.instatask.ui.theme.graySurface
 import com.example.instatask.viewmodel.TheViewModel
@@ -60,7 +64,7 @@ fun PostTask(vModel: TheViewModel, navController: NavController){
     var task_name by remember {mutableStateOf("")}
     var user_name by remember {mutableStateOf("")}
     var description by remember {mutableStateOf("")}
-    var hourly_rate by remember {mutableStateOf(20)}
+    var hourly_rate by remember {mutableStateOf("")}
     var date by remember {mutableStateOf("")}
     var address by remember {mutableStateOf("")}
     var catIndex = remember {mutableStateOf(0)}
@@ -139,15 +143,22 @@ fun PostTask(vModel: TheViewModel, navController: NavController){
                         .padding(0.4.dp)
                         .weight(1f)
                 )
+
                 OutlinedTextField(
-                    value = hourly_rate.toString(),
-                    onValueChange = { hourly_rate = it.toInt() },
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+                    value = hourly_rate,
+                    onValueChange = {
+                        if(it.isDigitsOnly())
+                        hourly_rate = it
+                                    },
                     label = { Text(text = "$ Pay") },
                     shape = RoundedCornerShape(2.dp),
                     modifier = Modifier
                         .padding(0.4.dp)
                         .weight(1f)
                 )
+
+
             }
 
             OutlinedTextField(
@@ -181,13 +192,17 @@ fun PostTask(vModel: TheViewModel, navController: NavController){
                                     task_name = task_name,
                                     person_name = user_name,
                                     description = description,
-                                    hourly_rate = hourly_rate,
+                                    hourly_rate = hourly_rate.toInt(),
                                     datetime = date,
                                     imageId = image.value,
-                                    address = address
+                                    address = address,
+                                    lat = googleHQ.latitude,
+                                    lng = googleHQ.longitude
                                     )
                                 vModel.insertTask(task)
+
                                 navController.navigate(NavScreens.TaskBoard.route){
+                                //    vModel.fetchCategory(catIndex.value)
                                     popUpTo(NavScreens.TaskBoard.route)
                                     launchSingleTop = true
                                 }

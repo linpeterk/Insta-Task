@@ -146,7 +146,7 @@ fun SkillBoard(
            // .border(3.dp, Color.Red)
         ) {
             MakeGoogleMap(vModel = vModel, mode = 2, navController = navcontroller)
-            TopBar()
+          //  TopBar()
         }
     }
 }

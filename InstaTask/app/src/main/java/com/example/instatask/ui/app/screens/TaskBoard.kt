@@ -190,7 +190,7 @@ fun TaskBoard(vModel: TheViewModel,
         Box(modifier=Modifier
             .padding(bottom = 200.dp)) {
             MakeGoogleMap(vModel = vModel, mode = 1, navController = navcontroller)
-            TopBar()
+        //    TopBar()
         }
     }
 

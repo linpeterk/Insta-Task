@@ -87,7 +87,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             init(theViewModel)
             theViewModel.getReviews(2, 2)
-         //   deleteDB(theViewModel) // Definitely don't run this
+          //  deleteDB(theViewModel) // Definitely don't run this
 //initDatabase(theViewModel) //Do not run this, run only once to initiate database
 
 
@@ -97,12 +97,10 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    MainScreen(theViewModel)
+                //    MainScreen(theViewModel)
                //     GigPage()
        // PostTask(theViewModel, navController = NavController(this))
                  //   CustomerList(theViewModel)
-
-
 
          //  test(theViewModel)
 
@@ -116,13 +114,9 @@ class MainActivity : ComponentActivity() {
                //     SliderScreen()
 
 
-                //    TaskBoard(theViewModel, NavController(this))
+                    //TaskBoard(theViewModel, NavController(this))
 
-
-
-
-
-                //MainScreen(theViewModel)
+                MainScreen(theViewModel)
 
 
 //                    TaskBoard(theViewModel)

@@ -22,7 +22,7 @@ import com.example.instatask.ui.theme.graySurface
 fun BottomNavigationBar(navController: NavController) {
 
     val items = listOf(
-        NavScreens.TaskBoard,
+        NavScreens.Gig,
         NavScreens.SkillBoard,
         NavScreens.Books,
         NavScreens.Profile
@@ -51,13 +51,14 @@ fun BottomNavigationBar(navController: NavController) {
                         //avoid building up a large stack of destinations
                         // on the back stack as users select items
                         navController.graph.startDestinationRoute?.let { route ->
-                            popUpTo(route) {
+                            popUpTo(item.route) {
                                 saveState = true
+
                             }
                         }
                         //avoid multiple copies of the same destination when
                         //reselecting the same item
-                        launchSingleTop = true
+                      //  launchSingleTop = true
 
                     }
                 }

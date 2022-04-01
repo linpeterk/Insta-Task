@@ -3,9 +3,11 @@ package com.example.instatask.ui.app.screens
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
@@ -27,10 +29,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.instatask.model.interests
 import com.example.instatask.ui.theme.graySurface
 import com.example.instatask.ui.theme.lightBlue
 import com.example.instatask.R
+import com.example.instatask.ui.app.Navigation.NavScreens
+import com.example.instatask.viewmodel.TheViewModel
 
 val yourInterest = listOf(
     interests(title = "Pets", "$24/hr avg.",  R.drawable.petcategory),
@@ -45,7 +50,7 @@ val otherInterest = listOf(
     )
 
 @Composable
-fun GigPage(){
+fun GigPage(navController: NavController, vModel:TheViewModel){
 
     LazyColumn(modifier = Modifier.fillMaxSize()){
         item(){
@@ -74,7 +79,7 @@ fun GigPage(){
                 fontFamily = FontFamily.Serif
                 )
         }
-        items(yourInterest){ item->
+        itemsIndexed(yourInterest){ index,item->
             Card(modifier = Modifier
                 .fillMaxWidth()
                 .height(130.dp)
@@ -83,7 +88,7 @@ fun GigPage(){
                 ,shape= RoundedCornerShape(8.dp),
                 elevation = 5.dp
             ) {
-               makeItems(item) //make the item cards
+               makeItems(item, navController = navController, vModel = vModel, index = index+1) //make the item cards
             }
         }
         //Other Interests
@@ -96,7 +101,7 @@ fun GigPage(){
                 fontFamily = FontFamily.Serif
             )
         }
-        items(otherInterest){ item->
+        itemsIndexed(otherInterest){index, item->
             Card(modifier = Modifier
                 .fillMaxWidth()
                 .height(130.dp)
@@ -105,14 +110,14 @@ fun GigPage(){
                 ,shape= RoundedCornerShape(8.dp),
                 elevation = 5.dp
             ) {
-                makeItems(item) //make the item cards
+                makeItems(item,navController = navController, vModel = vModel, index=index+1+ yourInterest.count()) //make the item cards
             }
         }
     }
 }
 
 @Composable
-fun makeItems(item:interests)
+fun makeItems(item:interests, navController: NavController, vModel: TheViewModel, index:Int)
 {
     Row() {
         //Make pictures
@@ -128,7 +133,15 @@ fun makeItems(item:interests)
         Box(modifier = Modifier
             .fillMaxSize()
             .padding(15.dp)
-            .weight(1f),
+            .weight(1f)
+            .clickable {
+
+                        vModel.fetchCategory(index)
+                       navController.navigate(NavScreens.TaskBoard.route){
+                           popUpTo(NavScreens.TaskBoard.route)
+                       }
+
+            },
             contentAlignment = Alignment.CenterStart
         ){
             Column(){

@@ -26,7 +26,7 @@ var lat:Double = 37.4198
 var lng:Double = -122.0788
 val googleHQ = LatLng(lat, lng)
 
-var cameraPositionState:CameraPositionState?=null
+var cameraPositionState:CameraPositionState =  CameraPositionState(position = CameraPosition.fromLatLngZoom(googleHQ, 14f))
 
 @Composable
   fun MakeGoogleMap(
@@ -38,6 +38,7 @@ var cameraPositionState:CameraPositionState?=null
      cameraPositionState = rememberCameraPositionState {
         position = CameraPosition.fromLatLngZoom(googleHQ, 14f)
     }
+
 
     var uiSettings by remember {
         mutableStateOf(

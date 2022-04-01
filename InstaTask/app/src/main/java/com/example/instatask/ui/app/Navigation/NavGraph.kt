@@ -13,11 +13,16 @@ import com.example.instatask.viewmodel.TheViewModel
 
 @Composable
 fun Navigation(navController: NavHostController, vModel : TheViewModel) {
-    NavHost(navController, startDestination = NavScreens.TaskBoard.route) {
+    NavHost(navController, startDestination = NavScreens.Gig.route) {
 
         //task board Gigs
         composable(NavScreens.TaskBoard.route) {
             TaskBoard(vModel = vModel, navcontroller = navController)
+        }
+        composable(NavScreens.SkillBoard.route)
+        {
+
+            SkillBoard(vModel = vModel, navcontroller= navController)
         }
 
         //when job clicked
@@ -32,11 +37,7 @@ fun Navigation(navController: NavHostController, vModel : TheViewModel) {
                 WhenJobClicked(vModel = vModel, navController = navController, taskId = id )
             }
         }
-        composable(NavScreens.SkillBoard.route)
-        {
 
-            SkillBoard(vModel = vModel, navController)
-        }
         composable(
             route = Screens.WhenSkill.route + "/{taskID}",
             arguments = listOf(navArgument("taskID"){type = NavType.IntType})
@@ -60,6 +61,11 @@ fun Navigation(navController: NavHostController, vModel : TheViewModel) {
         {
 
             PostTask(vModel = vModel, navController)
+        }
+        composable(NavScreens.Gig.route)
+        {
+
+            GigPage(vModel = vModel, navController = navController)
         }
 
 

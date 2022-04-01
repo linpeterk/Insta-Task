@@ -216,6 +216,7 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
 
 
     var task=  mutableStateOf(Task())
+    //fetch task by ID
     fun fetchTaskById(id:Int)
     {
         viewModelScope.launch{
@@ -224,6 +225,7 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
 
     }
 
+    //insert one task into database
     fun insertTask(task: Task)
     {
         viewModelScope.launch{
@@ -238,6 +240,8 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
             TaskRepository.deleteTaskById(id)
         }
     }
+
+    //fetch entire cateogry given id, to be read from currentTaskList
     fun fetchCategory(id: Int)
     {
       //  loginRequestLiveData.postValue(true)
