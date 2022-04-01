@@ -1,6 +1,7 @@
 package com.example.instatask.ui.Components.utilities
 
 import android.util.Log
+import android.widget.Toast
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
@@ -57,9 +58,13 @@ val context = LocalContext.current
                                 }
                                 if(item.catID == 0) //POST TASK CLICKED, NAVIGATE TO POST SCREEN
                                 {
+                                    if(mode == 1 ) //Task board's post task
                                     navController.navigate(NavScreens.PostTask.route){
                                         popUpTo(NavScreens.PostTask.route)
                                         launchSingleTop = true
+                                    }
+                                    else {
+                                        Toast.makeText(context, "Denied: Please register a Business Account", Toast.LENGTH_LONG).show()
                                     }
                                 }
                           //      Log.d("Bar", "list is ${vmodel.taskList[0].description}")
