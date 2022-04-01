@@ -108,8 +108,9 @@ class MainActivity : ComponentActivity() {
          //  test(theViewModel)
 
                     //Adama'S task for now
-                     SignUpScreen()
+                     //SignUpScreen()
                     //EntranceScreen()
+                    SignInScreen()
 
                   //LandingScreen()
 

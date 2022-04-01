@@ -869,7 +869,7 @@ fun SignInScreen(){
             horizontalArrangement = Arrangement.Center,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 2.dp, top = 0.dp, end = 2.dp)
+                .padding(start = 2.dp, top = 0.dp, end = 10.dp)
         ) {
             Image(
                 painterResource(R.drawable.ic_sea_icon_round),
@@ -890,9 +890,18 @@ fun SignInScreen(){
 
             )
         }
+        Column(modifier = Modifier
+            .height(20.dp)
+            .fillMaxWidth()
+            .background(color = Color.White),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center) {
+            Text(text="A statement that denies something, especially responsibility", color = Color.Red, fontSize = 15.sp)
+        }
+        Spacer(modifier = Modifier.padding(2.dp))
         var emailAddress by rememberSaveable{mutableStateOf("")}
         var Password by rememberSaveable{mutableStateOf("")}
-        Spacer(modifier = Modifier.padding(15.dp))
+        Spacer(modifier = Modifier.padding(15.dp, 0.dp,15.dp,15.dp))
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             OutlinedTextField(value = emailAddress, onValueChange = {emailAddress=it},
                 label = {Text(text="Email Address", color = Color.Black, style = TextStyle(letterSpacing = TextUnit.Unspecified),
