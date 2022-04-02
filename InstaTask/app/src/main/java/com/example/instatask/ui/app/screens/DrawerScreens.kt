@@ -171,7 +171,7 @@ fun SliderScreen(navController:NavController){
                 val newSliders = SliderList[page]
                 Box(modifier = Modifier
                     .fillMaxSize()
-                    .background(Color.LightGray)
+                    .background(Color.White)
                     .align(Alignment.Center)
                 )   {
                     Image(painter = painterResource(id = newSliders.imgUri) , contentDescription = "Image",contentScale = ContentScale.Crop,
@@ -184,7 +184,7 @@ fun SliderScreen(navController:NavController){
                             Text(
                                 text=newSliders.title,
                                 style = MaterialTheme.typography.h5,
-                                color = Color.White,
+                                color = graySurface,
                                 fontWeight = FontWeight.Bold
                             )
 
@@ -204,7 +204,7 @@ fun SliderScreen(navController:NavController){
                         Text(
                             text=newSliders.description,
                             style = MaterialTheme.typography.body1,
-                            color = Color.White,
+                            color = graySurface,
                             fontWeight = FontWeight.Normal,
                             modifier = Modifier.padding(0.dp,0.dp,0.dp,0.dp)
                         )
