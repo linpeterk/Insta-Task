@@ -35,20 +35,32 @@ import kotlin.math.log
 //Drop down menu
 
 //val listoflistImages = listOf<List<Any>>()
-val listOfPets = listOf("petcategory", "workinprogress")
-val listOfGarden = listOf("farming")
-val listOfHome = listOf("renovation")
-val listOfTrade = listOf("trading")
-val listOfDelivery = listOf("deliveryman")
-val listOfLabor = listOf("workinprogress")
+/*
+KuangCheng Lin (Peter)
+Post tasks to add tasks to database, users fill out forms to create task object then insert
 
-val listOfTaskImages = listOf(listOfPets, listOfGarden, listOfHome, listOfTrade, listOfDelivery, listOfLabor)
+ */
 
+/*  list of categories*/
+//val listOfPets = listOf("petcategory", "workinprogress")
+//val listOfGarden = listOf("farming")
+//val listOfHome = listOf("renovation")
+//val listOfTrade = listOf("trading")
+//val listOfDelivery = listOf("deliveryman")
+//val listOfLabor = listOf("workinprogress")
 
+//val listOfTaskImages = listOf("listOfPets", listOfGarden, listOfHome, listOfTrade, listOfDelivery, listOfLabor)
 
+val listOfTaskImages = listOf("petcategory", "farming", "renovation", "trading", "deliveryman", "workinprogress")
 
+val listOfSubPets = listOf("pets", "workinprogress")
+val listOfSubGarden = listOf("ic_sea_icon", "workinprogress")
+val listOfSubHome = listOf("ic_sea_icon", "workinprogress")
+val listOfSubTrade = listOf("ic_sea_icon", "workinprogress")
+val listOfSubDelivery = listOf("ic_sea_icon", "workinprogress")
+val listOfSubLabor = listOf("ic_sea_icon", "workinprogress")
 
-
+val listOfSubTaskImages = listOf(listOfSubPets, listOfSubGarden, listOfSubHome, listOfSubTrade, listOfSubDelivery, listOfSubLabor)
 
 
 
@@ -56,11 +68,15 @@ val listOfTaskImages = listOf(listOfPets, listOfGarden, listOfHome, listOfTrade,
 fun PostTask(vModel: TheViewModel, navController: NavController){
     var context = LocalContext.current
 
-    var expanded = remember{mutableStateOf(false)}
-    var selectedText = remember {mutableStateOf("Select Category")}
+    var expandedFirst = remember{mutableStateOf(false)} //Status of the First dropdown menu
+    var expandedSecond = remember{mutableStateOf(false)} //Status of the Second dropdown menu
+    var selectedText = remember {mutableStateOf("Select Category")} //text on dropdown menu
+    var selectedSubText = remember {mutableStateOf("Select SubCategory")} //text on subcategory dropdown menu
 
 
-    var image = remember {mutableStateOf("workinprogress")}
+    var image = remember {mutableStateOf("workinprogress")} //image to be displayed
+
+    //all the information needed to be stored for task
     var task_name by remember {mutableStateOf("")}
     var user_name by remember {mutableStateOf("")}
     var description by remember {mutableStateOf("")}
@@ -71,6 +87,7 @@ fun PostTask(vModel: TheViewModel, navController: NavController){
 
 
     Column(modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
+        //Title
         Text(
             text = "Post Task",
             modifier = Modifier
@@ -80,7 +97,10 @@ fun PostTask(vModel: TheViewModel, navController: NavController){
             fontSize = 30.sp,
             fontWeight = FontWeight.Bold
         )
+
         Row(verticalAlignment = Alignment.CenterVertically) {
+
+            //Image to be displayed
             Surface(
                 modifier = Modifier
                     .size(90.dp)
@@ -91,34 +111,76 @@ fun PostTask(vModel: TheViewModel, navController: NavController){
                     contentDescription = "Post image"
                 )
             }
-            Box(
-                modifier = Modifier
-                    .padding(10.dp),
-                contentAlignment = Alignment.Center
-            ) {
+
+            //The First Dropdown Menu here
+            Column() {
+                //the first dropdownmenu category
                 Box(
                     modifier = Modifier
-                        .offset(x = -100.dp, y = 15.dp)
-                )
-                {
-                    DropDownMenu(expanded, image, selectedText, catIndex)
-                }
-                Card(
-                    elevation = 5.dp,
-                    shape = RoundedCornerShape(15.dp)
+                        .padding(10.dp),
+                    contentAlignment = Alignment.Center
                 ) {
-                    Spacer(modifier = Modifier.padding(5.dp))
-                    Text(
-                        text = selectedText.value, modifier = Modifier
-                            .width(150.dp)
-                            .height(25.dp)
-                            //   .border(1.dp, graySurface)
-                            .clickable {
-                                expanded.value = true
-                            },
-                        textAlign = TextAlign.Center
+                    Box(
+                        modifier = Modifier
+                            .offset(x = -100.dp, y = 15.dp)
                     )
+                    {
+                        DropDownMenu(expandedFirst, image, selectedText, catIndex, listOfTaskImages)
+                    }
+                    Card(
+                        elevation = 5.dp,
+                        shape = RoundedCornerShape(15.dp)
+                    ) {
+                        Spacer(modifier = Modifier.padding(5.dp))
+                        Text(
+                            text = selectedText.value, modifier = Modifier
+                                .width(150.dp)
+                                .height(25.dp)
+                                //   .border(1.dp, graySurface)
+                                .clickable {
+                                    expandedFirst.value = true
+                                },
+                            textAlign = TextAlign.Center
+                        )
+                    }
+
                 }
+
+                //The second dropdown category
+                Box(
+                    modifier = Modifier
+                        .padding(10.dp),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .offset(x = -100.dp, y = 15.dp)
+                    )
+                    {
+                        DropDownMenu(expandedSecond, image, selectedSubText, catIndex, listOfSubTaskImages[0])
+                    }
+                    Card(
+                        elevation = 5.dp,
+                        shape = RoundedCornerShape(15.dp)
+                    ) {
+                        Spacer(modifier = Modifier.padding(5.dp))
+                        Text(
+                            text = selectedSubText.value, modifier = Modifier
+                                .width(150.dp)
+                                .height(25.dp)
+                                //   .border(1.dp, graySurface)
+                                .clickable {
+                                    expandedSecond.value = true
+                                },
+                            textAlign = TextAlign.Center
+                        )
+                    }
+
+                }
+
+
+
+
             }
         }
         Column(modifier = Modifier
@@ -224,7 +286,7 @@ fun PostTask(vModel: TheViewModel, navController: NavController){
 
 
 @Composable
-fun DropDownMenu(expanded: MutableState<Boolean>, image: MutableState<String>, selectedText: MutableState<String>, catIndex:MutableState<Int>){
+fun DropDownMenu(expanded: MutableState<Boolean>, image: MutableState<String>, selectedText: MutableState<String>, catIndex:MutableState<Int>,  listOfImages:List<String>){
 
     DropdownMenu(
         expanded = expanded.value,
@@ -234,20 +296,21 @@ fun DropDownMenu(expanded: MutableState<Boolean>, image: MutableState<String>, s
         //  .border(2.dp, Color.Blue),
 
     ) {
-        listOfTaskImages.forEachIndexed() { index, title ->
+        listOfImages.forEachIndexed() { index, title ->
 
             DropdownMenuItem(
                 modifier = Modifier.height(30.dp),
                 onClick = {
                     //   if (index != 0) {
                 catIndex.value = index+1
-                    image.value =  listOfTaskImages[index][0]
-                    selectedText.value = image.value
+                    image.value =  title
+                    Log.d("ImageValue", "${image.value}")
+                    selectedText.value = title
                     expanded.value = false
                     //    }
                 })
             {
-                Text(text = "${title[0]}")
+                Text(text = "${title}")
             }
         }
     }

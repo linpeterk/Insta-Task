@@ -98,9 +98,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    MainScreen(theViewModel)
+                //    MainScreen(theViewModel)
                //     GigPage()
-       // PostTask(theViewModel, navController = NavController(this))
+        PostTask(theViewModel, navController = NavController(this))
                  //   CustomerList(theViewModel)
          //MainScreen(theViewModel)
          //  test(theViewModel)
@@ -132,7 +132,7 @@ class MainActivity : ComponentActivity() {
 //                user=UserInfo("User Full Name","username@gmail.com","123 W ABC Ave",681123),
 //                activity=Activity(arrayOf<String>("Activity_one","Activity_two"),arrayOf<String>("Activity_1","Activity_2","Activity_3","Activity_4"))
 //            )
-     //       JobAccepted(job = JobDetails("QwertyName",12,15,"Developer","Name_Qwerty","Test_Test","2022-03-01"))
+           // JobAccepted(job = JobDetails("QwertyName",12,15,"Developer","Name_Qwerty","Test_Test","2022-03-01"))
 
         }
     }
@@ -141,7 +141,7 @@ class MainActivity : ComponentActivity() {
 @SuppressLint("ResourceType")
 @Composable
 fun test(theViewModel:TheViewModel) {
-
+theViewModel.task
 var context = LocalContext.current
     var list= theViewModel.currentSkillList
 
