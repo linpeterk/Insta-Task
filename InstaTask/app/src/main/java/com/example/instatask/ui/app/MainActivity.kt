@@ -112,7 +112,7 @@ class MainActivity : ComponentActivity() {
 
                   //LandingScreen()
 
-               //     SliderScreen()
+                SliderScreen()
 
 
                     //TaskBoard(theViewModel, NavController(this))
