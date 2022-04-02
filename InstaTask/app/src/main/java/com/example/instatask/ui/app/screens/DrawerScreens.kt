@@ -34,10 +34,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.util.lerp
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.navigation.NavController
 import androidx.room.ColumnInfo.Companion.TEXT
 import com.example.instatask.R
 import com.example.instatask.data.SliderList
+import com.example.instatask.ui.app.Navigation.NavScreens
 import com.example.instatask.ui.theme.Purple500
+import com.example.instatask.ui.theme.graySurface
 import com.google.accompanist.pager.*
 import com.google.maps.android.compose.*
 import kotlinx.coroutines.delay
@@ -45,9 +48,9 @@ import kotlinx.coroutines.yield
 import kotlin.math.absoluteValue
 
 //Home Screen
-@Preview(showBackground = true)
+
 @Composable
-fun HomeScreen(){
+fun HomeScreen(navController:NavController){
     Column( horizontalAlignment= Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
@@ -86,10 +89,9 @@ fun HomeScreen(){
 }
 
 //Pager Slider Screen
-@Preview(showBackground = true)
 @ExperimentalPagerApi
 @Composable
-fun SliderScreen(){
+fun SliderScreen(navController:NavController){
 
     val context = LocalContext.current
     val pagerState = rememberPagerState(
@@ -225,7 +227,14 @@ fun SliderScreen(){
                         shape = CircleShape,
                         clip = true
                     ),
-                onClick = { Toast.makeText(context, "Image clicked", Toast.LENGTH_SHORT).show() },
+                onClick = {
+                            navController.navigate(NavScreens.Signup.route)
+                            {
+                                popUpTo(NavScreens.Signup.route)
+                            }
+                   // Toast.makeText(context, "Image clicked", Toast.LENGTH_SHORT).show()
+
+                          },
                 colors = ButtonDefaults.buttonColors(
                     backgroundColor = Color.Red,
                     contentColor = Color.Red
@@ -253,7 +262,14 @@ fun SliderScreen(){
                             shape = CircleShape,
                             clip = true
                         ),
-                    onClick = { Toast.makeText(context, "Image clicked", Toast.LENGTH_SHORT).show() },
+                    onClick = {
+                        navController.navigate(NavScreens.Login.route)
+                        {
+                            popUpTo(NavScreens.Login.route)
+                        }
+
+                      //  Toast.makeText(context, "Image clicked", Toast.LENGTH_SHORT).show()
+                              },
                     colors = ButtonDefaults.buttonColors(
                         backgroundColor = Color.Blue,
                         contentColor = Color.Red
@@ -270,9 +286,9 @@ fun SliderScreen(){
 
 
 //Entrance Screen
-@Preview(showBackground = true)
+
 @Composable
-fun EntranceScreen(){
+fun EntranceScreen(navController:NavController){
     val context = LocalContext.current
 
     Column(
@@ -396,9 +412,9 @@ fun EntranceScreen(){
 }
 
 
-@Preview(showBackground = true)
+
 @Composable
-fun LandingScreen(){
+fun LandingScreen(navController:NavController){
 
     val context = LocalContext.current
 
@@ -687,9 +703,9 @@ fun LandingScreen(){
 }
 
 //SignUp Screen
-@Preview(showBackground = true)
+
 @Composable
-fun SignUpScreen(){
+fun SignUpScreen(navController:NavController){
     val context = LocalContext.current
     val fullName = rememberSaveable{ mutableStateOf("") }
     val email = rememberSaveable{ mutableStateOf("") }
@@ -810,7 +826,17 @@ fun SignUpScreen(){
                     backgroundColor = Color.Red,
                     contentColor = Color.Red),
 
-                onClick = { Toast.makeText(context,"You re Signed Up....", Toast.LENGTH_LONG).show()}
+                onClick = {
+
+                    navController.navigate(NavScreens.Gig.route)
+                    {
+                        popUpTo(NavScreens.Gig.route)
+                    }
+
+
+                  //  Toast.makeText(context,"You re Signed Up....", Toast.LENGTH_LONG).show()
+
+                }
 
             ){
                 Text(text="Submit", color = Color.White, style = TextStyle(letterSpacing = TextUnit.Unspecified),
@@ -837,7 +863,15 @@ fun SignUpScreen(){
                     colors = ButtonDefaults.buttonColors(
                         backgroundColor = Color.Blue,
                         contentColor = Color.Blue),
-                    onClick = {Toast.makeText(context,"Login..", Toast.LENGTH_LONG).show()},
+                    onClick = {
+
+                        //Toast.makeText(context,"Login..", Toast.LENGTH_LONG).show()
+                        navController.navigate(NavScreens.Login.route)
+                        {
+                            popUpTo(NavScreens.Login.route)
+                        }
+
+                              },
                 ) {
                     Text(text="Login", color = Color.White, style = TextStyle(letterSpacing = TextUnit.Unspecified),
                         fontSize = TextUnit.Unspecified)
@@ -848,9 +882,9 @@ fun SignUpScreen(){
 }
 
 //SignIn Screen
-@Preview(showBackground = true)
+
 @Composable
-fun SignInScreen(){
+fun SignInScreen(navController:NavController){
     val context = LocalContext.current
     //val image = Image(painter = painterResource(id = R.drawable.project1backgroung), contentDescription = null)
     val emailAddress = remember{ mutableStateOf("")}
@@ -896,7 +930,7 @@ fun SignInScreen(){
             .background(color = Color.White),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center) {
-            Text(text="A statement that denies something, especially responsibility", color = Color.Red, fontSize = 15.sp)
+            Text(text="Disclaimer: A disclaimer is a statement that denies something, especially responsibility", color = graySurface, fontSize = 15.sp)
         }
         Spacer(modifier = Modifier.padding(2.dp))
         var emailAddress by rememberSaveable{mutableStateOf("")}
@@ -945,7 +979,15 @@ fun SignInScreen(){
                     backgroundColor = Color.Red,
                     contentColor = Color.Red),
 
-                onClick = {Toast.makeText(context,"You re Signed In....", Toast.LENGTH_LONG).show()},
+                onClick = {
+
+                        navController.navigate(NavScreens.Gig.route)
+                {
+                    popUpTo(NavScreens.Gig.route)
+                }
+                    //Toast.makeText(context,"You re Signed In....", Toast.LENGTH_LONG).show()
+                    //
+                     },
             ){
                 Text(text="Login", color = Color.White, style = TextStyle(letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)
@@ -971,7 +1013,15 @@ fun SignInScreen(){
                     colors = ButtonDefaults.buttonColors(
                         backgroundColor = Color.Blue,
                         contentColor = Color.Blue),
-                    onClick = {Toast.makeText(context,"Signing Up..", Toast.LENGTH_LONG).show()},
+                    onClick = {
+
+                      //  Toast.makeText(context,"Signing Up..", Toast.LENGTH_LONG).show()
+                        navController.navigate(NavScreens.Signup.route)
+                        {
+                            popUpTo(NavScreens.Signup.route)
+                        }
+
+                              },
                 ) {
                     Text(text="Sign Up", color = Color.White, style = TextStyle(letterSpacing = TextUnit.Unspecified),
                         fontSize = TextUnit.Unspecified)
@@ -983,9 +1033,9 @@ fun SignInScreen(){
 }
 
 //Profile Screen
-@Preview(showBackground = true)
+
 @Composable
-fun ProfileScreen(){
+fun ProfileScreen(navController:NavController){
     Column( horizontalAlignment= Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
@@ -1016,9 +1066,9 @@ fun ProfileScreen(){
 }
 
 //LogOut Screen
-@Preview(showBackground = true)
+
 @Composable
-fun LogOutScreen(){
+fun LogOutScreen(navController:NavController){
     Column( horizontalAlignment= Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
@@ -1049,9 +1099,9 @@ fun LogOutScreen(){
 }
 
 //Settings Screen
-@Preview(showBackground = true)
+
 @Composable
-fun SettingsScreen(){
+fun SettingsScreen(navController:NavController){
     Column( horizontalAlignment= Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()

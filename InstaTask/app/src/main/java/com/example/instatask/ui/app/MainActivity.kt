@@ -98,26 +98,29 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                //    MainScreen(theViewModel)
+                    MainScreen(theViewModel)
                //     GigPage()
        // PostTask(theViewModel, navController = NavController(this))
                  //   CustomerList(theViewModel)
-
+         //MainScreen(theViewModel)
          //  test(theViewModel)
 
                     //Adama'S task for now
-                     //SignUpScreen()
+                  //   SignUpScreen(NavController(this))
 
-                    //SignInScreen()
+              //      SignInScreen(NavController(this))
 
-                  //LandingScreen()
+                //  LandingScreen()
 
-                SliderScreen()
+
+
+                 //   SliderScreen()
+
 
 
                     //TaskBoard(theViewModel, NavController(this))
 
-                MainScreen(theViewModel)
+              //  MainScreen(theViewModel)
 
 
 //                    TaskBoard(theViewModel)
@@ -180,6 +183,7 @@ data class JobDetails(val acceptorName:String,val hours:Int,val rate:Int,val des
 fun MainScreen(vModel : TheViewModel) {
     val navController = rememberNavController()
     Scaffold(
+
     modifier = Modifier,
        bottomBar = { BottomNavigationBar(navController) }
     ) {
