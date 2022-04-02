@@ -844,9 +844,9 @@ fun SignUpScreen(navController:NavController){
 
                 onClick = {
 
-                    navController.navigate(NavScreens.Interm.route)
+                    navController.navigate(NavScreens.Gig.route)
                     {
-                        popUpTo(NavScreens.Interm.route)
+                        popUpTo(NavScreens.Gig.route)
 
                     }
 
@@ -1007,9 +1007,9 @@ fun SignInScreen(navController:NavController){
 
                 onClick = {
 
-                        navController.navigate(NavScreens.Interm.route)
+                        navController.navigate(NavScreens.Gig.route)
                 {
-                    popUpTo(NavScreens.Interm.route)
+                    popUpTo(NavScreens.Gig.route)
                 }
                     //Toast.makeText(context,"You re Signed In....", Toast.LENGTH_LONG).show()
                     //

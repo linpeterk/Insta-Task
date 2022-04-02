@@ -178,14 +178,52 @@ data class JobDetails(val acceptorName:String,val hours:Int,val rate:Int,val des
 
 //BOTTOM NAVIGATION BAR stuff
 //NEW FILES ADDED - NavScreens.kt, ContentScreens.kt
-
+//
 @Composable
 fun MainScreen(vModel : TheViewModel) {
+    val bottomBarState = rememberSaveable { (mutableStateOf(true)) }
+
     val navController = rememberNavController()
 
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
 
+    when (navBackStackEntry?.destination?.route) {
+        "Landing" -> {
+            // Show BottomBar and TopBar
+            bottomBarState.value = false
+            Log.d("Landing page entry", "Landed")
+        }
+        "Login" -> {
+            // Show BottomBar and TopBar
+            bottomBarState.value = false
+        }
+        "Signup" -> {
+            // Show BottomBar and TopBar
+            bottomBarState.value = false
+        }
+        "Gig" -> {
+            // Hide BottomBar and TopBar
+            bottomBarState.value = true
+        }
+    }
+
+    Scaffold(
+
+    modifier = Modifier,
+       bottomBar = {if(bottomBarState.value) {
+           BottomNavigationBar(navController)
+       }else{
+           bottomBarState.value
+       }
+
+       }
+    ) {
+
+        Box(modifier = Modifier.padding(bottom=56.dp)) {
             Navigation(navController = navController, vModel = vModel)
+        }
 
+    }
 
 
 }

@@ -66,9 +66,9 @@ fun Navigation(navController: NavHostController, vModel : TheViewModel) {
             PostTask(vModel = vModel, navController)
         }
 
-        composable(NavScreens.Interm.route){
-            Intermediate(navController = navController, vModel = vModel)
-        }
+//        composable(NavScreens.Interm.route){
+//            Intermediate(navController = navController, vModel = vModel)
+//        }
         composable(NavScreens.Gig.route)
         {
 
