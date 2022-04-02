@@ -92,7 +92,6 @@ fun HomeScreen(navController:NavController){
 @ExperimentalPagerApi
 @Composable
 fun SliderScreen(navController:NavController){
-
     val context = LocalContext.current
     val pagerState = rememberPagerState(
         pageCount = SliderList.size,
@@ -114,7 +113,7 @@ fun SliderScreen(navController:NavController){
             horizontalArrangement = Arrangement.Center,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 2.dp, top = 0.dp, end = 2.dp)
+                .padding(start = 2.dp, top = 0.dp, end = 2.dp, 10.dp)
         ) {
             Image(
                 painterResource(R.drawable.ic_sea_icon_round),
@@ -133,6 +132,14 @@ fun SliderScreen(navController:NavController){
                         }
                     )
             )
+        }
+        Column(modifier = Modifier
+            .height(20.dp)
+            .fillMaxWidth()
+            .background(color = Color.White),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center) {
+            Text(text="InstaTask", color = graySurface, fontSize = 15.sp)
         }
        Spacer(modifier = Modifier.height(5.dp))
         HorizontalPager(state = pagerState,
@@ -756,7 +763,16 @@ fun SignUpScreen(navController:NavController){
             .background(color = Color.White),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center) {
-            Text(text="A statement that denies something, especially responsibility", color = Color.Red, fontSize = 15.sp)
+            Text(text="InstaTask", color = graySurface, fontSize = 15.sp)
+        }
+        Spacer(modifier = Modifier.padding(5.dp))
+        Column(modifier = Modifier
+            .height(20.dp)
+            .fillMaxWidth()
+            .background(color = Color.White),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center) {
+            Text(text="A statement that denies something, especially responsibility", color = Color.Gray, fontSize = 15.sp)
         }
         Spacer(modifier = Modifier.padding(5.dp))
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -931,9 +947,18 @@ fun SignInScreen(navController:NavController){
             .background(color = Color.White),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center) {
-            Text(text="Disclaimer: A disclaimer is a statement that denies something, especially responsibility", color = graySurface, fontSize = 15.sp)
+            Text(text="InstaTask", color = graySurface, fontSize = 15.sp)
         }
-        Spacer(modifier = Modifier.padding(2.dp))
+        Spacer(modifier = Modifier.padding(5.dp))
+        Column(modifier = Modifier
+            .height(20.dp)
+            .fillMaxWidth()
+            .background(color = Color.White),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center) {
+            Text(text="A statement that denies something, especially responsibility", color = Color.Gray, fontSize = 15.sp)
+        }
+        Spacer(modifier = Modifier.padding(5.dp))
         var emailAddress by rememberSaveable{mutableStateOf("")}
         var Password by rememberSaveable{mutableStateOf("")}
         Spacer(modifier = Modifier.padding(15.dp, 0.dp,15.dp,15.dp))
