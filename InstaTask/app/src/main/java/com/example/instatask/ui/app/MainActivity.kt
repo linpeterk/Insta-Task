@@ -182,17 +182,12 @@ data class JobDetails(val acceptorName:String,val hours:Int,val rate:Int,val des
 @Composable
 fun MainScreen(vModel : TheViewModel) {
     val navController = rememberNavController()
-    Scaffold(
 
-    modifier = Modifier,
-       bottomBar = { BottomNavigationBar(navController) }
-    ) {
 
-        Box(modifier = Modifier.padding(bottom=56.dp)) {
             Navigation(navController = navController, vModel = vModel)
-        }
 
-    }
+
+
 }
 
 

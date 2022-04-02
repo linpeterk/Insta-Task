@@ -149,7 +149,6 @@ fun makeItems(item:ResponseGigType, navController: NavController, vModel: TheVie
             .padding(15.dp)
             .weight(1f)
             .clickable {
-
                         vModel.fetchCategory(index)
                        navController.navigate(NavScreens.TaskBoard.route){
                            popUpTo(NavScreens.TaskBoard.route)
