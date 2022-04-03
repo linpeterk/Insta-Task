@@ -1,5 +1,6 @@
 package com.example.instatask.ui.app.screens
 
+import android.graphics.Paint
 import android.graphics.PorterDuff
 import android.provider.Telephony.Mms.Part.TEXT
 import android.widget.RatingBar
@@ -41,6 +42,7 @@ import com.example.instatask.data.SliderList
 import com.example.instatask.ui.app.Navigation.NavScreens
 import com.example.instatask.ui.theme.Purple500
 import com.example.instatask.ui.theme.graySurface
+import com.example.instatask.ui.theme.lightBlue
 import com.google.accompanist.pager.*
 import com.google.maps.android.compose.*
 import kotlinx.coroutines.delay
@@ -116,11 +118,12 @@ fun SliderScreen(navController:NavController){
                 .padding(start = 2.dp, top = 0.dp, end = 2.dp, 10.dp)
         ) {
             Image(
-                painterResource(R.drawable.ic_sea_icon_round),
+                painterResource(R.drawable.shamo),
                 contentDescription = "Test 1",
                 modifier = Modifier
                     .fillMaxWidth()
-                    .size(80.dp)
+                    .size(100.dp)
+                    .padding(5.dp)
                     .background(colorResource(id = R.color.white))
                     .clickable(
                         enabled = true,
@@ -139,7 +142,7 @@ fun SliderScreen(navController:NavController){
             .background(color = Color.White),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center) {
-            Text(text="InstaTask", color = graySurface, fontSize = 15.sp)
+            Text(text="InstaTask", color = graySurface, fontSize = 18.sp)
         }
        Spacer(modifier = Modifier.height(5.dp))
         HorizontalPager(state = pagerState,
@@ -243,8 +246,8 @@ fun SliderScreen(navController:NavController){
 
                           },
                 colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Color.Red,
-                    contentColor = Color.Red
+                    backgroundColor = Color.Black,
+                    contentColor = Color.Black
                 )
 
             ) {
@@ -278,8 +281,8 @@ fun SliderScreen(navController:NavController){
                       //  Toast.makeText(context, "Image clicked", Toast.LENGTH_SHORT).show()
                               },
                     colors = ButtonDefaults.buttonColors(
-                        backgroundColor = Color.Blue,
-                        contentColor = Color.Red
+                        backgroundColor = lightBlue,
+                        contentColor = lightBlue
                     )
 
                 ) {
@@ -682,7 +685,7 @@ fun LandingScreen(navController:NavController){
                 ),
                 onClick = {Toast.makeText(context,"Image clicked",Toast.LENGTH_SHORT).show()},
                 colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Color.Red,
+                    backgroundColor = Color.DarkGray,
                     contentColor = Color.Red)
 
                 ) {
@@ -739,11 +742,11 @@ fun SignUpScreen(navController:NavController){
                 .padding(start = 2.dp, top = 0.dp, end = 2.dp, 10.dp)
         ) {
             Image(
-                painterResource(R.drawable.ic_sea_icon_round),
+                painterResource(R.drawable.shamo),
                 contentDescription = "Test 1",
                 modifier = Modifier
                     .fillMaxWidth()
-                    .size(80.dp)
+                    .size(100.dp)
                     .background(colorResource(id = R.color.white))
                     .clickable(
                         enabled = true,
@@ -763,7 +766,7 @@ fun SignUpScreen(navController:NavController){
             .background(color = Color.White),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center) {
-            Text(text="InstaTask", color = graySurface, fontSize = 15.sp)
+            Text(text="InstaTask", color = graySurface, fontSize = 18.sp)
         }
         Spacer(modifier = Modifier.padding(5.dp))
         Column(modifier = Modifier
@@ -772,7 +775,7 @@ fun SignUpScreen(navController:NavController){
             .background(color = Color.White),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center) {
-            Text(text="A statement that denies something, especially responsibility", color = Color.Gray, fontSize = 15.sp)
+            Text(text="A statement that denies something, especially responsibility", color = Color.Gray, fontSize = 15.sp, modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
         }
         Spacer(modifier = Modifier.padding(5.dp))
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -839,8 +842,8 @@ fun SignUpScreen(navController:NavController){
                     clip = true
                 ),
                 colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Color.Red,
-                    contentColor = Color.Red),
+                    backgroundColor = Color.Black,
+                    contentColor = Color.Black),
 
                 onClick = {
 
@@ -878,8 +881,8 @@ fun SignUpScreen(navController:NavController){
                             clip = true
                         ),
                     colors = ButtonDefaults.buttonColors(
-                        backgroundColor = Color.Blue,
-                        contentColor = Color.Blue),
+                        backgroundColor = lightBlue,
+                        contentColor = lightBlue),
                     onClick = {
 
                         //Toast.makeText(context,"Login..", Toast.LENGTH_LONG).show()
@@ -923,11 +926,12 @@ fun SignInScreen(navController:NavController){
                 .padding(start = 2.dp, top = 0.dp, end = 2.dp, 10.dp)
         ) {
             Image(
-                painterResource(R.drawable.ic_sea_icon_round),
+                painterResource(R.drawable.shamo),
                 contentDescription = "Test 1",
                 modifier = Modifier
                     .fillMaxWidth()
-                    .size(80.dp)
+                    .size(130.dp)
+                    .padding(10.dp)
                     .background(colorResource(id = R.color.white))
                     .clickable(
                         enabled = true,
@@ -947,7 +951,7 @@ fun SignInScreen(navController:NavController){
             .background(color = Color.White),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center) {
-            Text(text="InstaTask", color = graySurface, fontSize = 15.sp)
+            Text(text="InstaTask", color = graySurface, fontSize = 18.sp)
         }
         Spacer(modifier = Modifier.padding(5.dp))
         Column(modifier = Modifier
@@ -956,7 +960,7 @@ fun SignInScreen(navController:NavController){
             .background(color = Color.White),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center) {
-            Text(text="A statement that denies something, especially responsibility", color = Color.Gray, fontSize = 15.sp)
+            Text(text="A statement that denies something, especially responsibility", color = Color.Gray, fontSize = 15.sp,modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center )
         }
         Spacer(modifier = Modifier.padding(5.dp))
         var emailAddress by rememberSaveable{mutableStateOf("")}
@@ -1002,8 +1006,8 @@ fun SignInScreen(navController:NavController){
                         clip = true
                     ),
                 colors = ButtonDefaults.buttonColors(
-                    backgroundColor = Color.Red,
-                    contentColor = Color.Red),
+                    backgroundColor = Color.Black,
+                    contentColor = Color.Black),
 
                 onClick = {
 
@@ -1037,8 +1041,8 @@ fun SignInScreen(navController:NavController){
                             clip = true
                         ),
                     colors = ButtonDefaults.buttonColors(
-                        backgroundColor = Color.Blue,
-                        contentColor = Color.Blue),
+                        backgroundColor = lightBlue,
+                        contentColor = lightBlue),
                     onClick = {
 
                       //  Toast.makeText(context,"Signing Up..", Toast.LENGTH_LONG).show()

@@ -15,37 +15,19 @@ val SliderList = listOf(
     SliderData(
         title = "Cleaning",
         4.0f,
-        description = "All about your house and garage cleaning",
+        description = "",
         imgUri = R.drawable.cleaning
-    ),
-    SliderData(
-        title = "Trash",
-        4.0f,
-        description = "All about your Trash",
-        imgUri = R.drawable.trash
-    ),
-    SliderData(
-        title = "House",
-        4.0f,
-        description = "All about your house maintenance",
-        imgUri = R.drawable.house
     ),
     SliderData(
         title = "Pets",
         4.0f,
-        description = "All about your Pets",
-        imgUri = R.drawable.pets
+        description = "",
+        imgUri = R.drawable.my_pets
     ),
     SliderData(
-        title = "Kitchen",
+        title = "Garage Works",
         4.0f,
-        description = "All about your kitchen",
-        imgUri = R.drawable.kitchen
-    ),
-    SliderData(
-        title = "Garage",
-        4.0f,
-        description = "All about your garage",
+        description = "",
         imgUri = R.drawable.garage
     )
 
