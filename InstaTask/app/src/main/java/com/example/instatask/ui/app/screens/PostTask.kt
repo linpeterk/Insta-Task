@@ -53,12 +53,12 @@ Post tasks to add tasks to database, users fill out forms to create task object 
 
 val listOfTaskImages = listOf("petcategory", "farming", "renovation", "trading", "deliveryman", "workinprogress")
 
-val listOfSubPets = listOf("pets", "workinprogress")
-val listOfSubGarden = listOf("ic_sea_icon", "workinprogress")
-val listOfSubHome = listOf("ic_sea_icon", "workinprogress")
-val listOfSubTrade = listOf("ic_sea_icon", "workinprogress")
-val listOfSubDelivery = listOf("ic_sea_icon", "workinprogress")
-val listOfSubLabor = listOf("ic_sea_icon", "workinprogress")
+val listOfSubPets = listOf("pets", "workinprogress", "petcategory" )
+val listOfSubGarden = listOf("garage", "cleaning", "farming")
+val listOfSubHome = listOf("house", "home", "renovation")
+val listOfSubTrade = listOf("ic_sea_icon", "review", "trading")
+val listOfSubDelivery = listOf("gigpic", "gigpic2", "deliveryman")
+val listOfSubLabor = listOf("plus", "repair", "workinprogress")
 
 val listOfSubTaskImages = listOf(listOfSubPets, listOfSubGarden, listOfSubHome, listOfSubTrade, listOfSubDelivery, listOfSubLabor)
 
@@ -72,6 +72,8 @@ fun PostTask(vModel: TheViewModel, navController: NavController){
     var expandedSecond = remember{mutableStateOf(false)} //Status of the Second dropdown menu
     var selectedText = remember {mutableStateOf("Select Category")} //text on dropdown menu
     var selectedSubText = remember {mutableStateOf("Select SubCategory")} //text on subcategory dropdown menu
+
+    var showSubCategory = remember{mutableStateOf(false)} //Status of the First dropdown menu
 
 
     var image = remember {mutableStateOf("workinprogress")} //image to be displayed
@@ -125,7 +127,7 @@ fun PostTask(vModel: TheViewModel, navController: NavController){
                             .offset(x = -100.dp, y = 15.dp)
                     )
                     {
-                        DropDownMenu(expandedFirst, image, selectedText, catIndex, listOfTaskImages)
+                        DropDownMenu(expandedFirst, image, selectedText, catIndex, listOfTaskImages, showSubCategory = showSubCategory)
                     }
                     Card(
                         elevation = 5.dp,
@@ -150,22 +152,28 @@ fun PostTask(vModel: TheViewModel, navController: NavController){
                 Box(
                     modifier = Modifier
                         .padding(10.dp),
-                    contentAlignment = Alignment.Center
+                    contentAlignment = Alignment.Center,
+
                 ) {
                     Box(
                         modifier = Modifier
                             .offset(x = -100.dp, y = 15.dp)
                     )
                     {
-                        DropDownMenu(expandedSecond, image, selectedSubText, catIndex, listOfSubTaskImages[0])
+                       if(catIndex.value == 0) {
+                          DropDownMenu(expandedSecond, image, selectedSubText, catIndex, listOfSubTaskImages[0], showSubCategory = showSubCategory)
+                       }
+                           else DropDownMenu(expandedSecond, image, selectedSubText, catIndex, listOfSubTaskImages[catIndex.value-1], showSubCategory = showSubCategory)
                     }
                     Card(
                         elevation = 5.dp,
                         shape = RoundedCornerShape(15.dp)
                     ) {
                         Spacer(modifier = Modifier.padding(5.dp))
+                        if(showSubCategory.value)
                         Text(
-                            text = selectedSubText.value, modifier = Modifier
+                            text = selectedSubText.value,
+                            modifier = Modifier
                                 .width(150.dp)
                                 .height(25.dp)
                                 //   .border(1.dp, graySurface)
@@ -249,12 +257,18 @@ fun PostTask(vModel: TheViewModel, navController: NavController){
             Spacer(modifier = Modifier.padding(5.dp))
             Button(onClick = {
                             if(catIndex.value !=0) { //Category have = been selected
+                                var temp:Int = 25
+                                try{
+                                    temp = hourly_rate.toInt()
+                                }catch(e:Exception){
+                                    temp = 25
+                                }
                                 val task: Task = Task(
                                     categories = catIndex.value,
                                     task_name = task_name,
                                     person_name = user_name,
                                     description = description,
-                                    hourly_rate = hourly_rate.toInt(),
+                                    hourly_rate =  temp,
                                     datetime = date,
                                     imageId = image.value,
                                     address = address,
@@ -262,9 +276,9 @@ fun PostTask(vModel: TheViewModel, navController: NavController){
                                     lng = googleHQ.longitude
                                     )
                                 vModel.insertTask(task)
-
+                             //   vModel.fetchCategory(catIndex.value)
                                 navController.navigate(NavScreens.TaskBoard.route){
-                                //    vModel.fetchCategory(catIndex.value)
+                                    vModel.fetchCategory(catIndex.value)
                                     popUpTo(NavScreens.TaskBoard.route)
                                     launchSingleTop = true
                                 }
@@ -286,7 +300,7 @@ fun PostTask(vModel: TheViewModel, navController: NavController){
 
 
 @Composable
-fun DropDownMenu(expanded: MutableState<Boolean>, image: MutableState<String>, selectedText: MutableState<String>, catIndex:MutableState<Int>,  listOfImages:List<String>){
+fun DropDownMenu(expanded: MutableState<Boolean>, image: MutableState<String>, selectedText: MutableState<String>, catIndex:MutableState<Int>,  listOfImages:List<String>, showSubCategory:MutableState<Boolean>){
 
     DropdownMenu(
         expanded = expanded.value,
@@ -302,11 +316,13 @@ fun DropDownMenu(expanded: MutableState<Boolean>, image: MutableState<String>, s
                 modifier = Modifier.height(30.dp),
                 onClick = {
                     //   if (index != 0) {
+                if(!showSubCategory.value)
                 catIndex.value = index+1
                     image.value =  title
                     Log.d("ImageValue", "${image.value}")
                     selectedText.value = title
                     expanded.value = false
+                    showSubCategory.value = true
                     //    }
                 })
             {

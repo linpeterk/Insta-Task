@@ -24,14 +24,14 @@ fun BottomNavigationBar(navController: NavController) {
     val items = listOf(
         NavScreens.Gig,
         NavScreens.SkillBoard,
-        NavScreens.Books,
+        NavScreens.PostTask,
         NavScreens.Profile
     )
 
     BottomNavigation (
         backgroundColor = graySurface,
         contentColor = Color.White,
-        modifier = Modifier.fillMaxWidth().border(2.dp, Color.Red)
+        modifier = Modifier.fillMaxWidth()
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route

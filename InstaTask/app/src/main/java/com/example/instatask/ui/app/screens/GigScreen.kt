@@ -73,10 +73,10 @@ fun GigPage(navController: NavController, vModel:TheViewModel){
                 .background(lightBlue)
             ,contentAlignment = Alignment.Center
             ){
-            Text(text="Start your gigs Today", modifier = Modifier,
+            Text(text="Giga Board", modifier = Modifier,
                 textAlign = TextAlign.Center,
                 color= graySurface,
-                fontSize = 24.sp,
+                fontSize = 28.sp,
                 fontFamily = FontFamily.Serif
                         )}
 

@@ -98,9 +98,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                //    MainScreen(theViewModel)
+                    MainScreen(theViewModel)
                //     GigPage()
-        PostTask(theViewModel, navController = NavController(this))
+       // PostTask(theViewModel, navController = NavController(this))
                  //   CustomerList(theViewModel)
          //MainScreen(theViewModel)
          //  test(theViewModel)
@@ -191,7 +191,7 @@ fun MainScreen(vModel : TheViewModel) {
         "Landing" -> {
             // Show BottomBar and TopBar
             bottomBarState.value = false
-            Log.d("Landing page entry", "Landed")
+      //      Log.d("Landing page entry", "Landed")
         }
         "Login" -> {
             // Show BottomBar and TopBar
