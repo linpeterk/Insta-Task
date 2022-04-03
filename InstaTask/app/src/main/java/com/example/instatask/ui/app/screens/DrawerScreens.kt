@@ -1,5 +1,6 @@
 package com.example.instatask.ui.app.screens
 
+import android.graphics.Paint
 import android.graphics.PorterDuff
 import android.provider.Telephony.Mms.Part.TEXT
 import android.widget.RatingBar
@@ -116,11 +117,12 @@ fun SliderScreen(navController:NavController){
                 .padding(start = 2.dp, top = 0.dp, end = 2.dp, 10.dp)
         ) {
             Image(
-                painterResource(R.drawable.ic_sea_icon_round),
+                painterResource(R.drawable.shamo),
                 contentDescription = "Test 1",
                 modifier = Modifier
                     .fillMaxWidth()
-                    .size(80.dp)
+                    .size(100.dp)
+                    .padding(5.dp)
                     .background(colorResource(id = R.color.white))
                     .clickable(
                         enabled = true,
@@ -739,11 +741,11 @@ fun SignUpScreen(navController:NavController){
                 .padding(start = 2.dp, top = 0.dp, end = 2.dp, 10.dp)
         ) {
             Image(
-                painterResource(R.drawable.ic_sea_icon_round),
+                painterResource(R.drawable.shamo),
                 contentDescription = "Test 1",
                 modifier = Modifier
                     .fillMaxWidth()
-                    .size(80.dp)
+                    .size(100.dp)
                     .background(colorResource(id = R.color.white))
                     .clickable(
                         enabled = true,
@@ -772,7 +774,7 @@ fun SignUpScreen(navController:NavController){
             .background(color = Color.White),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center) {
-            Text(text="A statement that denies something, especially responsibility", color = Color.Gray, fontSize = 15.sp)
+            Text(text="A statement that denies something, especially responsibility", color = Color.Gray, fontSize = 15.sp, modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
         }
         Spacer(modifier = Modifier.padding(5.dp))
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -923,11 +925,12 @@ fun SignInScreen(navController:NavController){
                 .padding(start = 2.dp, top = 0.dp, end = 2.dp, 10.dp)
         ) {
             Image(
-                painterResource(R.drawable.ic_sea_icon_round),
+                painterResource(R.drawable.shamo),
                 contentDescription = "Test 1",
                 modifier = Modifier
                     .fillMaxWidth()
-                    .size(80.dp)
+                    .size(130.dp)
+                    .padding(10.dp)
                     .background(colorResource(id = R.color.white))
                     .clickable(
                         enabled = true,
