@@ -168,7 +168,7 @@ fun SliderScreen(navController:NavController){
                     )
                 }
                 .fillMaxWidth()
-                .padding(25.dp, 0.dp, 25.dp, 0.dp),
+                .padding(0.dp, 0.dp, 0.dp, 0.dp),
             shape = RoundedCornerShape(20.dp)
              ){
                 val newSliders = SliderList[page]
@@ -215,7 +215,7 @@ fun SliderScreen(navController:NavController){
                 }
             }
         }
-        //HOrizontal dot indicator
+        //Horizontal dot indicator
         HorizontalPagerIndicator(
             pagerState = pagerState,
             modifier = Modifier
