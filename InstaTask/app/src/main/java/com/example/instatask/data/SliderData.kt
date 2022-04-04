@@ -25,13 +25,13 @@ val SliderList = listOf(
         imgUri = R.drawable.my_pets
     ),
     SliderData(
-        title = "Garage Works",
+        title = "Cars",
         4.0f,
         description = "",
         imgUri = R.drawable.garage
     ),
     SliderData(
-        title = "House Works",
+        title = "Home",
         4.0f,
         description = "",
         imgUri = R.drawable.house
