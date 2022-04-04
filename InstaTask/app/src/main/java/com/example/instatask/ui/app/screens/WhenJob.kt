@@ -5,6 +5,9 @@ import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.KeyboardArrowDown
+import androidx.compose.material.icons.filled.KeyboardArrowUp
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -13,6 +16,8 @@ import androidx.compose.ui.graphics.Color.Companion.Black
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.instatask.R
@@ -55,6 +60,7 @@ fun WhenJobClicked(navController: NavController, vModel:TheViewModel, taskId: In
         drawerBackgroundColor = Color.Transparent,  //Transparent drawer for custom Drawer shape
         drawerElevation = 0.dp,
 
+
         drawerContent = {
             Surface(                    //To add Padding to Drawer
                 modifier = Modifier,
@@ -82,26 +88,28 @@ fun WhenJobClicked(navController: NavController, vModel:TheViewModel, taskId: In
                             ) {
                                 Text(text = "Accept", modifier = Modifier.padding(5.dp), color = Color.White)
                             }
-                            Button(
-                                onClick = {/*
-                                        navController.navigate(Screen.Signup.route)
-                                    */},
-                                colors = ButtonDefaults.buttonColors(backgroundColor = Black)
-                            ) {
-                                Text(text = "Report", modifier = Modifier.padding(5.dp), color = Color.White)
-                            }
+//                            Button(
+//                                onClick = {/*
+//                                        navController.navigate(Screen.Signup.route)
+//                                    */},
+//                                colors = ButtonDefaults.buttonColors(backgroundColor = Black)
+//                            ) {
+//                                Text(text = "Report", modifier = Modifier.padding(5.dp), color = Color.White)
+//                            }
                         }
                         Box(modifier = Modifier
                             .weight(0.4f)
-                            .background(graySurface)
+                            .background(graySurface),
+
                         ){
 //                                MakeScrollComponents(navController)
+                            var isExpanded by remember { mutableStateOf(false) }
                             Card(
 
                                 modifier = Modifier
                                     .padding(10.dp)
-                                    .fillMaxWidth()
-                                    .wrapContentHeight(),
+                                    .fillMaxWidth(),
+//                                    .wrapContentHeight(),
 //                                    clickable { cardViewCallBack(context,name+description) }
 
                                 shape = MaterialTheme.shapes.medium,
@@ -123,20 +131,65 @@ fun WhenJobClicked(navController: NavController, vModel:TheViewModel, taskId: In
                                     )
                                     Column(Modifier.padding(8.dp)) {
 
-                                        Text(text = "Name is ${task.task_name}",
-                                            style= MaterialTheme.typography.h6,
-                                            color= MaterialTheme.colors.onSurface,
-                                            modifier= Modifier.padding(start=30.dp)
-                                        )
-                                        Text(text = "Description is ${task.description}",
-                                            style= MaterialTheme.typography.body1,
-                                            color= MaterialTheme.colors.onSurface,
-                                            modifier= Modifier.padding(start=15.dp)
-                                        )
+//                                        Text(text = "Name is ${task.task_name}",
+//                                            style= MaterialTheme.typography.h6,
+//                                            color= MaterialTheme.colors.onSurface,
+//                                            modifier= Modifier.padding(start=30.dp)
+//                                        )
+//                                        Text(text = "Description: ${task.description}",
+//                                            style= MaterialTheme.typography.body1,
+//                                            color= MaterialTheme.colors.onSurface,
+//                                            modifier= Modifier.padding(start=15.dp)
+//                                        )
+//                                        Text(text = "Description: ${task.hourly_rate}",
+//                                            style= MaterialTheme.typography.body1,
+//                                            color= MaterialTheme.colors.onSurface,
+//                                            modifier= Modifier.padding(start=15.dp)
+//                                        )
+                                        CompositionLocalProvider(LocalContentAlpha provides ContentAlpha.medium) {
+                                            Text(text = "Name: ${task.task_name}",
+                                                style= MaterialTheme.typography.h6,
+                                                color= MaterialTheme.colors.onSurface,
+                                                modifier= Modifier.padding(start=30.dp),
+                                                overflow = TextOverflow.Ellipsis,
+                                                maxLines = if (isExpanded) 100 else 2
+                                            )
+                                            Text(text = "Hourly Rate: ${task.hourly_rate}",
+                                                style= MaterialTheme.typography.body1,
+                                                color= MaterialTheme.colors.onSurface,
+                                                modifier= Modifier.padding(start=15.dp),
+                                                overflow = TextOverflow.Ellipsis,
+                                                maxLines = if (isExpanded) 100 else 2
+                                            )
+                                            Text(
+                                                text = "Description ${task.description}",
+                                                textAlign = TextAlign.Start,
+                                                style = MaterialTheme.typography.h6,
+                                                overflow = TextOverflow.Ellipsis,
+                                                maxLines = if (isExpanded) 100 else 2
+                                            )
+                                        }
 
                                     }
+                                    Icon(
+                                        imageVector = if (isExpanded)
+                                            Icons.Filled.KeyboardArrowUp
+                                        else
+                                            Icons.Filled.KeyboardArrowDown,
+                                        contentDescription = "Expand row icon",
+                                        modifier = Modifier
+                                            .padding(16.dp)
+                                            .align(
+                                                if (isExpanded)
+                                                    Alignment.Bottom
+                                                else
+                                                    Alignment.CenterVertically
+                                            )
+                                            .clickable { isExpanded = !isExpanded }
+                                    )
 
                                 }
+
 
                             }
                         }
@@ -161,7 +214,7 @@ fun WhenJobClicked(navController: NavController, vModel:TheViewModel, taskId: In
         TopBar()
     }
 
-}
+};
 
 
 
