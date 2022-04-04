@@ -37,6 +37,7 @@ import com.example.instatask.ui.theme.lightBlue
 import com.example.instatask.R
 import com.example.instatask.network.ResponseGig
 import com.example.instatask.network.ResponseGigType
+import com.example.instatask.ui.Components.DrawBoard
 import com.example.instatask.ui.app.Navigation.NavScreens
 import com.example.instatask.viewmodel.TheViewModel
 import java.security.AccessController.getContext
@@ -64,7 +65,8 @@ var baseInterests:List<ResponseGigType> = listOf(ResponseGigType(imageRes = "wor
 fun GigPage(navController: NavController, vModel:TheViewModel){
 
     vModel.getGigLists()
-    LazyColumn(modifier = Modifier.fillMaxSize()){
+    LazyColumn(modifier = Modifier.fillMaxSize(),
+   ){
         item(){
             Box(modifier = Modifier
                 .fillMaxWidth()
@@ -125,6 +127,9 @@ fun GigPage(navController: NavController, vModel:TheViewModel){
                 makeItems(item,navController = navController, vModel = vModel, index=index+1+ (yourInterest?.count()
                     ?: baseInterests.count())) //make the item cards
             }
+        }
+        item(){
+            DrawBoard()
         }
     }
 }

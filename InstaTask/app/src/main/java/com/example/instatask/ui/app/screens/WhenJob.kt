@@ -50,8 +50,6 @@ fun WhenJobClicked(navController: NavController, vModel:TheViewModel, taskId: In
         //scaffoldState = rememberBottomDrawerState(5)
         drawerModifier = Modifier.size(530.dp),
         drawerGesturesEnabled = true,
-
-
         floatingActionButtonPosition= FabPosition.Center,
         drawerPeekHeight = peekHeight.value,
         drawerBackgroundColor = Color.Transparent,  //Transparent drawer for custom Drawer shape
@@ -59,8 +57,7 @@ fun WhenJobClicked(navController: NavController, vModel:TheViewModel, taskId: In
 
         drawerContent = {
             Surface(                    //To add Padding to Drawer
-                modifier = Modifier
-                ,
+                modifier = Modifier,
                 shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp),
                 //   elevation = 4.dp
             ) {

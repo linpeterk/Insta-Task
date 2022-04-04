@@ -99,7 +99,7 @@ fun LazyScrollTaskBoard(vModel: TheViewModel, navcontroller:NavController, state
                         Text(text = "${item.task_name?: "No name Found"}", fontSize = 18.sp, fontWeight = FontWeight.W500, modifier = Modifier.fillMaxWidth())
                         Text(text = "${item.person_name}", fontSize = 14.sp,  modifier = Modifier.fillMaxWidth())
                         Text(text = "Hourly $${item.hourly_rate?: 0}", fontSize = 14.sp,  modifier = Modifier.fillMaxWidth())
-                        Text(text = "Areas served: ${item.address ?: "No Address Found"}, CA", fontSize = 14.sp,  modifier = Modifier.fillMaxWidth())
+                        Text(text = "Address: ${item.address ?: "No Address Found"}, CA", fontSize = 14.sp,  modifier = Modifier.fillMaxWidth())
 
                         Spacer(modifier = Modifier.padding(5.dp))
 

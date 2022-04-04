@@ -219,7 +219,7 @@ fun MainScreen(vModel : TheViewModel) {
        }
     ) {
 
-        Box(modifier = Modifier.padding(bottom=58.dp)) {
+        Box(modifier = Modifier.padding(bottom=56.dp)) {
             Navigation(navController = navController, vModel = vModel)
         }
 

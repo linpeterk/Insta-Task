@@ -27,6 +27,7 @@ import androidx.room.ColumnInfo
 import com.example.instatask.R
 import com.example.instatask.database.datamodel.Task
 import com.example.instatask.ui.Components.googleHQ
+import com.example.instatask.ui.Components.utilities.Geocoder
 import com.example.instatask.ui.app.Navigation.NavScreens
 import com.example.instatask.ui.theme.graySurface
 import com.example.instatask.viewmodel.TheViewModel
@@ -163,7 +164,7 @@ fun PostTask(vModel: TheViewModel, navController: NavController){
                        if(catIndex.value == 0) {
                           DropDownMenu(expandedSecond, image, selectedSubText, catIndex, listOfSubTaskImages[0], showSubCategory = showSubCategory)
                        }
-                           else DropDownMenu(expandedSecond, image, selectedSubText, catIndex, listOfSubTaskImages[catIndex.value-1], showSubCategory = showSubCategory)
+                          else   DropDownMenu(expandedSecond, image, selectedSubText, catIndex, listOfSubTaskImages[catIndex.value-1], showSubCategory = showSubCategory)
                     }
                     Card(
                         elevation = 5.dp,
@@ -263,6 +264,7 @@ fun PostTask(vModel: TheViewModel, navController: NavController){
                                 }catch(e:Exception){
                                     temp = 25
                                 }
+                                var lat = Geocoder(context = context, address)
                                 val task: Task = Task(
                                     categories = catIndex.value,
                                     task_name = task_name,
@@ -272,8 +274,8 @@ fun PostTask(vModel: TheViewModel, navController: NavController){
                                     datetime = date,
                                     imageId = image.value,
                                     address = address,
-                                    lat = googleHQ.latitude,
-                                    lng = googleHQ.longitude
+                                    lat = lat.latitude,
+                                    lng = lat.longitude
                                     )
                                 vModel.insertTask(task)
                              //   vModel.fetchCategory(catIndex.value)

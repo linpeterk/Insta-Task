@@ -3,6 +3,7 @@ package com.example.instatask.ui.app.Navigation
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
@@ -38,7 +39,10 @@ fun BottomNavigationBar(navController: NavController) {
         items.forEach { item ->
             BottomNavigationItem(
 
-                icon = { Image(painterResource(id = item.icon), contentDescription = item.title, modifier = Modifier.size(30.dp)) },
+                icon = { Image(painterResource(id = item.icon), contentDescription = item.title, modifier = Modifier.size(30.dp))
+                       },
+
+
 
                 label = { Text(text = item.title) },
                 selectedContentColor = Color.White,
