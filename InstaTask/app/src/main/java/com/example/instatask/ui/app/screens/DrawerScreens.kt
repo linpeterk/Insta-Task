@@ -105,7 +105,7 @@ fun SliderScreen(navController:NavController){
             delay(2000)
             pagerState.animateScrollToPage(
                 page = (pagerState.currentPage + 1) % (pagerState.pageCount),
-                animationSpec = tween(600)
+                animationSpec = tween(1500)
             )
         }
     }
@@ -733,7 +733,7 @@ fun SignUpScreen(navController:NavController){
             .fillMaxSize()
             .background(colorResource(id = R.color.white))
             .wrapContentSize(Alignment.Center)
-            .padding(top = 40.dp)
+            .padding(top = 20.dp)
     ) {
         Row(
             horizontalArrangement = Arrangement.Center,
@@ -770,12 +770,12 @@ fun SignUpScreen(navController:NavController){
         }
         Spacer(modifier = Modifier.padding(5.dp))
         Column(modifier = Modifier
-            .height(20.dp)
+            .height(40.dp)
             .fillMaxWidth()
             .background(color = Color.White),
-            horizontalAlignment = Alignment.CenterHorizontally,
+            horizontalAlignment = Alignment.Start,
             verticalArrangement = Arrangement.Center) {
-            Text(text="A statement that denies something, especially responsibility", color = Color.Gray, fontSize = 15.sp, modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
+            Text(text="Disclaimer is a statement that denies something, especially responsibility", color = Color.Gray, fontSize = 15.sp, modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Start)
         }
         Spacer(modifier = Modifier.padding(5.dp))
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -955,12 +955,12 @@ fun SignInScreen(navController:NavController){
         }
         Spacer(modifier = Modifier.padding(5.dp))
         Column(modifier = Modifier
-            .height(20.dp)
+            .height(40.dp)
             .fillMaxWidth()
             .background(color = Color.White),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center) {
-            Text(text="A statement that denies something, especially responsibility", color = Color.Gray, fontSize = 15.sp,modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center )
+            Text(text="Disclaimer is a statement that denies something, especially responsibility", color = Color.Gray, fontSize = 15.sp,modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Start )
         }
         Spacer(modifier = Modifier.padding(5.dp))
         var emailAddress by rememberSaveable{mutableStateOf("")}
