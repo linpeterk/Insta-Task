@@ -97,7 +97,7 @@ fun SliderScreen(navController:NavController){
     val context = LocalContext.current
     val pagerState = rememberPagerState(
         pageCount = SliderList.size,
-        initialPage = 1
+        initialPage = 0
         )
     LaunchedEffect(Unit){
      //   while(true){
