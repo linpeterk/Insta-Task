@@ -36,5 +36,23 @@ val SliderList = listOf(
         description = "",
         imgUri = R.drawable.house
     ),
+    SliderData(
+        title = "Plumber",
+        4.0f,
+        description = "",
+        imgUri = R.drawable.plumber
+    ),
+    SliderData(
+        title = "Grass",
+        4.0f,
+        description = "",
+        imgUri = R.drawable.grass
+    ),
+    SliderData(
+        title = "Teaching",
+        4.0f,
+        description = "",
+        imgUri = R.drawable.teacher
+    )
 
 )

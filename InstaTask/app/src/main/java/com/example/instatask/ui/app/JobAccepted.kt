@@ -16,12 +16,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import com.example.instatask.viewmodel.TheViewModel
 import com.google.maps.android.compose.GoogleMap
 
 @Composable
 fun JobAccepted(
     job:JobDetails,
+    vModel: TheViewModel,
 ) {
+    var task = vModel.task.value
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -38,6 +41,8 @@ fun JobAccepted(
         //-------------Box2------------------
         Box(modifier = Modifier.width(500.dp).height(200.dp)) {
             GoogleMap()
+
+            //make.googlemap
         }
         //-----------Box3----------------------
         Box(
@@ -51,16 +56,19 @@ fun JobAccepted(
                     .width(500.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(text = "Job Accepted on ${job.acceptedDate}")
+                Text(text = "${task.taskId}")
+                Text(text = "${task.task_name}")
+                Text(text = "Job Accepted on ${task.datetime}")
                 Text(text = " ")
-                Text(text = "${job.description}")
+                Text(text = "${task.description}")
                 Text(text = " ")
-                Text(text = "Job Creator: ${job.creatorName}")
+                Text(text = "Job Creator: ${task.person_name}")
                 Text(text = "What doing: ${job.desination}")
-                Text(text = "$${job.rate}/Hr")
-                Text(text = "${job.hours} Hours Total")
+                Text(text = "$${task.hourly_rate}/Hr")
+//                Text(text = "${job.hours} Hours Total")
                 Text(text = " ")
-                Text(text = "Job Acceptor: ${job.acceptorName}")
+                Text(text = "Job Acceptor: ${"??"}")
+
             }
         }
         //-----------Box4-----------------------------
