@@ -111,7 +111,7 @@ fun DrawBoard(){
                     drawPoints(
                         points = Player.dragList,
                         PointMode.Points,
-                        Color.Red,
+                        Color.White,
                         strokeWidth = 15.0f,
 
                     )

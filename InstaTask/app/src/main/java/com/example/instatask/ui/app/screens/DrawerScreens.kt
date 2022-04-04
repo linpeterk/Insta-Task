@@ -97,17 +97,17 @@ fun SliderScreen(navController:NavController){
     val context = LocalContext.current
     val pagerState = rememberPagerState(
         pageCount = SliderList.size,
-        initialPage = 2
+        initialPage = 1
         )
     LaunchedEffect(Unit){
-        while(true){
+     //   while(true){
             yield()
-            delay(2000)
-            pagerState.animateScrollToPage(
-                page = (pagerState.currentPage + 1) % (pagerState.pageCount),
-                animationSpec = tween(1500)
-            )
-        }
+   //         delay(2000)
+//            pagerState.animateScrollToPage(
+//                page = (pagerState.currentPage + 1) % (pagerState.pageCount),
+//                animationSpec = tween(1500)
+//            )
+      //  }
     }
 
     Column(modifier = Modifier.fillMaxSize()) {
