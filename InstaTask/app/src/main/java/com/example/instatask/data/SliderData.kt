@@ -31,13 +31,7 @@ val SliderList = listOf(
         imgUri = R.drawable.garage
     ),
     SliderData(
-        title = "Trash Works",
-        4.0f,
-        description = "",
-        imgUri = R.drawable.trash
-    ),
-    SliderData(
-        title = "Trash Works",
+        title = "House Works",
         4.0f,
         description = "",
         imgUri = R.drawable.house
