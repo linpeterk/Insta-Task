@@ -99,16 +99,16 @@ fun SliderScreen(navController:NavController){
         pageCount = SliderList.size,
         initialPage = 0
         )
-    LaunchedEffect(Unit){
-     //   while(true){
-            yield()
-   //         delay(2000)
-//            pagerState.animateScrollToPage(
-//                page = (pagerState.currentPage + 1) % (pagerState.pageCount),
-//                animationSpec = tween(1500)
-//            )
-      //  }
-    }
+//    LaunchedEffect(Unit){
+//     //   while(true){
+//            yield()
+//   //         delay(2000)
+////            pagerState.animateScrollToPage(
+////                page = (pagerState.currentPage + 1) % (pagerState.pageCount),
+////                animationSpec = tween(1500)
+////            )
+//      //  }
+//    }
 
     Column(modifier = Modifier.fillMaxSize()) {
         Row(
