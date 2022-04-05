@@ -1023,6 +1023,7 @@ fun SignInScreen(navController:NavController){
                     if( emailAddress.value.isNullOrEmpty() || password.value.isNullOrEmpty()){
                         Toast.makeText(context,"Please enter a valid Email or Password", Toast.LENGTH_LONG).show()
                     }else{
+
                         navController.navigate(NavScreens.Gig.route)
                         {
                             popUpTo(NavScreens.Gig.route)
