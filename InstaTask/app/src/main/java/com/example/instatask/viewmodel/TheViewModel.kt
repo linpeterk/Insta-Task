@@ -85,7 +85,7 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
         Log.d("Image IDV", "$imageID")
 
         if(imageID == 0){
-            imageID = R.drawable.workinprogress
+            imageID = R.drawable.academy
         }
         return imageID
     }
