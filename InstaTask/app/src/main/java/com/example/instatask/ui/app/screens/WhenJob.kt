@@ -80,14 +80,14 @@ fun WhenJobClicked(navController: NavController, vModel:TheViewModel, taskId: In
                         ){
 
 //                              MenuTab(navController)
-                            Button(                                     // ACCEPT OR REPORT BUTTON
-
-                                onClick = { /*navController.navigate(route=Screen.Login.route)*/},
-                                colors = ButtonDefaults.buttonColors(backgroundColor = Color.Red),
-                                modifier = Modifier
-                            ) {
-                                Text(text = "Accept", modifier = Modifier.padding(5.dp), color = Color.White)
-                            }
+//                            Button(                                     // ACCEPT OR REPORT BUTTON
+//
+//                                onClick = { /*navController.navigate(route=Screen.Login.route)*/},
+//                                colors = ButtonDefaults.buttonColors(backgroundColor = Color.Red),
+//                                modifier = Modifier
+//                            ) {
+//                                Text(text = "Accept", modifier = Modifier.padding(5.dp), color = Color.White)
+//                            }
 //                            Button(
 //                                onClick = {/*
 //                                        navController.navigate(Screen.Signup.route)
@@ -193,7 +193,14 @@ fun WhenJobClicked(navController: NavController, vModel:TheViewModel, taskId: In
 
                             }
                         }
+                        Button(                                     // ACCEPT OR REPORT BUTTON
 
+                            onClick = { /*navController.navigate(route=Screen.Login.route)*/},
+                            colors = ButtonDefaults.buttonColors(backgroundColor = Color.Red),
+                            modifier = Modifier
+                        ) {
+                            Text(text = "Accept", modifier = Modifier.padding(5.dp), color = Color.White)
+                        }
 
                         Box(modifier = Modifier                                     // REVIEWS OF WORKER
                             .weight(0.8f)
