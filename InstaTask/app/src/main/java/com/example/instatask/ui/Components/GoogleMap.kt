@@ -10,6 +10,9 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import com.example.instatask.ui.app.screens.Screens
 import com.example.instatask.viewmodel.TheViewModel
+import com.google.android.gms.dynamic.IObjectWrapper
+import com.google.android.gms.maps.model.BitmapDescriptor
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
 import com.google.gson.annotations.SerializedName
@@ -117,6 +120,13 @@ fun createMarkers(vModel: TheViewModel, mode:Int, navController:NavController){
     //NEED TO BE IMPLEMENTED
     if(mode == 1 ) {
         var list= vModel.currentTaskList
+        Marker(
+            position = googleHQ,
+            title = "You",
+            snippet = "You are here",
+            icon= BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)
+
+        )
         repeat(list.count()){ index->
 
             Marker(
@@ -130,6 +140,14 @@ fun createMarkers(vModel: TheViewModel, mode:Int, navController:NavController){
 
     else if(mode==2) {
        var list=   vModel.currentSkillList
+        Marker(
+            position = googleHQ,
+            title = "You",
+            snippet = "You are here",
+            icon= BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)
+
+            )
+
         repeat(list.count()){ index->
 
             Marker(

@@ -25,6 +25,7 @@ import com.example.instatask.ui.Components.AllReviews
 import com.example.instatask.ui.Components.MakeGoogleMap
 import com.example.instatask.ui.Components.TopBar
 import com.example.instatask.model.jobCreators
+import com.example.instatask.ui.app.Navigation.NavScreens
 import com.example.instatask.ui.theme.graySurface
 import com.example.instatask.viewmodel.TheViewModel
 import com.google.maps.android.compose.*
@@ -193,13 +194,19 @@ fun WhenJobClicked(navController: NavController, vModel:TheViewModel, taskId: In
 
                             }
                         }
-                        Button(                                     // ACCEPT OR REPORT BUTTON
+                        Box(modifier = Modifier.fillMaxWidth().padding(8.dp), contentAlignment = Alignment.Center) {
+                            Button(                                     // ACCEPT OR REPORT BUTTON
 
-                            onClick = { /*navController.navigate(route=Screen.Login.route)*/},
-                            colors = ButtonDefaults.buttonColors(backgroundColor = Color.Red),
-                            modifier = Modifier
-                        ) {
-                            Text(text = "Accept", modifier = Modifier.padding(5.dp), color = Color.White)
+                                onClick = { navController.navigate(route = NavScreens.JobAccepted.route) },
+                                colors = ButtonDefaults.buttonColors(backgroundColor = Color.Red),
+                                modifier = Modifier
+                            ) {
+                                Text(
+                                    text = "Accept",
+                                    modifier = Modifier.padding(5.dp),
+                                    color = Color.White
+                                )
+                            }
                         }
 
                         Box(modifier = Modifier                                     // REVIEWS OF WORKER
@@ -217,7 +224,7 @@ fun WhenJobClicked(navController: NavController, vModel:TheViewModel, taskId: In
             }
         }
     ){
-        MakeGoogleMap(vModel = vModel, navController = navController)
+        MakeGoogleMap(vModel = vModel, navController = navController, mode = 2)
         TopBar()
     }
 

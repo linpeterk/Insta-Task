@@ -16,14 +16,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.instatask.viewmodel.TheViewModel
 import com.google.maps.android.compose.GoogleMap
 
 @Composable
 fun JobAccepted(
-    job:JobDetails,
-    vModel: TheViewModel,
+    vModel: TheViewModel, navController:NavController
 ) {
+
+   // var job = JobDetails("QwertyName",12,15,"Developer","Name_Qwerty","Test_Test","2022-03-01")
+
     var task = vModel.task.value
     Column(
         modifier = Modifier
@@ -63,7 +66,7 @@ fun JobAccepted(
                 Text(text = "${task.description}")
                 Text(text = " ")
                 Text(text = "Job Creator: ${task.person_name}")
-                Text(text = "What doing: ${job.desination}")
+               // Text(text = "What doing: ${job.desination}")
                 Text(text = "$${task.hourly_rate}/Hr")
 //                Text(text = "${job.hours} Hours Total")
                 Text(text = " ")
