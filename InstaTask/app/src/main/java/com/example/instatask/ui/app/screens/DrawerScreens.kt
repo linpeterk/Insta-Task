@@ -846,60 +846,68 @@ fun SignUpScreen(navController:NavController){
                     contentColor = Color.Black),
 
                 onClick = {
+                    if(fullName.value.isNullOrEmpty()||
+                            email.value.isNullOrEmpty()||
+                            password.value.isNullOrEmpty()||
+                        address.value.isNullOrEmpty()||
+                            zipCode.value.isNullOrEmpty()
+                    ) {
+                        Toast.makeText(context, "All field might be filed", Toast.LENGTH_LONG).show()
+                    }else {
 
-                    navController.navigate(NavScreens.Gig.route)
-                    {
-                        popUpTo(NavScreens.Gig.route)
+                        navController.navigate(NavScreens.Gig.route)
+                        {
+                            popUpTo(NavScreens.Gig.route)
+
+                        }
+                    }
+                        //  Toast.makeText(context,"You re Signed Up....", Toast.LENGTH_LONG).show()
 
                     }
 
-
-                  //  Toast.makeText(context,"You re Signed Up....", Toast.LENGTH_LONG).show()
-
-                }
-
-            ){
-                Text(text="Submit", color = Color.White, style = TextStyle(letterSpacing = TextUnit.Unspecified),
-                    fontSize = TextUnit.Unspecified)
-            }
-            Spacer(modifier=Modifier.padding(10.dp))
-            Row(
-                horizontalArrangement = Arrangement.SpaceBetween,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(start = 40.dp, top = 20.dp, end = 40.dp)
-
-            ) {
-                Text(text="Already have an account?", color = Color.Black, style = TextStyle(letterSpacing = TextUnit.Unspecified),
-                    fontSize = TextUnit.Unspecified,
-                    modifier=Modifier.padding(start = 80.dp, top = 10.dp))
-                Button(
-                    modifier=Modifier
-                        .shadow(
-                            elevation = 10.dp,
-                            shape = CircleShape,
-                            clip = true
-                        ),
-                    colors = ButtonDefaults.buttonColors(
-                        backgroundColor = lightBlue,
-                        contentColor = lightBlue),
-                    onClick = {
-
-                        //Toast.makeText(context,"Login..", Toast.LENGTH_LONG).show()
-                        navController.navigate(NavScreens.Login.route)
-                        {
-                            popUpTo(NavScreens.Login.route)
-                        }
-
-                              },
-                ) {
-                    Text(text="Login", color = Color.White, style = TextStyle(letterSpacing = TextUnit.Unspecified),
+                    ){
+                    Text(text="Submit", color = Color.White, style = TextStyle(letterSpacing = TextUnit.Unspecified),
                         fontSize = TextUnit.Unspecified)
                 }
-            }
+                    Spacer(modifier=Modifier.padding(10.dp))
+                    Row(
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(start = 40.dp, top = 20.dp, end = 40.dp)
+
+                    ) {
+                        Text(text="Already have an account?", color = Color.Black, style = TextStyle(letterSpacing = TextUnit.Unspecified),
+                            fontSize = TextUnit.Unspecified,
+                            modifier=Modifier.padding(start = 80.dp, top = 10.dp))
+                        Button(
+                            modifier=Modifier
+                                .shadow(
+                                    elevation = 10.dp,
+                                    shape = CircleShape,
+                                    clip = true
+                                ),
+                            colors = ButtonDefaults.buttonColors(
+                                backgroundColor = lightBlue,
+                                contentColor = lightBlue),
+                            onClick = {
+
+                                //Toast.makeText(context,"Login..", Toast.LENGTH_LONG).show()
+                                navController.navigate(NavScreens.Login.route)
+                                {
+                                    popUpTo(NavScreens.Login.route)
+                                }
+
+                            },
+                        ) {
+                            Text(text="Login", color = Color.White, style = TextStyle(letterSpacing = TextUnit.Unspecified),
+                                fontSize = TextUnit.Unspecified)
+                        }
+                    }
+                }
         }
-    }
 }
+
 
 //SignIn Screen
 
