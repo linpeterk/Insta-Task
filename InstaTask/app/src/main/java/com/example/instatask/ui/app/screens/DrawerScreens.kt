@@ -914,9 +914,8 @@ fun SignUpScreen(navController:NavController){
 @Composable
 fun SignInScreen(navController:NavController){
     val context = LocalContext.current
-    //val image = Image(painter = painterResource(id = R.drawable.project1backgroung), contentDescription = null)
-    val emailAddress = remember{ mutableStateOf("")}
-    val password = remember{ mutableStateOf("")}
+   // val emailAddress = rememberSaveable{ mutableStateOf("")}
+    //val password = rememberSaveable{ mutableStateOf("")}
     val passwordVisibilty = remember{ mutableStateOf(false)}
     val focusRequester: FocusRequester = remember { FocusRequester() }
     val scrollState= rememberScrollState()
@@ -971,16 +970,19 @@ fun SignInScreen(navController:NavController){
             Text(text="Disclaimer is a statement that denies something, especially responsibility", color = Color.Gray, fontSize = 15.sp,modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Start )
         }
         Spacer(modifier = Modifier.padding(5.dp))
-        var emailAddress by rememberSaveable{mutableStateOf("")}
-        var Password by rememberSaveable{mutableStateOf("")}
+        val emailAddress = rememberSaveable{ mutableStateOf("") }
+        val password = rememberSaveable{ mutableStateOf("") }
+        //var emailAddress by rememberSaveable{mutableStateOf("")}
+        //var Password by rememberSaveable{mutableStateOf("")}
         Spacer(modifier = Modifier.padding(15.dp, 0.dp,15.dp,15.dp))
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            OutlinedTextField(value = emailAddress, onValueChange = {emailAddress=it},
+            OutlinedTextField(value = emailAddress.value, onValueChange = {emailAddress.value=it},
                 label = {Text(text="Email Address", color = Color.Black, style = TextStyle(letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)},
                 singleLine = true,
                 modifier = Modifier.fillMaxWidth(0.8f))
-            OutlinedTextField(value = Password, onValueChange = {Password=it},
+            //Password
+            OutlinedTextField(value = password.value, onValueChange = {password.value=it},
                 trailingIcon = {
                     IconButton(modifier=Modifier,
                         onClick = { /*TODO*/
@@ -1018,14 +1020,18 @@ fun SignInScreen(navController:NavController){
                     contentColor = Color.Black),
 
                 onClick = {
-
+                    if( emailAddress.value.isNullOrEmpty() || password.value.isNullOrEmpty()){
+                        Toast.makeText(context,"Please enter a valid Email or Password", Toast.LENGTH_LONG).show()
+                    }else{
                         navController.navigate(NavScreens.Gig.route)
-                {
-                    popUpTo(NavScreens.Gig.route)
-                }
-                    //Toast.makeText(context,"You re Signed In....", Toast.LENGTH_LONG).show()
-                    //
-                     },
+                        {
+                            popUpTo(NavScreens.Gig.route)
+                        }
+                        //Toast.makeText(context,"You re Signed In....", Toast.LENGTH_LONG).show()
+                        //
+                    }
+                    },
+
             ){
                 Text(text="Login", color = Color.White, style = TextStyle(letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)
