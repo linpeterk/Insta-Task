@@ -55,6 +55,9 @@ fun Geocoder(context: Context, address:String):LatLng{
     } catch (e: IOException) {
         Toast.makeText(context,"Unable connect to Geocoder ${e.message}", Toast.LENGTH_LONG).show()
     }
+    catch (e: Exception) {
+
+    }
 
     // Finally, the address string is posted in the textView with LatLng.
     return loc

@@ -20,7 +20,7 @@ fun Navigation(navController: NavHostController, vModel : TheViewModel) {
 
         //task board Gigs
         composable(NavScreens.TaskBoard.route) {
-            TaskBoard(vModel = vModel, navcontroller = navController)
+            TaskBoard(vModel = vModel, navController = navController)
         }
         composable(NavScreens.SkillBoard.route)
         {

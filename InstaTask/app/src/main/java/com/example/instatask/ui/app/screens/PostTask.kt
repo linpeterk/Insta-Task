@@ -54,18 +54,66 @@ Post tasks to add tasks to database, users fill out forms to create task object 
 
 val listOfTaskImages = listOf("petcategory", "farming", "renovation", "trading", "deliveryman", "workinprogress")
 
-val listOfSubPets = listOf("pets", "workinprogress", "petcategory" )
-val listOfSubGarden = listOf("garage", "cleaning", "farming")
-val listOfSubHome = listOf("house", "home", "renovation")
-val listOfSubTrade = listOf("ic_sea_icon", "review", "trading")
-val listOfSubDelivery = listOf("gigpic", "gigpic2", "deliveryman")
-val listOfSubLabor = listOf("plus", "repair", "workinprogress")
+//val listOfSubPets = listOf("pets", "workinprogress", "petcategory" )
+//val listOfSubGarden = listOf("garage", "cleaning", "farming")
+//val listOfSubHome = listOf("house", "home", "renovation")
+//val listOfSubTrade = listOf("ic_sea_icon", "review", "trading")
+//val listOfSubDelivery = listOf("gigpic", "gigpic2", "deliveryman")
+//val listOfSubLabor = listOf("plus", "repair", "workinprogress")
+
+val listOfSubPets = listOf(
+        Pair("Pet Walking", "pets"),
+        Pair("Pets Sitting", "workinprogress"),
+        Pair("Others", "petcategory"))
+
+val listOfSubGarden = listOf(
+        Pair("Planting", "garage"),
+        Pair("Plant Trimming", "cleaning"),
+        Pair("Others", "farming"))
+
+val listOfSubHome = listOf(
+        Pair("Painters", "house"),
+        Pair("House Cleaning", "home"),
+        Pair("Others", "renovation"))
+
+val listOfSubTrade = listOf(
+        Pair("Electronics", "ic_sea_icon"),
+        Pair("Collectibles", "review"),
+        Pair("Others", "trading"))
+
+val listOfSubDelivery = listOf(
+        Pair("Food Delivery", "gigpic"),
+        Pair("Documents Delivery", "gigpic2"),
+        Pair("Others", "deliveryman"))
+
+val listOfSubLabor = listOf(
+        Pair("Moving Labors", "plus"),
+        Pair("Construction Labors", "repair"),
+        Pair("Others", "workinprogress"))
+
+
+
 
 val listOfSubTaskImages = listOf(listOfSubPets, listOfSubGarden, listOfSubHome, listOfSubTrade, listOfSubDelivery, listOfSubLabor)
 
+val categoryNames = listOf (
+        Pair("Pets", "petcategory")
+        , Pair("Gardening", "farming")
+        , Pair("Home Repair", "renovation")
+        ,Pair("Trading", "trading")
+        ,Pair("Delivery", "deliveryman")
+        ,Pair("Labor", "workinprogress")
+)
+
+data class Pair(
+        val cat:String,
+        val img:String,
+)
 
 
-@Composable
+
+
+        @Composable
 fun PostTask(vModel: TheViewModel, navController: NavController){
     var context = LocalContext.current
 
@@ -117,10 +165,11 @@ fun PostTask(vModel: TheViewModel, navController: NavController){
 
             //The First Dropdown Menu here
             Column() {
+                Text(text= "Category", modifier = Modifier.padding(start = 30.dp))
                 //the first dropdownmenu category
                 Box(
                     modifier = Modifier
-                        .padding(10.dp),
+                        .padding(5.dp),
                     contentAlignment = Alignment.Center
                 ) {
                     Box(
@@ -128,7 +177,7 @@ fun PostTask(vModel: TheViewModel, navController: NavController){
                             .offset(x = -100.dp, y = 15.dp)
                     )
                     {
-                        DropDownMenu(expandedFirst, image, selectedText, catIndex, listOfTaskImages, showSubCategory = showSubCategory)
+                        MainDropMenu(expandedFirst, image, selectedText, catIndex, listOfTaskImages, showSubCategory = showSubCategory)
                     }
                     Card(
                         elevation = 5.dp,
@@ -150,6 +199,8 @@ fun PostTask(vModel: TheViewModel, navController: NavController){
                 }
 
                 //The second dropdown category
+                if(showSubCategory.value)
+                Text(text= "Sub-Category", modifier = Modifier.padding(start = 30.dp))
                 Box(
                     modifier = Modifier
                         .padding(10.dp),
@@ -161,10 +212,8 @@ fun PostTask(vModel: TheViewModel, navController: NavController){
                             .offset(x = -100.dp, y = 15.dp)
                     )
                     {
-                       if(catIndex.value == 0) {
-                          DropDownMenu(expandedSecond, image, selectedSubText, catIndex, listOfSubTaskImages[0], showSubCategory = showSubCategory)
-                       }
-                          else   DropDownMenu(expandedSecond, image, selectedSubText, catIndex, listOfSubTaskImages[catIndex.value-1], showSubCategory = showSubCategory)
+                        if(showSubCategory.value)
+                       SubDownMenu(expandedSecond, image, selectedSubText, catIndex, listOfSubTaskImages[catIndex.value-1], showSubCategory = showSubCategory)
                     }
                     Card(
                         elevation = 5.dp,
@@ -274,7 +323,7 @@ fun PostTask(vModel: TheViewModel, navController: NavController){
                                     datetime = date,
                                     imageId = image.value,
                                     address = address,
-                                    lat = lat.latitude,
+                                    lat = lat.latitude ,
                                     lng = lat.longitude
                                     )
                                 vModel.insertTask(task)
@@ -300,37 +349,80 @@ fun PostTask(vModel: TheViewModel, navController: NavController){
 }
 
 
-
 @Composable
-fun DropDownMenu(expanded: MutableState<Boolean>, image: MutableState<String>, selectedText: MutableState<String>, catIndex:MutableState<Int>,  listOfImages:List<String>, showSubCategory:MutableState<Boolean>){
+fun MainDropMenu(expanded: MutableState<Boolean>, image: MutableState<String>, selectedText: MutableState<String>, catIndex:MutableState<Int>,  listOfImages:List<String>, showSubCategory:MutableState<Boolean>){
 
     DropdownMenu(
-        expanded = expanded.value,
-        onDismissRequest = { expanded.value = false },
-        modifier = Modifier
-        //    .fillMaxWidth()
-        //  .border(2.dp, Color.Blue),
+            expanded = expanded.value,
+            onDismissRequest = { expanded.value = false},
+            modifier = Modifier
+            //    .fillMaxWidth()
+            //  .border(2.dp, Color.Blue),
 
     ) {
         listOfImages.forEachIndexed() { index, title ->
 
             DropdownMenuItem(
-                modifier = Modifier.height(30.dp),
-                onClick = {
-                    //   if (index != 0) {
-                if(!showSubCategory.value)
-                catIndex.value = index+1
-                    image.value =  title
-                    Log.d("ImageValue", "${image.value}")
-                    selectedText.value = title
-                    expanded.value = false
-                    showSubCategory.value = true
-                    //    }
-                })
+                    modifier = Modifier.height(30.dp),
+                    onClick = {
+
+                               catIndex.value = index + 1
+
+
+                        image.value =  categoryNames[index].img
+                        Log.d("ImageValue", "${image.value}")
+                        selectedText.value = categoryNames[index].cat
+                        expanded.value = false
+                        showSubCategory.value=true
+                        //    }
+                    })
             {
-                Text(text = "${title}")
+                    Text(text = "${categoryNames[index].cat}")
+                }
+            }
+        }
+
+
+}
+
+@Composable
+fun SubDownMenu(expanded: MutableState<Boolean>, image: MutableState<String>, selectedText: MutableState<String>, catIndex:MutableState<Int>,  listOfImages:List<Pair>, showSubCategory:MutableState<Boolean>) {
+
+
+    DropdownMenu(
+            expanded = expanded.value,
+            onDismissRequest = {
+                expanded.value = false
+                showSubCategory.value = false
+            },
+            modifier = Modifier
+
+
+    ) {
+        listOfImages.forEachIndexed() { index, title ->
+
+            DropdownMenuItem(
+                    modifier = Modifier.height(30.dp),
+                    onClick = {
+                        //   if (index != 0) {
+
+                        image.value = title.img
+
+                        selectedText.value = title.cat
+                        expanded.value = false
+                        showSubCategory.value = true
+                        //    }
+                    })
+            {
+                if (showSubCategory.value) {
+
+                    Text(text = "${title.cat}")
+
+                }
             }
         }
     }
-
 }
+
+
+

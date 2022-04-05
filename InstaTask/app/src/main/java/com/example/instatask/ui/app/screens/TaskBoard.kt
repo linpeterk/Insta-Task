@@ -8,9 +8,15 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.ArrowBack
+import androidx.compose.material.icons.outlined.KeyboardArrowLeft
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.RoundRect
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.style.TextOverflow
@@ -22,6 +28,8 @@ import com.example.instatask.ui.Components.MakeGoogleMap
 import com.example.instatask.ui.Components.TopBar
 import com.example.instatask.ui.Components.utilities.CategoriesBar
 import com.example.instatask.ui.Components.utilities.LazyScrollTaskBoard
+import com.example.instatask.ui.app.Navigation.NavScreens
+import com.example.instatask.ui.theme.GreenTask
 import com.example.instatask.ui.theme.graySurface
 import com.example.instatask.viewmodel.TheViewModel
 import de.charlex.compose.BottomDrawerScaffold
@@ -32,7 +40,7 @@ import kotlinx.coroutines.launch
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun TaskBoard(vModel: TheViewModel,
-              navcontroller: NavController
+              navController: NavController
               ){
 
     var peekHeight = remember { mutableStateOf(200.dp) }
@@ -100,13 +108,12 @@ fun TaskBoard(vModel: TheViewModel,
             
             Surface(                    //To add Padding to Drawer
                 modifier = Modifier
-                    .fillMaxSize()
-                    .fillMaxHeight()
-                    .fillMaxWidth()
-                ,
-             //   shape = RoundedCornerShape(topStart = 10.dp, topEnd = 10.dp),
+                        .fillMaxSize()
+                        .fillMaxHeight()
+                        .fillMaxWidth()
 
-                //   elevation = 4.dp
+                ,
+
             ) {
                 // shape = RoundedCornerShape(topStart = 10.dp, topEnd = 10.dp),
                 Surface(
@@ -115,69 +122,44 @@ fun TaskBoard(vModel: TheViewModel,
                     Column(modifier = Modifier) {
                         Box(
                             modifier = Modifier
-                                //  .weight(1f)
-                                .fillMaxWidth()
-                                //     .border(3.dp, Color.Red)
-                                .background(Color.White)
+                                    //  .weight(1f)
+                                    .fillMaxWidth()
+                                    //     .border(3.dp, Color.Red)
+                                    .background(Color.White)
 
                         ) {
-                            CategoriesBar(vModel = vModel, vModel.categoriesTask, mode = 1, navController = navcontroller)
+                           // CategoriesBar(vModel = vModel, vModel.categoriesTask, mode = 1, navController = navcontroller)
+                            Column() {
+                                Icon(imageVector = Icons.Outlined.ArrowBack, contentDescription = "Go back", modifier = Modifier.size(40.dp)
+
+                                .clickable {
+                                        navController.navigate(NavScreens.Gig.route){
+                                            popUpTo(NavScreens.Gig.route)
+                                        }
+                                })
+
+                            }
+                                Column(modifier = Modifier
+                                        .fillMaxWidth()
+                                        .padding(2.dp),
+                                horizontalAlignment = Alignment.CenterHorizontally)
+                                {
+                                    Image(painter = painterResource(id = R.drawable.more), contentDescription = "Post Task",
+                                            modifier = Modifier
+                                                    .size(50.dp)
+                                                    .background(color = GreenTask, shape = RoundedCornerShape(13.dp))
+                                                    .clickable {
+                                                        navController.navigate(NavScreens.PostTask.route){
+                                                            popUpTo(NavScreens.PostTask.route)
+                                                        }
+                                                    })
+                                    Text(text = "Post Task", color = graySurface, fontSize = 14.sp)
+                                }
 
                         }
 
-                        LazyScrollTaskBoard(vModel = vModel, navcontroller = navcontroller, state, buttonText)
-//                        LazyColumn(
-//                            modifier = Modifier
-//                                .background(graySurface)
-//                                .padding(5.dp)
-//                                .fillMaxSize()
-//
-//                        ){
-//
-//                            items(vmodel.getFakeTasklist()){ item->
-//                                Spacer(modifier = Modifier.padding(3.dp))
-//                                Card(
-//                                    shape = RoundedCornerShape(8.dp),
-//                                    modifier = Modifier
-//                                        .fillMaxWidth()
-//                                        .height(140.dp)
-//
-//
-//
-//                                    //.border(2.dp, Color.Red)
-//                                             ,
-//
-//                                    elevation = 7.dp
-//
-//                                ){
-//                               Row(){
-//                                   Image(painter = painterResource(id = item.imageRes ), contentDescription = null,
-//                                   modifier = Modifier
-//                                      // .border(2.dp, Color.Red)
-//                                       .padding(40.dp)
-//
-//                                   )
-//                                    Column(modifier = Modifier.padding(8.dp)
-//                                        .verticalScroll(rememberScrollState())){
-//
-//                                        Text(text = "${item.name}: ")
-//                                        Spacer(modifier = Modifier.padding(5.dp))
-//                                        Text(text = "Review: \n\"${item.description} \"",
-//                                            overflow = TextOverflow.Visible,
-//                                            fontSize = 16.sp,
-//                                            fontFamily = FontFamily.Cursive
-//                                            )
-//
-//                                    }
-//
-//
-//                               }
-//
-//                                }
-//
-//                            }
-//
-//                        }
+                        LazyScrollTaskBoard(vModel = vModel, navcontroller = navController, state, buttonText)
+
                     }
 
 
@@ -189,7 +171,7 @@ fun TaskBoard(vModel: TheViewModel,
     ){
         Box(modifier=Modifier
             .padding(bottom = 200.dp)) {
-            MakeGoogleMap(vModel = vModel, mode = 1, navController = navcontroller)
+            MakeGoogleMap(vModel = vModel, mode = 1, navController = navController)
         //    TopBar()
         }
     }

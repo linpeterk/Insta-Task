@@ -100,7 +100,7 @@ class MainActivity : ComponentActivity() {
                 ) {
                     MainScreen(theViewModel)
                //     GigPage()
-       // PostTask(theViewModel, navController = NavController(this))
+//        PostTask(theViewModel, navController = NavController(this))
                  //   CustomerList(theViewModel)
          //MainScreen(theViewModel)
          //  test(theViewModel)
@@ -118,7 +118,7 @@ class MainActivity : ComponentActivity() {
 
 
 
-                    //TaskBoard(theViewModel, NavController(this))
+                //    TaskBoard(theViewModel, NavController(this))
 
               //  MainScreen(theViewModel)
 
