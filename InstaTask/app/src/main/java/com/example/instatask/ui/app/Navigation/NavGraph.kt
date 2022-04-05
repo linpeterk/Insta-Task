@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.instatask.ui.app.Activity
+import com.example.instatask.ui.app.JobAccepted
 import com.example.instatask.ui.app.UserInfo
 import com.example.instatask.ui.app.screens.*
 import com.example.instatask.viewmodel.TheViewModel
@@ -26,6 +27,12 @@ fun Navigation(navController: NavHostController, vModel : TheViewModel) {
         {
 
             SkillBoard(vModel = vModel, navcontroller= navController)
+        }
+
+        composable(NavScreens.JobAccepted.route)
+        {
+
+            JobAccepted(vModel = vModel, navController= navController)
         }
 
         //when job clicked

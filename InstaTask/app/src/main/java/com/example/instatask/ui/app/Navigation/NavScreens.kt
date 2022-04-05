@@ -15,6 +15,8 @@ sealed class NavScreens(var route: String, var icon: Int, var title: String) {
     object Landing: NavScreens("Landing", R.drawable.ic_sea_icon, "Landing")
     object Login: NavScreens("Login", R.drawable.ic_sea_icon, "Login")
     object Signup: NavScreens("Signup", R.drawable.ic_sea_icon, "Signup")
+
+    object JobAccepted: NavScreens("JobAccepted", R.drawable.ic_sea_icon, "JobAccepted")
   //  object Interm: NavScreens("Interm", R.drawable.ic_sea_icon, "Interm")
 
 }
