@@ -1,5 +1,6 @@
 package com.example.instatask.ui.app
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -10,6 +11,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
@@ -37,15 +39,34 @@ fun ProfileScreen(
 //        }
         //-------------Box2------------------
         Box() {
+
             val profileImg = painterResource(id = com.example.instatask.R.drawable.head)
             Box(
                 modifier = Modifier
                     .padding(16.dp)
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    ImageCard(painter = profileImg,modifier = Modifier
-                        .width(250.dp)
-                        .height(180.dp))
+
+                    Image(
+                        modifier=Modifier
+                            .size(150.dp)
+                            .clip(CircleShape)
+                            .border(
+                                width=10.dp,
+                                color=Color.White,
+                                shape=CircleShape
+                            ),
+                        painter=painterResource(id = com.example.instatask.R.drawable.head),
+                        contentDescription="Circular Image"
+                    )
+
+
+
+
+
+//                 //   ImageCard(painter = profileImg,modifier = Modifier
+//                        .width(250.dp)
+//                        .height(180.dp))//
 
 //                    Box(){
 //                        val plusIcon=painterResource(id = com.example.instatask.R.drawable.plus)
@@ -158,5 +179,16 @@ fun ProfileScreen(
     }
 }
 
-
+//Image(
+//    modifier=Modifier
+//    .size(300.dp)
+//    .clip(CircleShape)
+//    .border(
+//        width=10.dp,
+//        color=Color.gray,
+//        shape=CircularShape
+//    ),
+//    paniter=painterResource(id = com.example.instatask.R.drawable.head),
+//    contentDescription="Circular Image"
+//)
 
