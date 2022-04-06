@@ -40,6 +40,8 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
 
     var currentTaskList : List<Task> by  mutableStateOf(listOf(Task()))
 
+    var taskAcceptedID by mutableStateOf(1)
+
     private val TaskRepository: TaskRepository = TaskRepository(application = application)
 
     /* mutable

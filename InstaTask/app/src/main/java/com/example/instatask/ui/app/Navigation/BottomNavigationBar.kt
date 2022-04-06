@@ -42,8 +42,6 @@ fun BottomNavigationBar(navController: NavController) {
                 icon = { Image(painterResource(id = item.icon), contentDescription = item.title, modifier = Modifier.size(30.dp))
                        },
 
-
-
                 label = { Text(text = item.title) },
                 selectedContentColor = Color.White,
                 unselectedContentColor = Color.White.copy(0.4f),

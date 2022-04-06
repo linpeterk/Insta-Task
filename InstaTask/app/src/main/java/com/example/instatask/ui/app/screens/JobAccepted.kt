@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.instatask.ui.Components.MakeGoogleMap
 import com.example.instatask.viewmodel.TheViewModel
 import com.google.maps.android.compose.GoogleMap
 
@@ -42,8 +43,10 @@ fun JobAccepted(
             }
         }
         //-------------Box2------------------
-        Box(modifier = Modifier.width(500.dp).height(200.dp)) {
-            GoogleMap()
+        Box(modifier = Modifier
+            .width(500.dp)
+            .height(200.dp)) {
+            MakeGoogleMap(vModel = vModel, navController = navController, mode =2)
 
             //make.googlemap
         }

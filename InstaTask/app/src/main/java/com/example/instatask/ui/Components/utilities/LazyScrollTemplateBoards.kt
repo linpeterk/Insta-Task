@@ -96,17 +96,17 @@ fun LazyScrollTaskBoard(vModel: TheViewModel, navcontroller:NavController, state
                         })
                     ){
 
-                        Text(text = "${item.task_name?: "No name Found"}", fontSize = 18.sp, fontWeight = FontWeight.W500, modifier = Modifier.fillMaxWidth())
-                        Text(text = "${item.person_name}", fontSize = 14.sp,  modifier = Modifier.fillMaxWidth())
-                        Text(text = "Hourly $${item.hourly_rate?: 0}", fontSize = 14.sp,  modifier = Modifier.fillMaxWidth())
-                        Text(text = "Address: ${item.address ?: "No Address Found"}, CA", fontSize = 14.sp,  modifier = Modifier.fillMaxWidth())
+                        Text(text = "${item.task_name?: "No name Found"}", fontSize = 18.sp, fontWeight = FontWeight.W500, modifier = Modifier.fillMaxWidth(), fontFamily = FontFamily.SansSerif)
+                        Text(text = "${item.person_name}", fontSize = 12.sp,  modifier = Modifier.fillMaxWidth(), fontFamily = FontFamily.SansSerif)
+                        Text(text = "Hourly $${item.hourly_rate?: 0}", fontSize = 12.sp,  modifier = Modifier.fillMaxWidth(), fontFamily = FontFamily.SansSerif)
+                        Text(text = "Address: ${item.address ?: "No Address Found"}, CA", fontSize = 12.sp,  modifier = Modifier.fillMaxWidth(),fontFamily = FontFamily.SansSerif )
 
                         Spacer(modifier = Modifier.padding(5.dp))
 
                         Text(text = "Description: \n\"${item.description} \"",
                             overflow = TextOverflow.Visible,
-                            fontSize = 14.sp,
-                            fontFamily = FontFamily.Serif
+                            fontSize = 12.sp,
+                            fontFamily = FontFamily.SansSerif
                         )
                     }
                 }

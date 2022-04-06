@@ -88,7 +88,7 @@ class MainActivity : ComponentActivity() {
             init(theViewModel)
             theViewModel.getReviews(2, 2)
 
-        //    deleteDB(theViewModel) // Definitely don't run this
+           // deleteDB(theViewModel) // Definitely don't run this
 //initDatabase(theViewModel) //Do not run this, run only once to initiate database
 
 
