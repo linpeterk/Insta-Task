@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -68,7 +69,10 @@ fun LazyScrollTaskBoard(vModel: TheViewModel, navcontroller:NavController, state
                 elevation = 7.dp
 
             ){
-                Row(){
+                Row(
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ){
                     Log.d("ImageRES", item.imageId?:"null")
                     Log.d("ImageRES", item.person_name?:"null")
                     Image(painter = painterResource(id = vModel.getImageId(context = LocalContext.current,item.imageId?:"workinprogress") ), contentDescription = null,
@@ -145,7 +149,8 @@ fun LazyScrollSkillBoard(vModel: TheViewModel, navcontroller:NavController , sta
                 elevation = 7.dp
 
             ){
-                Row(){
+                Row( horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically){
                     Log.d("ImageRES", item.imageRes)
                     Log.d("ImageRES", item.name)
                     Image(painter = painterResource(id = vModel.getImageId(context = LocalContext.current,item.imageRes) ), contentDescription = null,

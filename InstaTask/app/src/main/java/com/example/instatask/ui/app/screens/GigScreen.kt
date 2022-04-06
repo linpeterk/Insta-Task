@@ -138,7 +138,8 @@ fun GigPage(navController: NavController, vModel:TheViewModel){
 fun makeItems(item:ResponseGigType, navController: NavController, vModel: TheViewModel, index:Int)
 {
     val context = LocalContext.current
-    Row() {
+    Row( horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically) {
         //Make pictures
         Surface(            shape = RoundedCornerShape(8.dp),
             modifier = Modifier
@@ -170,7 +171,8 @@ fun makeItems(item:ResponseGigType, navController: NavController, vModel: TheVie
 
         //make keyboard arrow right
 
-        Box(modifier = Modifier
+        Box(
+            modifier = Modifier
             .fillMaxSize()
             .weight(0.2f)
             .clickable {
@@ -181,9 +183,9 @@ fun makeItems(item:ResponseGigType, navController: NavController, vModel: TheVie
                 }
 
             },
-            contentAlignment = Alignment.TopEnd
+            contentAlignment = Alignment.Center
         ){
-            Icon(imageVector = Icons.Outlined.KeyboardArrowRight, contentDescription = "arrow forward")
+            Icon(imageVector = Icons.Outlined.KeyboardArrowRight, contentDescription = "arrow forward", modifier = Modifier.size(40.dp))
         }
     }
 }
