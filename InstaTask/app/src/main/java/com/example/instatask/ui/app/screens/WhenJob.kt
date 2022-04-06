@@ -101,7 +101,7 @@ fun WhenJobClicked(navController: NavController, vModel:TheViewModel, taskId: In
                         Box(modifier = Modifier
                            // .weight(0.4f)
                             .background(graySurface)
-                            .wrapContentSize(),
+//                            .wrapContentSize(),
 
                         ){
 //                                MakeScrollComponents(navController)
