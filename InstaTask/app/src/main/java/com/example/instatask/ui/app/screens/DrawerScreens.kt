@@ -509,7 +509,7 @@ fun LandingScreen(navController:NavController){
                     modifier = Modifier
                         .size(60.dp)
                         .background(colorResource(id = R.color.white))
-                       // .clip(RoundedCornerShape(50.dp))
+                        // .clip(RoundedCornerShape(50.dp))
                         .clickable(
                             enabled = true,
                             onClickLabel = "Clickable image",
@@ -874,6 +874,7 @@ fun SignUpScreen(navController:NavController, userInfoViewModel: UserInfoViewMod
                                 user_address = address.value,
                                 user_zip_code = zipCode.value)
                             )
+                        Toast.makeText(context,"Sign Up Success", Toast.LENGTH_LONG).show()
                         navController.navigate(NavScreens.Login.route)
                         {
                             popUpTo(NavScreens.Login.route)
@@ -934,12 +935,11 @@ fun SignUpScreen(navController:NavController, userInfoViewModel: UserInfoViewMod
 fun SignInScreen(navController:NavController, userInfoViewModel: UserInfoViewModel){
     val context = LocalContext.current
 
-    val userList = userInfoViewModel.getAllUsers().observeAsState(arrayListOf())
-
    // val emailAddress = rememberSaveable{ mutableStateOf("")}
     //val password = rememberSaveable{ mutableStateOf("")}
     val passwordVisibilty = remember{ mutableStateOf(false)}
     val focusRequester: FocusRequester = remember { FocusRequester() }
+    val userList = userInfoViewModel.getAllUsers().observeAsState(arrayListOf())
     val scrollState= rememberScrollState()
     Column(
         modifier = Modifier
@@ -1046,13 +1046,21 @@ fun SignInScreen(navController:NavController, userInfoViewModel: UserInfoViewMod
                         Toast.makeText(context,"Please enter a valid Email or Password", Toast.LENGTH_LONG).show()
                     }else{
                         val listHolder = userList.value
+                        listHolder.forEach { userRow ->
+                            if(emailAddress.value.equals(userRow.user_email_address) && password.value.equals(userRow.user_passsword)){
+                                Toast.makeText(context,"Welcome!", Toast.LENGTH_LONG).show()
+                                navController.navigate(NavScreens.Gig.route)
+                                {
+                                    popUpTo(NavScreens.Gig.route)
+                                }
+                            }else{
+                                Toast.makeText(context,"Please enter a valid Email or Password", Toast.LENGTH_LONG).show()
+                            }
+                        }
                        // listHolder.forEach(userList ->
                         //if(emailAddress.value.equals(userList.value)))
 
-                        navController.navigate(NavScreens.Gig.route)
-                        {
-                            popUpTo(NavScreens.Gig.route)
-                        }
+
                         //Toast.makeText(context,"You re Signed In....", Toast.LENGTH_LONG).show()
                         //
                     }
