@@ -39,7 +39,7 @@ fun BottomNavigationBar(navController: NavController) {
         items.forEach { item ->
             BottomNavigationItem(
 
-                icon = { Image(painterResource(id = item.icon), contentDescription = item.title, modifier = Modifier.size(30.dp))
+                icon = { Image(painterResource(id = item.icon), contentDescription = item.title, modifier = Modifier.size(20.dp))
                        },
 
                 label = { Text(text = item.title) },
