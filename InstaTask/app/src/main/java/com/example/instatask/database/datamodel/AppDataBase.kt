@@ -8,7 +8,7 @@ import com.example.instatask.database.dao.TaskData
 import com.example.instatask.database.dao.UserInfoDao
 import com.example.instatask.viewmodel.TheViewModel
 
-@Database(entities = [Task::class, UserEntity::class], version =3, exportSchema = false)
+@Database(entities = [Task::class, UserRow::class], version =4, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun taskDao(): TaskData

@@ -11,12 +11,13 @@ import com.example.instatask.ui.app.JobAccepted
 import com.example.instatask.ui.app.UserInfo
 import com.example.instatask.ui.app.screens.*
 import com.example.instatask.viewmodel.TheViewModel
+import com.example.instatask.viewmodel.UserInfoViewModel
 import com.google.accompanist.pager.ExperimentalPagerApi
 
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun Navigation(navController: NavHostController, vModel : TheViewModel) {
+fun Navigation(navController: NavHostController, vModel : TheViewModel, userInfoViewModel : UserInfoViewModel) {
     NavHost(navController, startDestination = NavScreens.Landing.route) {
 
         //task board Gigs
@@ -91,13 +92,13 @@ fun Navigation(navController: NavHostController, vModel : TheViewModel) {
         composable(NavScreens.Login.route)
         {
 
-            SignInScreen(navController = navController)
+            SignInScreen(navController = navController, userInfoViewModel)
         }
 
         composable(NavScreens.Signup.route)
         {
 
-            SignUpScreen(navController = navController)
+            SignUpScreen(navController = navController, userInfoViewModel)
         }
 
 

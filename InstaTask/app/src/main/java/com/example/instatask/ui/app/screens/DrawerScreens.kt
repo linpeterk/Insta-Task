@@ -1,19 +1,20 @@
 package com.example.instatask.ui.app.screens
 
-import android.graphics.Paint
 import android.graphics.PorterDuff
-import android.provider.Telephony.Mms.Part.TEXT
+import android.os.Bundle
 import android.widget.RatingBar
 import android.widget.Toast
-import androidx.compose.animation.core.tween
+import androidx.activity.ComponentActivity
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
@@ -22,6 +23,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -29,25 +31,30 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.util.lerp
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
-import androidx.room.ColumnInfo.Companion.TEXT
 import com.example.instatask.R
 import com.example.instatask.data.SliderList
+import com.example.instatask.database.datamodel.UserRow
 import com.example.instatask.ui.app.Navigation.NavScreens
-import com.example.instatask.ui.theme.Purple500
 import com.example.instatask.ui.theme.graySurface
 import com.example.instatask.ui.theme.lightBlue
+import com.example.instatask.viewmodel.UserInfoViewModel
 import com.google.accompanist.pager.*
-import com.google.maps.android.compose.*
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.yield
 import kotlin.math.absoluteValue
+
+class SignUp: ComponentActivity(){
+    override fun onCreate(savedInstanceSate: Bundle?){
+        super.onCreate(savedInstanceSate)
+        val userInfoViewModel = ViewModelProvider(this).get(UserInfoViewModel::class.java)
+
+    }
+}
 
 //Home Screen
 
@@ -714,9 +721,14 @@ fun LandingScreen(navController:NavController){
 
 //SignUp Screen
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun SignUpScreen(navController:NavController){
+fun SignUpScreen(navController:NavController, userInfoViewModel: UserInfoViewModel){
     val context = LocalContext.current
+    val KeyboardController = LocalSoftwareKeyboardController.current
+
+    //val userInfoViewModel = ViewModelProvider(context).get(UserInfoViewModel::class.java)
+
     val fullName = rememberSaveable{ mutableStateOf("") }
     val email = rememberSaveable{ mutableStateOf("") }
     val password = rememberSaveable{ mutableStateOf("") }
@@ -854,10 +866,17 @@ fun SignUpScreen(navController:NavController){
                     ) {
                         Toast.makeText(context, "All field might be filed", Toast.LENGTH_LONG).show()
                     }else {
-
-                        navController.navigate(NavScreens.Gig.route)
+                        userInfoViewModel.insertNewUser(
+                            UserRow(
+                                user_full_name = fullName.value,
+                                user_email_address = email.value,
+                                user_passsword = password.value,
+                                user_address = address.value,
+                                user_zip_code = zipCode.value)
+                            )
+                        navController.navigate(NavScreens.Login.route)
                         {
-                            popUpTo(NavScreens.Gig.route)
+                            popUpTo(NavScreens.Login.route)
 
                         }
                     }
@@ -912,8 +931,11 @@ fun SignUpScreen(navController:NavController){
 //SignIn Screen
 
 @Composable
-fun SignInScreen(navController:NavController){
+fun SignInScreen(navController:NavController, userInfoViewModel: UserInfoViewModel){
     val context = LocalContext.current
+
+    val userList = userInfoViewModel.getAllUsers().observeAsState(arrayListOf())
+
    // val emailAddress = rememberSaveable{ mutableStateOf("")}
     //val password = rememberSaveable{ mutableStateOf("")}
     val passwordVisibilty = remember{ mutableStateOf(false)}
@@ -1023,6 +1045,9 @@ fun SignInScreen(navController:NavController){
                     if( emailAddress.value.isNullOrEmpty() || password.value.isNullOrEmpty()){
                         Toast.makeText(context,"Please enter a valid Email or Password", Toast.LENGTH_LONG).show()
                     }else{
+                        val listHolder = userList.value
+                       // listHolder.forEach(userList ->
+                        //if(emailAddress.value.equals(userList.value)))
 
                         navController.navigate(NavScreens.Gig.route)
                         {

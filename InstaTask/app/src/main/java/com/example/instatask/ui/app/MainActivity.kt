@@ -55,6 +55,7 @@ import com.example.instatask.ui.app.screens.*
 import com.example.instatask.ui.theme.InstaTaskTheme
 import com.example.instatask.ui.theme.graySurface
 import com.example.instatask.viewmodel.TheViewModel
+import com.example.instatask.viewmodel.UserInfoViewModel
 import com.google.accompanist.pager.ExperimentalPagerApi
 import java.util.*
 import kotlin.random.Random
@@ -74,6 +75,7 @@ class MainActivity : ComponentActivity() {
         wifiReceiver2 = Wifi()
 
         val theViewModel= ViewModelProvider(this).get(TheViewModel::class.java) // viewmodel
+        val userInfoViewModel = ViewModelProvider(this).get(UserInfoViewModel::class.java)
 
         IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED).also {
             registerReceiver(airReceiver,it)
@@ -98,7 +100,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    MainScreen(theViewModel)
+                    MainScreen(theViewModel, userInfoViewModel)
                //     GigPage()
 //        PostTask(theViewModel, navController = NavController(this))
                  //   CustomerList(theViewModel)
@@ -180,7 +182,7 @@ data class JobDetails(val acceptorName:String,val hours:Int,val rate:Int,val des
 //NEW FILES ADDED - NavScreens.kt, ContentScreens.kt
 //
 @Composable
-fun MainScreen(vModel : TheViewModel) {
+fun MainScreen(vModel : TheViewModel, userInfoViewModel: UserInfoViewModel) {
     val bottomBarState = rememberSaveable { (mutableStateOf(true)) }
 
     val navController = rememberNavController()
@@ -220,7 +222,7 @@ fun MainScreen(vModel : TheViewModel) {
     ) {
 
         Box(modifier = Modifier.padding(bottom=56.dp)) {
-            Navigation(navController = navController, vModel = vModel)
+            Navigation(navController = navController, vModel = vModel, userInfoViewModel)
         }
 
     }
