@@ -137,13 +137,13 @@ fun LazyScrollTaskBoard(vModel: TheViewModel, navcontroller:NavController, state
 
               //          Spacer(modifier = Modifier.padding(5.dp))
                         Column() {
-                            Text(
-                                text = "Description:",
-                                overflow = TextOverflow.Visible,
-                                fontSize = 14.sp,
-                                fontFamily = FontFamily.SansSerif,
-                                fontWeight = FontWeight.Bold
-                            )
+//                            Text(
+//                                text = "Description:",
+//                                overflow = TextOverflow.Visible,
+//                                fontSize = 14.sp,
+//                                fontFamily = FontFamily.SansSerif,
+//                                fontWeight = FontWeight.Bold
+//                            )
                             Text(
                                 text = "\n\"${item.description} \"",
                                 overflow = TextOverflow.Visible,

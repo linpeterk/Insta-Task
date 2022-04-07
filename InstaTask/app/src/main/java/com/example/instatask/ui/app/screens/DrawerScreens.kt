@@ -157,7 +157,7 @@ fun SliderScreen(navController:NavController){
                 .weight(1f)
                 .padding(0.dp, 0.dp, 0.dp, 40.dp)
         ) {page ->
-            Card(modifier = Modifier
+            Surface(modifier = Modifier
                 .graphicsLayer {
                     val pageOffset = calculateCurrentOffsetForPage(page).absoluteValue
                     lerp(
@@ -176,7 +176,7 @@ fun SliderScreen(navController:NavController){
                 }
                 .fillMaxWidth()
                 .padding(0.dp, 0.dp, 0.dp, 0.dp),
-            shape = RoundedCornerShape(20.dp)
+          //  shape = RoundedCornerShape(20.dp)
              ){
                 val newSliders = SliderList[page]
                 Box(modifier = Modifier
@@ -509,7 +509,7 @@ fun LandingScreen(navController:NavController){
                     modifier = Modifier
                         .size(60.dp)
                         .background(colorResource(id = R.color.white))
-                        .clip(RoundedCornerShape(50.dp))
+                       // .clip(RoundedCornerShape(50.dp))
                         .clickable(
                             enabled = true,
                             onClickLabel = "Clickable image",

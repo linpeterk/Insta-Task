@@ -76,12 +76,7 @@ val SliderList = listOf(
         description = "",
         imgUri = R.drawable.house
     ),
-    SliderData(
-        title = "Plumber",
-        4.0f,
-        description = "",
-        imgUri = R.drawable.plumber
-    ),
+
 
 
 )

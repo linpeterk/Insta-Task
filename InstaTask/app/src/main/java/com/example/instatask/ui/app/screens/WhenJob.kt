@@ -128,8 +128,8 @@ fun WhenJobClicked(navController: NavController, vModel:TheViewModel, taskId: In
                                     Image(painter = painterResource(vModel.getImageId(context = LocalContext.current, task.imageId ?: "workinprogress")), //WORKER CARD
                                         contentDescription =null,
                                         modifier= Modifier
-                                            .size(130.dp)
-                                            .padding(8.dp),
+                                            .size(80.dp)
+                                            .padding(5.dp),
                                         contentScale = ContentScale.Fit
                                     )
                                     Column(Modifier.padding(8.dp)) {
@@ -174,6 +174,7 @@ fun WhenJobClicked(navController: NavController, vModel:TheViewModel, taskId: In
                                             Text(
                                                 text = "Description ${task.description}",
                                                 textAlign = TextAlign.Start,
+                                                color= MaterialTheme.colors.onSurface,
                                                 style = MaterialTheme.typography.body1,
                                                 modifier= Modifier.padding(start=5.dp),
                                                 overflow = TextOverflow.Ellipsis,
