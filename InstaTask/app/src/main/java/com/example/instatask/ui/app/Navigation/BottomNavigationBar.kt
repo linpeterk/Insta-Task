@@ -44,7 +44,7 @@ fun BottomNavigationBar(navController: NavController) {
 
                 label = { Text(text = item.title) },
                 selectedContentColor = Color.White,
-                unselectedContentColor = Color.White.copy(0.4f),
+                unselectedContentColor = Color.White,
                 alwaysShowLabel = true,
                 selected = currentRoute == item.route,
                 onClick = {
