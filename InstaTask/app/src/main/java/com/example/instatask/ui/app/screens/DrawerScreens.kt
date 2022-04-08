@@ -1072,6 +1072,11 @@ fun SignInScreen(navController:NavController, userInfoViewModel: UserInfoViewMod
                     },
 
             ){
+                //Image(
+                  //  painterResource(R.drawable.login),
+                    //contentDescription = "Login",
+                    //modifier = Modifier.size(13.dp)
+                //)
                 Text(text="Login", color = Color.White, style = TextStyle(letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)
             }
@@ -1106,6 +1111,11 @@ fun SignInScreen(navController:NavController, userInfoViewModel: UserInfoViewMod
 
                               },
                 ) {
+                    //Image(
+                      //  painterResource(R.drawable.signup),
+                        //contentDescription = "Login",
+                        //modifier = Modifier.size(13.dp)
+                    //)
                     Text(text="Sign Up", color = Color.White, style = TextStyle(letterSpacing = TextUnit.Unspecified),
                         fontSize = TextUnit.Unspecified)
                 }
