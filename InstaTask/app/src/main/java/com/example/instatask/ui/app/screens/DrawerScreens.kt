@@ -1,19 +1,20 @@
 package com.example.instatask.ui.app.screens
 
-import android.graphics.Paint
 import android.graphics.PorterDuff
-import android.provider.Telephony.Mms.Part.TEXT
+import android.os.Bundle
 import android.widget.RatingBar
 import android.widget.Toast
-import androidx.compose.animation.core.tween
+import androidx.activity.ComponentActivity
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
@@ -22,6 +23,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -29,25 +31,30 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.util.lerp
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
-import androidx.room.ColumnInfo.Companion.TEXT
 import com.example.instatask.R
 import com.example.instatask.data.SliderList
+import com.example.instatask.database.datamodel.UserRow
 import com.example.instatask.ui.app.Navigation.NavScreens
-import com.example.instatask.ui.theme.Purple500
 import com.example.instatask.ui.theme.graySurface
 import com.example.instatask.ui.theme.lightBlue
+import com.example.instatask.viewmodel.UserInfoViewModel
 import com.google.accompanist.pager.*
-import com.google.maps.android.compose.*
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.yield
 import kotlin.math.absoluteValue
+
+class SignUp: ComponentActivity(){
+    override fun onCreate(savedInstanceSate: Bundle?){
+        super.onCreate(savedInstanceSate)
+        val userInfoViewModel = ViewModelProvider(this).get(UserInfoViewModel::class.java)
+
+    }
+}
 
 //Home Screen
 
@@ -148,9 +155,9 @@ fun SliderScreen(navController:NavController){
         HorizontalPager(state = pagerState,
             modifier = Modifier
                 .weight(1f)
-                .padding(0.dp, 0.dp, 0.dp, 40.dp)
+                .padding(0.dp, 0.dp, 0.dp, 5.dp)
         ) {page ->
-            Card(modifier = Modifier
+            Surface(modifier = Modifier
                 .graphicsLayer {
                     val pageOffset = calculateCurrentOffsetForPage(page).absoluteValue
                     lerp(
@@ -169,7 +176,7 @@ fun SliderScreen(navController:NavController){
                 }
                 .fillMaxWidth()
                 .padding(0.dp, 0.dp, 0.dp, 0.dp),
-            shape = RoundedCornerShape(20.dp)
+          //  shape = RoundedCornerShape(20.dp)
              ){
                 val newSliders = SliderList[page]
                 Box(modifier = Modifier
@@ -227,7 +234,7 @@ fun SliderScreen(navController:NavController){
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 80.dp, top = 0.dp, end = 80.dp, 20.dp)
+                .padding(start = 80.dp, top = 0.dp, end = 80.dp, 5.dp)
         ) {
             Button(
                 modifier = Modifier
@@ -261,7 +268,7 @@ fun SliderScreen(navController:NavController){
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 80.dp, top = 0.dp, end = 80.dp, 20.dp)
+                    .padding(start = 80.dp, top = 0.dp, end = 80.dp, 0.dp)
             )
             {
                 Button(
@@ -502,7 +509,7 @@ fun LandingScreen(navController:NavController){
                     modifier = Modifier
                         .size(60.dp)
                         .background(colorResource(id = R.color.white))
-                        .clip(RoundedCornerShape(50.dp))
+                        // .clip(RoundedCornerShape(50.dp))
                         .clickable(
                             enabled = true,
                             onClickLabel = "Clickable image",
@@ -714,9 +721,14 @@ fun LandingScreen(navController:NavController){
 
 //SignUp Screen
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
-fun SignUpScreen(navController:NavController){
+fun SignUpScreen(navController:NavController, userInfoViewModel: UserInfoViewModel){
     val context = LocalContext.current
+    val KeyboardController = LocalSoftwareKeyboardController.current
+
+    //val userInfoViewModel = ViewModelProvider(context).get(UserInfoViewModel::class.java)
+
     val fullName = rememberSaveable{ mutableStateOf("") }
     val email = rememberSaveable{ mutableStateOf("") }
     val password = rememberSaveable{ mutableStateOf("") }
@@ -775,7 +787,7 @@ fun SignUpScreen(navController:NavController){
             .background(color = Color.White),
             horizontalAlignment = Alignment.Start,
             verticalArrangement = Arrangement.Center) {
-            Text(text="Disclaimer is a statement that denies something, especially responsibility", color = Color.Gray, fontSize = 15.sp, modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Start)
+            Text(text="Disclaimer is a statement that denies something, especially responsibility", color = Color.Gray, fontSize = 15.sp, modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
         }
         Spacer(modifier = Modifier.padding(5.dp))
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -831,7 +843,7 @@ fun SignUpScreen(navController:NavController){
                 modifier = Modifier.fillMaxWidth(0.8f)
             )
 
-            Spacer(modifier = Modifier.padding(10.dp))
+            Spacer(modifier = Modifier.padding(5.dp))
             // var regStatus by rememberSaveable{ mutableStateOf("") }
             Button(modifier= Modifier
                 .fillMaxWidth()
@@ -853,11 +865,24 @@ fun SignUpScreen(navController:NavController){
                             zipCode.value.isNullOrEmpty()
                     ) {
                         Toast.makeText(context, "All field might be filed", Toast.LENGTH_LONG).show()
-                    }else {
-
-                        navController.navigate(NavScreens.Gig.route)
+                    }else if(email.value.length <10){
+                        Toast.makeText(context, "User Email should be at least 10 characters", Toast.LENGTH_LONG).show()
+                    }else if(password.value.length < 5){
+                        Toast.makeText(context, "Password should be at least 5 characters", Toast.LENGTH_LONG).show()
+                    }
+                    else {
+                        userInfoViewModel.insertNewUser(
+                            UserRow(
+                                user_full_name = fullName.value,
+                                user_email_address = email.value,
+                                user_passsword = password.value,
+                                user_address = address.value,
+                                user_zip_code = zipCode.value)
+                            )
+                        Toast.makeText(context,"Sign Up Success", Toast.LENGTH_LONG).show()
+                        navController.navigate(NavScreens.Login.route)
                         {
-                            popUpTo(NavScreens.Gig.route)
+                            popUpTo(NavScreens.Login.route)
 
                         }
                     }
@@ -874,12 +899,12 @@ fun SignUpScreen(navController:NavController){
                         horizontalArrangement = Arrangement.SpaceBetween,
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(start = 40.dp, top = 20.dp, end = 40.dp)
+                            .padding(start = 40.dp, top = 5.dp, end = 40.dp)
 
                     ) {
                         Text(text="Already have an account?", color = Color.Black, style = TextStyle(letterSpacing = TextUnit.Unspecified),
                             fontSize = TextUnit.Unspecified,
-                            modifier=Modifier.padding(start = 80.dp, top = 10.dp))
+                            modifier=Modifier.padding(start = 100.dp, top = 5.dp, bottom = 0.dp))
                         Button(
                             modifier=Modifier
                                 .shadow(
@@ -912,12 +937,14 @@ fun SignUpScreen(navController:NavController){
 //SignIn Screen
 
 @Composable
-fun SignInScreen(navController:NavController){
+fun SignInScreen(navController:NavController, userInfoViewModel: UserInfoViewModel){
     val context = LocalContext.current
+
    // val emailAddress = rememberSaveable{ mutableStateOf("")}
     //val password = rememberSaveable{ mutableStateOf("")}
     val passwordVisibilty = remember{ mutableStateOf(false)}
     val focusRequester: FocusRequester = remember { FocusRequester() }
+    val userList = userInfoViewModel.getAllUsers().observeAsState(arrayListOf())
     val scrollState= rememberScrollState()
     Column(
         modifier = Modifier
@@ -967,7 +994,7 @@ fun SignInScreen(navController:NavController){
             .background(color = Color.White),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center) {
-            Text(text="Disclaimer is a statement that denies something, especially responsibility", color = Color.Gray, fontSize = 15.sp,modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Start )
+            Text(text="Disclaimer is a statement that denies something, especially responsibility", color = Color.Gray, fontSize = 15.sp,modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center )
         }
         Spacer(modifier = Modifier.padding(5.dp))
         val emailAddress = rememberSaveable{ mutableStateOf("") }
@@ -1023,17 +1050,33 @@ fun SignInScreen(navController:NavController){
                     if( emailAddress.value.isNullOrEmpty() || password.value.isNullOrEmpty()){
                         Toast.makeText(context,"Please enter a valid Email or Password", Toast.LENGTH_LONG).show()
                     }else{
-
-                        navController.navigate(NavScreens.Gig.route)
-                        {
-                            popUpTo(NavScreens.Gig.route)
+                        val listHolder = userList.value
+                        listHolder.forEach { userRow ->
+                            if(emailAddress.value.equals(userRow.user_email_address) && password.value.equals(userRow.user_passsword)){
+                                Toast.makeText(context,"Welcome!", Toast.LENGTH_LONG).show()
+                                navController.navigate(NavScreens.Gig.route)
+                                {
+                                    popUpTo(NavScreens.Gig.route)
+                                }
+                            }else{
+                                Toast.makeText(context,"Please enter a valid Email or Password", Toast.LENGTH_LONG).show()
+                            }
                         }
+                       // listHolder.forEach(userList ->
+                        //if(emailAddress.value.equals(userList.value)))
+
+
                         //Toast.makeText(context,"You re Signed In....", Toast.LENGTH_LONG).show()
                         //
                     }
                     },
 
             ){
+                //Image(
+                  //  painterResource(R.drawable.login),
+                    //contentDescription = "Login",
+                    //modifier = Modifier.size(13.dp)
+                //)
                 Text(text="Login", color = Color.White, style = TextStyle(letterSpacing = TextUnit.Unspecified),
                     fontSize = TextUnit.Unspecified)
             }
@@ -1068,6 +1111,11 @@ fun SignInScreen(navController:NavController){
 
                               },
                 ) {
+                    //Image(
+                      //  painterResource(R.drawable.signup),
+                        //contentDescription = "Login",
+                        //modifier = Modifier.size(13.dp)
+                    //)
                     Text(text="Sign Up", color = Color.White, style = TextStyle(letterSpacing = TextUnit.Unspecified),
                         fontSize = TextUnit.Unspecified)
                 }

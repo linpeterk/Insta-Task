@@ -31,6 +31,7 @@ import com.example.instatask.ui.Components.utilities.LazyScrollTaskBoard
 import com.example.instatask.ui.app.Navigation.NavScreens
 import com.example.instatask.ui.theme.GreenTask
 import com.example.instatask.ui.theme.graySurface
+import com.example.instatask.ui.theme.lightBlue
 import com.example.instatask.viewmodel.TheViewModel
 import de.charlex.compose.BottomDrawerScaffold
 import de.charlex.compose.BottomDrawerValue
@@ -147,7 +148,7 @@ fun TaskBoard(vModel: TheViewModel,
                                     Image(painter = painterResource(id = R.drawable.more), contentDescription = "Post Task",
                                             modifier = Modifier
                                                     .size(50.dp)
-                                                    .background(color = GreenTask, shape = RoundedCornerShape(13.dp))
+                                                    .background(color = lightBlue, shape = RoundedCornerShape(13.dp))
                                                     .clickable {
                                                         navController.navigate(NavScreens.PostTask.route){
                                                             popUpTo(NavScreens.PostTask.route)

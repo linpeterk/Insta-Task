@@ -33,7 +33,7 @@ fun AllReviews(vModel: TheViewModel) //add parameters here
         LazyColumn(     //lazyColumn of review cards
 
             Modifier.fillMaxWidth(),
-            contentPadding= PaddingValues(16.dp)
+            contentPadding= PaddingValues(5.dp)
 
         )
         {
@@ -44,7 +44,8 @@ fun AllReviews(vModel: TheViewModel) //add parameters here
                     modifier= Modifier
                         .fillMaxWidth()
                         .wrapContentHeight()
-                        .padding(vertical = 25.dp),
+                        //.padding(vertical = 5.dp)
+                             ,
                     horizontalArrangement = Arrangement.Center,
                     verticalAlignment = Alignment.CenterVertically
 

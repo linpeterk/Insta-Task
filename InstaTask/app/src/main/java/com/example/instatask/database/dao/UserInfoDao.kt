@@ -2,25 +2,26 @@ package com.example.instatask.database.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.instatask.database.datamodel.UserEntity
+import com.example.instatask.database.datamodel.UserRow
 
 @Dao
 interface UserInfoDao {
-    @Query("SELECT * FROM UserInfoData")
-    fun getAllUserData(): LiveData<List<UserEntity>>
 
-    @Query("SELECT * FROM UserInfoData WHERE id = :id")
-    fun getUserById(id: Int): UserEntity?
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    suspend fun insertUser(newUser: UserRow)
 
-    @Insert
-    suspend fun insert(item: List<UserEntity>)
+   @Query("SELECT * FROM Users")
+    fun getAllUserData():LiveData<List<UserRow>>
+
+    @Query("SELECT * FROM Users WHERE id = :id")
+    fun getUserById(id: Int): UserRow
 
     @Update
-    suspend fun update(item: UserEntity)
+    suspend fun updateUser(item: UserRow)
 
     @Delete
-    suspend fun delete(item: UserEntity)
+    suspend fun deleteUser(item: UserRow)
 
-    @Query("DELETE FROM UserInfoData")
-    suspend fun deleteAllUser()
+   // @Query("DELETE FROM UserList")
+   //suspend fun deleteAllUser()
 }

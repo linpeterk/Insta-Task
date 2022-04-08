@@ -99,8 +99,9 @@ fun WhenJobClicked(navController: NavController, vModel:TheViewModel, taskId: In
 //                            }
                         }
                         Box(modifier = Modifier
-                            .weight(0.4f)
-                            .background(graySurface),
+                           // .weight(0.4f)
+                            .background(graySurface)
+//                            .wrapContentSize(),
 
                         ){
 //                                MakeScrollComponents(navController)
@@ -109,7 +110,8 @@ fun WhenJobClicked(navController: NavController, vModel:TheViewModel, taskId: In
 
                                 modifier = Modifier
                                     .padding(10.dp)
-                                    .fillMaxWidth(),
+                                    .fillMaxWidth()
+                                    .wrapContentSize(),
 //                                    .wrapContentHeight(),
 //                                    clickable { cardViewCallBack(context,name+description) }
 
@@ -118,16 +120,16 @@ fun WhenJobClicked(navController: NavController, vModel:TheViewModel, taskId: In
                                 backgroundColor = MaterialTheme.colors.surface
                             ) {
 
-                                Row (
-                                    verticalAlignment = Alignment.CenterVertically
+                                Column (
+                                    horizontalAlignment = Alignment.CenterHorizontally
 
                                 ){
 
                                     Image(painter = painterResource(vModel.getImageId(context = LocalContext.current, task.imageId ?: "workinprogress")), //WORKER CARD
                                         contentDescription =null,
                                         modifier= Modifier
-                                            .size(130.dp)
-                                            .padding(8.dp),
+                                            .size(80.dp)
+                                            .padding(5.dp),
                                         contentScale = ContentScale.Fit
                                     )
                                     Column(Modifier.padding(8.dp)) {
@@ -151,43 +153,37 @@ fun WhenJobClicked(navController: NavController, vModel:TheViewModel, taskId: In
                                             Text(text = "Name: ${task.task_name}",
                                                 style= MaterialTheme.typography.h6,
                                                 color= MaterialTheme.colors.onSurface,
-                                                modifier= Modifier.padding(start=30.dp),
+                                                modifier= Modifier.padding(start=5.dp),
+                                                overflow = TextOverflow.Ellipsis,
+                                                maxLines = if (isExpanded) 100 else 2
+                                            )
+                                            Text(text = "Name: ${task.person_name}",
+                                                style= MaterialTheme.typography.h6,
+                                                color= MaterialTheme.colors.onSurface,
+                                                modifier= Modifier.padding(start=5.dp),
                                                 overflow = TextOverflow.Ellipsis,
                                                 maxLines = if (isExpanded) 100 else 2
                                             )
                                             Text(text = "Hourly Rate: ${task.hourly_rate}",
                                                 style= MaterialTheme.typography.body1,
                                                 color= MaterialTheme.colors.onSurface,
-                                                modifier= Modifier.padding(start=15.dp),
+                                                modifier= Modifier.padding(start=5.dp),
                                                 overflow = TextOverflow.Ellipsis,
                                                 maxLines = if (isExpanded) 100 else 2
                                             )
                                             Text(
                                                 text = "Description ${task.description}",
                                                 textAlign = TextAlign.Start,
-                                                style = MaterialTheme.typography.h6,
+                                                color= MaterialTheme.colors.onSurface,
+                                                style = MaterialTheme.typography.body1,
+                                                modifier= Modifier.padding(start=5.dp),
                                                 overflow = TextOverflow.Ellipsis,
                                                 maxLines = if (isExpanded) 100 else 2
                                             )
                                         }
 
                                     }
-                                    Icon(
-                                        imageVector = if (isExpanded)
-                                            Icons.Filled.KeyboardArrowUp
-                                        else
-                                            Icons.Filled.KeyboardArrowDown,
-                                        contentDescription = "Expand row icon",
-                                        modifier = Modifier
-                                            .padding(16.dp)
-                                            .align(
-                                                if (isExpanded)
-                                                    Alignment.Bottom
-                                                else
-                                                    Alignment.CenterVertically
-                                            )
-                                            .clickable { isExpanded = !isExpanded }
-                                    )
+
 
                                 }
 

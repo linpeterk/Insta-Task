@@ -9,10 +9,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.Icon
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.materialIcon
 import androidx.compose.material.icons.outlined.ArrowForward
@@ -20,6 +17,8 @@ import androidx.compose.material.icons.outlined.KeyboardArrowRight
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawWithContent
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -68,29 +67,47 @@ fun GigPage(navController: NavController, vModel:TheViewModel){
     LazyColumn(modifier = Modifier.fillMaxSize(),
    ){
         item(){
-            Box(modifier = Modifier
-                .fillMaxWidth()
-                .height(100.dp)
-                .padding(10.dp)
-                .background(lightBlue)
-            ,contentAlignment = Alignment.Center
-            ){
-            Text(text="Giga Board", modifier = Modifier,
-                textAlign = TextAlign.Center,
-                color= graySurface,
-                fontSize = 28.sp,
-                fontFamily = FontFamily.Serif
-                        )}
-
+            Column() {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(80.dp)
+                        .padding(10.dp)
+                        , contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "Giga Board", modifier = Modifier,
+                        textAlign = TextAlign.Center,
+                        color = graySurface, // Color for surface
+                        fontSize = 28.sp,
+                        fontFamily = FontFamily.Serif
+                    )
+                }
+             //   Divider(color = graySurface, thickness = 2.dp)
+//                Box( modifier = Modifier
+//                    .fillMaxWidth()
+//                    .height(10.dp)
+//                    .drawWithContent { drawLine( color= Color.Black, start= Offset(0f,0f), end = Offset(1000f, 0f)) }
+//
+//                ){
+//
+//                }
+            }
         }
+
         //Your interests section
         item(){
+            Spacer(modifier = Modifier.padding(5.dp))
+
             Text(text = "Your Interests",
-               modifier = Modifier.padding(5.dp),
+               modifier = Modifier.padding(start = 25.dp)
+                   .padding(5.dp)
+                   .fillMaxWidth(),
             fontSize = 20.sp,
                 color = graySurface,
                 fontWeight = FontWeight.Normal,
-                fontFamily = FontFamily.Serif
+                fontFamily = FontFamily.Serif,
+              //  textAlign = TextAlign.Justify
                 )
         }
         itemsIndexed(yourInterest?: baseInterests){ index,item->
@@ -108,7 +125,7 @@ fun GigPage(navController: NavController, vModel:TheViewModel){
         //Other Interests
         item(){
             Text(text = "Other Positions",
-                modifier = Modifier.padding(5.dp),
+                modifier = Modifier.padding(5.dp).padding(start = 20.dp),
                 fontSize = 20.sp,
                 color = graySurface,
                 fontWeight = FontWeight.Normal,
@@ -138,7 +155,8 @@ fun GigPage(navController: NavController, vModel:TheViewModel){
 fun makeItems(item:ResponseGigType, navController: NavController, vModel: TheViewModel, index:Int)
 {
     val context = LocalContext.current
-    Row() {
+    Row( horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically) {
         //Make pictures
         Surface(            shape = RoundedCornerShape(8.dp),
             modifier = Modifier
@@ -170,7 +188,8 @@ fun makeItems(item:ResponseGigType, navController: NavController, vModel: TheVie
 
         //make keyboard arrow right
 
-        Box(modifier = Modifier
+        Box(
+            modifier = Modifier
             .fillMaxSize()
             .weight(0.2f)
             .clickable {
@@ -181,9 +200,9 @@ fun makeItems(item:ResponseGigType, navController: NavController, vModel: TheVie
                 }
 
             },
-            contentAlignment = Alignment.TopEnd
+            contentAlignment = Alignment.Center
         ){
-            Icon(imageVector = Icons.Outlined.KeyboardArrowRight, contentDescription = "arrow forward")
+            Icon(imageVector = Icons.Outlined.KeyboardArrowRight, contentDescription = "arrow forward", modifier = Modifier.size(40.dp))
         }
     }
 }

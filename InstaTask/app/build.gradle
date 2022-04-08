@@ -50,6 +50,9 @@ android {
 
 dependencies {
 
+    //UserInfoViewModel
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0-rc02"
+
     //ROOM DATABASE vvvvv
     kapt("androidx.room:room-compiler:$roomVersion")
     implementation("androidx.room:room-runtime:$roomVersion")

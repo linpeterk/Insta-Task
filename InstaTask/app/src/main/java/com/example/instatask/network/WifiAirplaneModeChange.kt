@@ -26,8 +26,6 @@ class AirplaneModeChangeReceiver : BroadcastReceiver() {
             // showing the toast message if airplane mode is disabled
             Toast.makeText(context, "Airplane Mode Disabled, Displaying Old Data", Toast.LENGTH_LONG).show()
         }
-
-
     }
 }
 

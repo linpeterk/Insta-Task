@@ -105,7 +105,7 @@ fun WhenSkillClicked(navController: NavController, viewModel: TheViewModel, inde
                         }
                         Row(modifier = Modifier //
                             .fillMaxWidth(),
-                            horizontalArrangement = Arrangement.Start
+                            horizontalArrangement = Arrangement.Center
 
                         ){
 
@@ -116,7 +116,7 @@ fun WhenSkillClicked(navController: NavController, viewModel: TheViewModel, inde
                                 colors = ButtonDefaults.buttonColors(backgroundColor = Color.Red),
                                 modifier = Modifier
                             ) {
-                                Text(text = "Accept", modifier = Modifier.padding(5.dp), color = Color.White)
+                                Text(text = "Contact", modifier = Modifier.padding(5.dp), color = Color.White)
                             }
 //                            Button(
 //                                onClick = {/*

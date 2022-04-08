@@ -8,11 +8,13 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -24,12 +26,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
+import com.example.instatask.R
 import com.example.instatask.database.datamodel.Task
 import com.example.instatask.ui.Components.cameraPositionState
 import com.example.instatask.ui.Components.googleHQ
 import com.example.instatask.ui.app.Navigation.NavScreens
 import com.example.instatask.ui.app.screens.Screens
 import com.example.instatask.ui.theme.graySurface
+import com.example.instatask.ui.theme.roboto
 import com.example.instatask.viewmodel.TheViewModel
 import com.google.android.gms.maps.model.CameraPosition
 import com.google.android.gms.maps.model.LatLng
@@ -68,23 +72,26 @@ fun LazyScrollTaskBoard(vModel: TheViewModel, navcontroller:NavController, state
                 elevation = 7.dp
 
             ){
-                Row(){
+                Row(
+                    horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically
+                ){
                     Log.d("ImageRES", item.imageId?:"null")
                     Log.d("ImageRES", item.person_name?:"null")
-                    Image(painter = painterResource(id = vModel.getImageId(context = LocalContext.current,item.imageId?:"workinprogress") ), contentDescription = null,
-                        modifier = Modifier
-                            //    .border(2.dp, Color.Red)
-                            .padding(20.dp)
-                            .size(70.dp)
-                            .clickable {
-                                cameraPositionState?.position = CameraPosition.fromLatLngZoom(
-                                    LatLng(item.lat ?: 37.4198, item.lng ?: -122.0788), 14f
-                                )
-                                scope.launch { state.bottomDrawerState.collapse() }
-                                buttonText.value = "Expand"
-                            }
-
-                    )
+//                    Image(painter = painterResource(id = vModel.getImageId(context = LocalContext.current,item.imageId?:"workinprogress") ), contentDescription = null,
+//                        modifier = Modifier
+//                            //    .border(2.dp, Color.Red)
+//                            .padding(20.dp)
+//                            .size(70.dp)
+//                            .clickable {
+//                                cameraPositionState?.position = CameraPosition.fromLatLngZoom(
+//                                    LatLng(item.lat ?: 37.4198, item.lng ?: -122.0788), 14f
+//                                )
+//                                scope.launch { state.bottomDrawerState.collapse() }
+//                                buttonText.value = "Expand"
+//                            }
+//
+//                    )
                     Column(modifier = Modifier
                         .padding(8.dp)
                         .verticalScroll(rememberScrollState())
@@ -96,18 +103,56 @@ fun LazyScrollTaskBoard(vModel: TheViewModel, navcontroller:NavController, state
                         })
                     ){
 
-                        Text(text = "${item.task_name?: "No name Found"}", fontSize = 18.sp, fontWeight = FontWeight.W500, modifier = Modifier.fillMaxWidth())
-                        Text(text = "${item.person_name}", fontSize = 14.sp,  modifier = Modifier.fillMaxWidth())
-                        Text(text = "Hourly $${item.hourly_rate?: 0}", fontSize = 14.sp,  modifier = Modifier.fillMaxWidth())
-                        Text(text = "Address: ${item.address ?: "No Address Found"}, CA", fontSize = 14.sp,  modifier = Modifier.fillMaxWidth())
+                        Text(text = "${item.task_name?: "No name Found"} - ${item.person_name}", fontSize = 18.sp, fontWeight = FontWeight.Bold, modifier = Modifier.fillMaxWidth(), fontFamily = FontFamily.SansSerif)
+                    //    Text(text = "${item.person_name}", fontSize = 14.sp,  modifier = Modifier.fillMaxWidth(), fontFamily = FontFamily.SansSerif)
+                       Row() {
+                           Text(
+                               text = "Hourly:   ",
+                               fontSize = 14.sp,
+                               fontFamily = FontFamily.SansSerif,
+                                fontWeight = FontWeight.Bold
+                           )
+                           Text(
+                               text = "$${item.hourly_rate ?: 0}",
+                               fontSize = 14.sp,
+                               modifier = Modifier.fillMaxWidth(),
+                               fontFamily = FontFamily.SansSerif
+                           )
 
-                        Spacer(modifier = Modifier.padding(5.dp))
+                       }
+                        Row() {
+                            Text(
+                                text = "Address: ",
+                                fontSize = 14.sp,
+                                fontFamily = FontFamily.SansSerif,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Text(
+                                text = "${item.address ?: "No Address Found"}",
+                                fontSize = 14.sp,
+                                modifier = Modifier.fillMaxWidth(),
+                                fontFamily = FontFamily.SansSerif
+                            )
+                        }
 
-                        Text(text = "Description: \n\"${item.description} \"",
-                            overflow = TextOverflow.Visible,
-                            fontSize = 14.sp,
-                            fontFamily = FontFamily.Serif
-                        )
+              //          Spacer(modifier = Modifier.padding(5.dp))
+                        Column() {
+//                            Text(
+//                                text = "Description:",
+//                                overflow = TextOverflow.Visible,
+//                                fontSize = 14.sp,
+//                                fontFamily = FontFamily.SansSerif,
+//                                fontWeight = FontWeight.Bold
+//                            )
+                            Text(
+                                text = "\n\"${item.description} \"",
+                                overflow = TextOverflow.Visible,
+                                fontSize = 14.sp,
+                                style = MaterialTheme.typography.h1
+
+
+                            )
+                        }
                     }
                 }
             }
@@ -145,7 +190,8 @@ fun LazyScrollSkillBoard(vModel: TheViewModel, navcontroller:NavController , sta
                 elevation = 7.dp
 
             ){
-                Row(){
+                Row( horizontalArrangement = Arrangement.Center,
+                    verticalAlignment = Alignment.CenterVertically){
                     Log.d("ImageRES", item.imageRes)
                     Log.d("ImageRES", item.name)
                     Image(painter = painterResource(id = vModel.getImageId(context = LocalContext.current,item.imageRes) ), contentDescription = null,
@@ -155,7 +201,8 @@ fun LazyScrollSkillBoard(vModel: TheViewModel, navcontroller:NavController , sta
                             .size(70.dp)
                             .clickable {
                                 cameraPositionState?.position = CameraPosition.fromLatLngZoom(
-                                    LatLng(item.lat, item.lng), 14f)
+                                    LatLng(item.lat, item.lng), 14f
+                                )
 
                                 scope.launch { state.bottomDrawerState.collapse() }
                                 buttonText.value = "Expand"

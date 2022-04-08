@@ -228,7 +228,7 @@ fun PostTask(vModel: TheViewModel, navController: NavController){
                                 .height(25.dp)
                                 //   .border(1.dp, graySurface)
                                 .clickable {
-                                    expandedSecond.value = true
+                                    expandedSecond.value = false // MAKE IT TRUE TO SHOW
                                 },
                             textAlign = TextAlign.Center
                         )
@@ -373,7 +373,7 @@ fun MainDropMenu(expanded: MutableState<Boolean>, image: MutableState<String>, s
                         Log.d("ImageValue", "${image.value}")
                         selectedText.value = categoryNames[index].cat
                         expanded.value = false
-                        showSubCategory.value=true
+                        showSubCategory.value= false // CHANGE THIS TO SHOW SUB
                         //    }
                     })
             {
