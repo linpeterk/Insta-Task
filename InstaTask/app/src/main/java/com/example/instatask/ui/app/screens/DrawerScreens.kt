@@ -787,7 +787,7 @@ fun SignUpScreen(navController:NavController, userInfoViewModel: UserInfoViewMod
             .background(color = Color.White),
             horizontalAlignment = Alignment.Start,
             verticalArrangement = Arrangement.Center) {
-            Text(text="Disclaimer is a statement that denies something, especially responsibility", color = Color.Gray, fontSize = 15.sp, modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Start)
+            Text(text="Disclaimer is a statement that denies something, especially responsibility", color = Color.Gray, fontSize = 15.sp, modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center)
         }
         Spacer(modifier = Modifier.padding(5.dp))
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
@@ -994,7 +994,7 @@ fun SignInScreen(navController:NavController, userInfoViewModel: UserInfoViewMod
             .background(color = Color.White),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center) {
-            Text(text="Disclaimer is a statement that denies something, especially responsibility", color = Color.Gray, fontSize = 15.sp,modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Start )
+            Text(text="Disclaimer is a statement that denies something, especially responsibility", color = Color.Gray, fontSize = 15.sp,modifier = Modifier.fillMaxWidth(), textAlign = TextAlign.Center )
         }
         Spacer(modifier = Modifier.padding(5.dp))
         val emailAddress = rememberSaveable{ mutableStateOf("") }
