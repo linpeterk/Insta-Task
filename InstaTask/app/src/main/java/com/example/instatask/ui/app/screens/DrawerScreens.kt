@@ -865,7 +865,12 @@ fun SignUpScreen(navController:NavController, userInfoViewModel: UserInfoViewMod
                             zipCode.value.isNullOrEmpty()
                     ) {
                         Toast.makeText(context, "All field might be filed", Toast.LENGTH_LONG).show()
-                    }else {
+                    }else if(email.value.length <10){
+                        Toast.makeText(context, "User Email should be at least 10 characters", Toast.LENGTH_LONG).show()
+                    }else if(password.value.length < 5){
+                        Toast.makeText(context, "Password should be at least 5 characters", Toast.LENGTH_LONG).show()
+                    }
+                    else {
                         userInfoViewModel.insertNewUser(
                             UserRow(
                                 user_full_name = fullName.value,
