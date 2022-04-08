@@ -155,7 +155,7 @@ fun SliderScreen(navController:NavController){
         HorizontalPager(state = pagerState,
             modifier = Modifier
                 .weight(1f)
-                .padding(0.dp, 0.dp, 0.dp, 5.dp)
+                .padding(0.dp, 0.dp, 0.dp, 40.dp)
         ) {page ->
             Surface(modifier = Modifier
                 .graphicsLayer {
@@ -234,7 +234,7 @@ fun SliderScreen(navController:NavController){
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 80.dp, top = 0.dp, end = 80.dp, 5.dp)
+                .padding(start = 80.dp, top = 0.dp, end = 80.dp, 20.dp)
         ) {
             Button(
                 modifier = Modifier
@@ -268,7 +268,7 @@ fun SliderScreen(navController:NavController){
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 80.dp, top = 0.dp, end = 80.dp, 0.dp)
+                    .padding(start = 80.dp, top = 0.dp, end = 80.dp, 20.dp)
             )
             {
                 Button(
@@ -843,7 +843,7 @@ fun SignUpScreen(navController:NavController, userInfoViewModel: UserInfoViewMod
                 modifier = Modifier.fillMaxWidth(0.8f)
             )
 
-            Spacer(modifier = Modifier.padding(5.dp))
+            Spacer(modifier = Modifier.padding(10.dp))
             // var regStatus by rememberSaveable{ mutableStateOf("") }
             Button(modifier= Modifier
                 .fillMaxWidth()
@@ -899,12 +899,12 @@ fun SignUpScreen(navController:NavController, userInfoViewModel: UserInfoViewMod
                         horizontalArrangement = Arrangement.SpaceBetween,
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(start = 40.dp, top = 5.dp, end = 40.dp)
+                            .padding(start = 40.dp, top = 20.dp, end = 40.dp)
 
                     ) {
                         Text(text="Already have an account?", color = Color.Black, style = TextStyle(letterSpacing = TextUnit.Unspecified),
                             fontSize = TextUnit.Unspecified,
-                            modifier=Modifier.padding(start = 100.dp, top = 5.dp, bottom = 0.dp))
+                            modifier=Modifier.padding(start = 80.dp, top = 10.dp))
                         Button(
                             modifier=Modifier
                                 .shadow(

@@ -59,12 +59,6 @@ data class SliderData (
 
 val SliderList = listOf(
     SliderData(
-        title = "House",
-        4.0f,
-        description = "",
-        imgUri = R.drawable.house
-    ),
-    SliderData(
         title = "Cars",
         4.0f,
         description = "",
@@ -75,5 +69,11 @@ val SliderList = listOf(
         4.0f,
         description = "",
         imgUri = R.drawable.cleaning
+    ),
+    SliderData(
+        title = "Home",
+        4.0f,
+        description = "",
+        imgUri = R.drawable.house
     )
 )
