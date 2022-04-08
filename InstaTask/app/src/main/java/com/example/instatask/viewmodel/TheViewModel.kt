@@ -27,6 +27,9 @@ import retrofit2.Response
     KuangCheng (Peter) Lin
     Viewmodel for view updating, API calls/retrieving , and room database
  */
+
+
+
 class TheViewModel(application: Application) : AndroidViewModel(application) {
 
     var categoriesTask: List<Categories> = mutableStateListOf()
