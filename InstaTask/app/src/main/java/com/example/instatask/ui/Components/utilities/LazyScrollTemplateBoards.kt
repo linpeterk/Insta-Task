@@ -16,6 +16,7 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
@@ -102,18 +103,33 @@ fun LazyScrollTaskBoard(vModel: TheViewModel, navcontroller:NavController, state
 
                         })
                     ){
+                    Row() {
+                        Text(
+                            text = "${item.task_name ?: "No name Found"}",
+                            fontSize = 18.sp, fontWeight = FontWeight.SemiBold,
+                            modifier = Modifier, fontFamily = FontFamily.SansSerif
+                        )
 
-                        Text(text = "${item.task_name?: "No name Found"} - ${item.person_name}", fontSize = 18.sp, fontWeight = FontWeight.Bold, modifier = Modifier.fillMaxWidth(), fontFamily = FontFamily.SansSerif)
+                            Text(
+                                text = "$${item.hourly_rate ?: 0}/hr",
+                                fontSize = 14.sp,
+                                modifier = Modifier.fillMaxWidth(),
+                                fontFamily = FontFamily.SansSerif,
+                                textAlign = TextAlign.End,
+                                fontWeight = FontWeight.W500
+                            )
+
+                    }
                     //    Text(text = "${item.person_name}", fontSize = 14.sp,  modifier = Modifier.fillMaxWidth(), fontFamily = FontFamily.SansSerif)
                        Row() {
                            Text(
-                               text = "Hourly:   ",
+                               text = "\nName: ",
                                fontSize = 14.sp,
                                fontFamily = FontFamily.SansSerif,
-                                fontWeight = FontWeight.Bold
+                                fontWeight = FontWeight.SemiBold
                            )
                            Text(
-                               text = "$${item.hourly_rate ?: 0}",
+                               text = "\n${item.person_name ?: "Smith"}",
                                fontSize = 14.sp,
                                modifier = Modifier.fillMaxWidth(),
                                fontFamily = FontFamily.SansSerif
@@ -122,10 +138,10 @@ fun LazyScrollTaskBoard(vModel: TheViewModel, navcontroller:NavController, state
                        }
                         Row() {
                             Text(
-                                text = "Address: ",
+                                text = "Location: ",
                                 fontSize = 14.sp,
                                 fontFamily = FontFamily.SansSerif,
-                                fontWeight = FontWeight.Bold
+                                fontWeight = FontWeight.SemiBold
                             )
                             Text(
                                 text = "${item.address ?: "No Address Found"}",

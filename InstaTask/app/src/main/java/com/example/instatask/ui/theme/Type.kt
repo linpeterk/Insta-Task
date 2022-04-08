@@ -26,7 +26,7 @@ val Typography = Typography(
 
     h1 = TextStyle(
             fontFamily = roboto,
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.W500,
         fontSize = 12.sp
     )
     /* Other default text styles to override
