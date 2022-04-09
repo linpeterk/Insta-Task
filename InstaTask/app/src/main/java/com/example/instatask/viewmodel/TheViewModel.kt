@@ -15,6 +15,8 @@ import com.example.instatask.database.repository.TaskRepository
 import com.example.instatask.model.*
 import com.example.instatask.network.*
 import com.example.instatask.network.repository.RetrofitHelper
+import com.example.instatask.ui.Components.googleHQ
+import com.google.android.gms.maps.model.LatLng
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Response
@@ -83,6 +85,72 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
    View updating functions
 
      */
+
+    //Find distance in miles between two LatLng points, 2 digits
+    fun distance(start: LatLng, dest: LatLng) : Double {
+        val lat1 = start.latitude
+        val lat2 = dest.latitude
+        val lon1 = start.longitude
+        val lon2 = dest.longitude
+
+        var p = 0.017453292519943295;    // Math.PI / 180
+
+        var a = 0.5 - Math.cos((lat2 - lat1) * p)/2 +
+                Math.cos(lat1 * p) * Math.cos(lat2 * p) *
+                (1 - Math.cos((lon2 - lon1) * p))/2;
+        val rounded = String.format("%.3f", 0.62137 * 12742 * Math.asin(Math.sqrt(a))) // rounds to 3 decimal places
+        return rounded.toDouble() ; // 2 * R; R = 6371 km
+    }
+
+    /* sort modes by order
+    *  0 = no sort, recall database
+    *  1 = sort by distance
+    *  2 = sort by $
+    * */
+    fun sortBy(index:Int){
+
+        when (index)
+        {
+            0-> sortDefault()
+            1-> sortDist()
+            2-> sortMoney()
+        }
+
+
+    }
+
+    fun sortDefault(){
+
+        var category = 0
+
+           if(!currentTaskList.isEmpty()) {
+             category =  currentTaskList.first().categories
+           }
+        fetchCategory(category)
+    }
+
+    fun sortDist(){
+
+        val newList =  currentTaskList.sortedWith(
+            compareByDescending {
+                var distance = distance(googleHQ,LatLng(it.lat?: googleHQ.latitude, it.lng?: googleHQ.longitude))
+                 distance}
+        )
+
+        currentTaskList = newList
+
+     //   distance(googleHQ,LatLng(item.lat?: googleHQ.latitude, item.lng?: googleHQ.longitude))
+
+    }
+
+    fun sortMoney(){
+
+        val newList =  currentTaskList.sortedWith(
+            compareByDescending { it.hourly_rate }
+        )
+        currentTaskList = newList
+    }
+
 
     //Get the image ID given image string name
     fun getImageId(context: Context, imageName:String):Int{

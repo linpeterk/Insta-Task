@@ -19,7 +19,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -34,6 +36,7 @@ import com.example.instatask.ui.Components.googleHQ
 import com.example.instatask.ui.app.Navigation.NavScreens
 import com.example.instatask.ui.app.screens.Screens
 import com.example.instatask.ui.theme.graySurface
+import com.example.instatask.ui.theme.lightBlue
 import com.example.instatask.ui.theme.roboto
 import com.example.instatask.viewmodel.TheViewModel
 import com.google.android.gms.maps.model.CameraPosition
@@ -116,7 +119,8 @@ fun LazyScrollTaskBoard(vModel: TheViewModel, navcontroller:NavController, state
                                 modifier = Modifier.fillMaxWidth(),
                                 fontFamily = FontFamily.SansSerif,
                                 textAlign = TextAlign.End,
-                                fontWeight = FontWeight.W500
+                                fontWeight = FontWeight.W500,
+                                color = Color.Red
                             )
 
                     }
@@ -148,6 +152,17 @@ fun LazyScrollTaskBoard(vModel: TheViewModel, navcontroller:NavController, state
                                 fontSize = 14.sp,
                                 modifier = Modifier.fillMaxWidth(),
                                 fontFamily = FontFamily.SansSerif
+                            )
+                        }
+                        Row() {
+                            Text(
+                                text = "${vModel.distance(googleHQ,LatLng(item.lat?:googleHQ.latitude, item.lng?:googleHQ.longitude)) ?: "No Address Found"} miles",
+                                fontSize = 14.sp,
+                                modifier = Modifier.fillMaxWidth(),
+                                fontFamily = FontFamily.SansSerif,
+                                fontStyle = FontStyle.Italic,
+                                color = lightBlue
+
                             )
                         }
 

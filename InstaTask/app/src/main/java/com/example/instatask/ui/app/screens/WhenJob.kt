@@ -221,7 +221,6 @@ fun WhenJobClicked(navController: NavController, vModel:TheViewModel, taskId: In
         }
     ){
         MakeGoogleMap(vModel = vModel, navController = navController, mode = 2)
-        TopBar()
     }
 
 };
