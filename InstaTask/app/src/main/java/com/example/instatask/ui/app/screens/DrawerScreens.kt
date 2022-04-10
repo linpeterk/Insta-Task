@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.RatingBar
 import android.widget.Toast
 import androidx.activity.ComponentActivity
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -46,6 +47,8 @@ import com.example.instatask.ui.theme.graySurface
 import com.example.instatask.ui.theme.lightBlue
 import com.example.instatask.viewmodel.UserInfoViewModel
 import com.google.accompanist.pager.*
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.yield
 import kotlin.math.absoluteValue
 
 class SignUp: ComponentActivity(){
@@ -57,7 +60,6 @@ class SignUp: ComponentActivity(){
 }
 
 //Home Screen
-
 @Composable
 fun HomeScreen(navController:NavController){
     Column( horizontalAlignment= Alignment.CenterHorizontally,
@@ -106,16 +108,16 @@ fun SliderScreen(navController:NavController){
         pageCount = SliderList.size,
         initialPage = 0
         )
-//    LaunchedEffect(Unit){
-//     //   while(true){
-//            yield()
-//   //         delay(2000)
-////            pagerState.animateScrollToPage(
-////                page = (pagerState.currentPage + 1) % (pagerState.pageCount),
-////                animationSpec = tween(1500)
-////            )
-//      //  }
-//    }
+   LaunchedEffect(Unit){
+  while(true){
+          yield()
+       delay(2000)
+          pagerState.animateScrollToPage(
+               page = (pagerState.currentPage + 1) % (pagerState.pageCount),
+               animationSpec = tween(1000)
+          )
+      }
+   }
 
     Column(modifier = Modifier.fillMaxSize()) {
         Row(
@@ -155,7 +157,7 @@ fun SliderScreen(navController:NavController){
         HorizontalPager(state = pagerState,
             modifier = Modifier
                 .weight(1f)
-                .padding(0.dp, 0.dp, 0.dp, 40.dp)
+                .padding(0.dp, 0.dp, 0.dp, 0.dp)
         ) {page ->
             Surface(modifier = Modifier
                 .graphicsLayer {
@@ -175,7 +177,7 @@ fun SliderScreen(navController:NavController){
                     )
                 }
                 .fillMaxWidth()
-                .padding(0.dp, 0.dp, 0.dp, 0.dp),
+                .padding(0.dp, 0.dp, 0.dp, 5.dp),
           //  shape = RoundedCornerShape(20.dp)
              ){
                 val newSliders = SliderList[page]
@@ -227,14 +229,14 @@ fun SliderScreen(navController:NavController){
             pagerState = pagerState,
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
-                .padding(16.dp, 0.dp, 16.dp, 20.dp)
+                .padding(16.dp, 0.dp, 16.dp, 0.dp)
         )
 
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 80.dp, top = 0.dp, end = 80.dp, 20.dp)
+                .padding(start = 80.dp, top = 20.dp, end = 80.dp, 0.dp)
         ) {
             Button(
                 modifier = Modifier
@@ -263,12 +265,12 @@ fun SliderScreen(navController:NavController){
             }
 
         }
-        Spacer(modifier = Modifier.height(2.dp))
+        Spacer(modifier = Modifier.height(5.dp))
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(start = 80.dp, top = 0.dp, end = 80.dp, 20.dp)
+                    .padding(start = 80.dp, top = 5.dp, end = 80.dp, 0.dp)
             )
             {
                 Button(
@@ -303,7 +305,6 @@ fun SliderScreen(navController:NavController){
 
 
 //Entrance Screen
-
 @Composable
 fun EntranceScreen(navController:NavController){
     val context = LocalContext.current
@@ -427,7 +428,6 @@ fun EntranceScreen(navController:NavController){
 
     }
 }
-
 
 
 @Composable
@@ -720,7 +720,6 @@ fun LandingScreen(navController:NavController){
 }
 
 //SignUp Screen
-
 @OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun SignUpScreen(navController:NavController, userInfoViewModel: UserInfoViewModel){
@@ -847,7 +846,7 @@ fun SignUpScreen(navController:NavController, userInfoViewModel: UserInfoViewMod
             // var regStatus by rememberSaveable{ mutableStateOf("") }
             Button(modifier= Modifier
                 .fillMaxWidth()
-                .padding(start = 40.dp, end = 40.dp)
+                .padding(start = 40.dp, top=0.dp, end = 40.dp, bottom = 0.dp)
                 .shadow(
                     elevation = 10.dp,
                     shape = CircleShape,
@@ -894,17 +893,17 @@ fun SignUpScreen(navController:NavController, userInfoViewModel: UserInfoViewMod
                     Text(text="Submit", color = Color.White, style = TextStyle(letterSpacing = TextUnit.Unspecified),
                         fontSize = TextUnit.Unspecified)
                 }
-                    Spacer(modifier=Modifier.padding(10.dp))
+                    Spacer(modifier=Modifier.padding(5.dp))
                     Row(
                         horizontalArrangement = Arrangement.SpaceBetween,
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(start = 40.dp, top = 20.dp, end = 40.dp)
+                            .padding(start = 40.dp, top = 0.dp, end = 40.dp, bottom = 0.dp)
 
                     ) {
                         Text(text="Already have an account?", color = Color.Black, style = TextStyle(letterSpacing = TextUnit.Unspecified),
                             fontSize = TextUnit.Unspecified,
-                            modifier=Modifier.padding(start = 80.dp, top = 10.dp))
+                            modifier=Modifier.padding(start = 90.dp, top = 10.dp))
                         Button(
                             modifier=Modifier
                                 .shadow(
@@ -935,7 +934,6 @@ fun SignUpScreen(navController:NavController, userInfoViewModel: UserInfoViewMod
 
 
 //SignIn Screen
-
 @Composable
 fun SignInScreen(navController:NavController, userInfoViewModel: UserInfoViewModel){
     val context = LocalContext.current
@@ -1126,7 +1124,6 @@ fun SignInScreen(navController:NavController, userInfoViewModel: UserInfoViewMod
 }
 
 //Profile Screen
-
 @Composable
 fun ProfileScreen(navController:NavController){
     Column( horizontalAlignment= Alignment.CenterHorizontally,
@@ -1159,7 +1156,6 @@ fun ProfileScreen(navController:NavController){
 }
 
 //LogOut Screen
-
 @Composable
 fun LogOutScreen(navController:NavController){
     Column( horizontalAlignment= Alignment.CenterHorizontally,
