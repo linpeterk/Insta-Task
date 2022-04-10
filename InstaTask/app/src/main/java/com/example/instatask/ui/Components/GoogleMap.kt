@@ -29,6 +29,9 @@ var lat:Double = 37.4198
 var lng:Double = -122.0788
 val googleHQ = LatLng(lat, lng)
 
+val googlePosition =    CameraPosition.fromLatLngZoom(
+    LatLng(37.4198,  -122.0788), 14f)
+
 var cameraPositionState:CameraPositionState =  CameraPositionState(position = CameraPosition.fromLatLngZoom(googleHQ, 14f))
 
 @Composable

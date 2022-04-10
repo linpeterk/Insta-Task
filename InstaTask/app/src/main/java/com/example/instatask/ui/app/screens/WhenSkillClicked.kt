@@ -138,7 +138,7 @@ fun WhenSkillClicked(navController: NavController, viewModel: TheViewModel, inde
 
                         }
                     }
-                    
+
 
                 }
 

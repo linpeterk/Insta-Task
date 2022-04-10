@@ -164,7 +164,7 @@ fun TaskBoard(vModel: TheViewModel,
                                 contentAlignment = Alignment.CenterEnd
 
                             ){
-                                Card(elevation = 3.dp, modifier = Modifier.padding(10.dp).border(1.dp, Color.Black)) {
+                                Card(elevation = 3.dp, modifier = Modifier.padding(10.dp)) {
                                     dropDownMenu(vModel = vModel)
                                 }
                             }
@@ -197,10 +197,10 @@ fun TaskBoard(vModel: TheViewModel,
 @Composable
 fun dropDownMenu(vModel: TheViewModel){
     var expanded by remember { mutableStateOf(false) }
-    val items = listOf("Sortby: Default", "Sortby: Distance", "Sortby: $/hr")
+    val sortItems = listOf("Sortby: Default", "Sortby: Distance", "Sortby: $/hr", "SortBy: Date")
     var selectedIndex by remember { mutableStateOf(0) }
     Box(modifier = Modifier) {
-        Text(items[selectedIndex],modifier = Modifier.width(130.dp).padding(3.dp)
+        Text(sortItems[selectedIndex],modifier = Modifier.width(130.dp).padding(3.dp)
             .clickable(onClick = { expanded = true }).background(
             Color.White),
             textAlign = TextAlign.Center
@@ -211,7 +211,7 @@ fun dropDownMenu(vModel: TheViewModel){
             modifier = Modifier.background(
                 Color.White)
         ) {
-            items.forEachIndexed { index, s ->
+            sortItems.forEachIndexed { index, s ->
                 DropdownMenuItem(onClick = {
                     selectedIndex = index
                     expanded = false

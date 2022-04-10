@@ -92,8 +92,8 @@ class MainActivity : ComponentActivity() {
             init(theViewModel)
             theViewModel.getReviews(2, 2)
 
-          //  deleteDB(theViewModel) // Definitely don't run this
-//initDatabase(theViewModel) //Do not run this, run only once to initiate database
+            deleteDB(theViewModel) // Definitely don't run this
+initDatabase(theViewModel) //Do not run this, run only once to initiate database
 
 
             InstaTaskTheme {
@@ -106,7 +106,7 @@ class MainActivity : ComponentActivity() {
 
 
                //     GigPage()
-//        PostTask(theViewModel, navController = NavController(this))
+       //PostTask(theViewModel, navController = NavController(this))
                  //   CustomerList(theViewModel)
          //MainScreen(theViewModel)
          //  test(the

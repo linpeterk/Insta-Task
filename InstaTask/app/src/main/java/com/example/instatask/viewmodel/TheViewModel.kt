@@ -106,6 +106,7 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
     *  0 = no sort, recall database
     *  1 = sort by distance
     *  2 = sort by $
+    *  3 = sort by date
     * */
     fun sortBy(index:Int){
 
@@ -114,6 +115,7 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
             0-> sortDefault()
             1-> sortDist()
             2-> sortMoney()
+            3-> sortDate()
         }
 
 
@@ -129,10 +131,11 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
         fetchCategory(category)
     }
 
+
     fun sortDist(){
 
         val newList =  currentTaskList.sortedWith(
-            compareByDescending {
+            compareBy {
                 var distance = distance(googleHQ,LatLng(it.lat?: googleHQ.latitude, it.lng?: googleHQ.longitude))
                  distance}
         )
@@ -140,6 +143,19 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
         currentTaskList = newList
 
      //   distance(googleHQ,LatLng(item.lat?: googleHQ.latitude, item.lng?: googleHQ.longitude))
+
+    }
+
+    fun sortDate(){
+
+        val newList =  currentTaskList.sortedWith(
+            compareBy {
+               it.datetime}
+        )
+
+        currentTaskList = newList
+
+        //   distance(googleHQ,LatLng(item.lat?: googleHQ.latitude, item.lng?: googleHQ.longitude))
 
     }
 

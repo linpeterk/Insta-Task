@@ -145,9 +145,9 @@ fun GigPage(navController: NavController, vModel:TheViewModel){
                     ?: baseInterests.count())) //make the item cards
             }
         }
-        item(){
-            DrawBoard()
-        }
+//        item(){
+//        //    DrawBoard()
+//        }
     }
 }
 

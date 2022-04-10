@@ -110,7 +110,16 @@ fun LazyScrollTaskBoard(vModel: TheViewModel, navcontroller:NavController, state
                         Text(
                             text = "${item.task_name ?: "No name Found"}",
                             fontSize = 18.sp, fontWeight = FontWeight.SemiBold,
-                            modifier = Modifier, fontFamily = FontFamily.SansSerif
+                            modifier = Modifier
+                                .clickable {
+                                cameraPositionState?.position = CameraPosition.fromLatLngZoom(
+                                    LatLng(item.lat ?: 37.4198, item.lng ?: -122.0788), 14f
+                                )
+                                scope.launch { state.bottomDrawerState.collapse() }
+                                buttonText.value = "Expand"
+                            }
+                            , fontFamily = FontFamily.SansSerif,
+
                         )
 
                             Text(
@@ -149,6 +158,20 @@ fun LazyScrollTaskBoard(vModel: TheViewModel, navcontroller:NavController, state
                             )
                             Text(
                                 text = "${item.address ?: "No Address Found"}",
+                                fontSize = 14.sp,
+                                modifier = Modifier.fillMaxWidth(),
+                                fontFamily = FontFamily.SansSerif
+                            )
+                        }
+                        Row() {
+                            Text(
+                                text = "Date: ",
+                                fontSize = 14.sp,
+                                fontFamily = FontFamily.SansSerif,
+                                fontWeight = FontWeight.SemiBold
+                            )
+                            Text(
+                                text = "${item.datetime ?: "No Date Found"}",
                                 fontSize = 14.sp,
                                 modifier = Modifier.fillMaxWidth(),
                                 fontFamily = FontFamily.SansSerif

@@ -1,7 +1,9 @@
 package com.example.instatask.ui.app.screens
 
+import android.app.DatePickerDialog
 import android.util.Log
 import android.view.RoundedCorner
+import android.widget.DatePicker
 import android.widget.Toast
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -26,90 +28,19 @@ import androidx.navigation.NavController
 import androidx.room.ColumnInfo
 import com.example.instatask.R
 import com.example.instatask.database.datamodel.Task
+import com.example.instatask.model.Pair
+import com.example.instatask.model.categoryNames
+import com.example.instatask.model.listOfSubTaskImages
+import com.example.instatask.model.listOfTaskImages
+import com.example.instatask.ui.Components.cameraPositionState
 import com.example.instatask.ui.Components.googleHQ
+import com.example.instatask.ui.Components.googlePosition
 import com.example.instatask.ui.Components.utilities.Geocoder
 import com.example.instatask.ui.app.Navigation.NavScreens
 import com.example.instatask.ui.theme.graySurface
 import com.example.instatask.viewmodel.TheViewModel
+import java.util.*
 import kotlin.math.log
-
-//Drop down menu
-
-//val listoflistImages = listOf<List<Any>>()
-/*
-KuangCheng Lin (Peter)
-Post tasks to add tasks to database, users fill out forms to create task object then insert
-
- */
-
-/*  list of categories*/
-//val listOfPets = listOf("petcategory", "workinprogress")
-//val listOfGarden = listOf("farming")
-//val listOfHome = listOf("renovation")
-//val listOfTrade = listOf("trading")
-//val listOfDelivery = listOf("deliveryman")
-//val listOfLabor = listOf("workinprogress")
-
-//val listOfTaskImages = listOf("listOfPets", listOfGarden, listOfHome, listOfTrade, listOfDelivery, listOfLabor)
-
-val listOfTaskImages = listOf("petcategory", "farming", "renovation", "trading", "deliveryman", "workinprogress")
-
-//val listOfSubPets = listOf("pets", "workinprogress", "petcategory" )
-//val listOfSubGarden = listOf("garage", "cleaning", "farming")
-//val listOfSubHome = listOf("house", "home", "renovation")
-//val listOfSubTrade = listOf("ic_sea_icon", "review", "trading")
-//val listOfSubDelivery = listOf("gigpic", "gigpic2", "deliveryman")
-//val listOfSubLabor = listOf("plus", "repair", "workinprogress")
-
-val listOfSubPets = listOf(
-        Pair("Pet Walking", "pets"),
-        Pair("Pets Sitting", "workinprogress"),
-        Pair("Others", "petcategory"))
-
-val listOfSubGarden = listOf(
-        Pair("Planting", "garage"),
-        Pair("Plant Trimming", "cleaning"),
-        Pair("Others", "farming"))
-
-val listOfSubHome = listOf(
-        Pair("Painters", "house"),
-        Pair("House Cleaning", "home"),
-        Pair("Others", "renovation"))
-
-val listOfSubTrade = listOf(
-        Pair("Electronics", "ic_sea_icon"),
-        Pair("Collectibles", "review"),
-        Pair("Others", "trading"))
-
-val listOfSubDelivery = listOf(
-        Pair("Food Delivery", "gigpic"),
-        Pair("Documents Delivery", "gigpic2"),
-        Pair("Others", "deliveryman"))
-
-val listOfSubLabor = listOf(
-        Pair("Moving Labors", "plus"),
-        Pair("Construction Labors", "repair"),
-        Pair("Others", "workinprogress"))
-
-
-
-
-val listOfSubTaskImages = listOf(listOfSubPets, listOfSubGarden, listOfSubHome, listOfSubTrade, listOfSubDelivery, listOfSubLabor)
-
-val categoryNames = listOf (
-        Pair("Pets", "petcategory")
-        , Pair("Gardening", "farming")
-        , Pair("Home Repair", "renovation")
-        ,Pair("Trading", "trading")
-        ,Pair("Delivery", "deliveryman")
-        ,Pair("Labor", "workinprogress")
-)
-
-data class Pair(
-        val cat:String,
-        val img:String,
-)
-
 
 
 
@@ -132,7 +63,7 @@ fun PostTask(vModel: TheViewModel, navController: NavController){
     var user_name by remember {mutableStateOf("")}
     var description by remember {mutableStateOf("")}
     var hourly_rate by remember {mutableStateOf("")}
-    var date by remember {mutableStateOf("")}
+    var date =  remember {mutableStateOf("Select Date")}
     var address by remember {mutableStateOf("")}
     var catIndex = remember {mutableStateOf(0)}
 
@@ -198,43 +129,43 @@ fun PostTask(vModel: TheViewModel, navController: NavController){
 
                 }
 
-                //The second dropdown category
-                if(showSubCategory.value)
-                Text(text= "Sub-Category", modifier = Modifier.padding(start = 30.dp))
-                Box(
-                    modifier = Modifier
-                        .padding(10.dp),
-                    contentAlignment = Alignment.Center,
-
-                ) {
-                    Box(
-                        modifier = Modifier
-                            .offset(x = -100.dp, y = 15.dp)
-                    )
-                    {
-                        if(showSubCategory.value)
-                       SubDownMenu(expandedSecond, image, selectedSubText, catIndex, listOfSubTaskImages[catIndex.value-1], showSubCategory = showSubCategory)
-                    }
-                    Card(
-                        elevation = 5.dp,
-                        shape = RoundedCornerShape(15.dp)
-                    ) {
-                        Spacer(modifier = Modifier.padding(5.dp))
-                        if(showSubCategory.value)
-                        Text(
-                            text = selectedSubText.value,
-                            modifier = Modifier
-                                .width(150.dp)
-                                .height(25.dp)
-                                //   .border(1.dp, graySurface)
-                                .clickable {
-                                    expandedSecond.value = false // MAKE IT TRUE TO SHOW
-                                },
-                            textAlign = TextAlign.Center
-                        )
-                    }
-
-                }
+//                //The second dropdown category
+//                if(showSubCategory.value)
+//                Text(text= "Sub-Category", modifier = Modifier.padding(start = 30.dp))
+//                Box(
+//                    modifier = Modifier
+//                        .padding(10.dp),
+//                    contentAlignment = Alignment.Center,
+//
+//                ) {
+//                    Box(
+//                        modifier = Modifier
+//                            .offset(x = -100.dp, y = 15.dp)
+//                    )
+//                    {
+//                     //   if(showSubCategory.value)
+//                    //   SubDownMenu(expandedSecond, image, selectedSubText, catIndex, listOfSubTaskImages[catIndex.value-1], showSubCategory = showSubCategory)
+//                    }
+//                    Card(
+//                        elevation = 5.dp,
+//                        shape = RoundedCornerShape(15.dp)
+//                    ) {
+//                        Spacer(modifier = Modifier.padding(5.dp))
+//                        if(showSubCategory.value)
+//                        Text(
+//                            text = selectedSubText.value,
+//                            modifier = Modifier
+//                                .width(150.dp)
+//                                .height(25.dp)
+//                                //   .border(1.dp, graySurface)
+//                                .clickable {
+//                                    expandedSecond.value = false // MAKE IT TRUE TO SHOW
+//                                },
+//                            textAlign = TextAlign.Center
+//                        )
+//                    }
+//
+//                }
 
 
 
@@ -280,14 +211,33 @@ fun PostTask(vModel: TheViewModel, navController: NavController){
 
 
             }
-
-            OutlinedTextField(
-                value = date,
-                onValueChange = { date = it },
-                label = { Text(text = "Date/Time") },
-                shape = RoundedCornerShape(2.dp),
-                modifier = Modifier.padding(0.4.dp)
+            val mCalendar = Calendar.getInstance()
+            val mYear = mCalendar.get(Calendar.YEAR)
+            val mMonth = mCalendar.get(Calendar.MONTH)
+            val mDay = mCalendar.get(Calendar.DAY_OF_MONTH)
+    //        val mDate = remember { mutableStateOf("Select Date") }
+            val mDatePickerDialog = DatePickerDialog(
+                context,
+                { _: DatePicker, mYear: Int, mMonth: Int, mDayOfMonth: Int ->
+                    date.value = "${mMonth+1}/$mDayOfMonth/$mYear"
+                }, mYear, mMonth, mDay
             )
+
+            Spacer(modifier = Modifier.padding(5.dp))
+            Box(modifier = Modifier.padding(5.dp)
+                .height(40.dp).width(100.dp)
+                .border(1.dp, graySurface),
+                contentAlignment = Alignment.Center
+
+            ) {
+                Text(
+                    "${date.value}", modifier = Modifier
+                        .padding(4.dp)
+                        //  .fillMaxWidth()
+                        .clickable { mDatePickerDialog.show() },
+                    textAlign = TextAlign.Center
+                )
+            }
             OutlinedTextField(
                 value = address,
                 onValueChange = { address = it },
@@ -320,7 +270,7 @@ fun PostTask(vModel: TheViewModel, navController: NavController){
                                     person_name = user_name,
                                     description = description,
                                     hourly_rate =  temp,
-                                    datetime = date,
+                                    datetime = date.value,
                                     imageId = image.value,
                                     address = address,
                                     lat = lat.latitude ,
@@ -329,9 +279,9 @@ fun PostTask(vModel: TheViewModel, navController: NavController){
                                 vModel.insertTask(task)
                                 vModel.fetchCategory(catIndex.value)
                                 navController.navigate(NavScreens.TaskBoard.route){
-                                  //  vModel.fetchCategory(catIndex.value)
+                                 //   vModel.fetchCategory(catIndex.value)
                                     popUpTo(NavScreens.TaskBoard.route)
-                                    launchSingleTop = true
+
                                 }
                             }
                             else{   //Category have NOT been selected, make toast and do nothing
