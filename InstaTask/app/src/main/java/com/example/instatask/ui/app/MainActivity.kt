@@ -48,6 +48,7 @@ import com.example.instatask.database.datamodel.deleteDB
 import com.example.instatask.database.datamodel.initDatabase
 import com.example.instatask.network.AirplaneModeChangeReceiver
 import com.example.instatask.network.Wifi
+import com.example.instatask.ui.Components.googleHQ
 import com.example.instatask.ui.app.Navigation.BottomNavigationBar
 import com.example.instatask.ui.app.Navigation.NavScreens
 import com.example.instatask.ui.app.Navigation.Navigation
@@ -57,6 +58,7 @@ import com.example.instatask.ui.theme.graySurface
 import com.example.instatask.viewmodel.TheViewModel
 import com.example.instatask.viewmodel.UserInfoViewModel
 import com.google.accompanist.pager.ExperimentalPagerApi
+import com.google.android.gms.maps.model.LatLng
 import java.util.*
 import kotlin.random.Random
 
@@ -101,11 +103,14 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colors.background
                 ) {
                     MainScreen(theViewModel, userInfoViewModel)
+
+
                //     GigPage()
 //        PostTask(theViewModel, navController = NavController(this))
                  //   CustomerList(theViewModel)
          //MainScreen(theViewModel)
-         //  test(theViewModel)
+         //  test(the
+                //  ViewModel)
 
                     //Adama'S task for now
                   //   SignUpScreen(NavController(this))
@@ -120,7 +125,7 @@ class MainActivity : ComponentActivity() {
 
 
 
-                //    TaskBoard(theViewModel, NavController(this))
+                  //  TaskBoard(theViewModel, NavController(this))
 
               //  MainScreen(theViewModel)
 

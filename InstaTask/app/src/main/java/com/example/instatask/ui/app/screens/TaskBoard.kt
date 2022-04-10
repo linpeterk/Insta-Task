@@ -19,6 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -109,9 +110,9 @@ fun TaskBoard(vModel: TheViewModel,
             
             Surface(                    //To add Padding to Drawer
                 modifier = Modifier
-                        .fillMaxSize()
-                        .fillMaxHeight()
-                        .fillMaxWidth()
+                    .fillMaxSize()
+                    .fillMaxHeight()
+                    .fillMaxWidth()
 
                 ,
 
@@ -121,43 +122,57 @@ fun TaskBoard(vModel: TheViewModel,
                         color = Color.White
                     ) {
                     Column(modifier = Modifier) {
-                        Box(
+                        Row(
                             modifier = Modifier
-                                    //  .weight(1f)
-                                    .fillMaxWidth()
-                                    //     .border(3.dp, Color.Red)
-                                    .background(Color.White)
+                                //  .weight(1f)
+                                .fillMaxWidth()
+                                //     .border(3.dp, Color.Red)
+                                .background(Color.White)
 
                         ) {
                            // CategoriesBar(vModel = vModel, vModel.categoriesTask, mode = 1, navController = navcontroller)
-                            Column() {
-                                Icon(imageVector = Icons.Outlined.ArrowBack, contentDescription = "Go back", modifier = Modifier.size(40.dp)
 
-                                .clickable {
-                                        navController.navigate(NavScreens.Gig.route){
+                                Icon(imageVector = Icons.Outlined.ArrowBack, contentDescription = "Go back", modifier = Modifier
+                                    .size(40.dp)
+
+                                    .clickable {
+                                        navController.navigate(NavScreens.Gig.route) {
                                             popUpTo(NavScreens.Gig.route)
                                         }
-                                })
-
-                            }
-                                Column(modifier = Modifier
-                                        .fillMaxWidth()
+                                    })
+                            Spacer(Modifier.padding(end=120.dp))
+                            Column(modifier = Modifier
                                         .padding(2.dp),
                                 horizontalAlignment = Alignment.CenterHorizontally)
                                 {
                                     Image(painter = painterResource(id = R.drawable.more), contentDescription = "Post Task",
                                             modifier = Modifier
-                                                    .size(50.dp)
-                                                    .background(color = lightBlue, shape = RoundedCornerShape(13.dp))
-                                                    .clickable {
-                                                        navController.navigate(NavScreens.PostTask.route){
-                                                            popUpTo(NavScreens.PostTask.route)
-                                                        }
-                                                    })
+                                                .size(50.dp)
+                                                .background(
+                                                    color = lightBlue,
+                                                    shape = RoundedCornerShape(13.dp)
+                                                )
+                                                .clickable {
+                                                    navController.navigate(NavScreens.PostTask.route) {
+                                                        popUpTo(NavScreens.PostTask.route)
+                                                    }
+                                                })
                                     Text(text = "Post Task", color = graySurface, fontSize = 14.sp)
                                 }
+                            Box(
+                                modifier = Modifier.fillMaxWidth().height(70.dp),
+                                contentAlignment = Alignment.CenterEnd
+
+                            ){
+                                Card(elevation = 3.dp, modifier = Modifier.padding(10.dp).border(1.dp, Color.Black)) {
+                                    dropDownMenu(vModel = vModel)
+                                }
+                            }
+
 
                         }
+
+
 
                         LazyScrollTaskBoard(vModel = vModel, navcontroller = navController, state, buttonText)
 
@@ -177,14 +192,38 @@ fun TaskBoard(vModel: TheViewModel,
         }
     }
 
-
-
-
-
-
-
-
-
 }
 
+@Composable
+fun dropDownMenu(vModel: TheViewModel){
+    var expanded by remember { mutableStateOf(false) }
+    val items = listOf("Sortby: Default", "Sortby: Distance", "Sortby: $/hr")
+    var selectedIndex by remember { mutableStateOf(0) }
+    Box(modifier = Modifier) {
+        Text(items[selectedIndex],modifier = Modifier.width(130.dp).padding(3.dp)
+            .clickable(onClick = { expanded = true }).background(
+            Color.White),
+            textAlign = TextAlign.Center
+        )
+        DropdownMenu(
+            expanded = expanded,
+            onDismissRequest = { expanded = false },
+            modifier = Modifier.background(
+                Color.White)
+        ) {
+            items.forEachIndexed { index, s ->
+                DropdownMenuItem(onClick = {
+                    selectedIndex = index
+                    expanded = false
 
+                     vModel.sortBy(index) //index determines which sorting methods
+
+
+                }) {
+                    Text(text = s )
+                }
+            }
+        }
+    }
+
+}
