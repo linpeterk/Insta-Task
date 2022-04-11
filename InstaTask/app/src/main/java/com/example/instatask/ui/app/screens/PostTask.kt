@@ -279,7 +279,7 @@ fun PostTask(vModel: TheViewModel, navController: NavController){
                                 vModel.insertTask(task)
                                 vModel.fetchCategory(catIndex.value)
                                 navController.navigate(NavScreens.TaskBoard.route){
-                                 //   vModel.fetchCategory(catIndex.value)
+                                    vModel.fetchCategory(catIndex.value)
                                     popUpTo(NavScreens.TaskBoard.route)
 
                                 }

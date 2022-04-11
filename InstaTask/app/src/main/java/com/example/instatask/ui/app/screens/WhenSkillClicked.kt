@@ -1,5 +1,6 @@
 package com.example.instatask.ui.app.screens
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -104,7 +105,7 @@ fun WhenSkillClicked(navController: NavController, viewModel: TheViewModel, inde
                             }
                         }
                         Row(modifier = Modifier //
-                            .fillMaxWidth(),
+                            .fillMaxWidth().padding(3.dp),
                             horizontalArrangement = Arrangement.Center
 
                         ){
@@ -112,7 +113,7 @@ fun WhenSkillClicked(navController: NavController, viewModel: TheViewModel, inde
 //                              MenuTab(navController)
                             Button(                                     // ACCEPT OR REPORT BUTTON
 
-                                onClick = { /*navController.navigate(route=Screen.Login.route)*/},
+                                onClick = { Toast.makeText(context, "Message Sent to Business", Toast.LENGTH_LONG).show()},
                                 colors = ButtonDefaults.buttonColors(backgroundColor = Color.Red),
                                 modifier = Modifier
                             ) {
