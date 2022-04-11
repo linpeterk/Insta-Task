@@ -14,6 +14,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -25,20 +26,31 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.example.instatask.R
 import com.example.instatask.ui.theme.Purple200
 import com.example.instatask.ui.theme.graySurface
+import com.example.instatask.viewmodel.TheViewModel
+import com.example.instatask.viewmodel.UserInfoViewModel
 import kotlin.math.roundToInt
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun ProfileScreen(
-    user:UserInfo,
-    activity: Activity
+//    user:UserInfo,
+//    activity: Activity
+vModel:TheViewModel,
+navController:NavController,
+userInfoViewModel:UserInfoViewModel
 ) {
+
+    //val user by userInfoViewModel.getAllUsers().observeAsState()
+    var user = userInfoViewModel.getAllData
 
     Column(
         modifier = Modifier
@@ -114,7 +126,9 @@ fun ProfileScreen(
             val profileImg = painterResource(id = R.drawable.head)
             Box(
                 modifier = Modifier
-                    .padding(10.dp),
+                    .padding(10.dp)
+                   // .border(2.dp, Color.Red)
+                ,
 
                 ) {
 
@@ -151,7 +165,7 @@ fun ProfileScreen(
 
         Box(
             modifier = Modifier
-                .padding(30.dp),
+                .padding(10.dp),
             Alignment.Center,
         ) {
             Card(
@@ -164,36 +178,28 @@ fun ProfileScreen(
             ) {
                 Column(
                     modifier = Modifier
-                        .padding(50.dp)
+                        .padding(10.dp)
                         .fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center
                 ) {
                     var text by remember { mutableStateOf("") }
-                    Row(modifier = Modifier.fillMaxWidth()) {
 
-                        Spacer(modifier = Modifier.size(15.dp))
-                        Text(
-                            text = "user.name",
-                            //fontSize = 20.dp,
-                            // Alignment.Center,
-                            fontWeight = FontWeight.Bold
-                        )
-                    }
                     Row(modifier = Modifier.fillMaxWidth()) {
                         Icon(imageVector = Icons.Filled.Email, contentDescription = "Email")
                         Spacer(modifier = Modifier.size(20.dp))
-                        Text(text = "user.email")
+                        //Text(text = "user.email")
+                        Text(text = "${user.value?.first()?.user_email_address}")
                     }
                     Row(modifier = Modifier.fillMaxWidth()) {
                         Icon(imageVector = Icons.Filled.Call, contentDescription = "Call")
                         Spacer(modifier = Modifier.size(20.dp))
-                        Text(text = "user.phone")
+                        Text(text = "${user.value?.first()?.user_zip_code}")
                     }
                     Row(modifier = Modifier.fillMaxWidth()) {
                         Icon(imageVector = Icons.Filled.LocationOn, contentDescription = "Location")
                         Spacer(modifier = Modifier.size(20.dp))
-                        Text(text = "user.address")
+                        Text(text = "${user.value?.first()?.user_address}")
                     }
 
 
@@ -203,6 +209,7 @@ fun ProfileScreen(
 
 
 //current activities
+
 
         @ExperimentalMaterialApi
         var bgColor by remember { mutableStateOf(Purple200) }
@@ -326,11 +333,7 @@ fun ProfileScreen(
 
                                 Spacer(modifier = Modifier.padding(10.dp))
 
-                                Text(
-                                    text = "Lorem Ipsum is simply dummy text of the printing and type setting industry...",
-                                    color = Color.Black,
-                                    fontSize = 20.sp
-                                )
+                                displayActivity(vModel)
                             }
                         }
                     }
@@ -341,7 +344,38 @@ fun ProfileScreen(
 
 }
 
+@Composable
+fun displayActivity (vModel: TheViewModel){
 
+    if(vModel.taskAcceptedID!=-1){
+
+        vModel.fetchAcceptedTaskById(vModel.taskAcceptedID)
+        var task = vModel.AcceptedTask
+        Text(
+            text = "${task.value.task_name}",
+            color = Color.Black,
+            fontSize = 20.sp
+        )
+        Text(
+            text = "${task.value.person_name}",
+            color = Color.Black,
+            fontSize = 20.sp
+        )
+        Text(
+            text = "${task.value.hourly_rate}",
+            color = Color.Black,
+            fontSize = 20.sp
+        )
+
+    }
+    else{
+        Text(
+            text = "No Current Activities",
+            color = Color.Black,
+            fontSize = 30.sp
+        )
+    }
+}
 
 
 

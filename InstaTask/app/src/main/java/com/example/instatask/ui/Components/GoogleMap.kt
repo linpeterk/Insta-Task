@@ -34,6 +34,12 @@ val googlePosition =    CameraPosition.fromLatLngZoom(
 
 var cameraPositionState:CameraPositionState =  CameraPositionState(position = CameraPosition.fromLatLngZoom(googleHQ, 14f))
 
+/*display respective board's markers
+ * mode == 1 is job board, mode==2 is skill board, mode == 3 NO marker
+ *
+ * on any list updates
+ * */
+
 @Composable
   fun MakeGoogleMap(
     makeMarker: Boolean = false,
@@ -161,6 +167,18 @@ fun createMarkers(vModel: TheViewModel, mode:Int, navController:NavController){
             )
 
         }
+    }
+    else if(mode==3) {
+        var list=   vModel.currentSkillList
+        Marker(
+            position = googleHQ,
+            title = "You",
+            snippet = "You are here",
+            icon= BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_AZURE)
+
+        )
+
+
     }
 
 

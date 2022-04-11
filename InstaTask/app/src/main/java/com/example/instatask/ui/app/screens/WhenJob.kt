@@ -193,7 +193,12 @@ fun WhenJobClicked(navController: NavController, vModel:TheViewModel, taskId: In
                         Box(modifier = Modifier.fillMaxWidth().padding(8.dp), contentAlignment = Alignment.Center) {
                             Button(                                     // ACCEPT OR REPORT BUTTON
 
-                                onClick = { navController.navigate(route = NavScreens.JobAccepted.route) },
+                                onClick = {
+
+                                    navController.navigate(route = NavScreens.JobAccepted.route)
+                                       vModel.taskAcceptedID = taskId
+
+                                          },
                                 colors = ButtonDefaults.buttonColors(backgroundColor = Color.Red),
                                 modifier = Modifier
                             ) {

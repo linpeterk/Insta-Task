@@ -34,7 +34,7 @@ fun JobAccepted(
 
     //var job = JobDetails("QwertyName",12,15,"Developer","Name_Qwerty","Test_Test","2022-03-01")
 
-    // var task = vModel.task.value
+     var task = vModel.task.value
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -42,42 +42,32 @@ fun JobAccepted(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
     ) {
+        //-------------Box2------------------
+        Box( Modifier
+            .fillMaxWidth()
+            .height(150.dp)) {
+            Column(
+                horizontalAlignment= Alignment.CenterHorizontally
+            ) {
+                MakeGoogleMap(vModel = vModel, navController = navController, mode = 1)
 
-    }
-    //------------Box1-------
-    Box(modifier = Modifier.fillMaxWidth()) {
-        Button(onClick = { /*TODO*/ }, modifier = Modifier.background(Color.Gray)) {
-            Text(text = "Navigation Drawer")
+            }
         }
-    }
-
-    //-------------Box2------------------
-    Box() {
-        Column(
-            modifier = Modifier
-                .width(350.dp)
-                .height(150.dp),
-            horizontalAlignment= Alignment.CenterHorizontally
-        ) {
-            //MakeGoogleMap(vModel = vModel, navController = navController, mode = 2)
-
-        }
-    }
 
 //-----------Box3----------------------
-    Box(
-    ) {
-        Card(
-            modifier = Modifier
-                .padding(25.dp)
-                .width(500.dp),
-            shape = RoundedCornerShape(10.dp),
-            contentColor = Color.Black,
-            elevation = 15.dp,
+        Box(
         ) {
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally
+            Card(
+                modifier = Modifier
+                    .padding(25.dp)
+                    .width(500.dp),
+                shape = RoundedCornerShape(10.dp),
+                contentColor = Color.Black,
+                elevation = 15.dp,
             ) {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
 //                    Text(text = " ")
 //                    Text(text = "${task.taskId}")
 //                    Text(text = "${task.task_name}")
@@ -94,54 +84,49 @@ fun JobAccepted(
 //                    Text(text = " ")
 
 
-                Text(text = "Job Accepted!!!",
-                    fontWeight = FontWeight.SemiBold,
-                    //fontColor = Color.Green,
-                    fontSize = 30.sp)
-                Text(text = " ")
-                Text(text = " ")
-                Text(text = "Job details")
-                //                   Text(text = "${task.taskId}")
-//                    Text(text = "${task.task_name}")
-                //                  Text(text = "${task.description}")
-                Text(text = " ")
-                Text(text = "Scheduled time")
-                //                 Text(text = " ${task.datetime}")
-                Text(text = " ")
-                Text(text = "job posted by")
-                //                 Text(text = " ${task.person_name}")
-                Text(text = " ")
-                Text(text = "")
+                    Text(text = "Job Accepted!!!",
+                        fontWeight = FontWeight.SemiBold,
+                        fontSize = 30.sp)
+                    Text(text = "Job details")
+                   Text(text = "${task.task_name}")
+                    Text(text = "Scheduled time")
+                      Text(text = " ${task.datetime}")
+                    Text(text = "job posted by")
+                     Text(text = " ${task.person_name}")
+                    Text(text = " $${task.hourly_rate}/hr")
 
+                }
             }
-        }
 
-    }
+        }
 
 
 //-----------Box4-----------------------------
-    Box() {
-        Column(
-            Modifier.padding(40.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,) {
-            CircularProgressBar(
-                percentage = 0.8f,
-                number = 100
-            )//percentage can be ranged 0.0-1 (ie.0%-100%)--to be passed dynamically;number should always be 100
-            Text(text = " ")
-            Row() {
-
-                Button(onClick = { /*TODO*/ }, modifier = Modifier.background(Color.Gray)) {
-                    Text(text = "Job Done")
-                }
+        Box() {
+            Column(
+                Modifier.padding(40.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,) {
+                CircularProgressBar(
+                    percentage = 0.8f,
+                    number = 100
+                )//percentage can be ranged 0.0-1 (ie.0%-100%)--to be passed dynamically;number should always be 100
                 Text(text = " ")
-                Button(onClick = { /*TODO*/ }, modifier = Modifier.background(Color.Gray)) {
-                    Text(text = "Cancelled")
-                }
-            }
+                Row() {
 
+                    Button(onClick = { /*TODO*/ }, modifier = Modifier.background(Color.Gray)) {
+                        Text(text = "Job Done")
+                    }
+                    Text(text = " ")
+                    Button(onClick = { /*TODO*/ }, modifier = Modifier.background(Color.Gray)) {
+                        Text(text = "Cancelled")
+                    }
+                }
+
+            }
         }
     }
+
+
 
 }
 

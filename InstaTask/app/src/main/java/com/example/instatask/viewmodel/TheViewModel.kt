@@ -45,7 +45,7 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
 
     var currentTaskList : List<Task> by  mutableStateOf(listOf(Task()))
 
-    var taskAcceptedID by mutableStateOf(1)
+    var taskAcceptedID by mutableStateOf(-1)
 
     private val TaskRepository: TaskRepository = TaskRepository(application = application)
 
@@ -341,6 +341,15 @@ class TheViewModel(application: Application) : AndroidViewModel(application) {
     {
         viewModelScope.launch{
             task.value =  TaskRepository.fetchTaskById(id)
+        }
+
+    }
+
+    var AcceptedTask=  mutableStateOf(Task())
+    fun fetchAcceptedTaskById(id:Int)
+    {
+        viewModelScope.launch{
+            AcceptedTask.value =  TaskRepository.fetchTaskById(id)
         }
 
     }

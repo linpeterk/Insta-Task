@@ -92,8 +92,8 @@ class MainActivity : ComponentActivity() {
             init(theViewModel)
             theViewModel.getReviews(2, 2)
 
-            deleteDB(theViewModel) // Definitely don't run this
-initDatabase(theViewModel) //Do not run this, run only once to initiate database
+            //deleteDB(theViewModel) // Definitely don't run this
+           // initDatabase(theViewModel) //Do not run this, run only once to initiate database
 
 
             InstaTaskTheme {
@@ -102,13 +102,15 @@ initDatabase(theViewModel) //Do not run this, run only once to initiate database
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    MainScreen(theViewModel, userInfoViewModel)
 
+                 //   ProfileScreen(theViewModel, NavController(this), userInfoViewModel)
+                    MainScreen(theViewModel, userInfoViewModel)
+                 //   JobAccepted(theViewModel, NavController(this))
 
                //     GigPage()
        //PostTask(theViewModel, navController = NavController(this))
                  //   CustomerList(theViewModel)
-         //MainScreen(theViewModel)
+
          //  test(the
                 //  ViewModel)
 
@@ -139,7 +141,7 @@ initDatabase(theViewModel) //Do not run this, run only once to initiate database
 //                user=UserInfo("User Full Name","username@gmail.com","123 W ABC Ave",681123),
 //                activity=Activity(arrayOf<String>("Activity_one","Activity_two"),arrayOf<String>("Activity_1","Activity_2","Activity_3","Activity_4"))
 //            )
-         //  JobAccepted()
+
 
         }
     }
