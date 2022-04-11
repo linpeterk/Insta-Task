@@ -55,7 +55,7 @@ userInfoViewModel:UserInfoViewModel
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White),
+            .background(Color.Black),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
 
@@ -121,15 +121,14 @@ userInfoViewModel:UserInfoViewModel
 
         //Profile Image
 
-        Box() {
+        Box(modifier = Modifier.clip(RoundedCornerShape(10.dp))) {
 
             val profileImg = painterResource(id = R.drawable.head)
             Box(
                 modifier = Modifier
                     .padding(10.dp)
-                   // .border(2.dp, Color.Red)
-                ,
-
+                    .background(Color.White)
+                    .clip(RoundedCornerShape(10.dp)),
                 ) {
 
                 Column(
@@ -165,7 +164,8 @@ userInfoViewModel:UserInfoViewModel
 
         Box(
             modifier = Modifier
-                .padding(10.dp),
+                .padding(10.dp)
+                .clip(RoundedCornerShape(10.dp)),
             Alignment.Center,
         ) {
             Card(
@@ -174,11 +174,11 @@ userInfoViewModel:UserInfoViewModel
                     .background(Color.White),
                 shape = RoundedCornerShape(10.dp),
 //            contentColor = Color.White,
-                //elevation = 5.dp,
+                elevation = 10.dp,
             ) {
                 Column(
                     modifier = Modifier
-                        .padding(10.dp)
+                        .padding(horizontal = 10.dp,vertical = 50.dp)
                         .fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally,
                     verticalArrangement = Arrangement.Center
@@ -212,7 +212,7 @@ userInfoViewModel:UserInfoViewModel
 
 
         @ExperimentalMaterialApi
-        var bgColor by remember { mutableStateOf(Purple200) }
+        var bgColor by remember { mutableStateOf(Color.White) }
 
         val color = animateColorAsState(
             targetValue = bgColor,

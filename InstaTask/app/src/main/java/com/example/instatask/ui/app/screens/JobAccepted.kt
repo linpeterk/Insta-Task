@@ -1,5 +1,6 @@
 package com.example.instatask.ui.app
 
+import android.widget.Toast
 import com.example.instatask.ui.app.CircularProgressBar
 
 
@@ -16,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -31,6 +33,8 @@ import com.google.maps.android.compose.GoogleMap
 fun JobAccepted(
     vModel: TheViewModel, navController:NavController
 ) {
+
+    val context = LocalContext.current
 
     //var job = JobDetails("QwertyName",12,15,"Developer","Name_Qwerty","Test_Test","2022-03-01")
 
@@ -113,11 +117,11 @@ fun JobAccepted(
                 Text(text = " ")
                 Row() {
 
-                    Button(onClick = { /*TODO*/ }, modifier = Modifier.background(Color.Gray)) {
+                    Button(onClick = { Toast.makeText(context,"JOB COMPLETED",Toast.LENGTH_LONG).show() }, modifier = Modifier.background(Color.Gray)) {
                         Text(text = "Job Done")
                     }
                     Text(text = " ")
-                    Button(onClick = { /*TODO*/ }, modifier = Modifier.background(Color.Gray)) {
+                    Button(onClick = {Toast.makeText(context,"JOB CANCELLED",Toast.LENGTH_LONG).show() }, modifier = Modifier.background(Color.Gray)) {
                         Text(text = "Cancelled")
                     }
                 }
