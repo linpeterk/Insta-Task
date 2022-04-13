@@ -21,10 +21,10 @@ class AirplaneModeChangeReceiver : BroadcastReceiver() {
         // checking whether airplane mode is enabled or not
         if (isAirplaneModeEnabled) {
             // showing the toast message if airplane mode is enabled
-            Toast.makeText(context, "Airplane Mode Enabled", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "Airplane Mode Enabled, Data May Be Outdated", Toast.LENGTH_LONG).show()
         } else {
             // showing the toast message if airplane mode is disabled
-            Toast.makeText(context, "Airplane Mode Disabled, Displaying Old Data", Toast.LENGTH_LONG).show()
+            Toast.makeText(context, "Airplane Mode Disabled", Toast.LENGTH_LONG).show()
         }
     }
 }
